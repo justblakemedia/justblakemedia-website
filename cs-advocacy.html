@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: AI Accountability Pledge Campaign — Just Blake Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #D97706;
+      --accent-light: #FEF3C7;
+      --zinc-950: #09090B;
+      --zinc-900: #18181B;
+      --zinc-700: #3F3F46;
+      --zinc-600: #52525B;
+      --zinc-500: #71717A;
+      --zinc-400: #A1A1AA;
+      --zinc-300: #D4D4D8;
+      --zinc-200: #E4E4E7;
+      --zinc-100: #F4F4F5;
+      --zinc-50: #FAFAFA;
+      --cream: #FBF6EC;
+      --cream-deep: #F5EDDA;
+      --max-width: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      color: var(--zinc-900);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--zinc-100);
+    }
+    .nav-back {
+      font-size: 0.825rem;
+      font-weight: 500;
+      color: var(--zinc-600);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--zinc-900); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #B45309; transform: translateY(-1px); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      background: var(--zinc-950);
+      position: relative;
+      overflow: hidden;
+      padding: 160px 24px 100px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(217,119,6,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(217,119,6,0.12);
+      border: 1px solid rgba(217,119,6,0.25);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+      max-width: 22ch;
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      max-width: 52ch;
+      line-height: 1.65;
+      margin-bottom: 64px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      max-width: 640px;
+    }
+    .hero-stat {
+      flex: 1;
+      min-width: 160px;
+      padding: 28px 28px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .hero-stat-label {
+      font-size: 0.775rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SHARED SECTION WRAPPER ── */
+    .section-wrap {
+      padding: 96px 24px;
+    }
+    .section-wrap .inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .section-h2 {
+      font-size: clamp(1.75rem, 3vw, 2.6rem);
+      font-weight: 800;
+      color: var(--zinc-900);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--zinc-500);
+      line-height: 1.65;
+      max-width: 60ch;
+      margin-bottom: 52px;
+    }
+
+    /* ── THE BRIEF ── */
+    #brief { background: var(--cream); }
+    .brief-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .brief-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .brief-copy p {
+      font-size: 1.0rem;
+      color: var(--zinc-700);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .brief-copy p:last-child { margin-bottom: 0; }
+    .brief-card {
+      background: #fff;
+      border: 1px solid var(--zinc-200);
+      border-radius: 14px;
+      padding: 32px;
+    }
+    .brief-card-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--zinc-400);
+      margin-bottom: 24px;
+    }
+    .brief-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--zinc-100);
+    }
+    .brief-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .brief-row-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--zinc-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .brief-row-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--zinc-900);
+      text-align: right;
+    }
+
+    /* ── THE STRATEGY ── */
+    #strategy { background: #fff; }
+    .strategy-tracks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 768px) {
+      .strategy-tracks { grid-template-columns: 1fr; }
+    }
+    .track-card {
+      border: 1px solid var(--zinc-200);
+      border-radius: 14px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .track-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+    .track-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .track-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--zinc-900);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    .track-meta {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .track-meta-item {}
+    .track-meta-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .track-meta-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--zinc-500);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 3px;
+    }
+    .track-divider {
+      height: 1px;
+      background: var(--zinc-100);
+      margin: 20px 0;
+    }
+    .track-why-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--zinc-400);
+      margin-bottom: 10px;
+    }
+    .track-why {
+      font-size: 0.9rem;
+      color: var(--zinc-600);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* ── THE CREATIVE ── */
+    #creative { background: var(--cream); }
+    .creative-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--zinc-200);
+      border-radius: 14px;
+      margin-bottom: 40px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    thead tr {
+      background: var(--zinc-50);
+      border-bottom: 2px solid var(--zinc-200);
+    }
+    th {
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--zinc-500);
+      white-space: nowrap;
+    }
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--zinc-100);
+      color: var(--zinc-700);
+      font-weight: 400;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr {
+      transition: background 0.18s ease;
+    }
+    tbody tr:hover { background: var(--zinc-50); }
+    .td-name {
+      font-weight: 600;
+      color: var(--zinc-900);
+    }
+    .td-cpr {
+      font-weight: 700;
+      color: var(--zinc-900);
+      font-variant-numeric: tabular-nums;
+    }
+    .verdict-winner {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #059669;
+      background: #D1FAE5;
+      padding: 4px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .verdict-strong {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 4px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .verdict-solid {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #2563EB;
+      background: #DBEAFE;
+      padding: 4px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .verdict-under {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--zinc-500);
+      background: var(--zinc-100);
+      padding: 4px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .creative-narrative {
+      font-size: 1.0rem;
+      color: var(--zinc-700);
+      line-height: 1.75;
+    }
+    .creative-narrative p { margin-bottom: 18px; }
+    .creative-narrative p:last-child { margin-bottom: 0; }
+
+    /* ── THE NUMBERS ── */
+    #results { background: #fff; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--zinc-100);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 768px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .stat-grid { grid-template-columns: 1fr; }
+    }
+    .stat-cell {
+      background: #fff;
+      padding: 40px 32px;
+    }
+    .stat-cell-num {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.025em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-cell-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--zinc-900);
+      margin-bottom: 4px;
+    }
+    .stat-cell-sub {
+      font-size: 0.8rem;
+      color: var(--zinc-500);
+      line-height: 1.5;
+    }
+    .results-callout {
+      background: var(--zinc-950);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 32px 36px;
+      font-size: 1.0rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+    }
+    .results-callout strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ── WHAT WE LEARNED ── */
+    #learned { background: var(--cream); }
+    .learned-copy p {
+      font-size: 1.0rem;
+      color: var(--zinc-700);
+      line-height: 1.75;
+      max-width: 70ch;
+      margin-bottom: 20px;
+    }
+    .learned-copy p:last-child { margin-bottom: 40px; }
+    .takeaways {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .takeaways { grid-template-columns: 1fr; }
+    }
+    .takeaway-card {
+      background: #fff;
+      border: 1px solid var(--zinc-200);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .takeaway-num {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .takeaway-text {
+      font-size: 0.975rem;
+      font-weight: 600;
+      color: var(--zinc-900);
+      line-height: 1.45;
+    }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--zinc-950);
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .cta-h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .cta-sub {
+      font-size: 1.0rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-btn:hover { background: #B45309; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--zinc-100);
+      padding: 36px 24px;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+    @media (max-width: 640px) {
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+    }
+    .footer-logo {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--zinc-900);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--zinc-400);
+      text-align: center;
+    }
+    .footer-email {
+      font-size: 0.85rem;
+      color: var(--zinc-500);
+      text-decoration: none;
+      text-align: right;
+      display: block;
+      transition: color 0.2s;
+    }
+    @media (max-width: 640px) { .footer-email { text-align: center; } }
+    .footer-email:hover { color: var(--accent); }
+
+    /* ── MISC ── */
+    @media (max-width: 480px) {
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .hero-stat:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="./justblakemedia-website.html" class="nav-back">&#8592; Just Blake Media</a>
+    <a href="./justblakemedia-website.html#contact" class="nav-cta">Let's Talk &#8594;</a>
+  </nav>
+
+  <!-- [1] HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-pill reveal">ADVOCACY / TECH POLICY</div>
+      <h1 class="hero-h1 reveal reveal-delay-1">6,567 pledges. $1.52 each. 26 days. Not a dollar left unspent.</h1>
+      <p class="hero-sub reveal reveal-delay-2">A 3-year-old advocacy org with no paid media history and $10,000 to build a public signatory base. One goal: convert strangers into public signatories. Here's exactly how we did it.</p>
+      <div class="hero-stats reveal reveal-delay-3">
+        <div class="hero-stat">
+          <div class="hero-stat-num">6,567</div>
+          <div class="hero-stat-label">Total pledges</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">$1.52</div>
+          <div class="hero-stat-label">Cost per pledge</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">1.97%</div>
+          <div class="hero-stat-label">Conversion rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [2] THE BRIEF -->
+  <section id="brief" class="section-wrap">
+    <div class="inner">
+      <div class="section-label reveal">THE BRIEF</div>
+      <h2 class="section-h2 reveal reveal-delay-1">Ten thousand dollars. Twenty-six days. One metric that mattered.</h2>
+      <div class="brief-grid">
+        <div class="brief-copy reveal reveal-delay-2">
+          <p>Most advocacy campaigns measure success in impressions and reach — proxies that feel good but don't actually prove anything. This client wasn't interested in proxies. They needed pledges: real people putting their name behind a commitment to responsible AI development. That's a conversion, with all the friction that implies. You have to stop someone mid-scroll, give them a reason to care about an issue they may not have thought about today, and ask them to take an action that requires a name and an email.</p>
+          <p>The budget was $10,000. The flight was 26 days. The target: as many pledges as possible at the lowest sustainable cost per result. No brand awareness objectives. No "let's build the funnel for next quarter." This was a direct response campaign with a hard deadline, a hard budget, and one number to hit.</p>
+        </div>
+        <div class="brief-card reveal reveal-delay-3">
+          <div class="brief-card-title">Campaign Brief</div>
+          <div class="brief-row">
+            <span class="brief-row-label">Objective</span>
+            <span class="brief-row-value">Website conversions (pledges)</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">Budget</span>
+            <span class="brief-row-value">$10,000 (fixed)</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">Flight</span>
+            <span class="brief-row-value">March 30 – April 25, 2026 (26 days)</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">North Star</span>
+            <span class="brief-row-value">Cost per pledge (target: under $3.00)</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">Creative</span>
+            <span class="brief-row-value">Image and video variants</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">Platform</span>
+            <span class="brief-row-value">Meta (Facebook + Instagram)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [2b] THE SITUATION -->
+  <section id="situation" class="section-wrap" style="background:#fff; padding-top:0; padding-bottom:96px;">
+    <div class="inner">
+      <div class="section-label reveal">THE SITUATION</div>
+      <h2 class="section-h2 reveal reveal-delay-1">No paid media history. One window. No second chances.</h2>
+      <div class="brief-grid">
+        <div class="brief-copy reveal reveal-delay-2">
+          <p>This organization had been operating for three years building credibility in AI policy circles — white papers, coalition relationships, earned media. They had never run a paid campaign. Their signatory base had grown through organic outreach: email lists, partner shares, conference sign-ups. That approach had a ceiling, and they'd hit it.</p>
+          <p>The pledge campaign had a hard deadline tied to a policy moment they couldn't move. There was no runway for a test-and-learn phase, no budget for a second attempt if the first one underperformed. The entire paid media history of this organization would be determined by one 26-day flight. That's not a constraint you manage around. That's the entire brief.</p>
+        </div>
+        <div class="brief-card reveal reveal-delay-3" style="background:var(--zinc-50); border-color:var(--zinc-200);">
+          <div class="brief-card-title">Before This Campaign</div>
+          <div class="brief-row">
+            <span class="brief-row-label">Paid history</span>
+            <span class="brief-row-value">None — first paid campaign ever</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">Prior acquisition</span>
+            <span class="brief-row-value">Email lists, partner shares, organic</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">Ceiling reached</span>
+            <span class="brief-row-value">Yes — organic growth had plateaued</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">Deadline flexibility</span>
+            <span class="brief-row-value">None — tied to external policy moment</span>
+          </div>
+          <div class="brief-row">
+            <span class="brief-row-label">Second attempt possible</span>
+            <span class="brief-row-value">No — one budget, one window</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [3] THE STRATEGY -->
+  <section id="strategy" class="section-wrap">
+    <div class="inner">
+      <div class="section-label reveal">THE STRATEGY</div>
+      <h2 class="section-h2 reveal reveal-delay-1">Two audiences. Four creatives. One campaign that let the data decide.</h2>
+      <p class="section-sub reveal reveal-delay-2">A full-funnel Meta structure isn't complicated. But most campaigns don't actually follow it. This one did.</p>
+      <div class="strategy-tracks">
+        <div class="track-card reveal reveal-delay-3">
+          <div class="track-badge">Track 1 — 79% of budget</div>
+          <div class="track-title">Broad Targeting<br>Ages 25-55, unconstrained</div>
+          <div class="track-meta">
+            <div class="track-meta-item">
+              <div class="track-meta-num">$7,923</div>
+              <div class="track-meta-label">Spend</div>
+            </div>
+            <div class="track-meta-item">
+              <div class="track-meta-num">5,300</div>
+              <div class="track-meta-label">Pledges</div>
+            </div>
+            <div class="track-meta-item">
+              <div class="track-meta-num">$1.49</div>
+              <div class="track-meta-label">Cost per pledge</div>
+            </div>
+          </div>
+          <div class="track-divider"></div>
+          <div class="track-why-label">Why this worked</div>
+          <div class="track-why">"Broad targeting is counterintuitive for advocacy campaigns. The instinct is to narrow — find the most likely converts and target only them. The data consistently shows the opposite: give Meta a large, unconstrained pool and it will find people who weren't in your interest-based segments but convert anyway. We allocated 79% of budget here deliberately."</div>
+        </div>
+        <div class="track-card reveal reveal-delay-4">
+          <div class="track-badge">Track 2 — 21% of budget</div>
+          <div class="track-title">Retargeting + Lookalike<br>Engaged audiences + 1% seed</div>
+          <div class="track-meta">
+            <div class="track-meta-item">
+              <div class="track-meta-num">$2,073</div>
+              <div class="track-meta-label">Spend</div>
+            </div>
+            <div class="track-meta-item">
+              <div class="track-meta-num">1,267</div>
+              <div class="track-meta-label">Pledges</div>
+            </div>
+            <div class="track-meta-item">
+              <div class="track-meta-num">$1.64</div>
+              <div class="track-meta-label">Cost per pledge</div>
+            </div>
+          </div>
+          <div class="track-divider"></div>
+          <div class="track-why-label">Why this worked</div>
+          <div class="track-why">"Retargeting closes the loop. Someone who watched a video, visited the website, or engaged with content is already warm. This audience needed less convincing. The 1% lookalike added scale without sacrificing precision."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [4] THE CREATIVE -->
+  <section id="creative" class="section-wrap">
+    <div class="inner">
+      <div class="section-label reveal">THE CREATIVE TEST</div>
+      <h2 class="section-h2 reveal reveal-delay-1">We came in with four creatives. One ran away with the budget.</h2>
+      <p class="section-sub reveal reveal-delay-2">Systematic creative testing isn't about having an opinion about what will work. It's about being willing to be wrong — and moving budget the moment the data tells you to.</p>
+      <div class="creative-table-wrap reveal reveal-delay-3">
+        <table>
+          <thead>
+            <tr>
+              <th>Creative</th>
+              <th>Format</th>
+              <th>Distribution</th>
+              <th>Pledges</th>
+              <th>Cost Per Pledge</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-name">"It's Not Inevitable"</td>
+              <td>Image</td>
+              <td>Broad</td>
+              <td>425</td>
+              <td class="td-cpr">$1.92</td>
+              <td><span class="verdict-winner">Winner — Most efficient</span></td>
+            </tr>
+            <tr>
+              <td class="td-name">"Steering AI"</td>
+              <td>Image</td>
+              <td>Broad</td>
+              <td>561</td>
+              <td class="td-cpr">$2.58</td>
+              <td><span class="verdict-strong">Strong — Volume leader</span></td>
+            </tr>
+            <tr>
+              <td class="td-name">"Steering AI"</td>
+              <td>Image</td>
+              <td>Retargeting</td>
+              <td>182</td>
+              <td class="td-cpr">$2.29</td>
+              <td><span class="verdict-solid">Solid — Right audience</span></td>
+            </tr>
+            <tr>
+              <td class="td-name">"Trillionaires"</td>
+              <td>Video</td>
+              <td>Broad</td>
+              <td>56</td>
+              <td class="td-cpr">$2.92</td>
+              <td><span class="verdict-under">Underperformed — Deprioritized</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="creative-narrative reveal reveal-delay-4">
+        <p>By week two, the algorithm had reallocated. Image creatives were generating pledges at $1.49 to $1.92. The video — "Trillionaires" — was generating pledges at $2.92. We didn't override the data. We let it run the campaign. By the final week, 94%+ of spend was going to image creatives.</p>
+        <p>This is the part most campaigns get wrong. They build a video they're proud of and defend the budget allocation long past when the data says to move. The willingness to be ruthless about creative performance is what kept this campaign at $1.52 per pledge instead of $2.50+.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [5] THE NUMBERS -->
+  <section id="results" class="section-wrap">
+    <div class="inner">
+      <div class="section-label reveal">THE RESULTS</div>
+      <h2 class="section-h2 reveal reveal-delay-1">$9,995.98 spent. $10,000 budgeted. Every dollar converted.</h2>
+      <div class="stat-grid reveal reveal-delay-2">
+        <div class="stat-cell">
+          <div class="stat-cell-num">6,567</div>
+          <div class="stat-cell-label">Total pledges</div>
+          <div class="stat-cell-sub">People who put their name behind responsible AI</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">$1.52</div>
+          <div class="stat-cell-label">Cost per pledge</div>
+          <div class="stat-cell-sub">Against a $3.00 target. 49% better.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">1.97%</div>
+          <div class="stat-cell-label">Conversion rate</div>
+          <div class="stat-cell-sub">From scroll to signature. Advocacy pledge campaigns on Meta typically convert at 0.8–1.2%. This was nearly double.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">115,871</div>
+          <div class="stat-cell-label">People reached</div>
+          <div class="stat-cell-sub">Unique accounts exposed to the campaign</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">2.87x</div>
+          <div class="stat-cell-label">Average frequency</div>
+          <div class="stat-cell-sub">Most conversion campaigns need 3–4 exposures before action. Getting there in under 3 means the creative was doing the heavy lifting, not retargeting pressure.</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">100%</div>
+          <div class="stat-cell-label">Budget utilized</div>
+          <div class="stat-cell-sub">$9,995.98 of $10,000. Not a dollar wasted.</div>
+        </div>
+      </div>
+      <div class="results-callout reveal reveal-delay-3">
+        <strong>By day 14, we had enough data to know the campaign would beat its target by 49%.</strong> The remaining 12 days were optimization. This is what it looks like when structure does the work from the start.
+      </div>
+    </div>
+  </section>
+
+  <!-- [6] WHAT WE LEARNED -->
+  <section id="learned" class="section-wrap">
+    <div class="inner">
+      <div class="section-label reveal">THE LESSON</div>
+      <h2 class="section-h2 reveal reveal-delay-1">A fixed budget isn't a constraint. It's a forcing function.</h2>
+      <div class="learned-copy reveal reveal-delay-2">
+        <p>There's a version of this campaign that spends $10,000 and gets 3,000 pledges at $3.33 each. That version launches broad and retargeting at equal budget split, runs all four creatives at equal budget, and doesn't move allocation when the data comes in. That version is what happens when you set up a campaign and walk away.</p>
+        <p>What got this campaign to $1.52 per pledge was structure and discipline. The right funnel architecture from day one. A creative testing framework that was designed to produce a clear winner, not to validate a pre-existing opinion. And the willingness to let the algorithm — and the data — make the decisions that humans are usually too attached to their assumptions to make.</p>
+        <p>The broad targeting ad set alone generated 5,300 pledges at $1.49 each — cheaper than the retargeting segment. That's counterintuitive. The instinct in advocacy is to narrow: find the most likely converts and target only them. The data consistently shows the opposite. Give Meta a large, unconstrained pool and it finds people your interest-based segments would have never reached. That's not an accident. It's what the algorithm is built to do when you give it room.</p>
+      </div>
+      <div class="takeaways">
+        <div class="takeaway-card reveal reveal-delay-3">
+          <div class="takeaway-num">01 / Audience</div>
+          <div class="takeaway-text">Broad targeting wins for advocacy. Counter-intuitive. Consistently true. Give Meta the room to find converters your interest segments would have missed.</div>
+        </div>
+        <div class="takeaway-card reveal reveal-delay-4">
+          <div class="takeaway-num">02 / Format</div>
+          <div class="takeaway-text">Image beats video for conversion campaigns. Video builds awareness. When the goal is action, high-contrast static outperforms almost every time.</div>
+        </div>
+        <div class="takeaway-card reveal reveal-delay-5">
+          <div class="takeaway-num">03 / Discipline</div>
+          <div class="takeaway-text">Creative testing only works if you're willing to kill the loser. The data pointed to the answer by week two. The answer only counts if you act on it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [7] CTA -->
+  <section id="cta">
+    <div class="cta-inner">
+      <h2 class="cta-h2 reveal">One budget. One window. Six thousand people who didn't know this issue existed yesterday.</h2>
+      <p class="cta-sub reveal reveal-delay-1">Fixed-flight advocacy campaigns, policy moments, cause launches — any situation where there's no second attempt. If the structure is right from day one, the data does the work. This is what that looks like.</p>
+      <a href="./justblakemedia-website.html#contact" class="cta-btn reveal reveal-delay-2">Let's talk &#8594;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="./justblakemedia-website.html" class="footer-logo">Just <span>Blake</span> Media</a>
+      <p class="footer-copy">&copy; 2026 Just Blake Media. All rights reserved.</p>
+      <a href="mailto:justin@justblakemedia.com" class="footer-email">justin@justblakemedia.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll behavior
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // Hero elements — trigger immediately if already in view
+    document.querySelectorAll('#hero .reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+  </script>
+</body>
+</html>

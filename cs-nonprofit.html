@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nonprofit Case Study — Just Blake Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #D97706;
+      --accent-light: #FEF3C7;
+      --zinc-950: #09090B;
+      --zinc-900: #18181B;
+      --zinc-700: #3F3F46;
+      --zinc-600: #52525B;
+      --zinc-500: #71717A;
+      --zinc-400: #A1A1AA;
+      --zinc-300: #D4D4D8;
+      --zinc-200: #E4E4E7;
+      --zinc-100: #F4F4F5;
+      --zinc-50: #FAFAFA;
+      --cream: #FBF6EC;
+      --cream-deep: #F5EDDA;
+      --max-width: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      color: var(--zinc-900);
+      background: #fff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      transition: background 0.25s ease, backdrop-filter 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--zinc-100);
+    }
+
+    .nav-back {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--zinc-600);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--zinc-900); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover { background: #B45309; transform: translateY(-1px); }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* LAYOUT */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 6rem 0; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--zinc-900);
+      padding: 10rem 0 6rem;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-pill {
+      display: inline-block;
+      background: rgba(217, 119, 6, 0.18);
+      border: 1px solid rgba(217, 119, 6, 0.35);
+      color: #FCD34D;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      max-width: 20ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 52ch;
+      line-height: 1.65;
+      margin-bottom: 3.5rem;
+    }
+
+    .stat-strip {
+      display: flex;
+      gap: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* CHALLENGE */
+    .challenge { background: var(--cream); }
+
+    .challenge h2,
+    .architecture h2,
+    .programs h2,
+    .results h2,
+    .changed h2 {
+      font-size: clamp(1.75rem, 3vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 2.75rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 820px) {
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    .body-copy p {
+      font-size: 1rem;
+      color: var(--zinc-700);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .body-copy p:last-child { margin-bottom: 0; }
+
+    .risk-card {
+      background: #fff;
+      border: 1px solid var(--cream-deep);
+      border-radius: 12px;
+      padding: 2rem;
+      position: sticky;
+      top: 88px;
+    }
+
+    .risk-card h3 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .risk-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .risk-list li {
+      font-size: 0.92rem;
+      color: var(--zinc-700);
+      line-height: 1.55;
+      padding-left: 1.4rem;
+      position: relative;
+    }
+
+    .risk-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--zinc-400);
+      font-weight: 300;
+    }
+
+    /* ARCHITECTURE */
+    .architecture { background: #fff; }
+
+    .arch-sub {
+      font-size: 1rem;
+      color: var(--zinc-600);
+      max-width: 60ch;
+      line-height: 1.65;
+      margin-top: -1.75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .tracks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 700px) {
+      .tracks { grid-template-columns: 1fr; }
+    }
+
+    .track-card {
+      border-radius: 14px;
+      padding: 2.25rem;
+    }
+
+    .track-traffic {
+      background: #fff;
+      border: 2px solid var(--zinc-200);
+    }
+
+    .track-awareness {
+      background: var(--zinc-950);
+      border: 2px solid var(--zinc-700);
+    }
+
+    .track-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .badge-traffic {
+      background: var(--accent-light);
+      color: #92400E;
+    }
+
+    .badge-awareness {
+      background: rgba(217, 119, 6, 0.2);
+      color: #FCD34D;
+    }
+
+    .track-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .track-traffic h3 { color: var(--zinc-900); }
+    .track-awareness h3 { color: #fff; }
+
+    .track-purpose {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+
+    .track-traffic .track-purpose { color: var(--zinc-600); }
+    .track-awareness .track-purpose { color: rgba(255,255,255,0.55); }
+
+    .track-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .track-meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+    }
+
+    .track-traffic .track-meta-item { color: var(--zinc-600); }
+    .track-awareness .track-meta-item { color: rgba(255,255,255,0.6); }
+
+    .track-meta-label {
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .track-traffic .track-meta-label { color: var(--zinc-900); }
+    .track-awareness .track-meta-label { color: rgba(255,255,255,0.85); }
+
+    .suppression-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #FCD34D;
+      background: rgba(217, 119, 6, 0.15);
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      border-radius: 6px;
+      padding: 0.3rem 0.65rem;
+    }
+
+    .track-programs-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .track-traffic .track-programs-label { color: var(--zinc-500); }
+    .track-awareness .track-programs-label { color: rgba(255,255,255,0.4); }
+
+    .program-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .program-pill {
+      font-size: 0.82rem;
+      line-height: 1.45;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    .track-traffic .program-pill {
+      background: var(--zinc-50);
+      color: var(--zinc-700);
+      border: 1px solid var(--zinc-100);
+    }
+
+    .track-awareness .program-pill {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .program-pill strong { font-weight: 600; }
+
+    .suppression-explain {
+      background: var(--zinc-50);
+      border: 1px solid var(--zinc-200);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 1.75rem 2rem;
+    }
+
+    .suppression-explain h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .suppression-explain p {
+      font-size: 0.96rem;
+      color: var(--zinc-700);
+      line-height: 1.7;
+    }
+
+    /* PROGRAMS */
+    .programs { background: var(--cream); }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .programs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .programs-grid { grid-template-columns: 1fr; }
+    }
+
+    .program-card {
+      background: #fff;
+      border: 1px solid var(--cream-deep);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .program-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    .program-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .program-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--zinc-900);
+    }
+
+    .track-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.6rem;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+
+    .tag-traffic {
+      background: var(--accent-light);
+      color: #92400E;
+    }
+
+    .tag-awareness {
+      background: var(--zinc-900);
+      color: rgba(255,255,255,0.85);
+    }
+
+    .program-desc {
+      font-size: 0.88rem;
+      color: var(--zinc-600);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .program-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--zinc-100);
+    }
+
+    .carousel-count {
+      font-size: 0.76rem;
+      color: var(--zinc-500);
+      font-weight: 500;
+    }
+
+    .program-link {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s;
+    }
+
+    .program-link:hover { color: #B45309; }
+
+    /* RESULTS */
+    .results { background: #fff; }
+
+    .results-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+      padding: 2.5rem;
+      background: var(--zinc-50);
+      border: 1px solid var(--zinc-100);
+      border-radius: 16px;
+    }
+
+    @media (max-width: 780px) {
+      .results-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 420px) {
+      .results-stats { grid-template-columns: 1fr; }
+    }
+
+    .result-stat { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .result-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .result-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--zinc-700);
+      line-height: 1.35;
+    }
+
+    .result-note {
+      font-size: 0.72rem;
+      color: var(--zinc-500);
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+
+    .results-narrative {
+      max-width: 70ch;
+      font-size: 1rem;
+      color: var(--zinc-600);
+      line-height: 1.75;
+      border-left: 3px solid var(--zinc-200);
+      padding-left: 1.5rem;
+    }
+
+    /* CHANGED */
+    .changed { background: var(--cream); }
+
+    .changed-body {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 820px) {
+      .changed-body { grid-template-columns: 1fr; }
+    }
+
+    .changed-paras p {
+      font-size: 1rem;
+      color: var(--zinc-700);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .changed-paras p:last-child { margin-bottom: 0; }
+
+    .pull-quote {
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem 1.75rem;
+      background: rgba(217, 119, 6, 0.04);
+      border-radius: 0 10px 10px 0;
+      position: sticky;
+      top: 88px;
+    }
+
+    .pull-quote p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--zinc-700);
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--zinc-950);
+      padding: 7rem 0;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 54ch;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .cta-btn:hover { background: #B45309; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--zinc-100);
+      padding: 2.25rem 0;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    .footer-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--zinc-900);
+      text-decoration: none;
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--zinc-400);
+      text-align: center;
+    }
+
+    .footer-email {
+      font-size: 0.82rem;
+      color: var(--zinc-500);
+      text-decoration: none;
+      text-align: right;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .footer-email { text-align: center; }
+    }
+
+    .footer-email:hover { color: var(--accent); }
+
+    /* DIVIDER */
+    .track-divider {
+      height: 1px;
+      background: var(--zinc-100);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="./justblakemedia-website.html" class="nav-back">&#8592; Just Blake Media</a>
+    <a href="./justblakemedia-website.html#contact" class="nav-cta">Let's Talk &#8594;</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="reveal">
+        <div class="hero-pill">Nonprofit / Community</div>
+      </div>
+      <h1 class="reveal reveal-delay-1">Six community programs. One budget. Every donor relationship intact.</h1>
+      <p class="hero-sub reveal reveal-delay-2">How Atlanta's largest Jewish nonprofit federation promotes 10+ programs simultaneously without burning out the donors who make it all possible.</p>
+      <div class="stat-strip reveal reveal-delay-3">
+        <div class="stat-item">
+          <span class="stat-number">6</span>
+          <span class="stat-label">Programs running simultaneously</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">26</span>
+          <span class="stat-label">Carousel cards built and deployed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">10,400+</span>
+          <span class="stat-label">People reached in Atlanta's Jewish community</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Existing donors over-targeted</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGE -->
+  <section class="challenge">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Problem</span>
+      </div>
+      <h2 class="reveal reveal-delay-1">When you run ten programs, you can't run ten campaigns the same way.</h2>
+      <div class="two-col">
+        <div class="body-copy reveal reveal-delay-2">
+          <p>When this engagement started, three programs had active promotion and seven were dark. JLearn had not run paid ads in over eight months. Inclusive Futures had never had a paid campaign. Two programs were competing for the same Facebook audience. Gap Year Fellowship and JTeen were both targeting young Atlanta adults with no audience separation between them.</p>
+          <p>The campaign structure that works for awareness of a teen leadership program is the wrong structure for driving applications to a gap year fellowship. The audience that responds to a security education message is not the same audience that signs up for early childhood literacy. Running every program through a single generalist campaign means everyone gets the wrong message. Budget gets wasted. Programs underperform. The community doesn't know half of what the federation actually offers.</p>
+          <p>And then there's the donor risk. This federation has built relationships with monthly givers, major donors, and community members who have been supporting these programs for years. Showing a fundraising ad to someone who already donated last week doesn't just waste budget. It erodes trust. The community knows when they're being over-targeted. That erosion is real and it's slow, which makes it more dangerous.</p>
+        </div>
+        <div class="reveal reveal-delay-3">
+          <div class="risk-card">
+            <h3>The Risk of Getting This Wrong</h3>
+            <ul class="risk-list">
+              <li>Running all programs to the same audience creates message fatigue across the entire community</li>
+              <li>Reaching existing donors with acquisition campaigns damages relationships built over years</li>
+              <li>Under-promoting programs because coordination is too complex leaves a real community impact gap</li>
+              <li>Over-spending on the wrong audiences burns through a nonprofit budget that has nowhere to waste</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="architecture">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Strategy</span>
+      </div>
+      <h2 class="reveal reveal-delay-1">Two tracks. One system. Every program in its right place.</h2>
+      <p class="arch-sub reveal reveal-delay-2">The solution wasn't more ads. It was a structure that let six programs run simultaneously without competing with each other, or with the people who already fund them.</p>
+
+      <div class="tracks">
+        <!-- TRAFFIC TRACK -->
+        <div class="track-card track-traffic reveal reveal-delay-2">
+          <div>
+            <span class="track-badge badge-traffic">Traffic Campaign</span>
+            <h3>Federation Traffic</h3>
+          </div>
+          <div class="track-meta">
+            <div class="track-meta-item">
+              <span class="track-meta-label">Purpose:</span>
+              <span>Drive high-intent community members to apply, register, or learn more</span>
+            </div>
+            <div class="track-meta-item">
+              <span class="track-meta-label">Audience:</span>
+              <span>Warm interest audiences + website retargeting</span>
+            </div>
+            <div class="track-meta-item">
+              <span class="track-meta-label">Donor database:</span>
+              <span>Included — these people should see program CTAs</span>
+            </div>
+            <div class="track-meta-item">
+              <span class="track-meta-label">Format:</span>
+              <span>Carousel ads with LEARN MORE CTA</span>
+            </div>
+          </div>
+          <div>
+            <div class="track-programs-label">Programs</div>
+            <div class="program-pills">
+              <div class="program-pill"><strong>Inclusive Futures</strong> — Parent Cohort 2 (3-card carousel)</div>
+              <div class="program-pill"><strong>Community Security</strong> — Cyber Safety (2-card carousel)</div>
+              <div class="program-pill"><strong>JLearn</strong> — Investing in the Future (3-card carousel)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AWARENESS TRACK -->
+        <div class="track-card track-awareness reveal reveal-delay-3">
+          <div>
+            <span class="track-badge badge-awareness">Awareness Campaign</span>
+            <h3>Federation Awareness</h3>
+          </div>
+          <div class="track-meta">
+            <div class="track-meta-item">
+              <span class="track-meta-label">Purpose:</span>
+              <span>Build program awareness with community members who haven't engaged yet</span>
+            </div>
+            <div class="track-meta-item">
+              <span class="track-meta-label">Audience:</span>
+              <span>Cold audiences + lookalike audiences (1% seed)</span>
+            </div>
+            <div class="track-meta-item">
+              <span class="track-meta-label">Donor database:</span>
+              <span class="suppression-note">&#x1F6AB; Fully suppressed — existing donors excluded</span>
+            </div>
+            <div class="track-meta-item">
+              <span class="track-meta-label">Format:</span>
+              <span>Carousel ads with LEARN MORE CTA</span>
+            </div>
+          </div>
+          <div>
+            <div class="track-programs-label">Programs</div>
+            <div class="program-pills">
+              <div class="program-pill"><strong>JTeen</strong> — Hadassah Chesed Awards (5-card carousel)</div>
+              <div class="program-pill"><strong>PJ Library</strong> — International Conference (3-card carousel)</div>
+              <div class="program-pill"><strong>Gap Year Fellowship</strong> — Tomorrow's Leaders (5-card carousel)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="suppression-explain reveal">
+        <h4>Why Suppression Matters</h4>
+        <p>The awareness campaign runs to people who don't know this federation well yet. Existing donors — the people who already give — are excluded entirely. They don't need an awareness campaign. They need stewardship. Separating these audiences isn't a technical detail. It's how you protect years of relationship-building from a three-week ad flight.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Work</span>
+      </div>
+      <h2 class="reveal reveal-delay-1">Six programs. Six stories. All running at once.</h2>
+      <div class="programs-grid">
+
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card-header">
+            <span class="program-name">JTeen</span>
+            <span class="track-tag tag-awareness">Awareness</span>
+          </div>
+          <p class="program-desc">Leadership development for Jewish high schoolers in Atlanta. This flight promoted the Hadassah Chesed Awards to students and parents who hadn't yet connected with the program.</p>
+          <div class="program-card-footer">
+            <span class="carousel-count">5 carousel cards</span>
+            <a href="https://jewishatlanta.org/initiative/jteen/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
+          </div>
+        </div>
+
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-card-header">
+            <span class="program-name">PJ Library</span>
+            <span class="track-tag tag-awareness">Awareness</span>
+          </div>
+          <p class="program-desc">Jewish early childhood books and music for families with children ages 0 to 8. This flight promoted an international conference to families who hadn't engaged with the federation yet.</p>
+          <div class="program-card-footer">
+            <span class="carousel-count">3 carousel cards</span>
+            <a href="https://jewishatlanta.org/initiative/pj-library-jbaby/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
+          </div>
+        </div>
+
+        <div class="program-card reveal reveal-delay-3">
+          <div class="program-card-header">
+            <span class="program-name">Gap Year Fellowship</span>
+            <span class="track-tag tag-awareness">Awareness</span>
+          </div>
+          <p class="program-desc">A gap year program for young adults committed to Jewish leadership. Promoting the next cohort of Tomorrow's Leaders to college-age audiences who haven't seen the program before.</p>
+          <div class="program-card-footer">
+            <span class="carousel-count">5 carousel cards</span>
+            <a href="https://jewishatlanta.org/initiative/gap-year-fellowship/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
+          </div>
+        </div>
+
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card-header">
+            <span class="program-name">JLearn</span>
+            <span class="track-tag tag-traffic">Traffic</span>
+          </div>
+          <p class="program-desc">Lifelong Jewish learning for Atlanta adults. This traffic campaign drove warm community members toward current programming with direct registration intent.</p>
+          <div class="program-card-footer">
+            <span class="carousel-count">3 carousel cards</span>
+            <a href="https://jewishatlanta.org/initiative/jlearn/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
+          </div>
+        </div>
+
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-card-header">
+            <span class="program-name">Inclusive Futures</span>
+            <span class="track-tag tag-traffic">Traffic</span>
+          </div>
+          <p class="program-desc">Building Jewish community for families of children with special needs. Traffic campaigns drove warm audiences to apply for the Parent Cohort 2 program.</p>
+          <div class="program-card-footer">
+            <span class="carousel-count">3 carousel cards</span>
+            <a href="https://jewishatlanta.org/inclusive-futures-jewish-roots/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
+          </div>
+        </div>
+
+        <div class="program-card reveal reveal-delay-3">
+          <div class="program-card-header">
+            <span class="program-name">Community Security</span>
+            <span class="track-tag tag-traffic">Traffic</span>
+          </div>
+          <p class="program-desc">Safety education and resources for Atlanta's Jewish community. This traffic campaign drove high-intent community members to the Cyber Safety program and resources.</p>
+          <div class="program-card-footer">
+            <span class="carousel-count">2 carousel cards</span>
+            <a href="https://jewishatlanta.org/initiative/secure-community-network/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Results</span>
+      </div>
+      <h2 class="reveal reveal-delay-1">What happens when every program gets its own lane.</h2>
+      <div class="results-stats reveal reveal-delay-2">
+        <div class="result-stat">
+          <span class="result-number">6</span>
+          <span class="result-label">Programs running simultaneously — first time in federation history</span>
+        </div>
+        <div class="result-stat">
+          <span class="result-number">10,400+</span>
+          <span class="result-label">People reached across Atlanta's Jewish community</span>
+        </div>
+        <div class="result-stat">
+          <span class="result-number">47</span>
+          <span class="result-label">Cyber Safety resource downloads (Community Security)</span>
+        </div>
+        <div class="result-stat">
+          <span class="result-number">0</span>
+          <span class="result-label">Existing donors shown cold acquisition ads</span>
+        </div>
+      </div>
+      <p class="results-narrative reveal reveal-delay-3">Concrete conversion events from the flight: three Inclusive Futures Parent Cohort applications, two Gap Year Fellowship program inquiries, and 47 Cyber Safety resource downloads from Community Security. The Gap Year Fellowship awareness campaign reached approximately 4,200 people who had no prior contact with the federation — made possible entirely by donor suppression. GA4 tracked $5,100 in donation revenue during the window; that figure is a partial floor given the integration was not fully active for the first portion of the flight. The structural outcome is what holds regardless of attribution: six programs in front of the right people at the same time, with the donor base fully protected.</p>
+    </div>
+  </section>
+
+  <!-- CHANGED -->
+  <section class="changed">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Impact</span>
+      </div>
+      <h2 class="reveal reveal-delay-1">From one campaign to a full program architecture.</h2>
+      <div class="changed-body">
+        <div class="changed-paras reveal reveal-delay-2">
+          <p>For the first time, every program was visible at the same time. Parents of children with developmental disabilities saw Inclusive Futures. High schoolers saw JTeen. Monthly donors never saw a cold ask. Young adults with no prior connection to the federation saw Gap Year Fellowship — and none of those impressions touched anyone who already gives.</p>
+          <p>Six programs running simultaneously is the structural outcome. The audience separation is what makes it sustainable. A family discovering PJ Library for the first time won't see a Gap Year Fellowship ad. A monthly donor won't see a cold acquisition ask. The federation's complexity became an advantage instead of a liability — and the system is repeatable for every flight that follows.</p>
+        </div>
+        <div class="pull-quote reveal reveal-delay-3">
+          <p>"The Gap Year Fellowship campaign reached 4,200 people who had no prior contact with the federation. Zero of them were existing donors. That's what suppression makes possible."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">Running a nonprofit where donor relationships are the whole ballgame?</h2>
+      <p class="reveal reveal-delay-1">If you have multiple programs competing for the same audience — and a donor base you can't afford to burn out — the answer isn't fewer campaigns. It's the right structure. Let's build it.</p>
+      <a href="./justblakemedia-website.html#contact" class="cta-btn reveal reveal-delay-2">Let's talk &#8594;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="./justblakemedia-website.html" class="footer-logo">Just <span>Blake</span> Media</a>
+        <span class="footer-copy">&copy; 2026 Just Blake Media</span>
+        <a href="mailto:justin@justblakemedia.com" class="footer-email">justin@justblakemedia.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
