@@ -1,0 +1,23 @@
+{
+  "extraKnownMarketplaces": {
+    "superpowers": { "source": { "source": "github", "repo": "obra/superpowers" }, "autoUpdate": true },
+    "marketingskills": { "source": { "source": "github", "repo": "coreyhaines31/marketingskills" }, "autoUpdate": true },
+    "gtm-plugins": { "source": { "source": "github", "repo": "manojbajaj95/claude-gtm-plugin" }, "autoUpdate": true },
+    "pm-skills": { "source": { "source": "github", "repo": "phuryn/pm-skills" }, "autoUpdate": true },
+    "ui-ux-pro-max": { "source": { "source": "github", "repo": "nextlevelbuilder/ui-ux-pro-max-skill" }, "autoUpdate": true }
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers": true,
+    "marketing-skills@marketingskills": true,
+    "gtm-skills@gtm-plugins": true,
+    "pm-product-discovery@pm-skills": true,
+    "pm-product-strategy@pm-skills": true,
+    "pm-execution@pm-skills": true,
+    "pm-market-research@pm-skills": true,
+    "pm-data-analytics@pm-skills": true,
+    "pm-go-to-market@pm-skills": true,
+    "pm-marketing-growth@pm-skills": true,
+    "pm-toolkit@pm-skills": true,
+    "ui-ux-pro-max@ui-ux-pro-max": true
+  }
+}
