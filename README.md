@@ -3,29 +3,27 @@
 Static marketing site for Just Blake Media. Plain HTML/CSS, no build step.
 
 ## Files
-- `index.html` — home page
-- `cs-advocacy.html`, `cs-dre.html`, `cs-nonprofit.html` — case studies
-- `404.html` — not-found page
-- `CNAME` — custom domain (`justblakemedia.com`) for GitHub Pages
-- `robots.txt` — search-engine directives
+- `index.html`: home page
+- `cs-advocacy.html`, `cs-dre.html`, `cs-nonprofit.html`: case studies
+- `404.html`: not-found page
+- `robots.txt`, `sitemap.xml`: search-engine directives
+- `assets/`: site images
 
 ## How it's hosted
-GitHub Pages serves this folder directly. Any commit to the default branch
-redeploys the live site in about a minute.
 
-## To go live (one-time setup)
-1. Create a **public** repo named `justblakemedia-website`.
-2. Upload every file in this folder to the repo root.
-3. **Settings → Pages → Deploy from a branch → main / (root) → Save.**
-4. DNS at your registrar for `justblakemedia.com`:
-   - Four `A` records on `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - One `CNAME` on `www` → `justblakemedia.github.io`
-5. Back in Settings → Pages, tick **Enforce HTTPS** once the domain verifies.
-
-## Still to replace (placeholders)
-- Contact form action `formspree.io/f/YOUR_FORM_ID` — swap for a real Formspree ID.
-- `pravatar.cc` avatar images — swap for real photos.
+Deployed on Vercel (project `justblakemedia-website`), connected to this repo's
+`main` branch. Any commit to `main` triggers a production deployment.
+`justblakemedia.com` and `www.justblakemedia.com` are attached as custom
+domains in the Vercel project's Domains settings; DNS points there rather
+than at GitHub Pages.
 
 ## Editing later
-Edit a file → commit → Pages redeploys automatically. Every commit is a
-restorable version.
+
+Edit a file, commit, push to `main`. Vercel builds and deploys automatically;
+every deployment is a restorable version in the Vercel dashboard.
+
+## Audit and redesign
+
+Full content audit, phased rebuild plan, and design brief:
+`work/active/JBM Website Audit and Redesign 2026-08-31.md` in the `the-brain`
+vault.
