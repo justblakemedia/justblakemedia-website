@@ -303,6 +303,37 @@
       transform: translateY(1.25rem);
     }
 
+    .hero-copy [data-reveal-delay="1"],
+    .hero-visual[data-reveal-delay="1"] {
+      transition-delay: 90ms;
+    }
+
+    .hero-copy [data-reveal-delay="2"] {
+      transition-delay: 180ms;
+    }
+
+    .hero-copy [data-reveal-delay="3"] {
+      transition-delay: 270ms;
+    }
+
+    .evidence-metric dd .num {
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .process-step,
+    .evidence-metric {
+      transition: transform 220ms ease;
+    }
+
+    .process-step:hover,
+    .evidence-metric:hover {
+      transform: translateY(-4px);
+    }
+
     .nav-cta,
     .hero-cta {
       display: inline-flex;
@@ -2089,15 +2120,15 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Marketing + operations, built around people</p>
-          <h1 id="hero-title">Make the work perform. <span>Give the people room to think.</span></h1>
-          <p class="hero-intro">Paid media, accessible growth, and custom AI systems for teams that need better results without more layers.</p>
-          <div class="hero-actions">
+          <p class="eyebrow" data-reveal>Marketing + operations, built around people</p>
+          <h1 id="hero-title" data-reveal data-reveal-delay="1">Make the work perform. <span>Give the people room to think.</span></h1>
+          <p class="hero-intro" data-reveal data-reveal-delay="2">Paid media, accessible growth, and custom AI systems for teams that need better results without more layers.</p>
+          <div class="hero-actions" data-reveal data-reveal-delay="3">
             <a class="hero-cta" href="#services">Find Your Starting Point</a>
           </div>
         </div>
 
-        <figure class="hero-visual">
+        <figure class="hero-visual" data-reveal data-reveal-delay="1">
           <img src="assets/human-systems/hero-owner.webp" width="1440" height="1200" alt="Two business professionals in conversation across a worktable in a bright office" fetchpriority="high" decoding="async">
           <figcaption class="image-label">People first / Systems second</figcaption>
         </figure>
@@ -2195,22 +2226,22 @@
     <section class="process" id="process" aria-labelledby="process-title">
       <div class="shell">
         <div class="section-intro">
-          <p class="eyebrow">From friction to capacity</p>
-          <h2 id="process-title">The technology matters. The person getting time back matters more.</h2>
+          <p class="eyebrow">The plan, not a menu</p>
+          <h2 id="process-title">Diagnose. Build. Run.</h2>
         </div>
 
         <ol class="process-steps">
-          <li class="process-step" data-step="Step 01">
-            <h3>See clearly</h3>
-            <p>Connect the data and identify the real constraint.</p>
+          <li class="process-step" data-step="Diagnose">
+            <h3>One paid step, not a pitch</h3>
+            <p>A Foundations Sprint, $3,500, for paid media. An AI Clarity Session, $1,500, to map the automation.</p>
           </li>
-          <li class="process-step" data-step="Step 02">
-            <h3>Move with focus</h3>
-            <p>Build the campaigns, content systems, or automations that address it.</p>
+          <li class="process-step" data-step="Build">
+            <h3>The fix gets built</h3>
+            <p>Tracking rebuilt, campaigns restructured, or the automation connected to how your team actually works.</p>
           </li>
-          <li class="process-step" data-step="Step 03">
-            <h3>Create capacity</h3>
-            <p>Return time and attention to the people making decisions.</p>
+          <li class="process-step" data-step="Run">
+            <h3>Then it runs without you</h3>
+            <p>A managed retainer for paid media, or Automation Care to keep the system working as your team changes.</p>
           </li>
         </ol>
       </div>
@@ -2226,19 +2257,19 @@
         <dl class="evidence-metrics">
           <div class="evidence-metric">
             <dt>People reached</dt>
-            <dd>109,455 <span>January 7 through August 28, 2026</span></dd>
+            <dd><span class="num" data-count="109455" data-decimals="0">109,455</span> <span>January 7 through August 28, 2026</span></dd>
           </div>
           <div class="evidence-metric">
             <dt>Link clicks</dt>
-            <dd>61,605</dd>
+            <dd><span class="num" data-count="61605" data-decimals="0">61,605</span></dd>
           </div>
           <div class="evidence-metric">
             <dt>Cost per link click</dt>
-            <dd>$0.10</dd>
+            <dd><span class="num" data-count="0.10" data-prefix="$" data-decimals="2">$0.10</span></dd>
           </div>
           <div class="evidence-metric">
             <dt>Conservative cash-only value-to-spend floor</dt>
-            <dd>8.1x <span>In the audited month</span></dd>
+            <dd><span class="num" data-count="8.1" data-suffix="x" data-decimals="1">8.1x</span> <span>In the audited month</span></dd>
           </div>
         </dl>
 
@@ -2323,25 +2354,68 @@
       root.classList.add("js-enhanced");
 
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const heroReveal = document.querySelectorAll(".hero [data-reveal]");
+      if (heroReveal.length && !reduceMotion) {
+        root.classList.add("reveal-ready");
+        heroReveal.forEach((el) => el.classList.add("reveal-pending"));
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            heroReveal.forEach((el) => el.classList.remove("reveal-pending"));
+          });
+        });
+      }
+
       if (reduceMotion || !("IntersectionObserver" in window)) return;
 
       const revealItems = document.querySelectorAll("main > section:not(.hero), .service-story");
-      if (!revealItems.length) return;
+      if (revealItems.length) {
+        root.classList.add("reveal-ready");
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.remove("reveal-pending");
+            observer.unobserve(entry.target);
+          });
+        }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
 
-      root.classList.add("reveal-ready");
-      const observer = new IntersectionObserver((entries) => {
+        revealItems.forEach((item) => {
+          item.dataset.reveal = "";
+          item.classList.add("reveal-pending");
+          observer.observe(item);
+        });
+      }
+
+      const countEls = document.querySelectorAll(".num[data-count]");
+      if (!countEls.length) return;
+
+      const formatCount = (el, value) => {
+        const prefix = el.getAttribute("data-prefix") || "";
+        const suffix = el.getAttribute("data-suffix") || "";
+        const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+        return prefix + value.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+      };
+
+      const countObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.remove("reveal-pending");
-          observer.unobserve(entry.target);
+          countObserver.unobserve(entry.target);
+          const el = entry.target;
+          const target = parseFloat(el.getAttribute("data-count"));
+          const duration = 1200;
+          const start = performance.now();
+          el.textContent = formatCount(el, 0);
+          const tick = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = formatCount(el, target * eased);
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
         });
-      }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+      }, { threshold: 0.4 });
 
-      revealItems.forEach((item) => {
-        item.dataset.reveal = "";
-        item.classList.add("reveal-pending");
-        observer.observe(item);
-      });
+      countEls.forEach((el) => countObserver.observe(el));
     })();
   </script>
 </body>
