@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Just Blake Media | Paid Media, Amplify, and AI Systems</title>
-  <meta name="description" content="Amplify runs your paid media as live software, guided by you or managed by our team. Real AI systems built to scale it, from a founder still in the work.">
+  <title>Just Blake Media | Paid Media and AI Systems</title>
+  <meta name="description" content="Paid media run by the senior buyer who stays in your account, tracking fixed before budget moves, and AI systems built the same way.">
 
   <link rel="canonical" href="https://justblakemedia.com/">
 
-  <meta property="og:title" content="Just Blake Media | Paid Media, Amplify, and AI Systems">
-  <meta property="og:description" content="Amplify runs your paid media as live software, guided by you or managed by our team. Real AI systems built to scale it, from a founder still in the work.">
+  <meta property="og:title" content="Just Blake Media | Paid Media and AI Systems">
+  <meta property="og:description" content="Paid media run by the senior buyer who stays in your account, tracking fixed before budget moves, and AI systems built the same way.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://justblakemedia.com/">
   <meta property="og:site_name" content="Just Blake Media">
@@ -21,8 +21,8 @@
   <meta property="og:image:alt" content="Two business professionals talking across a worktable in a bright office">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Just Blake Media | Paid Media, Amplify, and AI Systems">
-  <meta name="twitter:description" content="Amplify runs your paid media as live software, guided by you or managed by our team. Real AI systems built to scale it, from a founder still in the work.">
+  <meta name="twitter:title" content="Just Blake Media | Paid Media and AI Systems">
+  <meta name="twitter:description" content="Paid media run by the senior buyer who stays in your account, tracking fixed before budget moves, and AI systems built the same way.">
   <meta name="twitter:image" content="https://justblakemedia.com/assets/human-systems/hero-owner.webp">
   <meta name="twitter:image:alt" content="Two business professionals talking across a worktable in a bright office">
 
@@ -79,13 +79,6 @@
               "itemOffered": {
                 "@type": "Service",
                 "name": "Paid Media"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Amplify"
               }
             },
             {
@@ -590,6 +583,13 @@
       line-height: 0.94;
     }
 
+    .service-routing {
+      margin: 1.5rem 0 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--steel);
+    }
+
     .service-friction {
       max-width: 24ch;
       margin: clamp(1.8rem, 3vw, 2.6rem) 0 0;
@@ -681,65 +681,13 @@
       object-position: 48% center;
     }
 
-    .amplify {
-      position: relative;
-      isolation: isolate;
-    }
 
-    .amplify::before {
-      position: absolute;
-      inset: clamp(2rem, 5vw, 4.5rem) 0;
-      z-index: -1;
-      background: color-mix(in srgb, var(--mint) 20%, var(--white));
-      content: "";
-    }
 
-    .amplify .service-copy {
-      grid-column: 7 / -1;
-      grid-row: 1;
-      padding-left: clamp(0rem, 2vw, 2rem);
-    }
 
-    .amplify .service-visual {
-      grid-column: 1 / span 5;
-      grid-row: 1;
-      transform: translateX(-1.25rem);
-    }
 
-    .amplify .service-visual::before {
-      inset: -1rem 1rem 1rem -1rem;
-      border-color: var(--cobalt);
-    }
 
-    .amplify .service-visual img {
-      object-position: center 42%;
-    }
 
-    .amplify .service-outcome {
-      background: var(--mint);
-    }
 
-    .amplify-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      margin: 1.2rem 0 0;
-      color: var(--navy);
-      font-size: 0.72rem;
-      font-weight: 780;
-      letter-spacing: 0.12em;
-      line-height: 1.2;
-      text-transform: uppercase;
-    }
-
-    .amplify-status::before {
-      width: 0.6rem;
-      height: 0.6rem;
-      border: 2px solid var(--navy);
-      border-radius: 50%;
-      background: var(--lime);
-      content: "";
-    }
 
     .ai-systems {
       align-items: start;
@@ -784,21 +732,8 @@
       object-position: 52% center;
     }
 
-    .amplify .service-layers {
-      border-top-color: color-mix(in srgb, var(--navy) 18%, transparent);
-    }
 
-    .amplify .service-layer {
-      border-left-color: color-mix(in srgb, var(--navy) 18%, transparent);
-    }
 
-    .amplify .service-layer dt {
-      color: var(--cobalt);
-    }
-
-    .amplify .service-layer dd {
-      color: var(--navy);
-    }
 
     .service-layers {
       grid-column: 1 / -1;
@@ -1380,15 +1315,6 @@
         transform: translateY(1rem);
       }
 
-      .amplify .service-copy {
-        grid-column: 7 / -1;
-        padding-left: 0;
-      }
-
-      .amplify .service-visual {
-        grid-column: 1 / span 6;
-        transform: translateX(-0.5rem);
-      }
 
       .ai-systems {
         padding: 3rem 2rem;
@@ -1541,8 +1467,6 @@
       .service-copy,
       .service-visual,
       .paid-media .service-visual,
-      .amplify .service-copy,
-      .amplify .service-visual,
       .ai-systems .service-copy,
       .ai-systems .service-visual,
       .service-layers {
@@ -1559,13 +1483,8 @@
       }
 
       .service-visual,
-      .paid-media .service-visual,
-      .amplify .service-visual {
+      .paid-media .service-visual {
         transform: none;
-      }
-
-      .amplify::before {
-        inset-block: 2rem;
       }
 
       .ai-systems {
@@ -1736,8 +1655,7 @@
         background: var(--white);
       }
 
-      .paid-media,
-      .amplify {
+      .paid-media {
         grid-template-columns: 1fr;
         align-content: start;
         padding: clamp(2rem, 4vw, 3rem);
@@ -1745,21 +1663,14 @@
       }
 
       .paid-media .service-copy,
-      .paid-media .service-visual,
-      .amplify .service-copy,
-      .amplify .service-visual {
+      .paid-media .service-visual {
         grid-column: 1;
         grid-row: auto;
       }
 
-      .paid-media .service-visual,
-      .amplify .service-visual {
+      .paid-media .service-visual {
         margin-top: 2rem;
         transform: none;
-      }
-
-      .amplify::before {
-        inset: 1rem;
       }
 
       .ai-systems {
@@ -1838,8 +1749,6 @@
       .service-copy,
       .service-visual,
       .paid-media .service-visual,
-      .amplify .service-copy,
-      .amplify .service-visual,
       .ai-systems .service-copy,
       .ai-systems .service-visual,
       .service-layers {
@@ -1858,8 +1767,7 @@
       }
 
       .service-visual,
-      .paid-media .service-visual,
-      .amplify .service-visual {
+      .paid-media .service-visual {
         transform: none;
       }
 
@@ -2089,7 +1997,6 @@
       .service-detail h4,
       .service-outcome h4,
       .service-layers h4,
-      .amplify-status,
       .text-link,
       .contact-email,
       .footer-email a {
@@ -2164,7 +2071,6 @@
       <nav class="primary-nav" id="primary-menu" aria-label="Primary navigation">
         <ul class="nav-list">
           <li><a class="nav-link" href="#paid-media">Paid Media</a></li>
-          <li><a class="nav-link" href="#amplify">Amplify</a></li>
           <li><a class="nav-link" href="#ai-systems">AI Systems</a></li>
           <li><a class="nav-link" href="#evidence">Proof</a></li>
           <li><a class="nav-link" href="#about">About</a></li>
@@ -2179,9 +2085,9 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow" data-reveal>Paid Media · Amplify · AI Systems</p>
+          <p class="eyebrow" data-reveal>Paid Media · AI Systems</p>
           <h1 id="hero-title" data-reveal data-reveal-delay="1">Paid media that performs. <span>AI systems that scale.</span></h1>
-          <p class="hero-intro" data-reveal data-reveal-delay="2">Amplify runs the paid media as live software, guided by you or managed by our team. The same systems thinking builds the AI workflows your team actually uses.</p>
+          <p class="hero-intro" data-reveal data-reveal-delay="2">I run the paid media myself, and I fix the tracking before I touch the budget. The same systems thinking builds the AI workflows your team actually uses.</p>
           <div class="hero-actions" data-reveal data-reveal-delay="3">
             <a class="hero-cta" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a Growth Systems Call</a>
             <a class="text-link" href="#audit">Get the Growth Systems Audit</a>
@@ -2199,7 +2105,7 @@
       <div class="shell">
         <div class="services-heading">
           <p class="eyebrow">Choose the pressure point</p>
-          <h2 id="services-title">Three ways to move the work forward.</h2>
+          <h2 id="services-title">Two ways to move the work forward.</h2>
         </div>
 
         <article class="service-story paid-media" id="paid-media" aria-labelledby="paid-media-title">
@@ -2215,6 +2121,7 @@
               <h4>Human outcome</h4>
               <p>Know what is working and put senior judgment directly in the account.</p>
             </div>
+            <p class="service-routing">Spending under $5K a month? Ask about Amplify.</p>
           </div>
 
           <figure class="service-visual">
@@ -2222,48 +2129,9 @@
           </figure>
         </article>
 
-        <article class="service-story amplify" id="amplify" aria-labelledby="amplify-title">
-          <div class="service-copy">
-            <p class="service-index">02 / Amplify</p>
-            <h3 id="amplify-title">Software that runs the media. A team that can run it for you.</h3>
-            <p class="service-friction">I want live visibility into paid media, not a monthly PDF.</p>
-            <div class="service-detail">
-              <h4>What changes</h4>
-              <p>Amplify is the same live dashboard for spend, cost-per-result, and creative performance whether you run campaigns yourself or hand them to us. It is software and a managed delivery model, not one or the other.</p>
-            </div>
-            <div class="service-outcome">
-              <h4>Human outcome</h4>
-              <p>See exactly what is working, on your terms, whoever is driving.</p>
-            </div>
-            <p class="amplify-status">Guided and Managed seats open</p>
-          </div>
-
-          <figure class="service-visual">
-            <img src="assets/human-systems/amplify-owner.webp" width="960" height="1120" alt="Local business owner working at the counter of a neighborhood shop" loading="lazy" decoding="async">
-          </figure>
-
-          <div class="service-layers">
-            <h4>Three ways to run it</h4>
-            <dl>
-              <div class="service-layer">
-                <dt>Amplify Guided</dt>
-                <dd>You run paid media inside Amplify. We set the structure, review weekly, and stay out of your way.</dd>
-              </div>
-              <div class="service-layer">
-                <dt>Amplify Managed</dt>
-                <dd>Our team runs your paid media inside Amplify and reports through the same live dashboard you would see if you ran it yourself.</dd>
-              </div>
-              <div class="service-layer">
-                <dt>AI Consulting</dt>
-                <dd>We design and build the practical AI workflow your team actually needs, using the same live, no-black-box approach.</dd>
-              </div>
-            </dl>
-          </div>
-        </article>
-
         <article class="service-story ai-systems" id="ai-systems" aria-labelledby="ai-systems-title">
           <div class="service-copy">
-            <p class="service-index">03 / AI Systems</p>
+            <p class="service-index">02 / AI Systems</p>
             <h3 id="ai-systems-title">Build around how the team actually works.</h3>
             <p class="service-friction">My team keeps repeating work that should already be handled.</p>
             <div class="service-detail">
@@ -2315,11 +2183,11 @@
           </li>
           <li class="process-step" data-step="Build">
             <h3>The fix gets built</h3>
-            <p>Campaigns restructured and tracking rebuilt live inside Amplify from day one, or the AI workflow connected to how your team actually works.</p>
+            <p>Campaigns restructured and tracking rebuilt from day one, or the AI workflow connected to how your team actually works.</p>
           </li>
           <li class="process-step" data-step="Run">
             <h3>Then it runs without you</h3>
-            <p>Guided or Managed inside Amplify for paid media, or Automation Care for the AI system. The same live dashboard shows what is working, so the wins get reinvested, not repeated.</p>
+            <p>I stay in the account for paid media, or keep the AI system tuned as the work changes. You can see what is working, so the wins get reinvested, not repeated.</p>
           </li>
         </ol>
       </div>
@@ -2328,7 +2196,7 @@
     <section class="evidence" id="evidence" aria-labelledby="evidence-title">
       <div class="shell evidence-grid">
         <div class="evidence-heading">
-          <p class="eyebrow">Destination Real Estate</p>
+          <p class="eyebrow">Property management, paid social</p>
           <h2 id="evidence-title">Better systems. Better results.</h2>
         </div>
 
@@ -2355,7 +2223,6 @@
 
         <ul class="evidence-links">
           <li><a class="text-link" href="/cs-dre.html">Read the property management case study →</a></li>
-          <li><a class="text-link" href="/cs-advocacy.html">Read the advocacy pledge campaign case study →</a></li>
           <li><a class="text-link" href="/cs-nonprofit.html">Read the nonprofit program architecture case study →</a></li>
         </ul>
       </div>
@@ -2368,7 +2235,7 @@
         </div>
         <div class="about-copy">
           <h2 id="about-title">Built by someone who still runs the work.</h2>
-          <p>Justin Blake runs paid media inside Amplify and builds the AI systems himself. He works directly with clients to understand the constraint, shape the right response, and stay close to the work as it moves. He is not managing a team that manages your account.</p>
+          <p>Justin Blake runs the paid media and builds the AI systems himself. He works directly with clients to understand the constraint, shape the right response, and stay close to the work as it moves. He is not managing a team that manages your account.</p>
           <a class="text-link" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Start a Conversation</a>
         </div>
       </div>
@@ -2406,7 +2273,7 @@
       <p class="footer-brand">Just Blake Media</p>
       <p class="footer-location">Marietta, Georgia</p>
       <p class="footer-email"><a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a></p>
-      <p class="footer-privacy">This static page does not collect personal information directly. Booking is handled by Google.</p>
+      <p class="footer-privacy">This page uses privacy-friendly analytics to count visits and clicks. It does not ask you for personal information. Booking is handled by Google.</p>
       <p class="footer-copyright">&copy; 2026 Just Blake Media</p>
     </div>
   </footer>
@@ -2442,16 +2309,19 @@
 
       mobileQuery.addEventListener("change", () => setMenu(false));
 
-      /* CTA click events for Vercel Analytics. No-op if the queue shim in
-         <head> is missing for any reason. */
+      /* CTA click events. Sent to Vercel Analytics, and pushed to dataLayer
+         so GA4 picks them up as soon as the GTM container is added. The
+         dataLayer push is inert until then. */
       const track = (name, data) => {
         if (typeof window.va === "function") window.va("event", { name, data });
+        (window.dataLayer = window.dataLayer || []).push(
+          Object.assign({ event: name }, data || {}));
       };
       document.querySelectorAll('a[href*="calendar.google.com"]').forEach((link) => {
-        link.addEventListener("click", () => track("book_call", { label: link.textContent.trim() }));
+        link.addEventListener("click", () => track("book_call_click", { label: link.textContent.trim() }));
       });
       document.querySelectorAll('.audit-panel a[href^="mailto:"]').forEach((link) => {
-        link.addEventListener("click", () => track("audit_request"));
+        link.addEventListener("click", () => track("audit_request_click"));
       });
 
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

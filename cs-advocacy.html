@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
   <title>Advocacy Pledge Campaign Case Study | Just Blake Media</title>
   <meta name="description" content="6,567 pledges at $1.52 each on a fixed $10,000 budget in 26 days, with no prior paid media history. Full campaign structure, testing, and results." />
   <link rel="canonical" href="https://justblakemedia.com/cs-advocacy.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231554e8'/%3E%3Cpath d='M18 18h16v8H26v20h-8z' fill='%23ffffff'/%3E%3Cpath d='M38 18h8v28H30v-8h8z' fill='%23c9f24a'/%3E%3C/svg%3E">
 
   <meta property="og:title" content="Advocacy Pledge Campaign Case Study | Just Blake Media" />
   <meta property="og:description" content="6,567 pledges at $1.52 each on a fixed $10,000 budget in 26 days, with no prior paid media history. Full campaign structure, testing, and results." />
@@ -48,6 +50,9 @@
 
     :root {
       --accent: #D97706;
+      /* AA-safe step of the same amber for text and small UI:
+         5.02:1 on white, 4.66:1 on cream, 5.02:1 under white text. */
+      --accent-strong: #B45309;
       --accent-light: #FEF3C7;
       --zinc-950: #09090B;
       --zinc-900: #18181B;
@@ -97,7 +102,7 @@
     .nav-back {
       font-size: 0.825rem;
       font-weight: 500;
-      color: var(--zinc-600);
+      color: var(--zinc-400);
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -109,7 +114,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--accent);
+      background: var(--accent-strong);
       color: #fff;
       font-family: 'Outfit', sans-serif;
       font-size: 0.875rem;
@@ -131,6 +136,27 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    
+      /* Reveal is JS-driven, so the guard has to make the resting
+         state visible or reduced-motion readers see a blank page. */
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
     .reveal-delay-1 { transition-delay: 0.08s; }
     .reveal-delay-2 { transition-delay: 0.16s; }
     .reveal-delay-3 { transition-delay: 0.24s; }
@@ -143,7 +169,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-strong);
       margin-bottom: 14px;
     }
 
@@ -674,10 +700,10 @@
       color: var(--zinc-900);
       text-decoration: none;
     }
-    .footer-logo span { color: var(--accent); }
+    .footer-logo span { color: var(--accent-strong); }
     .footer-copy {
       font-size: 0.8rem;
-      color: var(--zinc-400);
+      color: var(--zinc-600);
       text-align: center;
     }
     .footer-email {
@@ -707,6 +733,8 @@
     <a href="/" class="nav-back">&#8592; Just Blake Media</a>
     <a href="/#contact" class="nav-cta">Let's Talk &#8594;</a>
   </nav>
+
+  <main id="main-content">
 
   <!-- [1] HERO -->
   <section id="hero">
@@ -1002,6 +1030,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
@@ -1024,6 +1054,10 @@
 
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    } else {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1034,6 +1068,7 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(el => observer.observe(el));
+    }
 
     // Hero elements: trigger immediately if already in view
     document.querySelectorAll('#hero .reveal').forEach(el => {

@@ -6,6 +6,7 @@
   <title>Property Management Case Study | Just Blake Media</title>
   <meta name="description" content="How an automated Meta ad system helped a 42-property Tallahassee rental portfolio lease faster at $0.09 per click, without running a single ad by hand." />
   <link rel="canonical" href="https://justblakemedia.com/cs-dre.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231554e8'/%3E%3Cpath d='M18 18h16v8H26v20h-8z' fill='%23ffffff'/%3E%3Cpath d='M38 18h8v28H30v-8h8z' fill='%23c9f24a'/%3E%3C/svg%3E">
 
   <meta property="og:title" content="Property Management Case Study | Just Blake Media" />
   <meta property="og:description" content="How an automated Meta ad system helped a 42-property Tallahassee rental portfolio lease faster at $0.09 per click, without running a single ad by hand." />
@@ -48,6 +49,9 @@
 
     :root {
       --accent: #D97706;
+      /* AA-safe step of the same amber for text and small UI:
+         5.02:1 on white, 4.66:1 on cream, 5.02:1 under white text. */
+      --accent-strong: #B45309;
       --accent-light: #FEF3C7;
       --zinc-950: #09090B;
       --zinc-900: #18181B;
@@ -103,7 +107,7 @@
     .nav-back {
       font-size: 0.8rem;
       font-weight: 500;
-      color: var(--zinc-600);
+      color: var(--zinc-400);
       text-decoration: none;
       letter-spacing: 0.01em;
       transition: color 0.15s;
@@ -113,7 +117,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--accent);
+      background: var(--accent-strong);
       color: #fff;
       font-size: 0.85rem;
       font-weight: 600;
@@ -135,6 +139,27 @@
       transform: none;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    
+      /* Reveal is JS-driven, so the guard has to make the resting
+         state visible or reduced-motion readers see a blank page. */
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
     /* ── SECTION LABELS ── */
     .section-label {
       display: inline-block;
@@ -142,7 +167,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-strong);
       margin-bottom: 1rem;
     }
 
@@ -169,7 +194,7 @@
     }
     .hero-pill {
       display: inline-block;
-      background: var(--accent);
+      background: var(--accent-strong);
       color: #fff;
       font-size: 0.7rem;
       font-weight: 700;
@@ -216,6 +241,14 @@
       color: var(--accent);
       line-height: 1;
       letter-spacing: -0.03em;
+    }
+    .stat-strip-window {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--zinc-400);
+      margin: 0 0 0.9rem;
     }
     .stat-label {
       font-size: 0.7rem;
@@ -487,34 +520,12 @@
     .property-card {
       border: 1px solid var(--zinc-200);
       border-radius: 16px;
-      overflow: hidden;
       background: #fff;
       transition: box-shadow 0.2s, transform 0.2s;
     }
     .property-card:hover {
       box-shadow: 0 8px 32px rgba(0,0,0,0.09);
       transform: translateY(-2px);
-    }
-    .property-photo {
-      position: relative;
-      height: 175px;
-      overflow: hidden;
-    }
-    .property-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .property-photo.leased img {
-      opacity: 0.28;
-    }
-    .leased-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .badge {
       display: inline-flex;
@@ -535,15 +546,8 @@
       background: #DCFCE7;
       color: #16A34A;
     }
-    .badge-leased-overlay {
-      background: #16A34A;
-      color: #fff;
-      font-size: 0.8rem;
-      padding: 0.45rem 1rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-    }
     .property-body {
-      padding: 1.1rem 1.25rem 1.25rem;
+      padding: 1.25rem 1.35rem 1.35rem;
     }
     .property-address {
       font-size: 0.9rem;
@@ -750,10 +754,10 @@
       color: var(--zinc-950);
       letter-spacing: -0.02em;
     }
-    .footer-logo span { color: var(--accent); }
+    .footer-logo span { color: var(--accent-strong); }
     .footer-copy {
       font-size: 0.8rem;
-      color: var(--zinc-400);
+      color: var(--zinc-600);
       text-align: center;
     }
     .footer-email {
@@ -762,7 +766,7 @@
       text-align: right;
     }
     .footer-email a {
-      color: var(--accent);
+      color: var(--accent-strong);
       text-decoration: none;
     }
     .footer-email a:hover { text-decoration: underline; }
@@ -804,16 +808,19 @@
     </div>
   </nav>
 
+  <main id="main-content">
+
   <!-- ══ [1] HERO ══ -->
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-pill reveal">PROPERTY MANAGEMENT</div>
       <h1 class="reveal">They'd never run a paid ad. Now their entire rental portfolio markets itself.</h1>
       <p class="hero-sub reveal">A Tallahassee property manager with 40+ listings and zero advertising history. What we built instead of a campaign changed everything.</p>
+      <p class="stat-strip-window reveal">Figures below cover a single 28-day flight.</p>
       <div class="stat-strip">
         <div class="stat-item reveal">
           <div class="stat-number">7.73x</div>
-          <div class="stat-label">28-Day ROAS</div>
+          <div class="stat-label">Value-to-spend</div>
         </div>
         <div class="stat-item reveal">
           <div class="stat-number">20</div>
@@ -953,9 +960,6 @@
 
         <!-- CARD 1: Listing 01: ACTIVE -->
         <div class="property-card reveal">
-          <div class="property-photo">
-            <img src="https://picsum.photos/seed/listing01/400/260" alt="Listing 01" loading="lazy" />
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 01</div>
             <div class="property-specs">4 bd · 2 ba · 1,575 sqft</div>
@@ -968,9 +972,6 @@
 
         <!-- CARD 2: Listing 02: ACTIVE -->
         <div class="property-card reveal">
-          <div class="property-photo">
-            <img src="https://picsum.photos/seed/listing02/400/260" alt="Listing 02" loading="lazy" />
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 02</div>
             <div class="property-specs">4 bd · 2 ba</div>
@@ -983,9 +984,6 @@
 
         <!-- CARD 3: Listing 03: ACTIVE -->
         <div class="property-card reveal">
-          <div class="property-photo">
-            <img src="https://picsum.photos/seed/listing03/400/260" alt="Listing 03" loading="lazy" />
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 03</div>
             <div class="property-specs">3 bd · 3 ba</div>
@@ -998,12 +996,6 @@
 
         <!-- CARD 4: Listing 04: LEASED 5 days -->
         <div class="property-card reveal">
-          <div class="property-photo leased">
-            <img src="https://picsum.photos/seed/listing04/400/260" alt="Listing 04" loading="lazy" />
-            <div class="leased-overlay">
-              <span class="badge badge-leased-overlay">Leased</span>
-            </div>
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 04</div>
             <div class="property-specs">5 bd · 3 ba</div>
@@ -1019,12 +1011,6 @@
 
         <!-- CARD 5: Listing 05: LEASED 4 days -->
         <div class="property-card reveal">
-          <div class="property-photo leased">
-            <img src="https://picsum.photos/seed/listing05/400/260" alt="Listing 05" loading="lazy" />
-            <div class="leased-overlay">
-              <span class="badge badge-leased-overlay">Leased</span>
-            </div>
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 05</div>
             <div class="property-specs">3 bd · 2 ba</div>
@@ -1040,12 +1026,6 @@
 
         <!-- CARD 6: Listing 06: LEASED 1 day -->
         <div class="property-card reveal">
-          <div class="property-photo leased">
-            <img src="https://picsum.photos/seed/listing06/400/260" alt="Listing 06" loading="lazy" />
-            <div class="leased-overlay">
-              <span class="badge badge-leased-overlay">Leased</span>
-            </div>
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 06</div>
             <div class="property-specs">3 bd · 2 ba</div>
@@ -1061,12 +1041,6 @@
 
         <!-- CARD 7: Listing 07: LEASED 5 days -->
         <div class="property-card reveal">
-          <div class="property-photo leased">
-            <img src="https://picsum.photos/seed/listing07/400/260" alt="Listing 07" loading="lazy" />
-            <div class="leased-overlay">
-              <span class="badge badge-leased-overlay">Leased</span>
-            </div>
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 07</div>
             <div class="property-specs">3 bd · 2.5 ba</div>
@@ -1082,9 +1056,6 @@
 
         <!-- CARD 8: Listing 08: ACTIVE -->
         <div class="property-card reveal">
-          <div class="property-photo">
-            <img src="https://picsum.photos/seed/listing08/400/260" alt="Listing 08" loading="lazy" />
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 08</div>
             <div class="property-specs">2 bd · 2 ba</div>
@@ -1097,12 +1068,6 @@
 
         <!-- CARD 9: Listing 09: LEASED 9 days -->
         <div class="property-card reveal">
-          <div class="property-photo leased">
-            <img src="https://picsum.photos/seed/listing09/400/260" alt="Listing 09" loading="lazy" />
-            <div class="leased-overlay">
-              <span class="badge badge-leased-overlay">Leased</span>
-            </div>
-          </div>
           <div class="property-body">
             <div class="property-address">Listing 09</div>
             <div class="property-specs">2 bd · 1 ba</div>
@@ -1129,7 +1094,7 @@
       <div class="results-grid">
         <div class="result-stat reveal">
           <div class="result-number">7.73x</div>
-          <div class="result-label">ROAS</div>
+          <div class="result-label">Value-to-spend</div>
           <div class="result-note">$7.73 of property management revenue coinciding with each dollar of ad spend. This is a traffic campaign, not conversion-tracked: read this as value against spend, not proven last-click return.</div>
         </div>
         <div class="result-stat reveal">
@@ -1166,7 +1131,7 @@
       <div class="impact-inner">
         <div>
           <div class="section-label reveal">THE IMPACT</div>
-          <h2 class="reveal">The real transformation wasn't the ROAS.</h2>
+          <h2 class="reveal">The real transformation was not the return.</h2>
           <div class="body-text">
             <p class="reveal">The system now runs without him. When a lease signs, the ad pauses within 24 hours. When a price drops, the creative updates automatically. He hasn't logged into Ads Manager in weeks. That's not a workflow improvement. That's a business asset.</p>
           </div>
@@ -1189,6 +1154,8 @@
       <p class="cta-note reveal">No pitch deck. No discovery deck. One conversation.</p>
     </div>
   </section>
+
+  </main>
 
   <!-- ══ FOOTER ══ -->
   <footer class="footer">
@@ -1214,6 +1181,10 @@
 
     // ── Scroll-reveal IntersectionObserver ──
     const revealEls = document.querySelectorAll('.reveal');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    } else {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1224,6 +1195,7 @@
     }, { threshold: 0.12 });
 
     revealEls.forEach(el => observer.observe(el));
+    }
   </script>
 
 </body>
