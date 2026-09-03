@@ -2109,6 +2109,15 @@
     }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    /* Runs before first paint on purpose. The mobile nav collapses behind the
+       menu button only once .js-enhanced is set; applying it from the deferred
+       script at the end of <body> meant the first painted frame showed the full
+       stacked nav (475px tall on a phone) and everything below it jumped up
+       ~400px when the class landed. Setting it here makes the collapsed state
+       the first thing painted, so there is no shift. */
+    document.documentElement.classList.add("js-enhanced");
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -2116,7 +2125,7 @@
   <header class="site-header" id="top">
     <div class="shell nav-grid">
       <a class="wordmark" href="#top" aria-label="Just Blake Media home">JUST BLAKE MEDIA</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" hidden>Menu</button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">Menu</button>
       <nav class="primary-nav" id="primary-menu" aria-label="Primary navigation">
         <ul class="nav-list">
           <li><a class="nav-link" href="#paid-media">Paid Media</a></li>
@@ -2382,7 +2391,6 @@
         if (returnFocus) menuButton.focus();
       };
 
-      menuButton.hidden = false;
       menuButton.addEventListener("click", () => {
         setMenu(menuButton.getAttribute("aria-expanded") !== "true");
       });
@@ -2398,7 +2406,6 @@
       });
 
       mobileQuery.addEventListener("change", () => setMenu(false));
-      root.classList.add("js-enhanced");
 
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduceMotion || !("IntersectionObserver" in window)) return;
@@ -2407,19 +2414,35 @@
       if (!revealItems.length) return;
 
       root.classList.add("reveal-ready");
+      const reveal = (el) => {
+        el.classList.remove("reveal-pending");
+        observer.unobserve(el);
+      };
+
+      /* No negative bottom margin here. A -8% inset shrinks the observation
+         box from the bottom, so sections anchored at the end of the document
+         (the audit block, the closing CTA) could never cross it once the page
+         had run out of scroll, and they stayed invisible for good. */
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.remove("reveal-pending");
-          observer.unobserve(entry.target);
+          if (entry.isIntersecting) reveal(entry.target);
         });
-      }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+      }, { rootMargin: "0px", threshold: 0.05 });
 
       revealItems.forEach((item) => {
         item.dataset.reveal = "";
         item.classList.add("reveal-pending");
         observer.observe(item);
       });
+
+      /* Backstop: whatever the viewport or document height, nothing stays
+         hidden once the reader reaches the bottom of the page. */
+      const revealRemaining = () => {
+        if (window.innerHeight + window.scrollY < document.body.scrollHeight - 2) return;
+        document.querySelectorAll(".reveal-pending").forEach(reveal);
+      };
+      window.addEventListener("scroll", revealRemaining, { passive: true });
+      window.addEventListener("resize", revealRemaining, { passive: true });
     })();
   </script>
 </body>
