@@ -456,10 +456,6 @@
       padding: 0.95rem 1.2rem;
     }
 
-    .hero-actions .text-link {
-      margin-top: 0;
-    }
-
     .hero-visual {
       position: relative;
       z-index: 1;
@@ -972,6 +968,24 @@
       font-weight: 650;
     }
 
+    .evidence-links .text-link:hover,
+    .evidence-links .text-link:focus-visible {
+      color: var(--lime);
+    }
+
+    /* currentColor so the rule tracks the link: white at rest, lime on
+       hover. The inherited cobalt was 3.01:1 on this section's navy. */
+    .evidence-links .text-link::after {
+      background: currentColor;
+    }
+
+    /* --focus is navy, which is this section's own background: a 1.00:1
+       outline, i.e. no visible focus indicator at all. Evidence sits high
+       in the tab order now that proof leads the page. */
+    .evidence a:focus-visible {
+      outline-color: var(--lime);
+    }
+
     .about {
       position: relative;
       overflow: hidden;
@@ -1046,9 +1060,6 @@
       background: var(--cobalt);
       content: "";
     }
-
-
-
 
     .contact {
       padding-block: clamp(5.5rem, 10vw, 9rem);
@@ -1843,6 +1854,10 @@
         color: var(--navy) !important;
       }
 
+      .evidence-links .text-link {
+        color: var(--navy) !important;
+      }
+
       .services > .shell,
       .services-heading,
       .service-story,
@@ -2211,7 +2226,6 @@
       </div>
     </section>
 
-
     <section class="about" id="about" aria-labelledby="about-title">
       <div class="shell about-grid">
         <div class="about-marker">
@@ -2224,7 +2238,6 @@
         </div>
       </div>
     </section>
-
 
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="shell contact-grid">
