@@ -418,13 +418,17 @@
     }
 
     h1 {
-      max-width: 12ch;
+      /* 21ch keeps the long first-person headline clear of the hero image,
+         which starts at the 7th column and is layered beneath the copy. */
+      max-width: 21ch;
       margin: 0;
-      font-size: clamp(3.5rem, 7.2vw, 6.75rem);
-      font-variation-settings: "wdth" 76, "wght" 800;
+      font-size: clamp(2.4rem, 3.9vw, 3.4rem);
+      font-variation-settings: "wdth" 82, "wght" 800;
       font-weight: 800;
-      letter-spacing: -0.055em;
-      line-height: 0.9;
+      /* -0.055em was tuned for 103px display type. At the smaller size the
+         longer headline needs, it closed the words up. */
+      letter-spacing: -0.022em;
+      line-height: 0.98;
     }
 
     h1 span {
@@ -963,6 +967,7 @@
     }
 
     .evidence-links .text-link {
+      color: var(--white);
       font-size: 0.92rem;
       font-weight: 650;
     }
@@ -1042,27 +1047,8 @@
       content: "";
     }
 
-    .audit {
-      padding-block: clamp(5.5rem, 10vw, 9rem);
-      background: var(--cloud);
-      border-top: 1px solid var(--mist);
-    }
 
-    .audit-panel {
-      max-width: 46rem;
-    }
 
-    .audit-panel p {
-      margin: 0;
-      color: var(--steel);
-      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-      line-height: 1.6;
-    }
-
-    .audit-panel .contact-cta {
-      max-width: 26rem;
-      margin-top: 2rem;
-    }
 
     .contact {
       padding-block: clamp(5.5rem, 10vw, 9rem);
@@ -1272,8 +1258,8 @@
       }
 
       h1 {
-        max-width: 13ch;
-        font-size: clamp(3.4rem, 10vw, 5.5rem);
+        max-width: 22ch;
+        font-size: clamp(2.2rem, 5.2vw, 3.2rem);
       }
 
       .hero-visual {
@@ -1408,8 +1394,8 @@
       }
 
       h1 {
-        max-width: 11.5ch;
-        font-size: clamp(3rem, 15.5vw, 4.4rem);
+        max-width: 20ch;
+        font-size: clamp(1.9rem, 8.2vw, 2.6rem);
         line-height: 0.92;
       }
 
@@ -1873,7 +1859,6 @@
       .process,
       .evidence,
       .about,
-      .audit,
       .contact,
       .service-story,
       .ai-systems,
@@ -2070,11 +2055,10 @@
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">Menu</button>
       <nav class="primary-nav" id="primary-menu" aria-label="Primary navigation">
         <ul class="nav-list">
+          <li><a class="nav-link" href="#evidence">Proof</a></li>
           <li><a class="nav-link" href="#paid-media">Paid Media</a></li>
           <li><a class="nav-link" href="#ai-systems">AI Systems</a></li>
-          <li><a class="nav-link" href="#evidence">Proof</a></li>
           <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="#audit">Audit</a></li>
           <li><a class="nav-cta" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a Growth Systems Call</a></li>
         </ul>
       </nav>
@@ -2086,11 +2070,10 @@
       <div class="shell hero-grid">
         <div class="hero-copy">
           <p class="eyebrow" data-reveal>Paid Media · AI Systems</p>
-          <h1 id="hero-title" data-reveal data-reveal-delay="1">Paid media that performs. <span>AI systems that scale.</span></h1>
-          <p class="hero-intro" data-reveal data-reveal-delay="2">I run the paid media myself, and I fix the tracking before I touch the budget. The same systems thinking builds the AI workflows your team actually uses.</p>
+          <h1 id="hero-title" data-reveal data-reveal-delay="1">I run paid social for companies spending real money on it, <span>and I fix your tracking before I touch your budget.</span></h1>
+          <p class="hero-intro" data-reveal data-reveal-delay="2">Six years leading paid social at Cox Enterprises. Now I am the senior media buyer in your account, not a junior watching a dashboard.</p>
           <div class="hero-actions" data-reveal data-reveal-delay="3">
             <a class="hero-cta" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a Growth Systems Call</a>
-            <a class="text-link" href="#audit">Get the Growth Systems Audit</a>
           </div>
         </div>
 
@@ -2098,6 +2081,41 @@
           <img src="assets/human-systems/hero-owner.webp" width="1440" height="1200" alt="Two business professionals in conversation across a worktable in a bright office" fetchpriority="high" decoding="async">
           <figcaption class="image-label">People first / Systems second</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="evidence" id="evidence" aria-labelledby="evidence-title">
+      <div class="shell evidence-grid">
+        <div class="evidence-heading">
+          <p class="eyebrow">Property management, paid social</p>
+          <h2 id="evidence-title">Better systems. Better results.</h2>
+        </div>
+
+        <dl class="evidence-metrics">
+          <div class="evidence-metric">
+            <dt>People reached</dt>
+            <dd><span class="num" data-count="109455" data-decimals="0">109,455</span> <span>January 7 through August 28, 2026</span></dd>
+          </div>
+          <div class="evidence-metric">
+            <dt>Link clicks</dt>
+            <dd><span class="num" data-count="61605" data-decimals="0">61,605</span></dd>
+          </div>
+          <div class="evidence-metric">
+            <dt>Cost per link click</dt>
+            <dd><span class="num" data-count="0.10" data-prefix="$" data-decimals="2">$0.10</span></dd>
+          </div>
+          <div class="evidence-metric">
+            <dt>Conservative cash-only value-to-spend floor</dt>
+            <dd><span class="num" data-count="8.1" data-suffix="x" data-decimals="1">8.1x</span> <span>In the audited month</span></dd>
+          </div>
+        </dl>
+
+        <p class="evidence-note">The ads promoted listings that later leased, but signed leases were not tracked as direct Meta conversions. This is influenced value compared with spend, not proven last-click return on ad spend.</p>
+
+        <ul class="evidence-links">
+          <li><a class="text-link" href="/cs-dre.html">Read the property management case study →</a></li>
+          <li><a class="text-link" href="/cs-nonprofit.html">Read the nonprofit program architecture case study →</a></li>
+        </ul>
       </div>
     </section>
 
@@ -2193,40 +2211,6 @@
       </div>
     </section>
 
-    <section class="evidence" id="evidence" aria-labelledby="evidence-title">
-      <div class="shell evidence-grid">
-        <div class="evidence-heading">
-          <p class="eyebrow">Property management, paid social</p>
-          <h2 id="evidence-title">Better systems. Better results.</h2>
-        </div>
-
-        <dl class="evidence-metrics">
-          <div class="evidence-metric">
-            <dt>People reached</dt>
-            <dd><span class="num" data-count="109455" data-decimals="0">109,455</span> <span>January 7 through August 28, 2026</span></dd>
-          </div>
-          <div class="evidence-metric">
-            <dt>Link clicks</dt>
-            <dd><span class="num" data-count="61605" data-decimals="0">61,605</span></dd>
-          </div>
-          <div class="evidence-metric">
-            <dt>Cost per link click</dt>
-            <dd><span class="num" data-count="0.10" data-prefix="$" data-decimals="2">$0.10</span></dd>
-          </div>
-          <div class="evidence-metric">
-            <dt>Conservative cash-only value-to-spend floor</dt>
-            <dd><span class="num" data-count="8.1" data-suffix="x" data-decimals="1">8.1x</span> <span>In the audited month</span></dd>
-          </div>
-        </dl>
-
-        <p class="evidence-note">The ads promoted listings that later leased, but signed leases were not tracked as direct Meta conversions. This is influenced value compared with spend, not proven last-click return on ad spend.</p>
-
-        <ul class="evidence-links">
-          <li><a class="text-link" href="/cs-dre.html">Read the property management case study →</a></li>
-          <li><a class="text-link" href="/cs-nonprofit.html">Read the nonprofit program architecture case study →</a></li>
-        </ul>
-      </div>
-    </section>
 
     <section class="about" id="about" aria-labelledby="about-title">
       <div class="shell about-grid">
@@ -2241,18 +2225,6 @@
       </div>
     </section>
 
-    <section class="audit" id="audit" aria-labelledby="audit-title">
-      <div class="shell">
-        <div class="section-intro">
-          <p class="eyebrow">Free, before you commit to anything</p>
-          <h2 id="audit-title">Get the Growth Systems Audit.</h2>
-        </div>
-        <div class="audit-panel">
-          <p>A working review of your paid media and AI readiness: where the budget is leaking, and where an AI workflow would actually save hours instead of just looking good in a deck. Send a few details and it comes back from Justin directly, not a sales sequence.</p>
-          <a class="contact-cta" href="mailto:justin@justblakemedia.com?subject=Growth%20Systems%20Audit%20request&amp;body=A%20quick%20overview%20of%20what%20you%27re%20running%20today%3A%0A%0APaid%20media%20platforms%20and%20monthly%20spend%3A%0ACurrent%20reporting%20setup%3A%0AWhere%20AI%20might%20help%20your%20team%3A">Request Your Audit</a>
-        </div>
-      </div>
-    </section>
 
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="shell contact-grid">
@@ -2320,9 +2292,6 @@
       document.querySelectorAll('a[href*="calendar.google.com"]').forEach((link) => {
         link.addEventListener("click", () => track("book_call_click", { label: link.textContent.trim() }));
       });
-      document.querySelectorAll('.audit-panel a[href^="mailto:"]').forEach((link) => {
-        link.addEventListener("click", () => track("audit_request_click"));
-      });
 
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -2352,7 +2321,7 @@
 
         /* No negative bottom margin here. A -8% inset shrinks the observation
            box from the bottom, so sections anchored at the end of the document
-           (the audit block, the closing CTA) could never cross it once the page
+           (the about block, the closing CTA) could never cross it once the page
            had run out of scroll, and they stayed invisible for good. */
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
