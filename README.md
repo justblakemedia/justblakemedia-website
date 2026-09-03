@@ -1,4 +1,4 @@
-# Just Blake Media — Website
+# Just Blake Media Website
 
 Static marketing site for Just Blake Media. Plain HTML/CSS, no build step.
 

@@ -6,6 +6,7 @@
   <title>Nonprofit Case Study | Just Blake Media</title>
   <meta name="description" content="How a major Atlanta Jewish federation ran six programs at once on Meta with zero existing-donor overlap, using a two-track paid and awareness structure." />
   <link rel="canonical" href="https://justblakemedia.com/cs-nonprofit.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231554e8'/%3E%3Cpath d='M18 18h16v8H26v20h-8z' fill='%23ffffff'/%3E%3Cpath d='M38 18h8v28H30v-8h8z' fill='%23c9f24a'/%3E%3C/svg%3E">
 
   <meta property="og:title" content="Nonprofit Case Study | Just Blake Media" />
   <meta property="og:description" content="How a major Atlanta Jewish federation ran six programs at once on Meta with zero existing-donor overlap, using a two-track paid and awareness structure." />
@@ -48,6 +49,9 @@
 
     :root {
       --accent: #D97706;
+      /* AA-safe step of the same amber for text and small UI:
+         5.02:1 on white, 4.66:1 on cream, 5.02:1 under white text. */
+      --accent-strong: #B45309;
       --accent-light: #FEF3C7;
       --zinc-950: #09090B;
       --zinc-900: #18181B;
@@ -100,7 +104,7 @@
     .nav-back {
       font-size: 0.8rem;
       font-weight: 500;
-      color: var(--zinc-600);
+      color: var(--zinc-400);
       text-decoration: none;
       letter-spacing: 0.01em;
       transition: color 0.2s;
@@ -112,7 +116,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--accent);
+      background: var(--accent-strong);
       color: #fff;
       font-family: 'Outfit', sans-serif;
       font-size: 0.82rem;
@@ -138,6 +142,27 @@
       transform: translateY(0);
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    
+      /* Reveal is JS-driven, so the guard has to make the resting
+         state visible or reduced-motion readers see a blank page. */
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
     .reveal-delay-1 { transition-delay: 0.08s; }
     .reveal-delay-2 { transition-delay: 0.16s; }
     .reveal-delay-3 { transition-delay: 0.24s; }
@@ -158,7 +183,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-strong);
       margin-bottom: 1.25rem;
     }
 
@@ -223,7 +248,7 @@
     .stat-label {
       font-size: 0.78rem;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.45);
+      color: var(--zinc-400);
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
@@ -557,7 +582,6 @@
     .program-card-footer {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding-top: 0.75rem;
       border-top: 1px solid var(--zinc-100);
     }
@@ -567,19 +591,6 @@
       color: var(--zinc-500);
       font-weight: 500;
     }
-
-    .program-link {
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      transition: color 0.2s;
-    }
-
-    .program-link:hover { color: #B45309; }
 
     /* RESULTS */
     .results { background: #fff; }
@@ -742,11 +753,11 @@
       text-decoration: none;
     }
 
-    .footer-logo span { color: var(--accent); }
+    .footer-logo span { color: var(--accent-strong); }
 
     .footer-copy {
       font-size: 0.78rem;
-      color: var(--zinc-400);
+      color: var(--zinc-600);
       text-align: center;
     }
 
@@ -781,6 +792,8 @@
     <a href="/" class="nav-back">&#8592; Just Blake Media</a>
     <a href="/#contact" class="nav-cta">Let's Talk &#8594;</a>
   </nav>
+
+  <main id="main-content">
 
   <!-- HERO -->
   <section class="hero">
@@ -938,7 +951,6 @@
           <p class="program-desc">Leadership development for Jewish high schoolers in Atlanta. This flight promoted the Hadassah Chesed Awards to students and parents who hadn't yet connected with the program.</p>
           <div class="program-card-footer">
             <span class="carousel-count">5 carousel cards</span>
-            <a href="https://jewishatlanta.org/initiative/jteen/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
           </div>
         </div>
 
@@ -950,7 +962,6 @@
           <p class="program-desc">Jewish early childhood books and music for families with children ages 0 to 8. This flight promoted an international conference to families who hadn't engaged with the federation yet.</p>
           <div class="program-card-footer">
             <span class="carousel-count">3 carousel cards</span>
-            <a href="https://jewishatlanta.org/initiative/pj-library-jbaby/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
           </div>
         </div>
 
@@ -962,7 +973,6 @@
           <p class="program-desc">A gap year program for young adults committed to Jewish leadership. Promoting the next cohort of Tomorrow's Leaders to college-age audiences who haven't seen the program before.</p>
           <div class="program-card-footer">
             <span class="carousel-count">5 carousel cards</span>
-            <a href="https://jewishatlanta.org/initiative/gap-year-fellowship/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
           </div>
         </div>
 
@@ -974,7 +984,6 @@
           <p class="program-desc">Lifelong Jewish learning for Atlanta adults. This traffic campaign drove warm community members toward current programming with direct registration intent.</p>
           <div class="program-card-footer">
             <span class="carousel-count">3 carousel cards</span>
-            <a href="https://jewishatlanta.org/initiative/jlearn/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
           </div>
         </div>
 
@@ -986,7 +995,6 @@
           <p class="program-desc">Building Jewish community for families of children with special needs. Traffic campaigns drove warm audiences to apply for the Parent Cohort 2 program.</p>
           <div class="program-card-footer">
             <span class="carousel-count">3 carousel cards</span>
-            <a href="https://jewishatlanta.org/inclusive-futures-jewish-roots/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
           </div>
         </div>
 
@@ -998,7 +1006,6 @@
           <p class="program-desc">Safety education and resources for Atlanta's Jewish community. This traffic campaign drove high-intent community members to the Cyber Safety program and resources.</p>
           <div class="program-card-footer">
             <span class="carousel-count">2 carousel cards</span>
-            <a href="https://jewishatlanta.org/initiative/secure-community-network/" target="_blank" rel="noopener" class="program-link">View program &#8594;</a>
           </div>
         </div>
 
@@ -1059,6 +1066,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -1079,10 +1088,14 @@
       } else {
         nav.classList.remove('scrolled');
       }
-    });
+    }, { passive: true });
 
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    } else {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1093,6 +1106,7 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(el => observer.observe(el));
+    }
   </script>
 
 </body>
