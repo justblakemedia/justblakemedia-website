@@ -49,9 +49,16 @@
         "name": "Just Blake Media",
         "url": "https://justblakemedia.com/",
         "email": "justin@justblakemedia.com",
+        "telephone": "+1-910-264-1603",
+        "sameAs": [
+          "https://www.linkedin.com/in/justinlblake/"
+        ],
         "founder": {
           "@type": "Person",
-          "name": "Justin Blake"
+          "name": "Justin Blake",
+          "sameAs": [
+            "https://www.linkedin.com/in/justinlblake/"
+          ]
         },
         "address": {
           "@type": "PostalAddress",
@@ -66,6 +73,7 @@
         "name": "Just Blake Media",
         "url": "https://justblakemedia.com/",
         "email": "justin@justblakemedia.com",
+        "telephone": "+1-910-264-1603",
         "parentOrganization": {
           "@id": "https://justblakemedia.com/#organization"
         },
@@ -1179,7 +1187,17 @@
       grid-column: 6 / span 3;
     }
 
-    .footer-email a {
+    .footer-phone {
+      grid-column: 9 / span 2;
+    }
+
+    .footer-linkedin {
+      grid-column: 11 / -1;
+    }
+
+    .footer-email a,
+    .footer-phone a,
+    .footer-linkedin a {
       display: inline-flex;
       align-items: center;
       min-height: 44px;
@@ -2276,6 +2294,8 @@
       <p class="footer-brand">Just Blake Media</p>
       <p class="footer-location">Marietta, Georgia</p>
       <p class="footer-email"><a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a></p>
+      <p class="footer-phone"><a href="tel:+19102641603">(910) 264-1603</a></p>
+      <p class="footer-linkedin"><a href="https://www.linkedin.com/in/justinlblake/" rel="me">LinkedIn</a></p>
       <p class="footer-privacy">This site counts visits and clicks with Vercel Analytics and Google Analytics. Google Analytics sets cookies in your browser. There are no forms here, so you are never asked for personal details. Booking is handled by Google.</p>
       <p class="footer-copyright">&copy; 2026 Just Blake Media</p>
     </div>
