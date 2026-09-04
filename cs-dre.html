@@ -775,11 +775,18 @@
       text-align: center;
     }
     .footer-email {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.15rem;
       font-size: 0.8rem;
       color: var(--zinc-500);
       text-align: right;
     }
     .footer-email a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
       color: var(--accent-strong);
       text-decoration: none;
     }
@@ -796,7 +803,7 @@
       .impact-inner { grid-template-columns: 1fr; gap: 3rem; }
       .pull-quote { position: static; }
       .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 0.5rem; }
-      .footer-email { text-align: center; }
+      .footer-email { text-align: center; align-items: center; }
     }
     @media (max-width: 600px) {
       .stat-strip { gap: 1.5rem; }
@@ -1191,6 +1198,8 @@
       <div class="footer-copy">&copy; 2026 Just Blake Media. All rights reserved.</div>
       <div class="footer-email">
         <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a>
+        <a href="tel:+19102641603">(910) 264-1603</a>
+        <a href="https://www.linkedin.com/in/justinlblake/" rel="me">LinkedIn</a>
       </div>
       <p class="footer-privacy">This site counts visits and clicks with Vercel Analytics and Google Analytics. Google Analytics sets cookies in your browser. There are no forms on this page. The audit form on the home page sends your details to me by email and nowhere else. Booking is handled by Google.</p>
     </div>
