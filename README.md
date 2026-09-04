@@ -8,6 +8,7 @@ Static marketing site for Just Blake Media. Plain HTML/CSS, no build step.
 - `404.html`: not-found page
 - `robots.txt`, `sitemap.xml`: search-engine directives
 - `assets/`: site images
+- `docs/`: internal notes, excluded from the deployment via `.vercelignore`
 
 ## How it's hosted
 
