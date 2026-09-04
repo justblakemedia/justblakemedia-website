@@ -49,35 +49,47 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --accent: #D97706;
-      /* AA-safe step of the same amber for text and small UI:
-         5.02:1 on white, 4.66:1 on cream, 5.02:1 under white text. */
-      --accent-strong: #B45309;
-      --accent-light: #FEF3C7;
-      --zinc-950: #09090B;
-      --zinc-900: #18181B;
-      --zinc-700: #3F3F46;
-      --zinc-600: #52525B;
-      --zinc-500: #71717A;
-      --zinc-400: #A1A1AA;
-      --zinc-300: #D4D4D8;
-      --zinc-200: #E4E4E7;
-      --zinc-100: #F4F4F5;
-      --zinc-50: #FAFAFA;
-      --cream: #FBF6EC;
-      --cream-deep: #F5EDDA;
+      /* Cobalt system, matching the homepage. Decision 1 of the website audit
+         retired Signal Orange and made this canonical. Until now the case
+         studies ran a second visual identity, which made them read as a
+         different company at the exact moment a prospect checks the proof. */
+      --accent: #1554E8;
+      /* 6.06:1 on white and 6.06:1 under white text, so it is AA-safe as text
+         at any size. The amber it replaces measured 3.18:1, which only cleared
+         the 3:1 large-text threshold. */
+      --accent-strong: #0F3EA8;
+      --accent-light: #E7EDFD;
+      --lime: #C9F24A;
+      /* Neutral ramp shifted from Tailwind zinc to the homepage's navy bias.
+         Lightness order is preserved so every existing pairing still works,
+         and --zinc-600 is contrast-matched to the value it replaces at 7.74:1
+         on white, so no text pairing regresses. */
+      --zinc-950: #070C16;
+      --zinc-900: #0B1528;
+      --zinc-700: #2E3950;
+      --zinc-600: #47536A;
+      --zinc-500: #66738A;
+      --zinc-400: #99A3B6;
+      --zinc-300: #CBD3E0;
+      --zinc-200: #DDE3EC;
+      --zinc-100: #EEF2F8;
+      --zinc-50: #F7F9FC;
+      /* Renamed from the previous warm-tinted pair, because a variable named
+         for a warm colour holding a cool blue is a trap for the next editor. */
+      --wash: #F2F6FC;
+      --wash-deep: #E6EDF9;
       --max-width: 1200px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-weight: 400;
       color: var(--zinc-900);
       background: #fff;
@@ -121,7 +133,7 @@
       gap: 6px;
       background: var(--accent-strong);
       color: #fff;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-size: 0.875rem;
       font-weight: 600;
       padding: 9px 20px;
@@ -129,7 +141,7 @@
       text-decoration: none;
       transition: background 0.2s, transform 0.15s;
     }
-    .nav-cta:hover { background: #B45309; transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--accent-strong); transform: translateY(-1px); }
 
     /* ── SCROLL REVEAL ── */
     .reveal {
@@ -298,7 +310,7 @@
     }
 
     /* ── THE BRIEF ── */
-    #brief { background: var(--cream); }
+    #brief { background: var(--wash); }
     .brief-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -441,7 +453,7 @@
     }
 
     /* ── THE CREATIVE ── */
-    #creative { background: var(--cream); }
+    #creative { background: var(--wash); }
     .creative-table-wrap {
       overflow-x: auto;
       border: 1px solid var(--zinc-200);
@@ -604,7 +616,7 @@
     }
 
     /* ── WHAT WE LEARNED ── */
-    #learned { background: var(--cream); }
+    #learned { background: var(--wash); }
     .learned-copy p {
       font-size: 1.0rem;
       color: var(--zinc-700);
@@ -672,7 +684,7 @@
       gap: 8px;
       background: var(--accent);
       color: #fff;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-size: 1rem;
       font-weight: 700;
       padding: 16px 36px;
@@ -680,7 +692,7 @@
       text-decoration: none;
       transition: background 0.2s, transform 0.15s;
     }
-    .cta-btn:hover { background: #B45309; transform: translateY(-2px); }
+    .cta-btn:hover { background: var(--accent-strong); transform: translateY(-2px); }
 
     /* ── FOOTER ── */
     footer {
@@ -768,7 +780,7 @@
     <div class="hero-inner">
       <div class="hero-pill reveal">ADVOCACY / TECH POLICY</div>
       <h1 class="hero-h1 reveal reveal-delay-1">6,567 pledges. $1.52 each. 26 days. Not a dollar left unspent.</h1>
-      <p class="hero-sub reveal reveal-delay-2">A 3-year-old advocacy org with no paid media history and $10,000 to build a public signatory base. One goal: convert strangers into public signatories. Here's exactly how we did it.</p>
+      <p class="hero-sub reveal reveal-delay-2">A 3-year-old advocacy org with no paid media history and $10,000 to build a public signatory base. One goal: convert strangers into public signatories. Here's exactly how I did it.</p>
       <div class="hero-stats reveal reveal-delay-3">
         <div class="hero-stat">
           <div class="hero-stat-num">6,567</div>
@@ -921,7 +933,7 @@
   <section id="creative" class="section-wrap">
     <div class="inner">
       <div class="section-label reveal">THE CREATIVE TEST</div>
-      <h2 class="section-h2 reveal reveal-delay-1">We came in with four creatives. One ran away with the budget.</h2>
+      <h2 class="section-h2 reveal reveal-delay-1">I came in with four creatives. One ran away with the budget.</h2>
       <p class="section-sub reveal reveal-delay-2">Systematic creative testing isn't about having an opinion about what will work. It's about being willing to be wrong, and moving budget the moment the data tells you to.</p>
       <div class="creative-table-wrap reveal reveal-delay-3">
         <table>
@@ -972,7 +984,7 @@
         </table>
       </div>
       <div class="creative-narrative reveal reveal-delay-4">
-        <p>By week two, the algorithm had reallocated. Image creatives were generating pledges at $1.49 to $1.92. The video, "Trillionaires," was generating pledges at $2.92. We didn't override the data. We let it run the campaign. By the final week, 94%+ of spend was going to image creatives.</p>
+        <p>By week two, the algorithm had reallocated. Image creatives were generating pledges at $1.49 to $1.92. The video, "Trillionaires," was generating pledges at $2.92. I didn't override the data. I let it run the campaign. By the final week, 94%+ of spend was going to image creatives.</p>
         <p>This is the part most campaigns get wrong. They build a video they're proud of and defend the budget allocation long past when the data says to move. The willingness to be ruthless about creative performance is what kept this campaign at $1.52 per pledge instead of $2.50+.</p>
       </div>
     </div>
