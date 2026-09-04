@@ -48,35 +48,49 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --accent: #D97706;
-      /* AA-safe step of the same amber for text and small UI:
-         5.02:1 on white, 4.66:1 on cream, 5.02:1 under white text. */
-      --accent-strong: #B45309;
-      --accent-light: #FEF3C7;
-      --zinc-950: #09090B;
-      --zinc-900: #18181B;
-      --zinc-700: #3F3F46;
-      --zinc-600: #52525B;
-      --zinc-500: #71717A;
-      --zinc-400: #A1A1AA;
-      --zinc-300: #D4D4D8;
-      --zinc-200: #E4E4E7;
-      --zinc-100: #F4F4F5;
-      --zinc-50: #FAFAFA;
-      --cream: #FBF6EC;
-      --cream-deep: #F5EDDA;
+      /* Cobalt system, matching the homepage. Decision 1 of the website audit
+         retired Signal Orange and made this canonical. Until now the case
+         studies ran a second visual identity, which made them read as a
+         different company at the exact moment a prospect checks the proof. */
+      --accent: #1554E8;
+      /* --accent is 6.06:1 on white, up from 3.19:1 for the amber it replaces,
+         which only cleared the 3:1 large-text threshold and failed AA wherever
+         it was used at normal size. --accent-strong below is 9.23:1, up from
+         5.02:1, and carries white text at the same ratio. */
+      --accent-strong: #0F3EA8;
+      --accent-light: #E7EDFD;
+      /* Pill and badge text on the navy hero, 10.42:1 on --zinc-900. */
+      --accent-on-dark: #A8C4FF;
+      /* Neutral ramp shifted from Tailwind zinc to the homepage's navy bias.
+         Lightness order is preserved so every existing pairing still works,
+         and --zinc-600 is contrast-matched to the value it replaces at 7.74:1
+         on white, so no text pairing regresses. */
+      --zinc-950: #070C16;
+      --zinc-900: #0B1528;
+      --zinc-700: #2E3950;
+      --zinc-600: #47536A;
+      --zinc-500: #5F6B82;
+      --zinc-400: #99A3B6;
+      --zinc-300: #CBD3E0;
+      --zinc-200: #DDE3EC;
+      --zinc-100: #EEF2F8;
+      --zinc-50: #F7F9FC;
+      /* Renamed from the previous warm-tinted pair, because a variable named
+         for a warm colour holding a cool blue is a trap for the next editor. */
+      --wash: #F2F6FC;
+      --wash-deep: #E6EDF9;
       --max-width: 1200px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       background: #fff;
       color: var(--zinc-700);
       -webkit-font-smoothing: antialiased;
@@ -122,7 +136,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--accent-strong);
+      background: var(--accent);
       color: #fff;
       font-size: 0.85rem;
       font-weight: 600;
@@ -131,7 +145,7 @@
       text-decoration: none;
       transition: background 0.15s, transform 0.15s;
     }
-    .nav-cta:hover { background: #B45309; transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--accent-strong); transform: translateY(-1px); }
 
     /* ── SCROLL REVEAL ── */
     .reveal {
@@ -268,7 +282,7 @@
        [2] SITUATION
     ══════════════════════════════ */
     .situation {
-      background: var(--cream);
+      background: var(--wash);
       padding: 100px 2rem;
     }
     .two-col {
@@ -364,8 +378,8 @@
       gap: 1.5rem;
     }
     .problem-card {
-      background: var(--cream);
-      border: 1px solid var(--cream-deep);
+      background: var(--wash);
+      border: 1px solid var(--wash-deep);
       border-radius: 20px;
       padding: 2rem;
     }
@@ -395,7 +409,7 @@
        [4] THE BUILD
     ══════════════════════════════ */
     .build {
-      background: var(--cream);
+      background: var(--wash);
       padding: 100px 2rem;
     }
     .build h2 {
@@ -448,7 +462,7 @@
       color: var(--accent);
       font-weight: 700;
       z-index: 2;
-      background: var(--cream);
+      background: var(--wash);
       padding: 0 2px;
     }
     .pipeline-step:last-child::after { display: none; }
@@ -590,7 +604,7 @@
        [6] RESULTS
     ══════════════════════════════ */
     .results {
-      background: var(--cream);
+      background: var(--wash);
       padding: 100px 2rem;
     }
     .results h2 {
@@ -676,7 +690,7 @@
       max-width: 64ch;
     }
     .pull-quote {
-      background: var(--cream);
+      background: var(--wash);
       border-left: 4px solid var(--accent);
       border-radius: 0 16px 16px 0;
       padding: 2.25rem 2rem;
@@ -729,7 +743,7 @@
       letter-spacing: -0.01em;
       transition: background 0.15s, transform 0.15s;
     }
-    .cta-btn:hover { background: #B45309; transform: translateY(-2px); }
+    .cta-btn:hover { background: var(--accent-strong); transform: translateY(-2px); }
     .cta-note {
       font-size: 0.8rem;
       color: rgba(255,255,255,0.3);
@@ -849,7 +863,7 @@
     <div class="hero-inner">
       <div class="hero-pill reveal">PROPERTY MANAGEMENT</div>
       <h1 class="reveal">They'd never run a paid ad. Now their entire rental portfolio markets itself.</h1>
-      <p class="hero-sub reveal">A Tallahassee property manager with 40+ listings and zero advertising history. What we built instead of a campaign changed everything.</p>
+      <p class="hero-sub reveal">A Tallahassee property manager with 40+ listings and zero advertising history. What I built instead of a campaign changed everything.</p>
       <p class="stat-strip-window reveal">Figures below cover a single 28-day flight.</p>
       <div class="stat-strip">
         <div class="stat-item reveal">
@@ -874,7 +888,7 @@
       <div class="two-col">
         <div>
           <div class="section-label reveal">WHERE IT STARTED</div>
-          <h2 class="reveal">Before us, a listing hit AppFolio and waited.</h2>
+          <h2 class="reveal">Before this, a listing hit AppFolio and waited.</h2>
           <div class="body-text">
             <p class="reveal">Tallahassee, Florida is home to Florida State University and FAMU. It's a market where quality rentals lease fast, especially in the summer turnover window when thousands of students and young professionals are actively searching. In this environment, visibility isn't just helpful. It's the whole game.</p>
             <p class="reveal">The property manager had built a solid portfolio of 42 properties spread across Tallahassee, ranging from one-bedroom apartments at $995/month to five-bedroom homes at $2,950. They knew how to manage properties. They had no idea how to market them. Listings went on AppFolio. They waited. Sometimes units sat vacant for two, three weeks before the right person found them.</p>
@@ -883,7 +897,7 @@
         </div>
         <div>
           <div class="before-card reveal">
-            <h3>Before We Started</h3>
+            <h3>Before I Started</h3>
             <ul class="before-list">
               <li>Zero paid ads, ever</li>
               <li>Listings promoted through AppFolio and Zillow only</li>
@@ -1154,7 +1168,7 @@
       </div>
 
       <div class="result-callout reveal">
-        <p>Our fastest lease: Listing 06. Listed on a Monday. Ad live the same afternoon. Lease signed the next day.</p>
+        <p>The fastest lease: Listing 06. Listed on a Monday. Ad live the same afternoon. Lease signed the next day.</p>
       </div>
     </div>
   </section>
