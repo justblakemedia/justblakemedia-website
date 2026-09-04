@@ -48,35 +48,49 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --accent: #D97706;
-      /* AA-safe step of the same amber for text and small UI:
-         5.02:1 on white, 4.66:1 on cream, 5.02:1 under white text. */
-      --accent-strong: #B45309;
-      --accent-light: #FEF3C7;
-      --zinc-950: #09090B;
-      --zinc-900: #18181B;
-      --zinc-700: #3F3F46;
-      --zinc-600: #52525B;
-      --zinc-500: #71717A;
-      --zinc-400: #A1A1AA;
-      --zinc-300: #D4D4D8;
-      --zinc-200: #E4E4E7;
-      --zinc-100: #F4F4F5;
-      --zinc-50: #FAFAFA;
-      --cream: #FBF6EC;
-      --cream-deep: #F5EDDA;
+      /* Cobalt system, matching the homepage. Decision 1 of the website audit
+         retired Signal Orange and made this canonical. Until now the case
+         studies ran a second visual identity, which made them read as a
+         different company at the exact moment a prospect checks the proof. */
+      --accent: #1554E8;
+      /* --accent is 6.06:1 on white, up from 3.19:1 for the amber it replaces,
+         which only cleared the 3:1 large-text threshold and failed AA wherever
+         it was used at normal size. --accent-strong below is 9.23:1, up from
+         5.02:1, and carries white text at the same ratio. */
+      --accent-strong: #0F3EA8;
+      --accent-light: #E7EDFD;
+      /* Pill and badge text on the navy hero, 10.42:1 on --zinc-900. */
+      --accent-on-dark: #A8C4FF;
+      /* Neutral ramp shifted from Tailwind zinc to the homepage's navy bias.
+         Lightness order is preserved so every existing pairing still works,
+         and --zinc-600 is contrast-matched to the value it replaces at 7.74:1
+         on white, so no text pairing regresses. */
+      --zinc-950: #070C16;
+      --zinc-900: #0B1528;
+      --zinc-700: #2E3950;
+      --zinc-600: #47536A;
+      --zinc-500: #5F6B82;
+      --zinc-400: #99A3B6;
+      --zinc-300: #CBD3E0;
+      --zinc-200: #DDE3EC;
+      --zinc-100: #EEF2F8;
+      --zinc-50: #F7F9FC;
+      /* Renamed from the previous warm-tinted pair, because a variable named
+         for a warm colour holding a cool blue is a trap for the next editor. */
+      --wash: #F2F6FC;
+      --wash-deep: #E6EDF9;
       --max-width: 1200px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-weight: 400;
       color: var(--zinc-900);
       background: #fff;
@@ -121,9 +135,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--accent-strong);
+      background: var(--accent);
       color: #fff;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-size: 0.82rem;
       font-weight: 600;
       padding: 0.45rem 1rem;
@@ -133,7 +147,7 @@
       transition: background 0.2s, transform 0.15s;
     }
 
-    .nav-cta:hover { background: #B45309; transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--accent-strong); transform: translateY(-1px); }
 
     /* SCROLL REVEAL */
     .reveal {
@@ -203,9 +217,9 @@
 
     .hero-pill {
       display: inline-block;
-      background: rgba(217, 119, 6, 0.18);
-      border: 1px solid rgba(217, 119, 6, 0.35);
-      color: #FCD34D;
+      background: rgba(21, 84, 232, 0.18);
+      border: 1px solid rgba(21, 84, 232, 0.35);
+      color: var(--accent-on-dark);
       font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -259,7 +273,7 @@
     }
 
     /* CHALLENGE */
-    .challenge { background: var(--cream); }
+    .challenge { background: var(--wash); }
 
     .challenge h2,
     .architecture h2,
@@ -295,7 +309,7 @@
 
     .risk-card {
       background: #fff;
-      border: 1px solid var(--cream-deep);
+      border: 1px solid var(--wash-deep);
       border-radius: 12px;
       padding: 2rem;
       position: sticky;
@@ -385,12 +399,12 @@
 
     .badge-traffic {
       background: var(--accent-light);
-      color: #92400E;
+      color: var(--accent-strong);
     }
 
     .badge-awareness {
-      background: rgba(217, 119, 6, 0.2);
-      color: #FCD34D;
+      background: rgba(21, 84, 232, 0.2);
+      color: var(--accent-on-dark);
     }
 
     .track-card h3 {
@@ -442,9 +456,9 @@
       gap: 0.4rem;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #FCD34D;
-      background: rgba(217, 119, 6, 0.15);
-      border: 1px solid rgba(217, 119, 6, 0.3);
+      color: var(--accent-on-dark);
+      background: rgba(21, 84, 232, 0.15);
+      border: 1px solid rgba(21, 84, 232, 0.3);
       border-radius: 6px;
       padding: 0.3rem 0.65rem;
     }
@@ -511,7 +525,7 @@
     }
 
     /* PROGRAMS */
-    .programs { background: var(--cream); }
+    .programs { background: var(--wash); }
 
     .programs-grid {
       display: grid;
@@ -529,7 +543,7 @@
 
     .program-card {
       background: #fff;
-      border: 1px solid var(--cream-deep);
+      border: 1px solid var(--wash-deep);
       border-radius: 12px;
       padding: 1.75rem;
       display: flex;
@@ -569,7 +583,7 @@
 
     .tag-traffic {
       background: var(--accent-light);
-      color: #92400E;
+      color: var(--accent-strong);
     }
 
     .tag-awareness {
@@ -653,7 +667,7 @@
     }
 
     /* CHANGED */
-    .changed { background: var(--cream); }
+    .changed { background: var(--wash); }
 
     .changed-body {
       display: grid;
@@ -678,7 +692,7 @@
     .pull-quote {
       border-left: 4px solid var(--accent);
       padding: 1.5rem 1.75rem;
-      background: rgba(217, 119, 6, 0.04);
+      background: rgba(21, 84, 232, 0.04);
       border-radius: 0 10px 10px 0;
       position: sticky;
       top: 88px;
@@ -721,7 +735,7 @@
       gap: 0.5rem;
       background: var(--accent);
       color: #fff;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-size: 1rem;
       font-weight: 700;
       padding: 0.85rem 2rem;
@@ -731,7 +745,7 @@
       transition: background 0.2s, transform 0.15s;
     }
 
-    .cta-btn:hover { background: #B45309; transform: translateY(-2px); }
+    .cta-btn:hover { background: var(--accent-strong); transform: translateY(-2px); }
 
     /* FOOTER */
     footer {
