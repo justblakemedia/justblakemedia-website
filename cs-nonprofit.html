@@ -58,12 +58,14 @@
          studies ran a second visual identity, which made them read as a
          different company at the exact moment a prospect checks the proof. */
       --accent: #1554E8;
-      /* 6.06:1 on white and 6.06:1 under white text, so it is AA-safe as text
-         at any size. The amber it replaces measured 3.18:1, which only cleared
-         the 3:1 large-text threshold. */
+      /* --accent is 6.06:1 on white, up from 3.19:1 for the amber it replaces,
+         which only cleared the 3:1 large-text threshold and failed AA wherever
+         it was used at normal size. --accent-strong below is 9.23:1, up from
+         5.02:1, and carries white text at the same ratio. */
       --accent-strong: #0F3EA8;
       --accent-light: #E7EDFD;
-      --lime: #C9F24A;
+      /* Pill and badge text on the navy hero, 10.42:1 on --zinc-900. */
+      --accent-on-dark: #A8C4FF;
       /* Neutral ramp shifted from Tailwind zinc to the homepage's navy bias.
          Lightness order is preserved so every existing pairing still works,
          and --zinc-600 is contrast-matched to the value it replaces at 7.74:1
@@ -72,7 +74,7 @@
       --zinc-900: #0B1528;
       --zinc-700: #2E3950;
       --zinc-600: #47536A;
-      --zinc-500: #66738A;
+      --zinc-500: #5F6B82;
       --zinc-400: #99A3B6;
       --zinc-300: #CBD3E0;
       --zinc-200: #DDE3EC;
@@ -133,7 +135,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--accent-strong);
+      background: var(--accent);
       color: #fff;
       font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-size: 0.82rem;
@@ -215,9 +217,9 @@
 
     .hero-pill {
       display: inline-block;
-      background: rgba(217, 119, 6, 0.18);
-      border: 1px solid rgba(217, 119, 6, 0.35);
-      color: #FCD34D;
+      background: rgba(21, 84, 232, 0.18);
+      border: 1px solid rgba(21, 84, 232, 0.35);
+      color: var(--accent-on-dark);
       font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -397,12 +399,12 @@
 
     .badge-traffic {
       background: var(--accent-light);
-      color: #92400E;
+      color: var(--accent-strong);
     }
 
     .badge-awareness {
-      background: rgba(217, 119, 6, 0.2);
-      color: #FCD34D;
+      background: rgba(21, 84, 232, 0.2);
+      color: var(--accent-on-dark);
     }
 
     .track-card h3 {
@@ -454,9 +456,9 @@
       gap: 0.4rem;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #FCD34D;
-      background: rgba(217, 119, 6, 0.15);
-      border: 1px solid rgba(217, 119, 6, 0.3);
+      color: var(--accent-on-dark);
+      background: rgba(21, 84, 232, 0.15);
+      border: 1px solid rgba(21, 84, 232, 0.3);
       border-radius: 6px;
       padding: 0.3rem 0.65rem;
     }
@@ -581,7 +583,7 @@
 
     .tag-traffic {
       background: var(--accent-light);
-      color: #92400E;
+      color: var(--accent-strong);
     }
 
     .tag-awareness {
@@ -690,7 +692,7 @@
     .pull-quote {
       border-left: 4px solid var(--accent);
       padding: 1.5rem 1.75rem;
-      background: rgba(217, 119, 6, 0.04);
+      background: rgba(21, 84, 232, 0.04);
       border-radius: 0 10px 10px 0;
       position: sticky;
       top: 88px;

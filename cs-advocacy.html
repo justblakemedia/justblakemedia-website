@@ -59,12 +59,14 @@
          studies ran a second visual identity, which made them read as a
          different company at the exact moment a prospect checks the proof. */
       --accent: #1554E8;
-      /* 6.06:1 on white and 6.06:1 under white text, so it is AA-safe as text
-         at any size. The amber it replaces measured 3.18:1, which only cleared
-         the 3:1 large-text threshold. */
+      /* --accent is 6.06:1 on white, up from 3.19:1 for the amber it replaces,
+         which only cleared the 3:1 large-text threshold and failed AA wherever
+         it was used at normal size. --accent-strong below is 9.23:1, up from
+         5.02:1, and carries white text at the same ratio. */
       --accent-strong: #0F3EA8;
       --accent-light: #E7EDFD;
-      --lime: #C9F24A;
+      /* Pill and badge text on the navy hero, 10.42:1 on --zinc-900. */
+      --accent-on-dark: #A8C4FF;
       /* Neutral ramp shifted from Tailwind zinc to the homepage's navy bias.
          Lightness order is preserved so every existing pairing still works,
          and --zinc-600 is contrast-matched to the value it replaces at 7.74:1
@@ -73,7 +75,7 @@
       --zinc-900: #0B1528;
       --zinc-700: #2E3950;
       --zinc-600: #47536A;
-      --zinc-500: #66738A;
+      --zinc-500: #5F6B82;
       --zinc-400: #99A3B6;
       --zinc-300: #CBD3E0;
       --zinc-200: #DDE3EC;
@@ -131,7 +133,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--accent-strong);
+      background: var(--accent);
       color: #fff;
       font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
       font-size: 0.875rem;
@@ -213,7 +215,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(217,119,6,0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(21, 84, 232,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-inner {
@@ -229,9 +231,11 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(217,119,6,0.12);
-      border: 1px solid rgba(217,119,6,0.25);
+      /* Cobalt on a cobalt tint over --zinc-950 measures 2.99:1. The light
+         step is 10.35:1 on the same composite. */
+      color: var(--accent-on-dark);
+      background: rgba(21, 84, 232, 0.12);
+      border: 1px solid rgba(21, 84, 232,0.25);
       padding: 5px 14px;
       border-radius: 100px;
       margin-bottom: 28px;
