@@ -178,18 +178,23 @@
 
   <header class="site-header" id="top">
     <div class="shell nav-grid">
-      <a class="wordmark" href="/" aria-label="Just Blake Media home">JUST BLAKE MEDIA</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"><span class="menu-toggle-bars" aria-hidden="true"></span>Menu</button>
+      <a class="wordmark" href="/" aria-label="Just Blake Media home">Just Blake Media</a>
       <nav class="primary-nav" id="primary-menu" aria-label="Primary navigation">
+        <button class="drawer-close" type="button" aria-label="Close menu">&times;</button>
         <ul class="nav-list">
           <li class="has-menu is-current">
             <button class="nav-link nav-disclosure" type="button" aria-expanded="false" aria-controls="menu-services">Services <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
-            <div class="menu-panel" id="menu-services"><a class="menu-item" href="/paid-media/"><strong>Paid media</strong><span>Meta and LinkedIn ads with the tracking fixed first</span></a><a class="menu-item" href="/ai-systems/"><strong>AI systems</strong><span>The busywork around the marketing, handed to a system you approve</span></a><a class="menu-item" href="/workshops/" aria-current="page"><strong>Workshops</strong><span>Live sessions in your tools, on your real examples</span></a></div>
+            <div class="menu-panel" id="menu-services">
+              <div class="menu-col"><h3>Practices</h3><a href="/paid-media/">Paid media</a><a href="/ai-systems/">AI systems</a></div>
+              <div class="menu-col"><h3>Teach and pricing</h3><a href="/workshops/" aria-current="page">Workshops</a><a href="/pricing/">Pricing</a></div>
+            </div>
           </li>
           <li><a class="nav-link" href="/case-studies/">Case studies</a></li><li><a class="nav-link" href="/pricing/">Pricing</a></li><li><a class="nav-link" href="/learn/">Learn</a></li><li><a class="nav-link" href="/about/">About</a></li>
-          <li><a class="nav-cta" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a call</a></li>
+          <li class="nav-cta-mobile"><a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a call</a></li>
         </ul>
       </nav>
+      <a class="nav-cta" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a call</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menu"><span class="menu-toggle-bars" aria-hidden="true"></span></button>
     </div>
   </header>
 
@@ -282,14 +287,12 @@
     </section>
 
     <section class="cta-band" aria-labelledby="cta-band-title">
-      <div class="shell cta-band-grid">
-        <div class="cta-band-copy">
-          <h2 class="display display-lg" id="cta-band-title">Not ready to book? Send me the account instead.</h2>
-          <p>Tell me what you are running and what is not working. I will look at the structure, the tracking and the creative, and send back what I would change first. Free, from me, usually within two business days.</p>
-        </div>
-        <div class="cta-band-actions">
-          <a class="btn btn-lg" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a Growth Systems Call</a>
-          <a class="btn btn-lg btn-ghost" href="/contact/#audit">Send me the account</a>
+      <div class="shell">
+        <h2 class="display" id="cta-band-title">Ready to get started?</h2>
+        <p>Book the call, or send me the account and I will send back what I would change first. Free, from me, usually within two business days.</p>
+        <div class="btn-row">
+          <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a Growth Systems Call</a>
+          <a class="btn btn-ghost" href="/contact/#audit">Send me the account</a>
         </div>
       </div>
     </section>
@@ -299,8 +302,12 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div class="footer-brand">
-        <a class="wordmark" href="/">JUST BLAKE MEDIA</a>
+        <a class="wordmark" href="/">Just Blake Media</a>
         <p>Paid media run by the senior buyer who stays in your account, and the AI systems that give the hours back. Marietta, Georgia.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a call</a>
+          <a class="btn btn-ghost" href="/contact/">Contact</a>
+        </div>
       </div>
       <nav class="footer-col" aria-labelledby="footer-services">
         <h2 id="footer-services">Services</h2>
@@ -327,7 +334,6 @@
           <li><a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a></li>
           <li><a href="tel:+19102641603">(910) 264-1603</a></li>
           <li><a href="https://www.linkedin.com/in/justinlblake/" rel="me">LinkedIn</a></li>
-          <li><a href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a Growth Systems Call</a></li>
         </ul>
       </div>
     </div>

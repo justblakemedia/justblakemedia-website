@@ -1,48 +1,65 @@
-/* Just Blake Media site behaviour. One file, every page.
-   Everything here is progressive enhancement: the pages read and link
-   without it. */
+/* Just Blake Media site behaviour. One file, every page. Progressive
+   enhancement only: every page reads and links without it. */
 (() => {
-  const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
 
-  /* ---------- header: condense on scroll, mobile menu, disclosure menus ---------- */
+  /* ---------- header: hide on scroll down, reveal on scroll up ---------- */
 
   const header = document.querySelector(".site-header");
   if (header) {
+    let lastY = window.scrollY;
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        header.classList.toggle("is-condensed", window.scrollY > 8);
+        const y = window.scrollY;
+        const menuOpen = document.querySelector(".nav-grid.is-open");
+        if (menuOpen || y < 80) header.classList.remove("is-hidden");
+        else if (y > lastY + 4) header.classList.add("is-hidden");
+        else if (y < lastY - 4) header.classList.remove("is-hidden");
+        lastY = y;
         ticking = false;
       });
     };
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
   }
+
+  /* ---------- mobile drawer ---------- */
 
   const navGrid = document.querySelector(".nav-grid");
   const menuButton = document.querySelector(".menu-toggle");
   const menu = document.getElementById("primary-menu");
-  const mobileQuery = window.matchMedia("(max-width: 767px)");
-
+  let backdrop = document.querySelector(".drawer-backdrop");
+  if (!backdrop && navGrid) {
+    backdrop = document.createElement("div");
+    backdrop.className = "drawer-backdrop";
+    document.body.appendChild(backdrop);
+  }
   const setMenu = (open, returnFocus = false) => {
     if (!menuButton || !navGrid) return;
     menuButton.setAttribute("aria-expanded", String(open));
     navGrid.classList.toggle("is-open", open);
-    if (returnFocus) menuButton.focus();
+    if (backdrop) backdrop.classList.toggle("is-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+    if (open) {
+      const first = menu.querySelector("a, button");
+      if (first) first.focus();
+    } else if (returnFocus) menuButton.focus();
   };
-
   if (navGrid && menuButton && menu) {
-    menuButton.addEventListener("click", () => {
-      setMenu(menuButton.getAttribute("aria-expanded") !== "true");
-    });
+    menuButton.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") !== "true"));
+    const closeBtn = menu.querySelector(".drawer-close");
+    if (closeBtn) closeBtn.addEventListener("click", () => setMenu(false, true));
+    if (backdrop) backdrop.addEventListener("click", () => setMenu(false, true));
     menu.addEventListener("click", (event) => {
       if (event.target.closest("a") && mobileQuery.matches) setMenu(false);
     });
     mobileQuery.addEventListener("change", () => setMenu(false));
   }
+
+  /* ---------- disclosure menus (desktop dropdown, mobile accordion) ---------- */
 
   const disclosures = Array.from(document.querySelectorAll(".nav-disclosure"));
   const closeAll = (except) => {
@@ -61,13 +78,7 @@
       closeAll(button);
       button.setAttribute("aria-expanded", String(open));
       panel.classList.toggle("is-open", open);
-      if (open) {
-        const first = panel.querySelector("a");
-        if (first) first.focus();
-      }
     });
-    /* Open on hover for mouse users, with a short grace period so a
-       diagonal move into the panel does not close it. */
     const item = button.closest(".has-menu");
     let closeTimer;
     item.addEventListener("mouseenter", () => {
@@ -85,18 +96,14 @@
       }, 160);
     });
   });
-
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
     if (menuButton && menuButton.getAttribute("aria-expanded") === "true") setMenu(false, true);
     const openButton = disclosures.find((b) => b.getAttribute("aria-expanded") === "true");
-    if (openButton) {
-      closeAll();
-      openButton.focus();
-    }
+    if (openButton) { closeAll(); openButton.focus(); }
   });
   document.addEventListener("click", (event) => {
-    if (!event.target.closest(".has-menu")) closeAll();
+    if (!event.target.closest(".has-menu") && !mobileQuery.matches) closeAll();
   });
 
   /* ---------- analytics events ---------- */
@@ -108,8 +115,49 @@
   document.querySelectorAll('a[href*="calendar.google.com"]').forEach((link) => {
     link.addEventListener("click", () => track("book_call_click", { label: link.textContent.trim(), page: location.pathname }));
   });
-  document.querySelectorAll(".door").forEach((door) => {
-    door.addEventListener("click", () => track("door_click", { label: door.querySelector(".door-tag").textContent.trim() }));
+  document.querySelectorAll("[data-door]").forEach((door) => {
+    door.addEventListener("click", () => track("door_click", { label: door.getAttribute("data-door") }));
+  });
+
+  /* ---------- carousels: centred card, blurred neighbours, arrows, keys, swipe ---------- */
+
+  document.querySelectorAll(".carousel").forEach((carousel) => {
+    const items = Array.from(carousel.querySelectorAll(".carousel-item"));
+    if (items.length < 2) { items.forEach((i) => i.classList.add("is-active")); return; }
+    let index = 0;
+    const render = () => {
+      items.forEach((item, i) => {
+        item.classList.remove("is-active", "is-prev", "is-next");
+        item.setAttribute("aria-hidden", "true");
+        if (i === index) { item.classList.add("is-active"); item.removeAttribute("aria-hidden"); }
+        else if (i === (index - 1 + items.length) % items.length) item.classList.add("is-prev");
+        else if (i === (index + 1) % items.length) item.classList.add("is-next");
+        item.querySelectorAll("a, button").forEach((el) => { el.tabIndex = i === index ? 0 : -1; });
+      });
+      const status = carousel.querySelector(".carousel-status");
+      if (status) status.textContent = (index + 1) + " of " + items.length;
+    };
+    const go = (delta) => { index = (index + delta + items.length) % items.length; render(); };
+    carousel.querySelectorAll("[data-prev]").forEach((b) => b.addEventListener("click", () => go(-1)));
+    carousel.querySelectorAll("[data-next]").forEach((b) => b.addEventListener("click", () => go(1)));
+    items.forEach((item, i) => {
+      item.addEventListener("click", (event) => {
+        if (i !== index) { event.preventDefault(); index = i; render(); }
+      });
+    });
+    carousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") { event.preventDefault(); go(1); }
+      if (event.key === "ArrowLeft") { event.preventDefault(); go(-1); }
+    });
+    let startX = null;
+    carousel.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+    carousel.addEventListener("pointerup", (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+      startX = null;
+    });
+    render();
   });
 
   /* ---------- tabs ---------- */
@@ -137,81 +185,29 @@
     });
   });
 
-  /* ---------- week ticks (home story band) ---------- */
+  /* ---------- week ticks ---------- */
 
   const ticks = document.querySelector(".ticks");
   if (ticks && !ticks.children.length) {
     const frag = document.createDocumentFragment();
     for (let i = 0; i < 52; i += 1) {
       const tick = document.createElement("i");
-      tick.style.setProperty("--i", String(i));
       if (i < 13) tick.classList.add("lit");
       frag.appendChild(tick);
     }
     ticks.appendChild(frag);
   }
 
-  /* ---------- reveals ---------- */
+  /* ---------- marquee: duplicate the list once so the loop is seamless ---------- */
 
-  const heroReveal = document.querySelectorAll(".hero-copy [data-reveal], .page-hero [data-reveal]");
-  if (heroReveal.length && !reduceMotion) {
-    root.classList.add("reveal-ready");
-    heroReveal.forEach((el) => el.classList.add("reveal-pending"));
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        heroReveal.forEach((el) => el.classList.remove("reveal-pending"));
-      });
-    });
-  }
-
-  if (reduceMotion || !("IntersectionObserver" in window)) return;
-
-  const revealItems = document.querySelectorAll("main > section:not(.hero):not(.page-hero)");
-  if (revealItems.length) {
-    root.classList.add("reveal-ready");
-    let observer;
-    const reveal = (el) => {
-      el.classList.remove("reveal-pending");
-      if (observer) observer.unobserve(el);
-    };
-    observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) reveal(entry.target);
-      });
-    }, { rootMargin: "0px", threshold: 0.05 });
-    revealItems.forEach((item) => {
-      item.dataset.reveal = "";
-      item.classList.add("reveal-pending");
-      observer.observe(item);
-    });
-    const revealRemaining = () => {
-      if (window.innerHeight + window.scrollY < document.body.scrollHeight - 2) return;
-      document.querySelectorAll(".reveal-pending").forEach(reveal);
-    };
-    window.addEventListener("scroll", revealRemaining, { passive: true });
-    window.addEventListener("resize", revealRemaining, { passive: true });
-    /* Backstop: whatever the observer does, nothing stays hidden for long. */
-    setTimeout(() => document.querySelectorAll(".reveal-pending").forEach(reveal), 2500);
-  }
-
-  const storyVisual = document.querySelector(".story-visual");
-  if (storyVisual) {
-    const lanes = storyVisual.querySelector(".lanes");
-    if (lanes) lanes.classList.add("lanes-ready");
-    storyVisual.classList.add("ticks-ready");
-    const storyObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        if (lanes) lanes.classList.add("is-drawn");
-        storyVisual.classList.add("is-lit");
-        storyObserver.disconnect();
-      });
-    }, { threshold: 0.35 });
-    storyObserver.observe(storyVisual);
-  }
+  document.querySelectorAll(".marquee-track").forEach((track) => {
+    const list = track.querySelector("ul");
+    if (list && track.children.length === 1) track.appendChild(list.cloneNode(true)).setAttribute("aria-hidden", "true");
+  });
 
   /* ---------- counters ---------- */
 
+  if (reduceMotion || !("IntersectionObserver" in window)) return;
   const countEls = document.querySelectorAll(".num[data-count]");
   if (countEls.length) {
     const formatCount = (el, value) => {
@@ -228,7 +224,6 @@
         const target = parseFloat(el.getAttribute("data-count"));
         const duration = 1200;
         const start = performance.now();
-        el.textContent = formatCount(el, 0);
         const tick = (now) => {
           const progress = Math.min((now - start) / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
@@ -246,14 +241,12 @@
 (() => {
   const form = document.getElementById("audit-form");
   if (!form) return;
-
   const status = document.getElementById("audit-status");
   const submit = document.getElementById("audit-submit");
   const key = form.querySelector('input[name="access_key"]');
   const trap = form.querySelector('input[name="botcheck"]');
   const configured = key && key.value && !key.value.startsWith("REPLACE_WITH");
   const submitLabel = submit ? submit.textContent : "";
-
   const fieldOf = (input) => input.closest(".field");
   const setError = (input, on) => {
     const field = fieldOf(input);
@@ -261,47 +254,25 @@
     field.classList.toggle("has-error", on);
     input.setAttribute("aria-invalid", String(on));
     const err = field.querySelector(".field-error");
-    if (err) {
-      if (on) input.setAttribute("aria-describedby", err.id);
-      else input.removeAttribute("aria-describedby");
-    }
+    if (err) { if (on) input.setAttribute("aria-describedby", err.id); else input.removeAttribute("aria-describedby"); }
   };
-  const validate = (input) => {
-    const ok = input.checkValidity();
-    setError(input, !ok);
-    return ok;
-  };
+  const validate = (input) => { const ok = input.checkValidity(); setError(input, !ok); return ok; };
   const required = () => Array.from(form.querySelectorAll("[required]"));
   required().forEach((input) => {
     input.addEventListener("blur", () => validate(input));
-    input.addEventListener("input", () => {
-      if (fieldOf(input) && fieldOf(input).classList.contains("has-error")) validate(input);
-    });
+    input.addEventListener("input", () => { if (fieldOf(input) && fieldOf(input).classList.contains("has-error")) validate(input); });
   });
-
   const show = (message, heading, isError) => {
     status.innerHTML = "";
-    if (heading) {
-      const strong = document.createElement("strong");
-      strong.textContent = heading;
-      status.appendChild(strong);
-    }
+    if (heading) { const strong = document.createElement("strong"); strong.textContent = heading; status.appendChild(strong); }
     status.appendChild(document.createTextNode(message));
     status.classList.toggle("is-error", Boolean(isError));
     status.hidden = false;
   };
-
   form.addEventListener("submit", async (event) => {
-    if (trap && trap.value) {
-      event.preventDefault();
-      return;
-    }
+    if (trap && trap.value) { event.preventDefault(); return; }
     const invalid = required().filter((input) => !validate(input));
-    if (invalid.length) {
-      event.preventDefault();
-      invalid[0].focus();
-      return;
-    }
+    if (invalid.length) { event.preventDefault(); invalid[0].focus(); return; }
     if (!configured) {
       event.preventDefault();
       show("This form is not connected yet. Email justin@justblakemedia.com directly and it will reach me just as fast.", "Not set up yet.", true);
