@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact | Just Blake Media</title>
-  <meta name="description" content="Book a free Growth Systems Call, or send the account for a free look at the structure, tracking and creative. Email, phone and LinkedIn for Justin Blake in Marietta, Georgia.">
+  <meta name="description" content="Book a free Growth Systems Call, or send the account over for a free look at structure, tracking and creative. Email, phone and LinkedIn for Justin Blake.">
   <link rel="canonical" href="https://justblakemedia.com/contact/">
   <meta property="og:title" content="Contact | Just Blake Media">
-  <meta property="og:description" content="Book a free Growth Systems Call, or send the account for a free look at the structure, tracking and creative. Email, phone and LinkedIn for Justin Blake in Marietta, Georgia.">
+  <meta property="og:description" content="Book a free Growth Systems Call, or send the account over for a free look at structure, tracking and creative. Email, phone and LinkedIn for Justin Blake.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://justblakemedia.com/contact/">
   <meta property="og:site_name" content="Just Blake Media">
@@ -20,7 +20,7 @@
   <meta property="og:image:alt" content="Two business professionals talking across a worktable in a bright office">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact | Just Blake Media">
-  <meta name="twitter:description" content="Book a free Growth Systems Call, or send the account for a free look at the structure, tracking and creative. Email, phone and LinkedIn for Justin Blake in Marietta, Georgia.">
+  <meta name="twitter:description" content="Book a free Growth Systems Call, or send the account over for a free look at structure, tracking and creative. Email, phone and LinkedIn for Justin Blake.">
   <meta name="twitter:image" content="https://justblakemedia.com/assets/human-systems/hero-owner.webp">
   <meta name="twitter:image:alt" content="Two business professionals talking across a worktable in a bright office">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231554e8'/%3E%3Cpath d='M18 18h16v8H26v20h-8z' fill='%23ffffff'/%3E%3Cpath d='M38 18h8v28H30v-8h8z' fill='%23c9f24a'/%3E%3C/svg%3E">
@@ -202,11 +202,13 @@
             <p>No sequence, no deck, and no follow up unless you ask for one.</p>
           </div>
         </div>
-        <form class="audit-form" id="audit-form" method="POST" action="https://api.web3forms.com/submit" novalidate>
-          <!-- Endpoint configuration. Replace the access key below with the one
-               from the form provider account, then this form is live. The
-               submit handler refuses to send while the placeholder is here, so
-               a half-configured form fails loudly instead of dropping leads. -->
+        <form class="audit-form" id="audit-form" data-endpoint="https://api.web3forms.com/submit" novalidate>
+          <!-- Deliberately no action or method. The form is submitted by fetch()
+               in site.js to data-endpoint above, so a browser with JavaScript
+               off cannot post these details anywhere. site.js enables the submit
+               button only once the access key below is real. Replace the
+               placeholder with the key from the form provider account and the
+               form goes live with no other change. -->
           <input type="hidden" name="access_key" value="REPLACE_WITH_FORM_ACCESS_KEY">
           <input type="hidden" name="subject" value="Growth Systems Audit request from justblakemedia.com">
           <input type="hidden" name="from_name" value="justblakemedia.com">
@@ -240,7 +242,8 @@
             <label for="audit-company-site">Do not fill this in</label>
             <input type="text" id="audit-company-site" name="botcheck" tabindex="-1" autocomplete="off">
           </div>
-          <button type="submit" class="btn audit-submit" id="audit-submit">Send my audit request</button>
+          <button type="submit" class="btn audit-submit" id="audit-submit" disabled>Send my audit request</button>
+          <noscript><p class="audit-status is-error"><strong>This form needs JavaScript.</strong>Email <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a> with what you are running and it will reach me just as fast.</p></noscript>
           <p class="audit-note">I use your details to reply to you and for nothing else. No list, no sharing, no automated sequence. Ask me at <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a> and I will delete them.</p>
           <p class="audit-status" id="audit-status" role="status" aria-live="polite" hidden></p>
         </form>
@@ -288,7 +291,7 @@
       </div>
     </div>
     <div class="shell footer-legal">
-      <p class="footer-privacy">This site counts visits and clicks with Vercel Analytics and Google Analytics. Google Analytics sets cookies in your browser. The audit form on the contact page sends your name, email and spend range to me by email. I use them to reply to you, I do not add you to a list or share them, and I delete them on request. Booking is handled by Google.</p>
+      <p class="footer-privacy">This site counts visits and clicks with Google Analytics, which sets cookies in your browser. The audit form on the contact page sends your name, email and spend range to me by email. I use them to reply to you, I do not add you to a list or share them, and I delete them on request. Booking is handled by Google.</p>
       <p class="footer-copyright">&copy; 2026 Just Blake Media</p>
     </div>
   </footer>
