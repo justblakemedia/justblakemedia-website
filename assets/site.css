@@ -632,6 +632,12 @@ a.card:hover, a.card:focus-visible { transform: translateY(-4px); border-color: 
 .audit-submit { width: 100%; background: var(--white); color: var(--navy); box-shadow: none; }
 .audit-submit:hover { background: var(--lime); color: var(--navy); }
 .audit-submit[aria-disabled="true"] { cursor: progress; opacity: 0.72; }
+/* The button ships disabled until site.js confirms a real form endpoint, so it
+   has to read as inactive. Without this it stayed solid white and invited a
+   click that could never do anything. The hover override stops it lighting up
+   lime, which would say "interactive" louder than the cursor says otherwise. */
+.audit-submit:disabled { background: rgba(255, 255, 255, 0.22); color: rgba(255, 255, 255, 0.82); cursor: not-allowed; }
+.audit-submit:disabled:hover { background: rgba(255, 255, 255, 0.22); color: rgba(255, 255, 255, 0.82); }
 .audit-note { color: rgba(255, 255, 255, 0.6); font-size: 13px; line-height: 18px; }
 .audit-note a { color: var(--lime); }
 .audit-status { padding: 14px 16px; border-radius: var(--r); background: rgba(201, 242, 74, 0.12); border: 1px solid rgba(201, 242, 74, 0.4); color: var(--white); font-size: 14px; line-height: 20px; }

@@ -13,16 +13,16 @@
   <meta property="og:url" content="https://justblakemedia.com/contact/">
   <meta property="og:site_name" content="Just Blake Media">
   <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://justblakemedia.com/assets/human-systems/hero-owner.webp">
-  <meta property="og:image:width" content="1440">
-  <meta property="og:image:height" content="1200">
-  <meta property="og:image:type" content="image/webp">
-  <meta property="og:image:alt" content="Two business professionals talking across a worktable in a bright office">
+  <meta property="og:image" content="https://justblakemedia.com/assets/og/contact.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Book the call, or send me the account. Just Blake Media.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact | Just Blake Media">
   <meta name="twitter:description" content="Book a free Growth Systems Call, or send the account over for a free look at structure, tracking and creative. Email, phone and LinkedIn for Justin Blake.">
-  <meta name="twitter:image" content="https://justblakemedia.com/assets/human-systems/hero-owner.webp">
-  <meta name="twitter:image:alt" content="Two business professionals talking across a worktable in a bright office">
+  <meta name="twitter:image" content="https://justblakemedia.com/assets/og/contact.jpg">
+  <meta name="twitter:image:alt" content="Book the call, or send me the account. Just Blake Media.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231554e8'/%3E%3Cpath d='M18 18h16v8H26v20h-8z' fill='%23ffffff'/%3E%3Cpath d='M38 18h8v28H30v-8h8z' fill='%23c9f24a'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,7 +243,12 @@
             <input type="text" id="audit-company-site" name="botcheck" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="btn audit-submit" id="audit-submit" disabled>Send my audit request</button>
-          <noscript><p class="audit-status is-error"><strong>This form needs JavaScript.</strong>Email <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a> with what you are running and it will reach me just as fast.</p></noscript>
+          <!-- This notice ships visible and the button ships disabled, so the
+               honest state is the default one. site.js removes the notice and
+               enables the button only once the access key is real. If the
+               script is blocked, fails to load, or never runs, the visitor is
+               told why and given the email address instead of a dead button. -->
+          <p class="audit-status is-error" id="audit-fallback"><strong>This form is not connected yet.</strong>Email <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a> with what you are running and it will reach me just as fast.</p>
           <p class="audit-note">I use your details to reply to you and for nothing else. No list, no sharing, no automated sequence. Ask me at <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a> and I will delete them.</p>
           <p class="audit-status" id="audit-status" role="status" aria-live="polite" hidden></p>
         </form>
