@@ -5,6 +5,7 @@ Static marketing site for Just Blake Media. Plain HTML/CSS, no build step.
 ## Files
 - `index.html`: home page
 - `cs-advocacy.html`, `cs-dre.html`, `cs-nonprofit.html`: case studies
+- `ai-workshop/index.html`: AI workshop resource page, served at `/ai-workshop`
 - `404.html`: not-found page
 - `robots.txt`, `sitemap.xml`: search-engine directives
 - `assets/`: site images
