@@ -310,3 +310,34 @@
     });
   });
 })();
+
+/* ---------- testimonials: rendered only when assets/testimonials.json has entries ---------- */
+(() => {
+  const mounts = document.querySelectorAll("[data-testimonials]");
+  if (!mounts.length || !("fetch" in window)) return;
+  fetch("/assets/testimonials.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : []))
+    .then((list) => {
+      if (!Array.isArray(list) || !list.length) return;
+      mounts.forEach((mount) => {
+        const max = parseInt(mount.getAttribute("data-max") || "3", 10);
+        const ul = document.createElement("ul");
+        ul.className = "voices";
+        list.slice(0, max).forEach((t) => {
+          if (!t.quote || !t.name) return;
+          const li = document.createElement("li");
+          const q = document.createElement("blockquote");
+          q.textContent = t.quote;
+          const cite = document.createElement("cite");
+          const who = [t.name, t.role, t.company].filter(Boolean).join(", ");
+          if (t.link) { const a = document.createElement("a"); a.href = t.link; a.rel = "noopener"; a.textContent = who; cite.appendChild(a); }
+          else cite.textContent = who;
+          li.appendChild(q); li.appendChild(cite); ul.appendChild(li);
+        });
+        if (!ul.children.length) return;
+        (mount.querySelector(".shell") || mount).appendChild(ul);
+        mount.hidden = false;
+      });
+    })
+    .catch(() => {});
+})();

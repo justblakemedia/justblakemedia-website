@@ -956,3 +956,91 @@ a.card:hover, a.card:focus-visible { transform: translateY(-4px); border-color: 
   .qa-list a { font-size: 16px; line-height: 24px; }
   .amp-plan dl div { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* ---------- 40/40 additions, 2026-09-08 ---------- */
+
+/* testimonials: the section is hidden until site.js finds entries */
+.voices-section[hidden] { display: none; }
+.voices { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.voices li { display: grid; gap: 14px; padding: 28px; border-radius: var(--r); background: var(--white); border: 1px solid var(--border); }
+.on-dark .voices li { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.1); }
+.voices blockquote { margin: 0; font-size: 18px; line-height: 28px; color: var(--ink); }
+.on-dark .voices blockquote { color: var(--white); }
+.voices blockquote::before { content: "\201C"; color: var(--cobalt); }
+.voices blockquote::after { content: "\201D"; color: var(--cobalt); }
+.on-dark .voices blockquote::before, .on-dark .voices blockquote::after { color: var(--lime); }
+.voices cite { color: var(--ink-2); font-size: 13px; font-style: normal; letter-spacing: 0.05em; text-transform: uppercase; }
+.on-dark .voices cite { color: rgba(255, 255, 255, 0.66); }
+.voices cite a { color: inherit; }
+
+/* the five things heard on every first call */
+.heard { display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+.heard li { display: grid; grid-template-columns: 1.1fr 1fr auto; gap: 24px 40px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--border); }
+.heard q { font-size: 22px; font-weight: 500; line-height: 30px; color: var(--ink); quotes: "\201C" "\201D"; }
+.heard p { color: var(--ink-2); font-size: 15px; line-height: 22px; }
+.heard .text-link { min-height: 0; white-space: nowrap; }
+
+/* one door, and the layer that makes it better than an agency */
+.buy { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; }
+.buy-main, .buy-layer { display: grid; gap: 14px; align-content: start; padding: 32px; border-radius: var(--r-lg); }
+.buy-main { background: var(--navy-2); color: var(--white); border: 1px solid rgba(255, 255, 255, 0.05); }
+.buy-layer { background: var(--white); border: 1px solid var(--border); }
+.buy h3 { font-size: 26px; font-variation-settings: "wdth" 80, "wght" 650; font-weight: 650; letter-spacing: -0.01em; line-height: 1.1; text-transform: uppercase; }
+.buy-main .eyebrow { color: var(--lime); margin: 0; }
+.buy-layer .eyebrow { margin: 0; }
+.buy p { font-size: 16px; line-height: 24px; color: var(--ink-2); }
+.buy-main p { color: rgba(255, 255, 255, 0.78); }
+.buy ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+.buy-main ul { color: rgba(255, 255, 255, 0.86); }
+.buy li { display: flex; gap: 10px; align-items: flex-start; }
+.buy li::before { content: "\2713"; flex: 0 0 auto; color: var(--cobalt); font-weight: 700; }
+.buy-main li::before { color: var(--lime); }
+.buy .btn-row { margin-top: 6px; }
+.buy-main .btn { background: var(--white); color: var(--navy); }
+.buy-main .btn:hover { background: var(--lime); }
+.buy-layer .routing a { color: var(--cobalt); }
+
+/* the hero proof row */
+.hero-lead .hero-inner { max-width: none; justify-items: start; text-align: left; }
+.hero-lead .hero-copy { max-width: 760px; }
+.hero-proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 20px; width: 100%; margin: 8px 0 0; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.16); text-align: left; }
+.hero-proof > div { display: grid; }
+.hero-proof dd { margin: 0; order: 1; }
+.hero-proof dt { order: 2; }
+.hero-proof b { display: block; color: var(--lime); font-size: 28px; font-variation-settings: "wdth" 80, "wght" 650; font-weight: 650; font-variant-numeric: tabular-nums; line-height: 1; }
+.hero-proof b .num { font: inherit; }
+.hero-proof span { display: block; margin-top: 6px; color: rgba(255, 255, 255, 0.62); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; line-height: 15px; text-transform: uppercase; }
+.hero-proof-source { grid-column: 1 / -1; margin: 4px 0 0; color: rgba(255, 255, 255, 0.6); font-size: 13px; }
+.hero-proof-source a { color: var(--lime); }
+
+/* the lead form section, below the proof */
+.lead-section .form-grid { align-items: center; }
+.lead-section .form-copy .lede { margin-top: 12px; }
+
+/* one-line workshop strip */
+.date-strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding: 20px 24px; border-radius: var(--r); background: var(--navy-2); color: var(--white); }
+.date-strip strong { color: var(--lime); font-variation-settings: "wdth" 80, "wght" 650; font-weight: 650; text-transform: uppercase; letter-spacing: 0.02em; }
+.date-strip p { color: rgba(255, 255, 255, 0.8); font-size: 15px; }
+.date-strip .text-link { color: var(--lime); min-height: 0; }
+
+/* frustration cards on light grounds (ai-systems moves them up) */
+.on-cloud .fix, .on-white .fix { background: var(--white); border-color: var(--border); }
+.on-cloud .fix .fix-heard, .on-white .fix .fix-heard { color: var(--ink); }
+.on-cloud .fix .fix-label, .on-white .fix .fix-label { color: var(--cobalt); }
+.on-cloud .fix p:last-child, .on-white .fix p:last-child { color: var(--ink-2); }
+
+/* about: photo slot */
+.portrait-frame { overflow: hidden; }
+.portrait-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.portrait-frame.has-photo { color: transparent; }
+
+@media (max-width: 900px) {
+  .heard li { grid-template-columns: 1fr; gap: 10px; }
+  .heard q { font-size: 19px; line-height: 26px; }
+  .buy { grid-template-columns: 1fr; }
+  .hero-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .hero-proof b { font-size: 24px; }
+  .date-strip { padding: 18px; }
+}
