@@ -270,13 +270,13 @@
     status.classList.toggle("is-error", Boolean(isError));
     status.hidden = false;
   };
-  // The submit button ships disabled so a browser with JavaScript off cannot
-  // post these details anywhere. Enable it only once there is a real endpoint
-  // to send to; until then say so before anyone types their details in.
+  // The button ships disabled and the "not connected" notice ships visible, so
+  // the honest state survives this script failing to load at all. Only clear
+  // the notice and enable the button once there is a real endpoint to post to.
+  const fallback = document.getElementById("audit-fallback");
   if (configured) {
     if (submit) submit.disabled = false;
-  } else {
-    show("This form is not connected yet. Email justin@justblakemedia.com directly and it will reach me just as fast.", "Not set up yet.", true);
+    if (fallback) fallback.remove();
   }
   form.addEventListener("submit", async (event) => {
     if (trap && trap.value) { event.preventDefault(); return; }
