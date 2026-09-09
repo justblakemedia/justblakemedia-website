@@ -71,9 +71,13 @@ a real form provider access key is present. Until that key is configured the
 form renders but cannot submit anywhere, which is deliberate: the alternative
 was posting a visitor's details to a third party under a key that cannot work.
 
-Measurement is Google Tag Manager, with the container loaded after the window
-load event so it does not compete with the hero image for bandwidth on the
-critical rendering path.
+Measurement is Google Tag Manager plus Vercel Analytics. The GTM container
+loads after the window load event so it does not compete with the hero image
+for bandwidth on the critical rendering path. Vercel Analytics is a deferred
+loader preceded by a small queue stub, so a call to `window.va()` made before
+the loader finishes is queued rather than dropped. Any page that calls
+`window.va()`, which today means every page loading `site.js`, needs that stub
+as well as the loader.
 
 ### Amplify
 
