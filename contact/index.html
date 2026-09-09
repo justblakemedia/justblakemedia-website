@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact | Just Blake Media</title>
-  <meta name="description" content="Book a free Growth Systems Call, or send the account over for a free look at structure, tracking and creative. Email, phone and LinkedIn for Justin Blake.">
+  <meta name="description" content="Tell me what you are trying to fix, or book twenty minutes. Either way it comes back from Justin Blake, not an assistant. Email, phone and LinkedIn.">
   <link rel="canonical" href="https://justblakemedia.com/contact/">
   <meta property="og:title" content="Contact | Just Blake Media">
-  <meta property="og:description" content="Book a free Growth Systems Call, or send the account over for a free look at structure, tracking and creative. Email, phone and LinkedIn for Justin Blake.">
+  <meta property="og:description" content="Tell me what you are trying to fix, or book twenty minutes. Either way it comes back from Justin Blake, not an assistant. Email, phone and LinkedIn.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://justblakemedia.com/contact/">
   <meta property="og:site_name" content="Just Blake Media">
@@ -20,7 +20,7 @@
   <meta property="og:image:alt" content="Two business professionals talking across a worktable in a bright office">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact | Just Blake Media">
-  <meta name="twitter:description" content="Book a free Growth Systems Call, or send the account over for a free look at structure, tracking and creative. Email, phone and LinkedIn for Justin Blake.">
+  <meta name="twitter:description" content="Tell me what you are trying to fix, or book twenty minutes. Either way it comes back from Justin Blake, not an assistant. Email, phone and LinkedIn.">
   <meta name="twitter:image" content="https://justblakemedia.com/assets/human-systems/hero-owner.webp">
   <meta name="twitter:image:alt" content="Two business professionals talking across a worktable in a bright office">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231554e8'/%3E%3Cpath d='M18 18h16v8H26v20h-8z' fill='%23ffffff'/%3E%3Cpath d='M38 18h8v28H30v-8h8z' fill='%23c9f24a'/%3E%3C/svg%3E">
@@ -159,10 +159,10 @@
             <button class="nav-link nav-disclosure" type="button" aria-expanded="false" aria-controls="menu-services">Services <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
             <div class="menu-panel" id="menu-services">
               <div class="menu-col"><h3>Practices</h3><a href="/paid-media/">Paid media</a><a href="/ai-systems/">AI systems</a></div>
-              <div class="menu-col"><h3>Teach and pricing</h3><a href="/workshops/">Workshops</a><a href="/pricing/">Pricing</a></div>
+              <div class="menu-col"><h3>Product and teaching</h3><a href="/amplify/">Amplify</a><a href="/workshops/">Workshops</a><a href="/pricing/">Pricing</a></div>
             </div>
           </li>
-          <li><a class="nav-link" href="/case-studies/">Case studies</a></li><li><a class="nav-link" href="/pricing/">Pricing</a></li><li><a class="nav-link" href="/learn/">Learn</a></li><li><a class="nav-link" href="/about/">About</a></li>
+          <li><a class="nav-link" href="/case-studies/">Case studies</a></li><li><a class="nav-link" href="/learn/">Learn</a></li><li><a class="nav-link" href="/about/">About</a></li>
           <li class="nav-cta-mobile"><a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a call</a></li>
         </ul>
       </nav>
@@ -180,7 +180,7 @@
           <h1 class="display display-xl" id="page-title" data-reveal data-reveal-delay="1">Book the call, or send me the account.</h1>
           <p class="lede" data-reveal data-reveal-delay="2">The call is twenty minutes and free. It finds out whether the problem is customers or hours, and whether I am the right person for it. If I am not, you leave with a name who is.</p>
           <div class="btn-row" data-reveal data-reveal-delay="3">
-            <a class="btn btn-lg" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a Growth Systems Call</a>
+            <a class="btn btn-lg" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a 20-minute call</a>
             <a class="btn btn-lg btn-ghost" href="#audit">Send me the account instead</a>
           </div>
         </div>
@@ -208,7 +208,7 @@
             <p>No sequence, no deck, and no follow up unless you ask for one.</p>
           </div>
         </div>
-        <form class="audit-form" id="audit-form" data-endpoint="https://api.web3forms.com/submit" novalidate>
+        <form class="audit-form" id="audit-form" data-lead="contact" data-endpoint="https://api.web3forms.com/submit" novalidate>
           <!-- Deliberately no action or method. The form is submitted by fetch()
                in site.js to data-endpoint above, so a browser with JavaScript
                off cannot post these details anywhere. site.js enables the submit
@@ -228,9 +228,14 @@
             <input type="email" id="audit-email" name="email" autocomplete="email" required placeholder="jane@company.com">
             <p class="field-error" id="audit-email-error">That email address does not look right. Check it and try again.</p>
           </div>
+          <div class="field">
+            <label for="audit-detail">What are you trying to fix?</label>
+            <textarea id="audit-detail" name="fix" rows="4" required placeholder="Leads dried up in July and I cannot tell whether it is the creative or the tracking."></textarea>
+            <p class="field-error" id="audit-detail-error">One line is enough. It is the first thing I read.</p>
+          </div>
           <div class="field field-select">
-            <label for="audit-spend">Monthly ad spend</label>
-            <select id="audit-spend" name="monthly_spend" required>
+            <label for="audit-spend">Monthly ad spend <span class="optional">Optional</span></label>
+            <select id="audit-spend" name="monthly_spend">
               <option value="">Choose a range</option>
               <option>Not running paid media yet</option>
               <option>Under $5,000</option>
@@ -239,10 +244,6 @@
               <option>More than $50,000</option>
             </select>
             <p class="field-error" id="audit-spend-error">Pick a range. It tells me what is worth looking at first.</p>
-          </div>
-          <div class="field">
-            <label for="audit-detail">What is not working <span class="optional">Optional</span></label>
-            <textarea id="audit-detail" name="detail" rows="4" placeholder="Leads dried up in July and I cannot tell whether it is the creative or the tracking."></textarea>
           </div>
           <div class="field-trap" aria-hidden="true">
             <label for="audit-company-site">Do not fill this in</label>
@@ -273,6 +274,7 @@
         <ul>
           <li><a href="/paid-media/">Paid media</a></li>
           <li><a href="/ai-systems/">AI systems</a></li>
+          <li><a href="/amplify/">Amplify</a></li>
           <li><a href="/workshops/">Workshops</a></li>
           <li><a href="/pricing/">Pricing</a></li>
         </ul>
