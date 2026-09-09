@@ -163,6 +163,12 @@
       })(window,document,'script','dataLayer','GTM-W5BPG572');
     });
   </script>
+  <!-- Vercel Analytics. The queue stub is defined before the loader so a CTA
+  click that fires before the deferred insights script has finished loading is
+  queued rather than dropped. site.js calls window.va() for book_call_click and
+  audit_request_submit. -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
