@@ -245,7 +245,8 @@
   const submit = document.getElementById("audit-submit");
   const key = form.querySelector('input[name="access_key"]');
   const trap = form.querySelector('input[name="botcheck"]');
-  const configured = key && key.value && !key.value.startsWith("REPLACE_WITH");
+  const endpoint = form.dataset.endpoint;
+  const configured = Boolean(endpoint) && key && key.value && !key.value.startsWith("REPLACE_WITH");
   const submitLabel = submit ? submit.textContent : "";
   const fieldOf = (input) => input.closest(".field");
   const setError = (input, on) => {
@@ -269,20 +270,24 @@
     status.classList.toggle("is-error", Boolean(isError));
     status.hidden = false;
   };
+  // The submit button ships disabled so a browser with JavaScript off cannot
+  // post these details anywhere. Enable it only once there is a real endpoint
+  // to send to; until then say so before anyone types their details in.
+  if (configured) {
+    if (submit) submit.disabled = false;
+  } else {
+    show("This form is not connected yet. Email justin@justblakemedia.com directly and it will reach me just as fast.", "Not set up yet.", true);
+  }
   form.addEventListener("submit", async (event) => {
     if (trap && trap.value) { event.preventDefault(); return; }
     const invalid = required().filter((input) => !validate(input));
     if (invalid.length) { event.preventDefault(); invalid[0].focus(); return; }
-    if (!configured) {
-      event.preventDefault();
-      show("This form is not connected yet. Email justin@justblakemedia.com directly and it will reach me just as fast.", "Not set up yet.", true);
-      return;
-    }
     event.preventDefault();
+    if (!configured) return;
     submit.setAttribute("aria-disabled", "true");
     submit.textContent = "Sending";
     try {
-      const response = await fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
+      const response = await fetch(endpoint, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
       if (!response.ok) throw new Error("Request failed with " + response.status);
       form.querySelectorAll(".field").forEach((f) => f.remove());
       submit.remove();
