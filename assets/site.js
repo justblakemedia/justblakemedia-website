@@ -118,6 +118,9 @@
   document.querySelectorAll("[data-door]").forEach((door) => {
     door.addEventListener("click", () => track("door_click", { label: door.getAttribute("data-door") }));
   });
+  document.querySelectorAll("[data-track]").forEach((el) => {
+    el.addEventListener("click", () => track(el.getAttribute("data-track"), { label: el.textContent.trim(), page: location.pathname }));
+  });
 
   /* ---------- carousels: centred card, blurred neighbours, arrows, keys, swipe ---------- */
 
@@ -237,68 +240,73 @@
   }
 })();
 
-/* ---------- audit form ---------- */
+/* ---------- lead forms: the hero form on the homepage and the audit form on
+   the contact page share one handler. Each form carries its own status and
+   submit elements, and both post to the same provider with the same key. */
 (() => {
-  const form = document.getElementById("audit-form");
-  if (!form) return;
-  const status = document.getElementById("audit-status");
-  const submit = document.getElementById("audit-submit");
-  const key = form.querySelector('input[name="access_key"]');
-  const trap = form.querySelector('input[name="botcheck"]');
-  const endpoint = form.dataset.endpoint;
-  const configured = Boolean(endpoint) && key && key.value && !key.value.startsWith("REPLACE_WITH");
-  const submitLabel = submit ? submit.textContent : "";
-  const fieldOf = (input) => input.closest(".field");
-  const setError = (input, on) => {
-    const field = fieldOf(input);
-    if (!field) return;
-    field.classList.toggle("has-error", on);
-    input.setAttribute("aria-invalid", String(on));
-    const err = field.querySelector(".field-error");
-    if (err) { if (on) input.setAttribute("aria-describedby", err.id); else input.removeAttribute("aria-describedby"); }
-  };
-  const validate = (input) => { const ok = input.checkValidity(); setError(input, !ok); return ok; };
-  const required = () => Array.from(form.querySelectorAll("[required]"));
-  required().forEach((input) => {
-    input.addEventListener("blur", () => validate(input));
-    input.addEventListener("input", () => { if (fieldOf(input) && fieldOf(input).classList.contains("has-error")) validate(input); });
-  });
-  const show = (message, heading, isError) => {
-    status.innerHTML = "";
-    if (heading) { const strong = document.createElement("strong"); strong.textContent = heading; status.appendChild(strong); }
-    status.appendChild(document.createTextNode(message));
-    status.classList.toggle("is-error", Boolean(isError));
-    status.hidden = false;
-  };
-  // The submit button ships disabled so a browser with JavaScript off cannot
-  // post these details anywhere. Enable it only once there is a real endpoint
-  // to send to; until then say so before anyone types their details in.
-  if (configured) {
-    if (submit) submit.disabled = false;
-  } else {
-    show("This form is not connected yet. Email justin@justblakemedia.com directly and it will reach me just as fast.", "Not set up yet.", true);
-  }
-  form.addEventListener("submit", async (event) => {
-    if (trap && trap.value) { event.preventDefault(); return; }
-    const invalid = required().filter((input) => !validate(input));
-    if (invalid.length) { event.preventDefault(); invalid[0].focus(); return; }
-    event.preventDefault();
-    if (!configured) return;
-    submit.setAttribute("aria-disabled", "true");
-    submit.textContent = "Sending";
-    try {
-      const response = await fetch(endpoint, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
-      if (!response.ok) throw new Error("Request failed with " + response.status);
-      form.querySelectorAll(".field").forEach((f) => f.remove());
-      submit.remove();
-      show("I have it. I will read the account over and write back within two business days, from my own address.", "Request received.", false);
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "audit_request_submit" });
-      if (window.va) window.va("event", { name: "audit_request_submit" });
-    } catch (error) {
-      submit.removeAttribute("aria-disabled");
-      submit.textContent = submitLabel;
-      show("That did not send. Email justin@justblakemedia.com and I will pick it up there.", "Something went wrong.", true);
+  document.querySelectorAll("form[data-lead]").forEach((form) => {
+    const label = form.dataset.lead || "lead";
+    const status = form.querySelector(".audit-status:not(noscript .audit-status)");
+    const submit = form.querySelector(".audit-submit");
+    const key = form.querySelector('input[name="access_key"]');
+    const trap = form.querySelector('input[name="botcheck"]');
+    const endpoint = form.dataset.endpoint;
+    const configured = Boolean(endpoint) && key && key.value && !key.value.startsWith("REPLACE_WITH");
+    const submitHTML = submit ? submit.innerHTML : "";
+    const fieldOf = (input) => input.closest(".field");
+    const setError = (input, on) => {
+      const field = fieldOf(input);
+      if (!field) return;
+      field.classList.toggle("has-error", on);
+      input.setAttribute("aria-invalid", String(on));
+      const err = field.querySelector(".field-error");
+      if (err) { if (on) input.setAttribute("aria-describedby", err.id); else input.removeAttribute("aria-describedby"); }
+    };
+    const validate = (input) => { const ok = input.checkValidity(); setError(input, !ok); return ok; };
+    const required = () => Array.from(form.querySelectorAll("[required]"));
+    required().forEach((input) => {
+      input.addEventListener("blur", () => validate(input));
+      input.addEventListener("input", () => { if (fieldOf(input) && fieldOf(input).classList.contains("has-error")) validate(input); });
+    });
+    const show = (message, heading, isError) => {
+      if (!status) return;
+      status.innerHTML = "";
+      if (heading) { const strong = document.createElement("strong"); strong.textContent = heading; status.appendChild(strong); }
+      status.appendChild(document.createTextNode(message));
+      status.classList.toggle("is-error", Boolean(isError));
+      status.hidden = false;
+    };
+    // The submit button ships disabled so a browser with JavaScript off cannot
+    // post these details anywhere. Enable it only once there is a real
+    // endpoint to send to; until then say so before anyone types.
+    if (configured) {
+      if (submit) submit.disabled = false;
+    } else {
+      show("This form is not connected yet. Email justin@justblakemedia.com directly and it will reach me just as fast.", "Not set up yet.", true);
     }
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (trap && trap.value) return;
+      const invalid = required().filter((input) => !validate(input));
+      if (invalid.length) { invalid[0].focus(); return; }
+      if (!configured) return;
+      submit.setAttribute("aria-disabled", "true");
+      submit.textContent = "Sending";
+      try {
+        const response = await fetch(endpoint, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
+        if (!response.ok) throw new Error("Request failed with " + response.status);
+        form.querySelectorAll(".field").forEach((f) => f.remove());
+        submit.remove();
+        show("I have it. I will read it over and write back within one business day, from my own address.", "Got it.", false);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "lead_form_submit", form: label });
+        if (label === "contact") window.dataLayer.push({ event: "audit_request_submit" });
+        if (window.va) window.va("event", { name: "lead_form_submit", data: { form: label } });
+      } catch (error) {
+        submit.removeAttribute("aria-disabled");
+        submit.innerHTML = submitHTML;
+        show("That did not send. Email justin@justblakemedia.com and I will pick it up there.", "Something went wrong.", true);
+      }
+    });
   });
 })();
