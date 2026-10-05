@@ -1,0 +1,1132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Workshop Resources | Just Blake Media</title>
+  <meta name="description" content="Everything from Justin Blake's AI workshop in one place: the tool map, the three recipe cards, the prompts, the slop check, and the deck.">
+  <link rel="canonical" href="https://justblakemedia.com/ai-workshop">
+
+  <meta property="og:title" content="AI Workshop Resources | Just Blake Media">
+  <meta property="og:description" content="The tool map, the three recipe cards, the prompts, the slop check, and the deck. Everything from the room, in one place.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://justblakemedia.com/ai-workshop">
+  <meta property="og:site_name" content="Just Blake Media">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://justblakemedia.com/assets/human-systems/ai-team.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Workshop Resources | Just Blake Media">
+  <meta name="twitter:description" content="The tool map, the three recipe cards, the prompts, the slop check, and the deck. Everything from the room, in one place.">
+  <meta name="twitter:image" content="https://justblakemedia.com/assets/human-systems/ai-team.webp">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231554e8'/%3E%3Cpath d='M18 18h16v8H26v20h-8z' fill='%23ffffff'/%3E%3Cpath d='M38 18h8v28H30v-8h8z' fill='%23c9f24a'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,100..900&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,100..900&amp;display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,100..900&amp;display=swap"></noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Workshop Resources",
+    "url": "https://justblakemedia.com/ai-workshop",
+    "description": "Resource hub for Justin Blake's AI workshop: tool map, recipe cards, prompts, slop check, and deck.",
+    "isPartOf": { "@id": "https://justblakemedia.com/#organization" },
+    "author": { "@type": "Person", "name": "Justin Blake" }
+  }
+  </script>
+
+  <style>
+    /*
+      Design tokens match the live homepage (index.html) so this page
+      reads as part of justblakemedia.com. If the homepage re-skins,
+      change these six values and the page follows.
+    */
+    :root {
+      --cloud: #f5f7fb;
+      --white: #ffffff;
+      --navy: #0b1528;
+      --cobalt: #1554e8;
+      --mint: #77dcc1;
+      --lime: #c9f24a;
+      --steel: #58657a;
+      --mist: #dde3ec;
+      --content: 1180px;
+      --focus: 3px solid #0b1528;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+
+    body {
+      margin: 0;
+      background: var(--cloud);
+      color: var(--navy);
+      font-family: "Archivo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      text-rendering: optimizeLegibility;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+
+    a { color: inherit; transition: color 180ms ease, background-color 180ms ease, transform 180ms ease; }
+
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: var(--focus);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed; top: 0.75rem; left: 0.75rem; z-index: 100;
+      min-height: 44px; padding: 0.75rem 1rem;
+      transform: translateY(-160%);
+      background: var(--lime); color: var(--navy);
+      font-weight: 800; text-decoration: none;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .shell { width: min(calc(100% - 3rem), var(--content)); margin-inline: auto; }
+
+    /* Header, same shape as the homepage */
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      border-top: 4px solid var(--lime);
+      border-bottom: 1px solid var(--mist);
+      background: var(--white);
+    }
+    .nav-grid {
+      display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: center; gap: 1.25rem; min-height: 72px;
+    }
+    .wordmark {
+      grid-column: 1 / span 3;
+      display: inline-flex; align-items: center; min-height: 44px; width: fit-content;
+      font-size: 0.82rem; font-variation-settings: "wdth" 85, "wght" 820; font-weight: 820;
+      letter-spacing: 0.12em; line-height: 1; text-decoration: none; white-space: nowrap;
+    }
+    .wordmark::before { width: 1.8rem; height: 2px; margin-right: 0.65rem; background: var(--cobalt); content: ""; }
+    .primary-nav { grid-column: 4 / -1; }
+    .nav-list {
+      display: flex; align-items: center; justify-content: flex-end;
+      gap: clamp(0.5rem, 1.5vw, 1.4rem); margin: 0; padding: 0; list-style: none;
+    }
+    .nav-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 44px; min-height: 44px; padding-inline: 0.2rem;
+      color: var(--steel); font-size: 0.82rem; font-weight: 650; text-decoration: none; white-space: nowrap;
+    }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--cobalt); }
+    .nav-cta, .cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0.75rem 1rem;
+      background: var(--cobalt); color: var(--white);
+      font-size: 0.88rem; font-weight: 760; line-height: 1.1; text-decoration: none; white-space: nowrap;
+    }
+    .nav-cta::after, .cta::after {
+      width: 2.1rem; height: 1px; margin-left: 0.7rem;
+      transform: scaleX(0.74); transform-origin: left; background: var(--lime); content: "";
+      transition: transform 180ms ease;
+    }
+    .nav-cta:hover::after, .cta:hover::after, .nav-cta:focus-visible::after, .cta:focus-visible::after { transform: scaleX(1); }
+    .nav-cta:active, .cta:active, .copy-btn:active { transform: translateY(1px); }
+
+    /* Shared type */
+    .eyebrow {
+      display: flex; align-items: center; gap: 0.7rem; margin: 0 0 1.4rem;
+      color: var(--cobalt); font-size: clamp(0.72rem, 1vw, 0.82rem); font-weight: 780;
+      letter-spacing: 0.14em; line-height: 1.3; text-transform: uppercase;
+    }
+    .eyebrow::before { flex: 0 0 auto; width: 2.1rem; height: 2px; background: var(--lime); content: ""; }
+
+    h1 {
+      max-width: 12ch; margin: 0;
+      font-size: clamp(3.2rem, 6.6vw, 6rem);
+      font-variation-settings: "wdth" 76, "wght" 800; font-weight: 800;
+      letter-spacing: -0.055em; line-height: 0.9;
+    }
+    h1 span { display: block; color: var(--cobalt); }
+
+    .section-intro {
+      display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1.25rem; margin-bottom: clamp(2.75rem, 5vw, 4.5rem);
+    }
+    .section-intro .eyebrow { grid-column: 1 / span 3; align-self: start; margin-top: 0.55rem; }
+    .section-intro h2 {
+      grid-column: 4 / span 8; max-width: 16ch; margin: 0;
+      font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+      font-variation-settings: "wdth" 78, "wght" 790; font-weight: 790;
+      letter-spacing: -0.05em; line-height: 0.96;
+    }
+    .section-intro p { grid-column: 4 / span 7; max-width: 58ch; margin: 1.2rem 0 0; color: var(--steel); font-size: 1.05rem; line-height: 1.6; }
+
+    .label {
+      margin: 0 0 0.6rem; color: var(--steel);
+      font-size: 0.7rem; font-weight: 780; letter-spacing: 0.14em; line-height: 1.2; text-transform: uppercase;
+    }
+
+    /* Hero */
+    .hero { position: relative; isolation: isolate; padding-block: clamp(3.5rem, 7vw, 6.5rem) clamp(3rem, 6vw, 5.5rem); }
+    .hero-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; gap: clamp(1.25rem, 2.3vw, 2.25rem); }
+    .hero-copy { grid-column: 1 / span 7; }
+    .hero-intro { max-width: 36rem; margin: clamp(1.4rem, 3vw, 2.2rem) 0 0; color: var(--steel); font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.55; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 2rem; }
+    .cta.secondary { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
+    .cta.secondary::after { background: var(--cobalt); }
+
+    /* Session block: the only part that changes per audience */
+    .session {
+      display: inline-grid; grid-template-columns: auto 1fr; gap: 0.35rem 1rem; align-items: baseline;
+      margin: 0 0 1.6rem; padding: 0.9rem 1.1rem;
+      border-left: 3px solid var(--cobalt); background: var(--white);
+      font-size: 0.9rem;
+    }
+    .session dt { color: var(--steel); font-size: 0.68rem; font-weight: 780; letter-spacing: 0.12em; text-transform: uppercase; }
+    .session dd { margin: 0; font-weight: 640; }
+    .session a { color: var(--cobalt); text-underline-offset: 0.2rem; }
+
+    /* QR card */
+    .qr-card {
+      grid-column: 8 / -1; position: relative;
+      padding: clamp(1.4rem, 2.5vw, 2rem);
+      background: var(--navy); color: var(--white);
+    }
+    .qr-card::before { position: absolute; inset: -0.75rem 0.75rem 0.75rem -0.75rem; z-index: -1; border: 1px solid var(--mint); content: ""; }
+    .qr-card .label { color: var(--mint); }
+    .qr-frame { width: min(100%, 15.5rem); margin: 0.5rem auto 1.2rem; padding: 0.7rem; background: var(--white); }
+    .qr-url {
+      margin: 0; text-align: center;
+      font-family: var(--mono); font-size: clamp(0.9rem, 1.4vw, 1.05rem); font-weight: 600; letter-spacing: 0.01em;
+      overflow-wrap: anywhere;
+    }
+    .qr-note { margin: 0.8rem 0 0; text-align: center; color: color-mix(in srgb, var(--white) 72%, transparent); font-size: 0.82rem; line-height: 1.5; }
+
+    /* Bands */
+    .band { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--mist); }
+    .band.white { background: var(--white); }
+    .band.dark { background: var(--navy); color: var(--white); border-top: 0; }
+    .band.dark .eyebrow, .band.dark .label { color: var(--mint); }
+    .band.dark .section-intro p { color: color-mix(in srgb, var(--white) 76%, transparent); }
+    .band.mint { background: var(--mint); border-top: 0; }
+    .band.mint .eyebrow { color: var(--navy); }
+    .band.mint .section-intro p { color: var(--navy); }
+
+    /* Start here: three numbered steps */
+    .steps { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+    .step { position: relative; grid-column: span 4; min-width: 0; padding: 1.4rem 0 0; border-top: 2px solid var(--navy); }
+    .step::before { display: block; margin-bottom: 1.4rem; color: var(--cobalt); font-size: 0.72rem; font-weight: 780; letter-spacing: 0.14em; content: attr(data-step); }
+    .step h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2.1rem); font-variation-settings: "wdth" 82, "wght" 760; font-weight: 760; letter-spacing: -0.035em; line-height: 1; }
+    .step p { max-width: 32ch; margin: 1rem 0 0; color: var(--steel); font-size: 0.98rem; line-height: 1.6; }
+    .step .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+    .text-link {
+      display: inline-flex; align-items: center; min-height: 44px;
+      color: var(--navy); font-size: 0.88rem; font-weight: 760; text-underline-offset: 0.3rem;
+    }
+    .text-link::after { width: 1.4rem; height: 2px; margin-left: 0.6rem; background: var(--cobalt); content: ""; }
+    .text-link:hover, .text-link:focus-visible { color: var(--cobalt); text-decoration-thickness: 2px; }
+    .rule-note { margin: 2.5rem 0 0; padding: 1.1rem 1.3rem; border-left: 3px solid var(--cobalt); background: var(--cloud); font-weight: 640; line-height: 1.5; max-width: 62ch; }
+
+    /* The ladder */
+    .ladder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid color-mix(in srgb, var(--white) 24%, transparent); }
+    .rung { padding: 1.6rem clamp(0.75rem, 2vw, 1.6rem) 1.8rem 0; border-right: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
+    .rung + .rung { padding-left: clamp(0.75rem, 2vw, 1.6rem); }
+    .rung:last-child { border-right: 0; }
+    .rung .num { display: block; margin-bottom: 1.2rem; color: var(--lime); font-size: 0.72rem; font-weight: 780; letter-spacing: 0.14em; }
+    .rung h3 { margin: 0; color: var(--white); font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 720; letter-spacing: -0.02em; line-height: 1.05; }
+    .rung p { margin: 0.8rem 0 0; color: color-mix(in srgb, var(--white) 72%, transparent); font-size: 0.92rem; line-height: 1.55; }
+    .rung.today { background: color-mix(in srgb, var(--white) 6%, transparent); outline: 1px solid var(--lime); outline-offset: -1px; padding-left: clamp(0.75rem, 2vw, 1.6rem); }
+    .rung.today .tag { display: inline-block; margin-top: 1rem; padding: 0.3rem 0.5rem; background: var(--lime); color: var(--navy); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    .ladder-note { max-width: 62ch; margin: 2.5rem 0 0; padding-left: 1.3rem; border-left: 3px solid var(--lime); color: color-mix(in srgb, var(--white) 80%, transparent); font-size: 1rem; line-height: 1.6; }
+    .ladder-note strong { color: var(--white); }
+
+    /* Tool map */
+    .tools { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+    .tool { grid-column: span 4; display: flex; flex-direction: column; min-width: 0; padding: 1.5rem; border: 1px solid var(--mist); background: var(--white); }
+    .tool:nth-child(4), .tool:nth-child(5) { grid-column: span 6; }
+    .tool-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--mist); }
+    .tool h3 { margin: 0; font-size: 1.7rem; font-variation-settings: "wdth" 80, "wght" 780; font-weight: 780; letter-spacing: -0.03em; line-height: 1; }
+    .tool .owner { margin: 0; color: var(--steel); font-size: 0.78rem; font-weight: 650; white-space: nowrap; }
+    .tool dl { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin: 0; }
+    .tool dt { color: var(--steel); font-size: 0.66rem; font-weight: 780; letter-spacing: 0.14em; text-transform: uppercase; }
+    .tool dd { margin: 0.25rem 0 0; font-size: 0.95rem; line-height: 1.5; }
+    .tool dd.best { font-weight: 660; }
+    .tool .go { margin-top: auto; padding-top: 1.2rem; }
+    .tool .flag { display: inline-block; margin-top: 0.4rem; padding: 0.2rem 0.45rem; background: var(--cloud); color: var(--steel); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; }
+    .checked { margin: 1.5rem 0 0; color: var(--steel); font-size: 0.84rem; }
+
+    /* Recipe cards */
+    .recipes { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; }
+    .recipe { grid-column: span 4; display: flex; flex-direction: column; min-width: 0; background: var(--white); border: 1px solid var(--mist); }
+    .recipe-head { padding: 1.5rem 1.5rem 1.2rem; background: var(--navy); color: var(--white); }
+    .recipe-head .label { color: var(--mint); }
+    .recipe-head h3 { margin: 0; font-size: 1.9rem; font-variation-settings: "wdth" 78, "wght" 790; font-weight: 790; letter-spacing: -0.04em; line-height: 0.95; }
+    .recipe-head p { margin: 0.8rem 0 0; color: color-mix(in srgb, var(--white) 76%, transparent); font-size: 0.95rem; line-height: 1.5; }
+    .recipe-body { display: flex; flex-direction: column; gap: 1.2rem; flex: 1; padding: 1.4rem 1.5rem 1.5rem; }
+    .recipe-body h4 { margin: 0 0 0.4rem; color: var(--steel); font-size: 0.66rem; font-weight: 780; letter-spacing: 0.14em; text-transform: uppercase; }
+    .recipe-body p, .recipe-body li { margin: 0; font-size: 0.95rem; line-height: 1.55; }
+    .recipe-body ol { margin: 0; padding-left: 1.2rem; }
+    .recipe-body ol li + li { margin-top: 0.35rem; }
+    .recipe-body .test { padding: 0.9rem 1rem; background: var(--cloud); border-left: 3px solid var(--cobalt); font-weight: 640; }
+    .recipe-body details { margin-top: auto; border-top: 1px solid var(--mist); padding-top: 1rem; }
+    summary { cursor: pointer; font-size: 0.88rem; font-weight: 760; color: var(--cobalt); list-style: none; display: flex; align-items: center; gap: 0.5rem; min-height: 44px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { content: "+"; display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; border: 1px solid currentColor; font-size: 0.9rem; line-height: 1; }
+    details[open] summary::before { content: "\2212"; }
+
+    /* Code blocks and copy buttons */
+    .snippet { position: relative; margin: 0.8rem 0 0; }
+    .snippet pre {
+      margin: 0; padding: 1rem 1rem 1rem;
+      max-height: 22rem; overflow: auto;
+      background: var(--navy); color: #e7ecf5;
+      font-family: var(--mono); font-size: 0.8rem; line-height: 1.55;
+      white-space: pre-wrap; overflow-wrap: anywhere;
+    }
+    .snippet-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.5rem 0.75rem; background: color-mix(in srgb, var(--navy) 92%, var(--white)); color: color-mix(in srgb, var(--white) 70%, transparent); font-size: 0.72rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
+    .copy-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 36px; padding: 0.4rem 0.75rem;
+      border: 1px solid var(--lime); background: transparent; color: var(--lime);
+      font: inherit; font-size: 0.72rem; font-weight: 780; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+    }
+    .copy-btn:hover, .copy-btn:focus-visible { background: var(--lime); color: var(--navy); }
+    .copy-btn.done { background: var(--mint); border-color: var(--mint); color: var(--navy); }
+    .band.white .snippet-bar { background: var(--navy); }
+
+    /* Prompts */
+    .framework { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin: 0 0 2.5rem; padding: 0; list-style: none; }
+    .framework li { padding: 1rem 1.1rem; border-top: 2px solid var(--navy); }
+    .framework strong { display: block; margin-bottom: 0.3rem; font-size: 1.05rem; letter-spacing: -0.01em; }
+    .framework span { color: var(--steel); font-size: 0.9rem; line-height: 1.5; }
+    .prompts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+    .prompt { min-width: 0; padding: 1.3rem 1.4rem 1.4rem; background: var(--white); border: 1px solid var(--mist); }
+    .prompt.wide { grid-column: 1 / -1; }
+    .prompt h3 { margin: 0; font-size: 1.25rem; font-weight: 740; letter-spacing: -0.02em; line-height: 1.1; }
+    .prompt .use { margin: 0.4rem 0 0; color: var(--steel); font-size: 0.88rem; }
+    .prompt .snippet pre { max-height: none; }
+    .prompt-note { max-width: 62ch; margin: 2rem 0 0; color: var(--steel); font-size: 0.9rem; line-height: 1.6; }
+
+    /* Slop check */
+    .slop { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2rem 1.25rem; }
+    .slop-copy { grid-column: 1 / span 5; }
+    .slop-copy h2 { max-width: 10ch; margin: 0; font-size: clamp(2.6rem, 5vw, 4.6rem); font-variation-settings: "wdth" 77, "wght" 790; font-weight: 790; letter-spacing: -0.05em; line-height: 0.94; }
+    .slop-copy p { max-width: 40ch; margin: 1.5rem 0 0; font-size: 1.1rem; line-height: 1.55; }
+    .slop-list { grid-column: 7 / -1; margin: 0; padding: 0; list-style: none; counter-reset: check; border-top: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
+    .slop-list li { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0.6rem; padding: 1rem 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); font-size: 1.05rem; font-weight: 640; line-height: 1.4; }
+    .slop-list li::before { counter-increment: check; content: counter(check, decimal-leading-zero); font-size: 0.72rem; font-weight: 780; letter-spacing: 0.1em; padding-top: 0.3rem; }
+    .slop-list small { grid-column: 2; display: block; margin-top: 0.2rem; font-size: 0.86rem; font-weight: 480; color: color-mix(in srgb, var(--navy) 78%, transparent); }
+
+    /* Stack */
+    .stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid color-mix(in srgb, var(--white) 24%, transparent); }
+    .stack li { padding: 1.6rem clamp(0rem, 2vw, 1.6rem) 1.8rem 0; border-bottom: 1px solid color-mix(in srgb, var(--white) 24%, transparent); }
+    .stack li:nth-child(odd) { border-right: 1px solid color-mix(in srgb, var(--white) 24%, transparent); }
+    .stack li:nth-child(even) { padding-left: clamp(1rem, 2.5vw, 2rem); padding-right: 0; }
+    .stack .label { color: var(--mint); }
+    .stack h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2.1rem); font-variation-settings: "wdth" 80, "wght" 780; font-weight: 780; letter-spacing: -0.035em; line-height: 1; }
+    .stack h3 a { text-decoration: none; }
+    .stack h3 a:hover, .stack h3 a:focus-visible { color: var(--lime); }
+    .stack .job { margin: 0.9rem 0 0; color: color-mix(in srgb, var(--white) 76%, transparent); font-size: 0.95rem; line-height: 1.55; max-width: 44ch; }
+    .stack .why { margin: 0.9rem 0 0; padding-left: 1rem; border-left: 2px solid var(--lime); color: var(--white); font-size: 0.95rem; font-weight: 640; line-height: 1.45; max-width: 40ch; }
+
+    /* Downloads */
+    .downloads { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+    .download { grid-column: span 4; display: flex; flex-direction: column; min-width: 0; padding: 1.5rem; border: 1px solid var(--mist); background: var(--white); }
+    .download h3 { margin: 0; font-size: 1.35rem; font-weight: 740; letter-spacing: -0.02em; line-height: 1.1; }
+    .download p { margin: 0.7rem 0 0; color: var(--steel); font-size: 0.92rem; line-height: 1.55; }
+    .download .go { margin-top: auto; padding-top: 1rem; }
+    .download .status { display: inline-block; margin-top: auto; padding: 0.4rem 0.6rem; background: var(--cloud); color: var(--steel); font-size: 0.7rem; font-weight: 760; letter-spacing: 0.1em; text-transform: uppercase; width: fit-content; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: end; gap: 2rem 1.25rem; }
+    .contact-copy { grid-column: 1 / span 7; }
+    .contact-copy h2 { max-width: 12ch; margin: 0; font-size: clamp(2.8rem, 6vw, 5.5rem); font-variation-settings: "wdth" 76, "wght" 800; font-weight: 800; letter-spacing: -0.055em; line-height: 0.9; }
+    .contact-copy p { max-width: 48ch; margin: 1.4rem 0 0; color: var(--steel); font-size: 1.05rem; line-height: 1.6; }
+    .contact-actions { grid-column: 8 / -1; display: flex; flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+    .contact-cta { display: inline-flex; align-items: center; justify-content: space-between; width: 100%; min-height: 58px; padding: 1rem 1.15rem; background: var(--cobalt); color: var(--white); font-size: 0.92rem; font-weight: 760; line-height: 1.25; text-decoration: none; }
+    .contact-cta::after { width: 2.25rem; height: 2px; margin-left: 1rem; background: var(--lime); content: ""; transition: transform 180ms ease; transform: scaleX(0.72); transform-origin: left; }
+    .contact-cta:hover::after, .contact-cta:focus-visible::after { transform: scaleX(1); }
+    .contact-email { display: inline-flex; align-items: center; min-height: 44px; color: var(--cobalt); font-size: 0.95rem; font-weight: 700; overflow-wrap: anywhere; text-underline-offset: 0.3rem; }
+
+    /* Footer, same as homepage */
+    .site-footer { background: var(--navy); color: var(--white); }
+    .footer-inner { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.5rem 1.25rem; padding-block: 2.5rem; color: color-mix(in srgb, var(--white) 74%, transparent); font-size: 0.875rem; line-height: 1.55; }
+    .footer-inner p { margin: 0; }
+    .footer-brand { grid-column: 1 / span 3; color: var(--white); font-size: 0.78rem; font-weight: 780; letter-spacing: 0.1em; text-transform: uppercase; }
+    .footer-location { grid-column: 4 / span 2; }
+    .footer-email { grid-column: 6 / span 3; }
+    .footer-email a { display: inline-flex; align-items: center; min-height: 44px; text-underline-offset: 0.25rem; }
+    .footer-email a:hover, .footer-email a:focus-visible { color: var(--lime); }
+    .site-footer a:focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; }
+    .footer-privacy { grid-column: 9 / -1; max-width: 38ch; }
+    .footer-copyright { grid-column: 1 / -1; padding-top: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); font-size: 0.82rem; }
+
+    /* Reveal, matches homepage behaviour */
+    .reveal-ready [data-reveal] { transition: opacity 520ms ease, transform 520ms ease; }
+    .reveal-ready [data-reveal].reveal-pending { opacity: 0; transform: translateY(1.25rem); }
+
+    @media (max-width: 1060px) {
+      .nav-list { gap: 0.45rem; }
+      .nav-link { font-size: 0.76rem; }
+      .nav-cta { padding-inline: 0.75rem; font-size: 0.78rem; }
+    }
+
+    @media (max-width: 880px) {
+      .shell { width: min(calc(100% - 2.5rem), var(--content)); }
+      .site-header { position: relative; }
+      .nav-grid { grid-template-columns: 1fr; gap: 0; padding-block: 0.75rem; }
+      .wordmark, .primary-nav { grid-column: 1; }
+      .primary-nav { width: 100%; overflow-x: auto; scrollbar-width: thin; }
+      .nav-list { justify-content: flex-start; width: max-content; min-width: 100%; }
+      .hero-grid { gap: 2.5rem 1rem; }
+      .hero-copy { grid-column: 1 / -1; }
+      .qr-card { grid-column: 2 / span 10; }
+      h1 { max-width: 13ch; font-size: clamp(3rem, 9vw, 5rem); }
+      .section-intro .eyebrow { grid-column: 1 / -1; margin-top: 0; }
+      .section-intro h2, .section-intro p { grid-column: 1 / -1; }
+      .steps { gap: 2rem 1rem; }
+      .step { grid-column: span 6; }
+      .step:nth-child(3) { grid-column: 1 / -1; }
+      .ladder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .rung:nth-child(2) { border-right: 0; }
+      .rung:nth-child(3) { border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
+      .rung:nth-child(4) { border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
+      .tool, .tool:nth-child(4), .tool:nth-child(5) { grid-column: span 6; }
+      .tool:nth-child(5) { grid-column: 1 / -1; }
+      .recipe { grid-column: 1 / -1; }
+      .framework { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .prompts { grid-template-columns: 1fr; }
+      .slop-copy { grid-column: 1 / -1; }
+      .slop-list { grid-column: 1 / -1; }
+      .download { grid-column: span 6; }
+      .download:nth-child(3) { grid-column: 1 / -1; }
+      .contact-copy { grid-column: 1 / -1; }
+      .contact-actions { grid-column: 1 / span 8; }
+      .footer-brand { grid-column: 1 / span 3; }
+      .footer-location { grid-column: 4 / span 3; }
+      .footer-email { grid-column: 7 / -1; }
+      .footer-privacy { grid-column: 4 / -1; }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(calc(100% - 2rem), var(--content)); }
+      .hero { padding-block: 3rem 3.5rem; }
+      h1 { font-size: clamp(2.7rem, 13vw, 3.6rem); }
+      .qr-card { grid-column: 1 / -1; }
+      .session { grid-template-columns: 1fr; gap: 0.15rem 0; }
+      .session dd { margin-bottom: 0.5rem; }
+      .step, .step:nth-child(3), .tool, .tool:nth-child(4), .tool:nth-child(5), .download, .download:nth-child(3) { grid-column: 1 / -1; }
+      .ladder { grid-template-columns: 1fr; }
+      .rung { border-right: 0; padding-left: 0; border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
+      .rung.today { padding-left: 1rem; }
+      .framework { grid-template-columns: 1fr; }
+      .stack { grid-template-columns: 1fr; }
+      .stack li, .stack li:nth-child(even) { padding-left: 0; padding-right: 0; border-right: 0; }
+      .contact-actions { grid-column: 1 / -1; }
+      .footer-brand, .footer-location, .footer-email, .footer-privacy { grid-column: 1 / -1; }
+      .footer-privacy { max-width: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      a, .copy-btn { transition: none; }
+      .reveal-ready [data-reveal], .reveal-ready [data-reveal].reveal-pending { opacity: 1; transform: none; }
+    }
+
+    @media print {
+      .site-header, .hero-actions, .copy-btn, .contact, .site-footer { display: none; }
+      .band, .hero { padding-block: 1.5rem; }
+      .band.dark, .qr-card, .recipe-head, .snippet pre { background: #fff !important; color: #000 !important; border: 1px solid #000; }
+      .band.dark .eyebrow, .band.dark .label, .rung .num, .rung h3, .rung p, .stack h3, .stack .job, .stack .why, .recipe-head .label, .recipe-head p { color: #000 !important; }
+      details { display: block; }
+      details > summary { display: none; }
+      details:not([open]) > *:not(summary) { display: block; }
+    }
+  </style>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" id="top">
+    <div class="shell nav-grid">
+      <a class="wordmark" href="/" aria-label="Just Blake Media home">JUST BLAKE MEDIA</a>
+      <nav class="primary-nav" id="primary-menu" aria-label="Page navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#start">Start here</a></li>
+          <li><a class="nav-link" href="#tools">Tool map</a></li>
+          <li><a class="nav-link" href="#recipes">Recipe cards</a></li>
+          <li><a class="nav-link" href="#prompts">Prompts</a></li>
+          <li><a class="nav-link" href="#stack">Justin's stack</a></li>
+          <li><a class="nav-link" href="#deck">Deck</a></li>
+          <li><a class="nav-cta" href="#contact">Work with Justin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">AI Workshop Resources</p>
+
+          <!-- SESSION BLOCK. This is the only part of the page tied to one audience.
+               Swap the four values below when this page is reused for another group. -->
+          <dl class="session">
+            <dt>Session</dt>
+            <dd><a href="https://jewishatlanta.org/atlanta-jewish-marketing-network/meetup/">Atlanta Jewish Marketing Network meetup</a></dd>
+            <dt>When</dt>
+            <dd>Wednesday, October 14, 2026</dd>
+            <dt>Host</dt>
+            <dd>Jewish Federation of Greater Atlanta</dd>
+            <dt>Bring</dt>
+            <dd>A laptop, a free AI account, and three real examples of your work</dd>
+          </dl>
+          <!-- END SESSION BLOCK -->
+
+          <h1 id="hero-title">Everything from the room, <span>in one place.</span></h1>
+          <p class="hero-intro">The tool map, the three recipe cards, the prompts we ran, the slop check, and the deck. Nothing to download and nothing to remember. Keep this link.</p>
+          <div class="hero-actions">
+            <a class="cta" href="#start">Start here</a>
+            <a class="cta secondary" href="#recipes">Jump to the recipe cards</a>
+          </div>
+        </div>
+
+        <div class="qr-card">
+          <p class="label">Point your phone here</p>
+          <div class="qr-frame">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges" role="img" aria-label="QR code linking to justblakemedia.com/ai-workshop"><rect width="33" height="33" fill="#fff"/><path d="M2 2h7v1h-7zM10 2h2v1h-2zM13 2h2v1h-2zM16 2h5v1h-5zM22 2h1v1h-1zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h2v1h-2zM19 3h1v1h-1zM21 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM12 4h2v1h-2zM16 4h4v1h-4zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h2v1h-2zM14 5h3v1h-3zM18 5h1v1h-1zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h4v1h-4zM15 6h1v1h-1zM17 6h2v1h-2zM20 6h1v1h-1zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM13 7h1v1h-1zM15 7h2v1h-2zM18 7h4v1h-4zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM10 9h5v1h-5zM18 9h3v1h-3zM2 10h1v1h-1zM6 10h1v1h-1zM8 10h3v1h-3zM13 10h4v1h-4zM18 10h2v1h-2zM22 10h6v1h-6zM30 10h1v1h-1zM2 11h1v1h-1zM5 11h3v1h-3zM16 11h5v1h-5zM24 11h7v1h-7zM3 12h2v1h-2zM7 12h3v1h-3zM13 12h5v1h-5zM20 12h1v1h-1zM23 12h3v1h-3zM30 12h1v1h-1zM5 13h1v1h-1zM7 13h1v1h-1zM10 13h1v1h-1zM15 13h1v1h-1zM18 13h3v1h-3zM22 13h2v1h-2zM27 13h1v1h-1zM29 13h2v1h-2zM2 14h1v1h-1zM4 14h5v1h-5zM10 14h2v1h-2zM13 14h3v1h-3zM17 14h1v1h-1zM19 14h1v1h-1zM21 14h3v1h-3zM25 14h1v1h-1zM29 14h1v1h-1zM3 15h2v1h-2zM6 15h1v1h-1zM9 15h3v1h-3zM13 15h8v1h-8zM24 15h7v1h-7zM2 16h2v1h-2zM6 16h3v1h-3zM11 16h1v1h-1zM14 16h1v1h-1zM17 16h4v1h-4zM22 16h1v1h-1zM26 16h3v1h-3zM30 16h1v1h-1zM5 17h1v1h-1zM10 17h1v1h-1zM13 17h2v1h-2zM16 17h1v1h-1zM18 17h3v1h-3zM22 17h4v1h-4zM29 17h2v1h-2zM3 18h1v1h-1zM7 18h2v1h-2zM10 18h1v1h-1zM12 18h5v1h-5zM18 18h6v1h-6zM25 18h1v1h-1zM29 18h1v1h-1zM2 19h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM9 19h3v1h-3zM13 19h2v1h-2zM17 19h4v1h-4zM24 19h4v1h-4zM29 19h2v1h-2zM4 20h1v1h-1zM8 20h3v1h-3zM14 20h4v1h-4zM20 20h1v1h-1zM22 20h3v1h-3zM28 20h1v1h-1zM30 20h1v1h-1zM5 21h1v1h-1zM11 21h1v1h-1zM13 21h1v1h-1zM15 21h1v1h-1zM19 21h2v1h-2zM22 21h1v1h-1zM24 21h1v1h-1zM29 21h2v1h-2zM2 22h4v1h-4zM8 22h1v1h-1zM11 22h1v1h-1zM13 22h3v1h-3zM17 22h1v1h-1zM19 22h1v1h-1zM22 22h6v1h-6zM30 22h1v1h-1zM10 23h3v1h-3zM15 23h4v1h-4zM20 23h3v1h-3zM26 23h1v1h-1zM30 23h1v1h-1zM2 24h7v1h-7zM10 24h1v1h-1zM12 24h2v1h-2zM17 24h1v1h-1zM19 24h1v1h-1zM21 24h2v1h-2zM24 24h1v1h-1zM26 24h3v1h-3zM30 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h3v1h-3zM16 25h1v1h-1zM19 25h4v1h-4zM26 25h1v1h-1zM29 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM10 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM21 26h7v1h-7zM29 26h1v1h-1zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM11 27h1v1h-1zM13 27h1v1h-1zM15 27h1v1h-1zM17 27h4v1h-4zM22 27h2v1h-2zM25 27h1v1h-1zM30 27h1v1h-1zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM11 28h1v1h-1zM15 28h1v1h-1zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM23 28h1v1h-1zM27 28h4v1h-4zM2 29h1v1h-1zM8 29h1v1h-1zM13 29h1v1h-1zM15 29h3v1h-3zM19 29h2v1h-2zM22 29h2v1h-2zM25 29h3v1h-3zM29 29h2v1h-2zM2 30h7v1h-7zM10 30h1v1h-1zM12 30h3v1h-3zM17 30h1v1h-1zM19 30h2v1h-2zM22 30h3v1h-3zM27 30h1v1h-1zM29 30h1v1h-1z" fill="#0b1528"/></svg>
+          </div>
+          <p class="qr-url">justblakemedia.com/ai-workshop</p>
+          <p class="qr-note">Scan it, or type the address. Bookmark it before you leave the room.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band white" id="start" aria-labelledby="start-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">Start here</p>
+          <h2 id="start-title">Three things to do before the session.</h2>
+          <p>Ten minutes total. Do them and you will spend the build time building instead of signing up for things.</p>
+        </div>
+        <ol class="steps">
+          <li class="step" data-step="01">
+            <h3>Take the quiz</h3>
+            <p>Four minutes. It sorts you into one of the three build tracks below, and it makes you an eight-panel comic about your work five years from now. A few of those go on screen at the open.</p>
+            <ul class="links">
+              <li><a class="text-link" href="https://docs.google.com/forms/d/e/1FAIpQLSczB6WLYORnjBt_fAVNqK61hhPbxnHB2TLbAKNAQSwp7S-OZw/viewform">Take the quiz</a></li>
+            </ul>
+          </li>
+          <li class="step" data-step="02">
+            <h3>Get a free account</h3>
+            <p>One is enough. If your organization already pays for one of these, use that. Everything in the room runs on the free tier.</p>
+            <ul class="links">
+              <li><a class="text-link" href="https://chatgpt.com/">ChatGPT</a></li>
+              <li><a class="text-link" href="https://claude.ai/">Claude</a></li>
+              <li><a class="text-link" href="https://gemini.google.com/">Gemini</a></li>
+            </ul>
+          </li>
+          <li class="step" data-step="03">
+            <h3>Bring three real examples</h3>
+            <p>Your track card tells you which three: sent emails, past posts, or this week's to-do list. Copy them into one document before you arrive so you are not digging through your inbox at lunch.</p>
+            <ul class="links">
+              <li><a class="text-link" href="#recipes">See what each track needs</a></li>
+            </ul>
+          </li>
+        </ol>
+        <p class="rule-note">One rule for the room: public content only. Nothing with donor names, gift amounts, or financial data goes into any tool until your organization has a written policy for it. Ask your ops or IT contact for that policy. Do not write one at lunch.</p>
+      </div>
+    </section>
+
+    <section class="band dark" id="idea" aria-labelledby="idea-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">The one idea</p>
+          <h2 id="idea-title">Every task can level up. Today you climb one rung.</h2>
+          <p>You are not learning a tool. You are writing a job description for a new hire who never sleeps, then testing whether it does the work the way you would. That document is the whole workshop.</p>
+        </div>
+        <ol class="ladder">
+          <li class="rung">
+            <span class="num">RUNG 0</span>
+            <h3>Task</h3>
+            <p>Do it once, by hand. Notice every step you take and every judgment call you make.</p>
+          </li>
+          <li class="rung today">
+            <span class="num">RUNG 1</span>
+            <h3>Job description</h3>
+            <p>Write the steps down: who the AI is, who it writes to, how you sound, what good looks like, what to avoid. Paste it in. Now it repeats.</p>
+            <span class="tag">Today</span>
+          </li>
+          <li class="rung">
+            <span class="num">RUNG 2</span>
+            <h3>Agent</h3>
+            <p>Give the job description real inputs on its own: your inbox, your calendar, a form. It runs the task and you review.</p>
+          </li>
+          <li class="rung">
+            <span class="num">RUNG 3</span>
+            <h3>Automation</h3>
+            <p>Put it on a schedule or a trigger. It runs without you in the loop, and you check the output.</p>
+          </li>
+        </ol>
+        <p class="ladder-note"><strong>Rung one is where the value is.</strong> Most people skip it, copy someone else's stack, and wonder why nothing changed. The AI that changed Justin's business was not the clever one. It was the one that says "you are all over the place, focus on this." Start with your problem, not someone else's solution.</p>
+      </div>
+    </section>
+
+    <section class="band" id="tools" aria-labelledby="tools-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">Tool map</p>
+          <h2 id="tools-title">Who makes what, and what each one is for.</h2>
+          <p>Five companies, five assistants. They are more alike than different. Pick the one that lives where your work already lives, and learn it well. Your job description works in all of them.</p>
+        </div>
+        <ul class="tools">
+          <li class="tool">
+            <div class="tool-head">
+              <h3>ChatGPT</h3>
+              <p class="owner">by OpenAI</p>
+            </div>
+            <dl>
+              <dt>Best for</dt>
+              <dd class="best">The all-rounder. Drafting, editing, brainstorming, and turning one piece of content into five. This is the room's default and the demos run here.</dd>
+              <dt>Free plan</dt>
+              <dd>Yes. Creating your own custom GPT or a Project needs a paid plan.</dd>
+              <dt>Where your job description lives</dt>
+              <dd>Free: paste it at the top of a new chat. Paid: save it as a Project or a custom GPT.</dd>
+            </dl>
+            <p class="go"><a class="text-link" href="https://chatgpt.com/">chatgpt.com</a></p>
+          </li>
+          <li class="tool">
+            <div class="tool-head">
+              <h3>Claude</h3>
+              <p class="owner">by Anthropic</p>
+            </div>
+            <dl>
+              <dt>Best for</dt>
+              <dd class="best">Writing that sounds like a person. Long documents, careful edits, and holding your voice across a whole appeal without drifting.</dd>
+              <dt>Free plan</dt>
+              <dd>Yes, and free accounts can create a small number of Projects.</dd>
+              <dt>Where your job description lives</dt>
+              <dd>A Project. Paste it into the Project's instructions and every chat inside it starts from there.</dd>
+            </dl>
+            <p class="go"><a class="text-link" href="https://claude.ai/">claude.ai</a></p>
+          </li>
+          <li class="tool">
+            <div class="tool-head">
+              <h3>Gemini</h3>
+              <p class="owner">by Google</p>
+            </div>
+            <dl>
+              <dt>Best for</dt>
+              <dd class="best">Anything that already lives in Google. Docs, Gmail, Drive, Sheets, and research that leans on Google search.</dd>
+              <dt>Free plan</dt>
+              <dd>Yes, and free accounts can create Gems.</dd>
+              <dt>Where your job description lives</dt>
+              <dd>A Gem. Same idea as a Project, and it can read files from your Drive.</dd>
+            </dl>
+            <p class="go"><a class="text-link" href="https://gemini.google.com/">gemini.google.com</a></p>
+          </li>
+          <li class="tool">
+            <div class="tool-head">
+              <h3>Copilot</h3>
+              <p class="owner">by Microsoft</p>
+            </div>
+            <dl>
+              <dt>Best for</dt>
+              <dd class="best">Microsoft shops. If your day is Outlook, Word, Excel, and Teams, this is the one your IT team will say yes to.</dd>
+              <dt>Free plan</dt>
+              <dd>The personal Copilot app is free. Copilot inside Microsoft 365 is a paid add-on your organization has to buy.</dd>
+              <dt>Where your job description lives</dt>
+              <dd>Paste it at the top of a chat. If your organization has Microsoft 365 Copilot, ask IT about agents.</dd>
+            </dl>
+            <p class="go"><a class="text-link" href="https://copilot.microsoft.com/">copilot.microsoft.com</a></p>
+          </li>
+          <li class="tool">
+            <div class="tool-head">
+              <h3>Grok</h3>
+              <p class="owner">by xAI</p>
+            </div>
+            <dl>
+              <dt>Best for</dt>
+              <dd class="best">Real-time reads on what is happening on X right now. Fast, conversational, opinionated. Less useful for the writing work in this room.</dd>
+              <dt>Free plan</dt>
+              <dd>Yes, with limits. <span class="flag">Not to be confused with Groq, a chip company</span></dd>
+              <dt>Where your job description lives</dt>
+              <dd>Paste it at the top of a chat.</dd>
+            </dl>
+            <p class="go"><a class="text-link" href="https://grok.com/">grok.com</a></p>
+          </li>
+        </ul>
+        <p class="checked">Plan details checked September 2026. These companies change their free tiers often, so if a button is not where this page says it is, the feature moved, not you.</p>
+      </div>
+    </section>
+
+    <section class="band white" id="recipes" aria-labelledby="recipes-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">Recipe cards</p>
+          <h2 id="recipes-title">Pick one track. Build one thing. Take it home.</h2>
+          <p>Every card has the same shape: gather three real inputs, write the job description, test it raw versus with the job description, save it. The quiz assigned you a track. If you skipped the quiz, pick the one that names the task you dread.</p>
+        </div>
+        <div class="recipes">
+
+          <article class="recipe" aria-labelledby="track-voice">
+            <div class="recipe-head">
+              <p class="label">Track 1</p>
+              <h3 id="track-voice">Voice</h3>
+              <p>A saved instruction set that writes emails and appeals in your organization's voice, not the internet's.</p>
+            </div>
+            <div class="recipe-body">
+              <div>
+                <h4>Bring</h4>
+                <p>Three sent emails or appeals you were proud of. Public content only.</p>
+              </div>
+              <div>
+                <h4>Steps</h4>
+                <ol>
+                  <li>Open a fresh chat. Ask it to write a thank-you email to a first-time donor. Save that answer somewhere. That is "raw."</li>
+                  <li>Copy the template below. Fill in the brackets. Paste your three examples where it asks.</li>
+                  <li>Start a new chat, paste the whole job description, then make the exact same request.</li>
+                  <li>Put raw and with-job-description side by side. Run the slop check on both.</li>
+                  <li>Save the job description as a Project, a Gem, or a doc you paste each time.</li>
+                </ol>
+              </div>
+              <p class="test">The test: same request, with and without the voice guide. Would a donor know which one a machine wrote?</p>
+              <details>
+                <summary>Copy the Voice job description</summary>
+                <div class="snippet">
+                  <div class="snippet-bar"><span>voice-guide.md</span><button class="copy-btn" type="button" data-copy="tpl-voice">Copy</button></div>
+<pre id="tpl-voice"># [Organization name] Voice Guide
+
+## Who you are
+You draft emails and appeals on behalf of [Organization name], a [one line on what we do and for whom]. You write first drafts. A person on our team always reviews before anything is sent.
+
+## Who we write to
+[Donors, volunteers, families, community members]. They are busy, generous, and can tell when something was written by a machine.
+
+## How we sound
+- [Warm and direct. Specific over sweeping.]
+- [Short sentences. Plain words. One idea per paragraph.]
+- We open with the person or the moment, never with "We are excited to."
+- Words we use: [list five]
+- Words we never use: [list five, for example "impactful", "leverage", "journey"]
+
+## Three examples of us at our best
+Example 1:
+[Paste a sent email]
+
+Example 2:
+[Paste a sent email]
+
+Example 3:
+[Paste a sent appeal]
+
+## How to respond
+When I give you a request, write it in the voice above.
+- Keep it to [length, for example 120 words].
+- Do not invent facts, numbers, names, or quotes. If you need one, put [NEED: description] in its place.
+- Give me one subject line and one preview line at the top.
+- If the request is unclear, ask me one question before writing.</pre>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="recipe" aria-labelledby="track-social">
+            <div class="recipe-head">
+              <p class="label">Track 2</p>
+              <h3 id="track-social">Social</h3>
+              <p>A social media manager instruction set. Give it a topic, get a post for each platform, in your voice.</p>
+            </div>
+            <div class="recipe-body">
+              <div>
+                <h4>Bring</h4>
+                <p>Three past posts that performed and one that flopped. Public content only.</p>
+              </div>
+              <div>
+                <h4>Steps</h4>
+                <ol>
+                  <li>Open a fresh chat. Give it one topic from this month and ask for a LinkedIn post. Save it. That is "raw."</li>
+                  <li>Copy the template below. Fill in the brackets. Paste your three winners and the flop where it asks.</li>
+                  <li>Start a new chat, paste the whole job description, then give it the same topic.</li>
+                  <li>Ask for three platform variants. Compare them to raw.</li>
+                  <li>Save the job description as a Project, a Gem, or a doc you paste each time.</li>
+                </ol>
+              </div>
+              <p class="test">The test: one topic, three platforms. Does each one read like your account, or like every account?</p>
+              <details>
+                <summary>Copy the Social job description</summary>
+                <div class="snippet">
+                  <div class="snippet-bar"><span>social-manager.md</span><button class="copy-btn" type="button" data-copy="tpl-social">Copy</button></div>
+<pre id="tpl-social"># [Organization name] Social Media Manager
+
+## Who you are
+You draft social posts for [Organization name]. You write first drafts. A person on our team approves every post before it goes out.
+
+## Our audience
+[Who follows us, what they care about, why they follow us and not someone else]
+
+## Platforms and shape
+- LinkedIn: [under 150 words, one idea, no hashtags, open with the person or the moment]
+- Instagram: [caption under 100 words, first line does the work, no more than two emoji]
+- Facebook: [conversational, one question at most, link in the text]
+- Email teaser: [two sentences that make someone open the newsletter]
+
+## How we sound
+- [Three adjectives, then one sentence on what that looks like in practice]
+- Words we use: [list five]
+- Words we never use: [list five]
+- We never post: [things we do not talk about publicly]
+
+## Posts that worked
+Post 1:
+[Paste]
+
+Post 2:
+[Paste]
+
+Post 3:
+[Paste]
+
+## A post that flopped, and why we think it did
+[Paste, then one line on why]
+
+## How to respond
+When I give you a topic, write one post per platform above, in that order.
+- Same facts in every version. Do not add claims, numbers, or names I did not give you.
+- Mark anything you are unsure of with [CHECK].
+- After the drafts, tell me in one line which platform this topic fits best and why.</pre>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="recipe" aria-labelledby="track-cos">
+            <div class="recipe-head">
+              <p class="label">Track 3</p>
+              <h3 id="track-cos">Chief of staff</h3>
+              <p>A project that holds your priorities, your calendar shape, and your deadlines, and answers "what should I work on today."</p>
+            </div>
+            <div class="recipe-body">
+              <div>
+                <h4>Bring</h4>
+                <p>This week's to-do list and your next three deadlines. Nothing confidential.</p>
+              </div>
+              <div>
+                <h4>Steps</h4>
+                <ol>
+                  <li>Open a fresh chat. Paste your to-do list and ask "what should I work on today." Save it. That is "raw."</li>
+                  <li>Copy the template below. Fill in the brackets: your role, your priorities, how your week is shaped.</li>
+                  <li>Start a new chat, paste the whole job description, then paste the same to-do list and ask the same question.</li>
+                  <li>Judge the answer like you would judge a new hire's first week.</li>
+                  <li>Save it as a Project or a Gem. Update the priorities section every Monday.</li>
+                </ol>
+              </div>
+              <p class="test">The test: ask it Monday's question. Does it tell you what to skip, or just reorder your list?</p>
+              <details>
+                <summary>Copy the Chief of staff job description</summary>
+                <div class="snippet">
+                  <div class="snippet-bar"><span>chief-of-staff.md</span><button class="copy-btn" type="button" data-copy="tpl-cos">Copy</button></div>
+<pre id="tpl-cos"># Chief of Staff for [Your name]
+
+## Who you are
+You are chief of staff to [Your name], [role] at [Organization name]. Your job is to protect my time and keep me on the work that matters. You are direct. If I am all over the place, say so.
+
+## What matters this quarter, in order
+1. [Priority one, and what done looks like]
+2. [Priority two]
+3. [Priority three]
+Anything not on this list is a distraction unless a deadline below forces it.
+
+## Recurring deadlines
+- [Monthly newsletter, first Tuesday]
+- [Board report, the 25th]
+- [Event, date]
+
+## The shape of my week
+- [Mornings are for writing. Meetings after 1 PM.]
+- [Fridays are half days.]
+- [I lose the most time to: email, last-minute asks, meetings without an agenda]
+
+## Rules
+- Never schedule or send anything. You recommend, I act.
+- Do not invent deadlines or commitments. Ask if something is missing.
+- Keep answers short. Three items max unless I ask for more.
+
+## When I paste my to-do list and ask what to work on
+1. Pick the one thing that serves the top priority and has the nearest deadline. Explain in one sentence.
+2. Name two things on my list I should drop, delegate, or push, and why.
+3. Flag anything on my list that is not connected to any priority above.
+4. End with one question I have been avoiding.</pre>
+                </div>
+              </details>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="prompts" aria-labelledby="prompts-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">Prompts</p>
+          <h2 id="prompts-title">The prompts we run in the room.</h2>
+          <p>A prompt is a request with structure. The four parts below are the whole framework. Every prompt on this page has all four, and that is the only reason they work better than "make this sound better."</p>
+        </div>
+        <ul class="framework">
+          <li><strong>Who</strong><span>Who the AI is, and who it is writing to.</span></li>
+          <li><strong>What</strong><span>The task, with the real inputs pasted in.</span></li>
+          <li><strong>Good looks like</strong><span>Length, shape, tone, an example if you have one.</span></li>
+          <li><strong>Never</strong><span>What it must not do: invent, exaggerate, use these words.</span></li>
+        </ul>
+        <ul class="prompts">
+          <li class="prompt wide">
+            <h3>The comparison test</h3>
+            <p class="use">Run this once in a fresh chat, then once after pasting your job description. It is the first thing every track does.</p>
+            <div class="snippet">
+              <div class="snippet-bar"><span>prompt 01</span><button class="copy-btn" type="button" data-copy="p-01">Copy</button></div>
+<pre id="p-01">Write a thank-you email to a first-time donor who gave $180 to our food pantry last week. Under 120 words. Give me a subject line.</pre>
+            </div>
+          </li>
+          <li class="prompt">
+            <h3>Rewrite an email in our voice</h3>
+            <p class="use">Writing and editing emails.</p>
+            <div class="snippet">
+              <div class="snippet-bar"><span>prompt 02</span><button class="copy-btn" type="button" data-copy="p-02">Copy</button></div>
+<pre id="p-02">Here is an email I drafted. Rewrite it in the voice guide above. Keep every fact and every name exactly as written. Cut the length by a third. Open with the reader, not with us. Give me a subject line and a one-line preview text at the top.
+
+[Paste the draft]</pre>
+            </div>
+          </li>
+          <li class="prompt">
+            <h3>One piece, three formats</h3>
+            <p class="use">Turning one piece of content into several.</p>
+            <div class="snippet">
+              <div class="snippet-bar"><span>prompt 03</span><button class="copy-btn" type="button" data-copy="p-03">Copy</button></div>
+<pre id="p-03">Here is a story from our newsletter. Turn it into three things: a LinkedIn post under 150 words, an Instagram caption under 100 words with no hashtags, and a two-sentence email teaser. Same facts in all three. Do not add any claim, number, or name that is not in the original. Mark anything you are unsure about with [CHECK].
+
+[Paste the story]</pre>
+            </div>
+          </li>
+          <li class="prompt">
+            <h3>Headline brainstorm</h3>
+            <p class="use">Headlines and campaign ideas.</p>
+            <div class="snippet">
+              <div class="snippet-bar"><span>prompt 04</span><button class="copy-btn" type="button" data-copy="p-04">Copy</button></div>
+<pre id="p-04">Give me 15 headline options for [campaign, one sentence on what it is and who it is for]. Five that lead with the person helped, five that lead with a number I give you, five that lead with a question. No exclamation points. No "transform" or "impact". Then tell me which three you would test first and why, in one line each.</pre>
+            </div>
+          </li>
+          <li class="prompt">
+            <h3>Donor-centric story</h3>
+            <p class="use">Donor-centric storytelling.</p>
+            <div class="snippet">
+              <div class="snippet-bar"><span>prompt 05</span><button class="copy-btn" type="button" data-copy="p-05">Copy</button></div>
+<pre id="p-05">Here are the facts about [program]. Write a 200-word story where the donor is the one who made it happen. Use "you" more than "we". One person, one moment, one detail you can see. No superlatives, no statistics I did not give you, no quotes I did not give you.
+
+[Paste the facts as bullet points]</pre>
+            </div>
+          </li>
+          <li class="prompt">
+            <h3>Read the numbers</h3>
+            <p class="use">Analyzing marketing metrics. Bring a clean export, not a screenshot.</p>
+            <div class="snippet">
+              <div class="snippet-bar"><span>prompt 06</span><button class="copy-btn" type="button" data-copy="p-06">Copy</button></div>
+<pre id="p-06">Attached is a spreadsheet of [last quarter's email results, one row per send]. Tell me the three things that changed the most between the first month and the last. For each one, give me the numbers you compared, one plausible explanation, and one question you would ask before drawing a conclusion. Show your math. Do not recommend anything yet.</pre>
+            </div>
+          </li>
+          <li class="prompt">
+            <h3>Slop check</h3>
+            <p class="use">Run this on anything before it goes out.</p>
+            <div class="snippet">
+              <div class="snippet-bar"><span>prompt 07</span><button class="copy-btn" type="button" data-copy="p-07">Copy</button></div>
+<pre id="p-07">Read this as a long-time donor who has received fifty of our emails. What in it sounds generic, machine-made, or like every other nonprofit? Quote the exact phrases. Then rewrite only those phrases and leave everything else untouched.
+
+[Paste the draft]</pre>
+            </div>
+          </li>
+          <li class="prompt">
+            <h3>Fix a hedged answer</h3>
+            <p class="use">For the topics where models flatten or hedge: Israel, antisemitism, security. Context fixes tone.</p>
+            <div class="snippet">
+              <div class="snippet-bar"><span>prompt 08</span><button class="copy-btn" type="button" data-copy="p-08">Copy</button></div>
+<pre id="p-08">Your last draft hedged. We are a Jewish community organization writing to our own community about [topic]. Our readers do not need both sides explained; they need to hear us speak plainly and with care. Rewrite it in our voice guide, drop every "some may feel" and "it is important to note", and keep the facts I gave you exactly as they are.</pre>
+            </div>
+          </li>
+        </ul>
+        <p class="prompt-note">This is the version one list. The prompts the room writes together on the day get added here afterward, so the page you leave with is better than the page you arrived at.</p>
+      </div>
+    </section>
+
+    <section class="band mint" id="slop" aria-labelledby="slop-title">
+      <div class="shell slop">
+        <div class="slop-copy">
+          <p class="eyebrow">The slop check</p>
+          <h2 id="slop-title">Would a donor know?</h2>
+          <p>Slop in an appeal is not embarrassing. It is expensive. Six questions, thirty seconds, before anything goes out. If you answer no to any of them, it is not done.</p>
+        </div>
+        <ol class="slop-list">
+          <li>Would a long-time donor believe a person wrote this?<small>Read it out loud. If you would not say it across a table, cut it.</small></li>
+          <li>Is every fact, number, name, and quote yours?<small>The model will invent a statistic to fill a gap. Check each one against the source.</small></li>
+          <li>Did it use a word your team never uses?<small>"Impactful", "leverage", "journey", "thrilled". Keep a banned list in your job description.</small></li>
+          <li>Does it open with the reader, not the organization?<small>"You made this happen" beats "We are excited to share".</small></li>
+          <li>Could you cut a third and lose nothing?<small>Then cut a third. Models pad by default.</small></li>
+          <li>Did a person read it before it went out?<small>Every job description on this page says the AI drafts and a person approves. That line is not decoration.</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="band dark" id="stack" aria-labelledby="stack-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">Justin's stack</p>
+          <h2 id="stack-title">What runs a one-person business, and why each piece earns its place.</h2>
+          <p>Not a recommendation list. This is the actual setup, shown so you can see how rung one becomes rung three. Copy the shape, not the tools.</p>
+        </div>
+        <ul class="stack">
+          <li>
+            <p class="label">Meetings</p>
+            <h3><a href="https://www.granola.ai/">Granola</a></h3>
+            <p class="job">Sits in every call and writes the notes. Afterward the transcript syncs into the same place the AI tools read from.</p>
+            <p class="why">Every client conversation becomes a source of truth the AI can work from. No retyping, no "what did we agree to."</p>
+          </li>
+          <li>
+            <p class="label">Voice to text</p>
+            <h3><a href="https://wisprflow.ai/">Wispr Flow</a></h3>
+            <p class="job">Hold a key, talk, and clean text lands wherever the cursor is. Emails, briefs, prompts.</p>
+            <p class="why">You talk faster than you type. This page started as a four-minute voice note, and that note was the brief.</p>
+          </li>
+          <li>
+            <p class="label">The build layer</p>
+            <h3><a href="https://www.anthropic.com/claude-code">Claude Code</a> and <a href="https://openai.com/codex/">Codex</a></h3>
+            <p class="job">Where a job description becomes an agent that reads the inbox, drafts the reply, files the meeting notes, and builds the dashboard. Rung two and three.</p>
+            <p class="why">Nothing sends without a review. The drafts land in a folder, a person approves, then it goes. Same rule as your voice guide, at scale.</p>
+          </li>
+          <li>
+            <p class="label">Connectors</p>
+            <h3>Gmail, Calendar, Drive, Slack</h3>
+            <p class="job">The AI reads the calendar, the inbox, and the files it is allowed to see, and nothing else. Permissions are given per tool, on purpose.</p>
+            <p class="why">The three-minute demo in the room: one sentence in, a finished Google Form out. That is rung two, and it is closer than it looks.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="band white" id="deck" aria-labelledby="deck-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">Deck and downloads</p>
+          <h2 id="deck-title">The slides, the cards, and the quiz.</h2>
+        </div>
+        <ul class="downloads">
+          <li class="download">
+            <h3>The deck</h3>
+            <p>The ten-minute AI 101 the session opens with: probabilistic not deterministic, model versus tool, the tool map, and the three rungs.</p>
+            <!-- DECK LINK. When the deck is published, replace the status line below with:
+                 <p class="go"><a class="text-link" href="URL">Open the deck</a></p> -->
+            <span class="status">Posted after the session</span>
+          </li>
+          <li class="download">
+            <h3>The recipe cards</h3>
+            <p>Printed and on every table in the room. The digital copy is the Recipe cards section of this page, with copy buttons for each job description.</p>
+            <p class="go"><a class="text-link" href="#recipes">Go to the cards</a></p>
+          </li>
+          <li class="download">
+            <h3>The quiz</h3>
+            <p>Four minutes. Assigns your track and makes your comic. Skipped it before the session? Take it now and the comic comes afterward.</p>
+            <p class="go"><a class="text-link" href="https://docs.google.com/forms/d/e/1FAIpQLSczB6WLYORnjBt_fAVNqK61hhPbxnHB2TLbAKNAQSwp7S-OZw/viewform">Take the quiz</a></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="band contact" id="contact" aria-labelledby="contact-title">
+      <div class="shell contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">After the session</p>
+          <h2 id="contact-title">Built one thing? Build the next one with help.</h2>
+          <p>Justin runs paid media and builds AI systems for small teams. If your organization wants the rung-two version of what you built today, drafted replies, meeting notes that file themselves, a form from a sentence, the first call is a short fit conversation, not a pitch.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="contact-cta" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a fit call</a>
+          <a class="contact-email" href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p class="footer-brand">Just Blake Media</p>
+      <p class="footer-location">Marietta, Georgia</p>
+      <p class="footer-email"><a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a></p>
+      <p class="footer-privacy">This page does not collect personal information. The quiz is a Google Form and asks for your email so your comic can be sent to you. Booking is handled by Google.</p>
+      <p class="footer-copyright">&copy; 2026 Just Blake Media</p>
+    </div>
+  </footer>
+
+  <script defer>
+    (() => {
+      const root = document.documentElement;
+      root.classList.add("js-enhanced");
+
+      // Copy buttons. Without JS the text is still visible and selectable.
+      const buttons = document.querySelectorAll(".copy-btn[data-copy]");
+      buttons.forEach((button) => {
+        const original = button.textContent;
+        button.addEventListener("click", async () => {
+          const source = document.getElementById(button.dataset.copy);
+          if (!source) return;
+          const text = source.textContent;
+          let ok = false;
+          try {
+            await navigator.clipboard.writeText(text);
+            ok = true;
+          } catch (error) {
+            const range = document.createRange();
+            range.selectNodeContents(source);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try { ok = document.execCommand("copy"); } catch (fallbackError) { ok = false; }
+          }
+          button.textContent = ok ? "Copied" : "Select and copy";
+          button.classList.toggle("done", ok);
+          window.setTimeout(() => {
+            button.textContent = original;
+            button.classList.remove("done");
+          }, 1800);
+        });
+      });
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion || !("IntersectionObserver" in window)) return;
+
+      const revealItems = document.querySelectorAll("main > section:not(.hero)");
+      if (!revealItems.length) return;
+
+      root.classList.add("reveal-ready");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.remove("reveal-pending");
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+
+      revealItems.forEach((item) => {
+        item.dataset.reveal = "";
+        item.classList.add("reveal-pending");
+        observer.observe(item);
+      });
+    })();
+  </script>
+</body>
+</html>
