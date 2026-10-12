@@ -177,9 +177,9 @@
     .band.mint .eyebrow { color: var(--navy); }
     .band.mint .section-intro p { color: var(--navy); }
 
-    /* Start here: two numbered steps */
+    /* Start here: account setup */
     .steps { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
-    .step { position: relative; grid-column: span 6; min-width: 0; padding: 1.4rem 0 0; border-top: 2px solid var(--navy); }
+    .step { position: relative; grid-column: span 12; min-width: 0; padding: 1.4rem 0 0; border-top: 2px solid var(--navy); }
     .step::before { display: block; margin-bottom: 1.4rem; color: var(--cobalt); font-size: 0.72rem; font-weight: 780; letter-spacing: 0.14em; content: attr(data-step); }
     .step h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2.1rem); font-variation-settings: "wdth" 82, "wght" 760; font-weight: 760; letter-spacing: -0.035em; line-height: 1; }
     .step p { max-width: 32ch; margin: 1rem 0 0; color: var(--steel); font-size: 0.98rem; line-height: 1.6; }
@@ -190,20 +190,7 @@
     }
     .text-link::after { width: 1.4rem; height: 2px; margin-left: 0.6rem; background: var(--cobalt); content: ""; }
     .text-link:hover, .text-link:focus-visible { color: var(--cobalt); text-decoration-thickness: 2px; }
-    .rule-note { margin: 2.5rem 0 0; padding: 1.1rem 1.3rem; border-left: 3px solid var(--cobalt); background: var(--cloud); font-weight: 640; line-height: 1.5; max-width: 62ch; }
 
-    /* The ladder */
-    .ladder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid color-mix(in srgb, var(--white) 24%, transparent); }
-    .rung { padding: 1.6rem clamp(0.75rem, 2vw, 1.6rem) 1.8rem 0; border-right: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
-    .rung + .rung { padding-left: clamp(0.75rem, 2vw, 1.6rem); }
-    .rung:last-child { border-right: 0; }
-    .rung .num { display: block; margin-bottom: 1.2rem; color: var(--lime); font-size: 0.72rem; font-weight: 780; letter-spacing: 0.14em; }
-    .rung h3 { margin: 0; color: var(--white); font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 720; letter-spacing: -0.02em; line-height: 1.05; }
-    .rung p { margin: 0.8rem 0 0; color: color-mix(in srgb, var(--white) 72%, transparent); font-size: 0.92rem; line-height: 1.55; }
-    .rung.today { background: color-mix(in srgb, var(--white) 6%, transparent); outline: 1px solid var(--lime); outline-offset: -1px; padding-left: clamp(0.75rem, 2vw, 1.6rem); }
-    .rung.today .tag { display: inline-block; margin-top: 1rem; padding: 0.3rem 0.5rem; background: var(--lime); color: var(--navy); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-    .ladder-note { max-width: 62ch; margin: 2.5rem 0 0; padding-left: 1.3rem; border-left: 3px solid var(--lime); color: color-mix(in srgb, var(--white) 80%, transparent); font-size: 1rem; line-height: 1.6; }
-    .ladder-note strong { color: var(--white); }
 
     /* Tool map */
     .tools { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
@@ -359,11 +346,6 @@
       .section-intro .eyebrow { grid-column: 1 / -1; margin-top: 0; }
       .section-intro h2, .section-intro p { grid-column: 1 / -1; }
       .steps { gap: 2rem 1rem; }
-      .step { grid-column: span 6; }
-      .ladder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .rung:nth-child(2) { border-right: 0; }
-      .rung:nth-child(3) { border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
-      .rung:nth-child(4) { border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
       .tool, .tool:nth-child(4), .tool:nth-child(5) { grid-column: span 6; }
       .tool:nth-child(5) { grid-column: 1 / -1; }
       .recipe { grid-column: 1 / -1; }
@@ -390,9 +372,6 @@
       .session { grid-template-columns: 1fr; gap: 0.15rem 0; }
       .session dd { margin-bottom: 0.5rem; }
       .step, .tool, .tool:nth-child(4), .tool:nth-child(5), .download { grid-column: 1 / -1; }
-      .ladder { grid-template-columns: 1fr; }
-      .rung { border-right: 0; padding-left: 0; border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
-      .rung.today { padding-left: 1rem; }
       .framework { grid-template-columns: 1fr; }
       .guard, .guard:nth-child(5), .guard:nth-child(6) { grid-column: 1 / -1; }
       .stack { grid-template-columns: 1fr; }
@@ -412,7 +391,7 @@
       .site-header, .hero-actions, .copy-btn, .contact, .site-footer { display: none; }
       .band, .hero { padding-block: 1.5rem; }
       .band.dark, .qr-card, .recipe-head, .snippet pre { background: #fff !important; color: #000 !important; border: 1px solid #000; }
-      .band.dark .eyebrow, .band.dark .label, .rung .num, .rung h3, .rung p, .stack h3, .stack .job, .stack .why, .recipe-head .label, .recipe-head p { color: #000 !important; }
+      .band.dark .eyebrow, .band.dark .label, .stack h3, .stack .job, .stack .why, .recipe-head .label, .recipe-head p { color: #000 !important; }
       details { display: block; }
       details > summary { display: none; }
       details:not([open]) > *:not(summary) { display: block; }
@@ -484,8 +463,8 @@
       <div class="shell">
         <div class="section-intro">
           <p class="eyebrow">Start here</p>
-          <h2 id="start-title">Two things to do before the session.</h2>
-          <p>The session itself is short, so set up before you sit down. Do these two things and the time in the room goes to the work instead of to signing up for things.</p>
+          <h2 id="start-title">Get set up before the session.</h2>
+          <p>The session itself is short, so set up your account before you sit down.</p>
         </div>
         <ol class="steps">
           <li class="step" data-step="01">
@@ -497,51 +476,10 @@
               <li><a class="text-link" href="https://gemini.google.com/">Gemini</a></li>
             </ul>
           </li>
-          <li class="step" data-step="02">
-            <h3>Bring three real examples</h3>
-            <p>Pick a track from the recipe cards below. Its card tells you which three examples to bring: sent emails, past posts, or this week's to-do list. Copy them into one document before you arrive so you are not digging through your inbox at lunch. Bring the laptop too, even though the one exercise we do together is on paper.</p>
-            <ul class="links">
-              <li><a class="text-link" href="#recipes">See what each track needs</a></li>
-            </ul>
-          </li>
         </ol>
-        <p class="rule-note">One rule for the room: public content only. Nothing with donor names, gift amounts, or financial data goes into any tool until your organization has a written policy for it. Ask your ops or IT contact for that policy. Do not write one at lunch.</p>
       </div>
     </section>
 
-    <section class="band dark" id="idea" aria-labelledby="idea-title">
-      <div class="shell">
-        <div class="section-intro">
-          <p class="eyebrow">The one idea</p>
-          <h2 id="idea-title">Every task can level up. Today you climb one rung.</h2>
-          <p>You are not learning a tool. You are writing a job description for a new hire who never sleeps, then testing whether it does the work the way you would. That document is the whole workshop.</p>
-        </div>
-        <ol class="ladder">
-          <li class="rung">
-            <span class="num">RUNG 0</span>
-            <h3>Task</h3>
-            <p>Do it once, by hand. Notice every step you take and every judgment call you make.</p>
-          </li>
-          <li class="rung today">
-            <span class="num">RUNG 1</span>
-            <h3>Job description</h3>
-            <p>Write the steps down: who the AI is, who it writes to, how you sound, what good looks like, what to avoid. Paste it in. Now it repeats.</p>
-            <span class="tag">Today</span>
-          </li>
-          <li class="rung">
-            <span class="num">RUNG 2</span>
-            <h3>Agent</h3>
-            <p>Give the job description real inputs on its own: your inbox, your calendar, a form. It runs the task and you review.</p>
-          </li>
-          <li class="rung">
-            <span class="num">RUNG 3</span>
-            <h3>Automation</h3>
-            <p>Put it on a schedule or a trigger. It runs without you in the loop, and you check the output.</p>
-          </li>
-        </ol>
-        <p class="ladder-note"><strong>Rung one is where the value is.</strong> Most people skip it, copy someone else's stack, and wonder why nothing changed. The AI that changed Justin's business was not the clever one. It was the one that says "you are all over the place, focus on this." Start with your problem, not someone else's solution.</p>
-      </div>
-    </section>
 
     <section class="band" id="tools" aria-labelledby="tools-title">
       <div class="shell">
@@ -997,7 +935,7 @@ Anything not on this list is a distraction unless a deadline below forces it.
         <div class="section-intro">
           <p class="eyebrow">Justin's stack</p>
           <h2 id="stack-title">What runs a one-person business, and why each piece earns its place.</h2>
-          <p>Not a recommendation list. This is the actual setup, shown so you can see how rung one becomes rung three. Copy the shape, not the tools.</p>
+          <p>Not a recommendation list. This is the actual setup. Copy the shape, not the tools.</p>
         </div>
         <ul class="stack">
           <li>
@@ -1015,14 +953,14 @@ Anything not on this list is a distraction unless a deadline below forces it.
           <li>
             <p class="label">The build layer</p>
             <h3><a href="https://www.anthropic.com/claude-code">Claude Code</a> and <a href="https://openai.com/codex/">Codex</a></h3>
-            <p class="job">Where a job description becomes an agent that reads the inbox, drafts the reply, files the meeting notes, and builds the dashboard. Rung two and three.</p>
+            <p class="job">Where a job description becomes an agent that reads the inbox, drafts the reply, files the meeting notes, and builds the dashboard.</p>
             <p class="why">Nothing sends without a review. The drafts land in a folder, a person approves, then it goes. Same rule as your voice guide, at scale.</p>
           </li>
           <li>
             <p class="label">Connectors</p>
             <h3>Gmail, Calendar, Drive, Slack</h3>
             <p class="job">The AI reads the calendar, the inbox, and the files it is allowed to see, and nothing else. Permissions are given per tool, on purpose.</p>
-            <p class="why">One sentence in, a finished Google Form out. That is rung two, and it is closer than it looks. It is also a later session, not this one.</p>
+            <p class="why">One sentence in, a finished Google Form out. It is closer than it looks.</p>
           </li>
         </ul>
       </div>
@@ -1056,7 +994,7 @@ Anything not on this list is a distraction unless a deadline below forces it.
         <div class="contact-copy">
           <p class="eyebrow">After the session</p>
           <h2 id="contact-title">Built one thing? Build the next one with help.</h2>
-          <p>Justin runs paid media and builds AI systems for small teams. If your organization wants the rung-two version of what you built today, drafted replies, meeting notes that file themselves, a form from a sentence, the first call is a short fit conversation, not a pitch.</p>
+          <p>Justin runs paid media and builds AI systems for small teams. If your organization wants the connected version of what you built today, drafted replies, meeting notes that file themselves, a form from a sentence, the first call is a short fit conversation, not a pitch.</p>
         </div>
         <div class="contact-actions">
           <a class="contact-cta" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a fit call</a>
