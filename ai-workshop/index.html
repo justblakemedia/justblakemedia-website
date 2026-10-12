@@ -259,17 +259,6 @@
     .copy-btn.done { background: var(--mint); border-color: var(--mint); color: var(--navy); }
     .band.white .snippet-bar { background: var(--navy); }
 
-    /* Series */
-    .series { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
-    .leg { display: flex; flex-direction: column; min-width: 0; padding: 1.5rem; background: var(--cloud); border: 1px solid var(--mist); }
-    .leg .num { display: block; margin-bottom: 1.1rem; color: var(--cobalt); font-size: 0.72rem; font-weight: 780; letter-spacing: 0.14em; }
-    .leg h3 { margin: 0; font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-variation-settings: "wdth" 80, "wght" 770; font-weight: 770; letter-spacing: -0.035em; line-height: 1; }
-    .leg p { margin: 0.9rem 0 0; color: var(--steel); font-size: 0.95rem; line-height: 1.55; }
-    .leg .built { margin: 1.1rem 0 0; padding: 0.75rem 0.9rem; background: var(--white); border-left: 3px solid var(--cobalt); color: var(--navy); font-size: 0.92rem; font-weight: 640; line-height: 1.45; }
-    .leg.now { border-color: var(--navy); outline: 2px solid var(--navy); outline-offset: -2px; }
-    .leg.now .tag { display: inline-block; margin-top: auto; padding-top: 1.1rem; }
-    .leg.now .tag span { display: inline-block; padding: 0.3rem 0.5rem; background: var(--lime); color: var(--navy); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-    .series-note { max-width: 62ch; margin: 2.5rem 0 0; padding-left: 1.3rem; border-left: 3px solid var(--cobalt); color: var(--steel); font-size: 0.98rem; line-height: 1.6; }
 
     /* Guardrails */
     .guards { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
@@ -379,7 +368,6 @@
       .tool, .tool:nth-child(4), .tool:nth-child(5) { grid-column: span 6; }
       .tool:nth-child(5) { grid-column: 1 / -1; }
       .recipe { grid-column: 1 / -1; }
-      .series { grid-template-columns: 1fr; }
       .guard { grid-column: span 6; }
       .guard:nth-child(5), .guard:nth-child(6) { grid-column: span 6; }
       .framework { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -952,38 +940,6 @@ Anything not on this list is a distraction unless a deadline below forces it.
       </div>
     </section>
 
-
-    <section class="band white" id="series" aria-labelledby="series-title">
-      <div class="shell">
-        <div class="section-intro">
-          <p class="eyebrow">What comes next</p>
-          <h2 id="series-title">One session starts it. Three finish it.</h2>
-          <p>A single lunch is enough to change how you write one email. It is not enough to change how you work. So the cards above are spread across three sessions, and each one ends with something you can use the next morning.</p>
-        </div>
-        <ol class="series">
-          <li class="leg now">
-            <span class="num">SESSION ONE</span>
-            <h3>Where AI fits, and how to ask</h3>
-            <p>The tool map, the five-part instruction, and the one thing you should never hand over. You write your own instruction on paper for the task you walked in with.</p>
-            <p class="built">You leave with: one written instruction, and this page.</p>
-            <p class="tag"><span>You are here</span></p>
-          </li>
-          <li class="leg">
-            <span class="num">SESSION TWO</span>
-            <h3>Your voice, built</h3>
-            <p>Laptops open. Everyone builds the Voice card together, from their own three sent emails, and tests it against a raw draft in the room.</p>
-            <p class="built">You leave with: a voice guide that works, saved where you can reuse it.</p>
-          </li>
-          <li class="leg">
-            <span class="num">SESSION THREE</span>
-            <h3>Social, and the thing that runs itself</h3>
-            <p>The social card and the chief of staff card. Then the part everyone asks about: how these documents become something that does the work without being asked.</p>
-            <p class="built">You leave with: two more job descriptions, and an honest answer about agents.</p>
-          </li>
-        </ol>
-        <p class="series-note">Dates are announced in the room, not on this page. If you are reading this before session one, the only date that exists yet is the one on your calendar invitation.</p>
-      </div>
-    </section>
 
     <section class="band" id="guardrails" aria-labelledby="guardrails-title">
       <div class="shell">
