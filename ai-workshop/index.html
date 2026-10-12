@@ -177,9 +177,9 @@
     .band.mint .eyebrow { color: var(--navy); }
     .band.mint .section-intro p { color: var(--navy); }
 
-    /* Start here: three numbered steps */
+    /* Start here: two numbered steps */
     .steps { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
-    .step { position: relative; grid-column: span 4; min-width: 0; padding: 1.4rem 0 0; border-top: 2px solid var(--navy); }
+    .step { position: relative; grid-column: span 6; min-width: 0; padding: 1.4rem 0 0; border-top: 2px solid var(--navy); }
     .step::before { display: block; margin-bottom: 1.4rem; color: var(--cobalt); font-size: 0.72rem; font-weight: 780; letter-spacing: 0.14em; content: attr(data-step); }
     .step h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2.1rem); font-variation-settings: "wdth" 82, "wght" 760; font-weight: 760; letter-spacing: -0.035em; line-height: 1; }
     .step p { max-width: 32ch; margin: 1rem 0 0; color: var(--steel); font-size: 0.98rem; line-height: 1.6; }
@@ -304,7 +304,7 @@
 
     /* Downloads */
     .downloads { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
-    .download { grid-column: span 4; display: flex; flex-direction: column; min-width: 0; padding: 1.5rem; border: 1px solid var(--mist); background: var(--white); }
+    .download { grid-column: span 6; display: flex; flex-direction: column; min-width: 0; padding: 1.5rem; border: 1px solid var(--mist); background: var(--white); }
     .download h3 { margin: 0; font-size: 1.35rem; font-weight: 740; letter-spacing: -0.02em; line-height: 1.1; }
     .download p { margin: 0.7rem 0 0; color: var(--steel); font-size: 0.92rem; line-height: 1.55; }
     .download .go { margin-top: auto; padding-top: 1rem; }
@@ -360,7 +360,6 @@
       .section-intro h2, .section-intro p { grid-column: 1 / -1; }
       .steps { gap: 2rem 1rem; }
       .step { grid-column: span 6; }
-      .step:nth-child(3) { grid-column: 1 / -1; }
       .ladder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .rung:nth-child(2) { border-right: 0; }
       .rung:nth-child(3) { border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
@@ -375,7 +374,6 @@
       .slop-copy { grid-column: 1 / -1; }
       .slop-list { grid-column: 1 / -1; }
       .download { grid-column: span 6; }
-      .download:nth-child(3) { grid-column: 1 / -1; }
       .contact-copy { grid-column: 1 / -1; }
       .contact-actions { grid-column: 1 / span 8; }
       .footer-brand { grid-column: 1 / span 3; }
@@ -391,7 +389,7 @@
       .qr-card { grid-column: 1 / -1; }
       .session { grid-template-columns: 1fr; gap: 0.15rem 0; }
       .session dd { margin-bottom: 0.5rem; }
-      .step, .step:nth-child(3), .tool, .tool:nth-child(4), .tool:nth-child(5), .download, .download:nth-child(3) { grid-column: 1 / -1; }
+      .step, .tool, .tool:nth-child(4), .tool:nth-child(5), .download { grid-column: 1 / -1; }
       .ladder { grid-template-columns: 1fr; }
       .rung { border-right: 0; padding-left: 0; border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); }
       .rung.today { padding-left: 1rem; }
@@ -486,18 +484,11 @@
       <div class="shell">
         <div class="section-intro">
           <p class="eyebrow">Start here</p>
-          <h2 id="start-title">Three things to do before the session.</h2>
-          <p>Ten minutes total. The session itself is short, so the setup happens before you sit down. Do these and the time in the room goes to the work instead of to signing up for things.</p>
+          <h2 id="start-title">Two things to do before the session.</h2>
+          <p>The session itself is short, so set up before you sit down. Do these two things and the time in the room goes to the work instead of to signing up for things.</p>
         </div>
         <ol class="steps">
           <li class="step" data-step="01">
-            <h3>Take the quiz</h3>
-            <p>Four minutes. It sorts you into one of the three build tracks below, and it makes you an eight-panel comic about your work five years from now. A few of those go on screen at the open.</p>
-            <ul class="links">
-              <li><a class="text-link" href="https://docs.google.com/forms/d/e/1FAIpQLSczB6WLYORnjBt_fAVNqK61hhPbxnHB2TLbAKNAQSwp7S-OZw/viewform">Take the quiz</a></li>
-            </ul>
-          </li>
-          <li class="step" data-step="02">
             <h3>Get a free account</h3>
             <p>One is enough. If your organization already pays for one of these, use that. Everything in the room runs on the free tier.</p>
             <ul class="links">
@@ -506,9 +497,9 @@
               <li><a class="text-link" href="https://gemini.google.com/">Gemini</a></li>
             </ul>
           </li>
-          <li class="step" data-step="03">
+          <li class="step" data-step="02">
             <h3>Bring three real examples</h3>
-            <p>Your track card tells you which three: sent emails, past posts, or this week's to-do list. Copy them into one document before you arrive so you are not digging through your inbox at lunch. Bring the laptop too, even though the one exercise we do together is on paper.</p>
+            <p>Pick a track from the recipe cards below. Its card tells you which three examples to bring: sent emails, past posts, or this week's to-do list. Copy them into one document before you arrive so you are not digging through your inbox at lunch. Bring the laptop too, even though the one exercise we do together is on paper.</p>
             <ul class="links">
               <li><a class="text-link" href="#recipes">See what each track needs</a></li>
             </ul>
@@ -645,7 +636,7 @@
         <div class="section-intro">
           <p class="eyebrow">Recipe cards</p>
           <h2 id="recipes-title">Pick one track. Build one thing. Take it home.</h2>
-          <p>Every card has the same shape: gather three real inputs, write the job description, test it raw versus with the job description, save it. The quiz assigned you a track. If you skipped the quiz, pick the one that names the task you dread. You do not have to wait for a session to build one, and the cards do not expire.</p>
+          <p>Every card has the same shape: gather three real inputs, write the job description, test it raw versus with the job description, save it. Pick the track that names the task you dread. You do not have to wait for a session to build one, and the cards do not expire.</p>
         </div>
         <div class="recipes">
 
@@ -1041,7 +1032,7 @@ Anything not on this list is a distraction unless a deadline below forces it.
       <div class="shell">
         <div class="section-intro">
           <p class="eyebrow">Deck and downloads</p>
-          <h2 id="deck-title">The slides, the cards, and the quiz.</h2>
+          <h2 id="deck-title">The slides and the cards.</h2>
         </div>
         <ul class="downloads">
           <li class="download">
@@ -1055,11 +1046,6 @@ Anything not on this list is a distraction unless a deadline below forces it.
             <h3>The recipe cards</h3>
             <p>Printed and on every table in the room. The digital copy is the Recipe cards section of this page, with copy buttons for each job description.</p>
             <p class="go"><a class="text-link" href="#recipes">Go to the cards</a></p>
-          </li>
-          <li class="download">
-            <h3>The quiz</h3>
-            <p>Four minutes. Assigns your track and makes your comic. Skipped it before the session? Take it now and the comic comes afterward.</p>
-            <p class="go"><a class="text-link" href="https://docs.google.com/forms/d/e/1FAIpQLSczB6WLYORnjBt_fAVNqK61hhPbxnHB2TLbAKNAQSwp7S-OZw/viewform">Take the quiz</a></p>
           </li>
         </ul>
       </div>
@@ -1086,7 +1072,7 @@ Anything not on this list is a distraction unless a deadline below forces it.
       <p class="footer-brand">Just Blake Media</p>
       <p class="footer-location">Marietta, Georgia</p>
       <p class="footer-email"><a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a></p>
-      <p class="footer-privacy">This page does not collect personal information. The quiz is a Google Form and asks for your email so your comic can be sent to you. Booking is handled by Google.</p>
+      <p class="footer-privacy">This page does not collect personal information. Booking is handled by Google.</p>
       <p class="footer-copyright">&copy; 2026 Just Blake Media</p>
     </div>
   </footer>
