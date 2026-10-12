@@ -185,7 +185,7 @@
     /* Tool map */
     .tools { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
     .tool { grid-column: span 4; display: flex; flex-direction: column; min-width: 0; padding: 1.5rem; border: 1px solid var(--mist); background: var(--white); }
-    .tool:nth-child(4), .tool:nth-child(5) { grid-column: span 6; }
+    .tool:nth-child(4), .tool:nth-child(5), .tool:nth-child(6) { grid-column: span 4; }
     .tool-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--mist); }
     .tool h3 { margin: 0; font-size: 1.7rem; font-variation-settings: "wdth" 80, "wght" 780; font-weight: 780; letter-spacing: -0.03em; line-height: 1; }
     .tool .owner { margin: 0; color: var(--steel); font-size: 0.78rem; font-weight: 650; white-space: nowrap; }
@@ -326,8 +326,7 @@
       h1 { max-width: 13ch; font-size: clamp(3rem, 9vw, 5rem); }
       .section-intro .eyebrow { grid-column: 1 / -1; margin-top: 0; }
       .section-intro h2, .section-intro p { grid-column: 1 / -1; }
-      .tool, .tool:nth-child(4), .tool:nth-child(5) { grid-column: span 6; }
-      .tool:nth-child(5) { grid-column: 1 / -1; }
+      .tool, .tool:nth-child(4), .tool:nth-child(5), .tool:nth-child(6) { grid-column: span 6; }
       .recipe { grid-column: 1 / -1; }
       .guard { grid-column: span 6; }
       .guard:nth-child(5), .guard:nth-child(6) { grid-column: span 6; }
@@ -349,7 +348,7 @@
       .qr-card { grid-column: 1 / -1; }
       .session { grid-template-columns: 1fr; gap: 0.15rem 0; }
       .session dd { margin-bottom: 0.5rem; }
-      .tool, .tool:nth-child(4), .tool:nth-child(5), .download { grid-column: 1 / -1; }
+      .tool, .tool:nth-child(4), .tool:nth-child(5), .tool:nth-child(6), .download { grid-column: 1 / -1; }
       .framework { grid-template-columns: 1fr; }
       .guard, .guard:nth-child(5), .guard:nth-child(6) { grid-column: 1 / -1; }
       .stack { grid-template-columns: 1fr; }
@@ -441,8 +440,8 @@
       <div class="shell">
         <div class="section-intro">
           <p class="eyebrow">Tool map</p>
-          <h2 id="tools-title">Who makes what, and what each one is for.</h2>
-          <p>Five companies, five assistants. They are more alike than different. Pick the one that lives where your work already lives, and learn it well. Your job description works in all of them.</p>
+          <h2 id="tools-title">The major AI assistants, and where each fits.</h2>
+          <p>Five assistants, plus one way to choose. Start with a tool your organization allows, then judge it on a real task. Saved instructions can begin as a document you paste into a new chat.</p>
         </div>
         <ul class="tools">
           <li class="tool">
@@ -451,8 +450,8 @@
               <p class="owner">by OpenAI</p>
             </div>
             <dl>
-              <dt>Best for</dt>
-              <dd class="best">The all-rounder. Drafting, editing, brainstorming, and turning one piece of content into five. This is the room's default and the demos run here.</dd>
+              <dt>Good fit</dt>
+              <dd class="best">A familiar entry point for drafting, editing, brainstorming and everyday questions. The workshop's email demonstration uses ChatGPT; the exercise also works in an approved tool you already have.</dd>
               <dt>Free plan</dt>
               <dd>Yes. Creating your own custom GPT or a Project needs a paid plan.</dd>
               <dt>Where your job description lives</dt>
@@ -466,8 +465,8 @@
               <p class="owner">by Anthropic</p>
             </div>
             <dl>
-              <dt>Best for</dt>
-              <dd class="best">Writing that sounds like a person. Long documents, careful edits, and holding your voice across a whole appeal without drifting.</dd>
+              <dt>Good fit</dt>
+              <dd class="best">Writing, careful edits and work that needs sustained attention. Anthropic also offers Claude Code for coding and Claude Cowork for working through tasks.</dd>
               <dt>Free plan</dt>
               <dd>Yes, and free accounts can create a small number of Projects.</dd>
               <dt>Where your job description lives</dt>
@@ -481,8 +480,8 @@
               <p class="owner">by Google</p>
             </div>
             <dl>
-              <dt>Best for</dt>
-              <dd class="best">Anything that already lives in Google. Docs, Gmail, Drive, Sheets, and research that leans on Google search.</dd>
+              <dt>Good fit</dt>
+              <dd class="best">A practical fit when your work lives in Google. Gemini connects with Google products such as Drive and Docs and can help create images; access varies by product and plan.</dd>
               <dt>Free plan</dt>
               <dd>Yes, and free accounts can create Gems.</dd>
               <dt>Where your job description lives</dt>
@@ -496,8 +495,8 @@
               <p class="owner">by Microsoft</p>
             </div>
             <dl>
-              <dt>Best for</dt>
-              <dd class="best">Microsoft shops. If your day is Outlook, Word, Excel, and Teams, this is the one your IT team will say yes to.</dd>
+              <dt>Good fit</dt>
+              <dd class="best">A practical fit for organizations using Microsoft 365, including Outlook, Word, Excel and Teams. Check which Copilot features your organization has enabled.</dd>
               <dt>Free plan</dt>
               <dd>The personal Copilot app is free. Copilot inside Microsoft 365 is a paid add-on your organization has to buy.</dd>
               <dt>Where your job description lives</dt>
@@ -511,14 +510,27 @@
               <p class="owner">by xAI</p>
             </div>
             <dl>
-              <dt>Best for</dt>
-              <dd class="best">Real-time reads on what is happening on X right now. Fast, conversational, opinionated. Less useful for the writing work in this room.</dd>
+              <dt>Good fit</dt>
+              <dd class="best">Research and current conversation on X. Grok can work with live X information; check its sources and dates before using a claim.</dd>
               <dt>Free plan</dt>
               <dd>Yes, with limits. <span class="flag">Not to be confused with Groq, a chip company</span></dd>
               <dt>Where your job description lives</dt>
               <dd>Paste it at the top of a chat.</dd>
             </dl>
             <p class="go"><a class="text-link" href="https://grok.com/">grok.com</a></p>
+          </li>
+          <li class="tool">
+            <div class="tool-head">
+              <h3>How to choose</h3>
+            </div>
+            <dl>
+              <dt>Start here</dt>
+              <dd class="best">Pick one tool your organization allows and learn it on work you know.</dd>
+              <dt>Compare with care</dt>
+              <dd>Use a safe example, give it the details it needs, and check the result for facts, voice and privacy.</dd>
+              <dt>Keep what works</dt>
+              <dd>Save the instructions you have reviewed. Product names and features change; the task and your judgment stay central.</dd>
+            </dl>
           </li>
         </ul>
         <p class="checked">Plan details checked September 2026. These companies change their free tiers often, so if a button is not where this page says it is, the feature moved, not you.</p>
@@ -529,68 +541,50 @@
       <div class="shell">
         <div class="section-intro">
           <p class="eyebrow">Recipe cards</p>
-          <h2 id="recipes-title">Pick one track. Build one thing. Take it home.</h2>
-          <p>Every card has the same shape: gather three real inputs, write the job description, test it raw versus with the job description, save it. Pick the track that names the task you dread. You do not have to wait for a session to build one, and the cards do not expire.</p>
+          <h2 id="recipes-title">Pick one task. Build instructions you can use again.</h2>
+          <p>The workshop exercise has four moves: choose a task and a safe example, write and correct reusable instructions, try them on a different request, then review and save a result. Start with the email example or adapt the same process to social posts or daily priorities.</p>
         </div>
         <div class="recipes">
 
           <article class="recipe" aria-labelledby="track-voice">
             <div class="recipe-head">
               <p class="label">Track 1</p>
-              <h3 id="track-voice">Voice</h3>
-              <p>A saved instruction set that writes emails and appeals in your organization's voice, not the internet's.</p>
+              <h3 id="track-voice">Email helper</h3>
+              <p>Use examples of your writing to make a short email guide you can correct and reuse.</p>
             </div>
             <div class="recipe-body">
               <div>
                 <h4>Bring</h4>
-                <p>Three sent emails or appeals you were proud of. Public content only.</p>
+                <p>Use two fictional samples for practice, or two of your own emails with private details removed. Follow your organization's rules.</p>
               </div>
               <div>
                 <h4>Steps</h4>
                 <ol>
-                  <li>Open a fresh chat. Ask it to write a thank-you email to a first-time donor. Save that answer somewhere. That is "raw."</li>
-                  <li>Copy the template below. Fill in the brackets. Paste your three examples where it asks.</li>
-                  <li>Start a new chat, paste the whole job description, then make the exact same request.</li>
-                  <li>Put raw and with-job-description side by side. Check both for generic wording and invented details.</li>
-                  <li>Save the job description as a Project, a Gem, or a doc you paste each time.</li>
+                  <li>Paste two safe email samples. Ask what the tool notices about their tone, openings and requests. Separate observations from guesses.</li>
+                  <li>Correct anything that does not sound like you. Fill in and save the email instructions below in a document.</li>
+                  <li>Start a fresh chat, paste the saved instructions, and give it a different email task.</li>
+                  <li>Check the facts and voice, revise one weak spot, and save the instructions and a result you would use.</li>
                 </ol>
               </div>
-              <p class="test">The test: same request, with and without the voice guide. Would a donor know which one a machine wrote?</p>
+              <p class="test">The test: can the saved instructions help with a different email while keeping your facts and voice? Review before sending.</p>
               <details>
-                <summary>Copy the Voice job description</summary>
+                <summary>Copy the Email helper instructions</summary>
                 <div class="snippet">
-                  <div class="snippet-bar"><span>voice-guide.md</span><button class="copy-btn" type="button" data-copy="tpl-voice">Copy</button></div>
-<pre id="tpl-voice"># [Organization name] Voice Guide
+                  <div class="snippet-bar"><span>email-helper.md</span><button class="copy-btn" type="button" data-copy="tpl-voice">Copy</button></div>
+<pre id="tpl-voice"># Email helper for [Organization name]
 
-## Who you are
-You draft emails and appeals on behalf of [Organization name], a [one line on what we do and for whom]. You write first drafts. A person on our team always reviews before anything is sent.
+## Safe writing examples
+Sample 1: [Paste a fictional practice sample or one of your properly sanitized emails]
+Sample 2: [Paste a different fictional practice sample or properly sanitized email]
 
-## Who we write to
-[Donors, volunteers, families, community members]. They are busy, generous, and can tell when something was written by a machine.
+## First, notice the pattern
+Describe the tone, sentence length, opening and requests. Cite examples from the samples. Separate what you observe from what you are guessing. Ask what I want to change before using your observations.
 
-## How we sound
-- [Warm and direct. Specific over sweeping.]
-- [Short sentences. Plain words. One idea per paragraph.]
-- We open with the person or the moment, never with "We are excited to."
-- Words we use: [list five]
-- Words we never use: [list five, for example "impactful", "leverage", "journey"]
+## Saved instructions, after I correct them
+Help me draft work emails. Keep the tone [warm and direct, or my correction]. Use short paragraphs and the facts I provide. Lead with the reason for writing. End with one clear ask when I need a response. Avoid hype, generic opening lines and commitments I have not approved. Ask about missing facts rather than adding them. Return a subject line and an email under 120 words. I will review it before sending.
 
-## Three examples of us at our best
-Example 1:
-[Paste a sent email]
-
-Example 2:
-[Paste a sent email]
-
-Example 3:
-[Paste a sent appeal]
-
-## How to respond
-When I give you a request, write it in the voice above.
-- Keep it to [length, for example 120 words].
-- Do not invent facts, numbers, names, or quotes. If you need one, put [NEED: description] in its place.
-- Give me one subject line and one preview line at the top.
-- If the request is unclear, ask me one question before writing.</pre>
+## Try a different request
+Using the saved instructions, write a fictional email to Alex. Thank Alex for helping at yesterday's event. Ask for feedback by Friday so we can decide what to change next time. Do not add event details or promises. Review the draft and tell me what to change.</pre>
                 </div>
               </details>
             </div>
@@ -599,67 +593,47 @@ When I give you a request, write it in the voice above.
           <article class="recipe" aria-labelledby="track-social">
             <div class="recipe-head">
               <p class="label">Track 2</p>
-              <h3 id="track-social">Social</h3>
-              <p>A social media manager instruction set. Give it a topic, get a post for each platform, in your voice.</p>
+              <h3 id="track-social">Social posts</h3>
+              <p>Draft one social post for a specific audience and goal, then review its claims, voice and requested action.</p>
             </div>
             <div class="recipe-body">
               <div>
                 <h4>Bring</h4>
-                <p>Three past posts that performed and one that flopped. Public content only.</p>
+                <p>A safe writing sample, one topic, the intended channel and audience, your goal, and approved facts.</p>
               </div>
               <div>
                 <h4>Steps</h4>
                 <ol>
-                  <li>Open a fresh chat. Give it one topic from this month and ask for a LinkedIn post. Save it. That is "raw."</li>
-                  <li>Copy the template below. Fill in the brackets. Paste your three winners and the flop where it asks.</li>
-                  <li>Start a new chat, paste the whole job description, then give it the same topic.</li>
-                  <li>Ask for three platform variants. Compare them to raw.</li>
-                  <li>Save the job description as a Project, a Gem, or a doc you paste each time.</li>
+                  <li>Choose one safe topic and gather the approved facts, audience, channel, goal and a writing sample.</li>
+                  <li>Fill in the instructions below. Review the draft instructions, correct them and save them in a document.</li>
+                  <li>In a fresh chat, paste the saved instructions and try a different topic. Ask for one draft and a 1-to-5 self-score for clarity, relevance, voice and the requested action.</li>
+                  <li>Check every claim and the scores yourself. Revise one weak area, then save the instructions and a draft you would use.</li>
                 </ol>
               </div>
-              <p class="test">The test: one topic, three platforms. Does each one read like your account, or like every account?</p>
+              <p class="test">The test: does the next post serve its audience and goal, sound like you, and use only approved facts? The tool's score is an opinion.</p>
               <details>
-                <summary>Copy the Social job description</summary>
+                <summary>Copy the Social post instructions</summary>
                 <div class="snippet">
-                  <div class="snippet-bar"><span>social-manager.md</span><button class="copy-btn" type="button" data-copy="tpl-social">Copy</button></div>
-<pre id="tpl-social"># [Organization name] Social Media Manager
+                  <div class="snippet-bar"><span>social-post-helper.md</span><button class="copy-btn" type="button" data-copy="tpl-social">Copy</button></div>
+<pre id="tpl-social"># Social post helper for [Organization name]
 
-## Who you are
-You draft social posts for [Organization name]. You write first drafts. A person on our team approves every post before it goes out.
+## Audience and purpose
+Channel: [one channel]
+Audience: [who will see the post and what they already know]
+Goal: [one useful action or outcome]
 
-## Our audience
-[Who follows us, what they care about, why they follow us and not someone else]
+## Voice and source
+Writing sample: [paste a public or properly sanitized example]
+Approved facts for this topic: [paste facts you have checked]
+Words or claims to avoid: [list]
 
-## Platforms and shape
-- LinkedIn: [under 150 words, one idea, no hashtags, open with the person or the moment]
-- Instagram: [caption under 100 words, first line does the work, no more than two emoji]
-- Facebook: [conversational, one question at most, link in the text]
-- Email teaser: [two sentences that make someone open the newsletter]
+## Saved instructions
+Draft one post for the channel, audience and goal above. Use the writing sample as a guide, not as a source of new facts. Use only approved facts. If a needed detail is missing, ask me. Do not publish or send anything.
 
-## How we sound
-- [Three adjectives, then one sentence on what that looks like in practice]
-- Words we use: [list five]
-- Words we never use: [list five]
-- We never post: [things we do not talk about publicly]
+After the draft, score it from 1 to 5 for clarity, relevance, voice and the requested action. Explain each score briefly and suggest one change. The score is your opinion; I will check and revise the post before using it.
 
-## Posts that worked
-Post 1:
-[Paste]
-
-Post 2:
-[Paste]
-
-Post 3:
-[Paste]
-
-## A post that flopped, and why we think it did
-[Paste, then one line on why]
-
-## How to respond
-When I give you a topic, write one post per platform above, in that order.
-- Same facts in every version. Do not add claims, numbers, or names I did not give you.
-- Mark anything you are unsure of with [CHECK].
-- After the drafts, tell me in one line which platform this topic fits best and why.</pre>
+## Try a different request
+Paste the saved instructions into a fresh chat, give it a new safe topic and approved facts, then review and improve one weak area.</pre>
                 </div>
               </details>
             </div>
@@ -668,60 +642,38 @@ When I give you a topic, write one post per platform above, in that order.
           <article class="recipe" aria-labelledby="track-cos">
             <div class="recipe-head">
               <p class="label">Track 3</p>
-              <h3 id="track-cos">Chief of staff</h3>
-              <p>A project that holds your priorities, your calendar shape, and your deadlines, and answers "what should I work on today."</p>
+              <h3 id="track-cos">Daily priorities</h3>
+              <p>Turn a safe task list and confirmed deadlines into a short set of next steps.</p>
             </div>
             <div class="recipe-body">
               <div>
                 <h4>Bring</h4>
-                <p>This week's to-do list and your next three deadlines. Nothing confidential.</p>
+                <p>A sanitized task list with confirmed dates and owners. Leave out confidential details.</p>
               </div>
               <div>
                 <h4>Steps</h4>
                 <ol>
-                  <li>Open a fresh chat. Paste your to-do list and ask "what should I work on today." Save it. That is "raw."</li>
-                  <li>Copy the template below. Fill in the brackets: your role, your priorities, how your week is shaped.</li>
-                  <li>Start a new chat, paste the whole job description, then paste the same to-do list and ask the same question.</li>
-                  <li>Judge the answer like you would judge a new hire's first week.</li>
-                  <li>Save it as a Project or a Gem. Update the priorities section every Monday.</li>
+                  <li>Choose a safe task list with confirmed deadlines and owners. Decide what a useful daily answer would contain.</li>
+                  <li>Fill in the instructions below. Correct and save them in a document.</li>
+                  <li>In a fresh chat, paste the saved instructions and a different sanitized task list.</li>
+                  <li>Check its proposed priorities against your real deadlines. Correct a weak spot and save the instructions and a result you would use.</li>
                 </ol>
               </div>
-              <p class="test">The test: ask it Monday's question. Does it tell you what to skip, or just reorder your list?</p>
+              <p class="test">The test: does it separate confirmed deadlines from suggestions and point out what it needs to know?</p>
               <details>
-                <summary>Copy the Chief of staff job description</summary>
+                <summary>Copy the Daily priorities instructions</summary>
                 <div class="snippet">
-                  <div class="snippet-bar"><span>chief-of-staff.md</span><button class="copy-btn" type="button" data-copy="tpl-cos">Copy</button></div>
-<pre id="tpl-cos"># Chief of Staff for [Your name]
+                  <div class="snippet-bar"><span>daily-priorities.md</span><button class="copy-btn" type="button" data-copy="tpl-cos">Copy</button></div>
+<pre id="tpl-cos"># Daily priorities helper for [Your role]
 
-## Who you are
-You are chief of staff to [Your name], [role] at [Organization name]. Your job is to protect my time and keep me on the work that matters. You are direct. If I am all over the place, say so.
+## What I will provide
+A sanitized list of tasks, confirmed dates and owners. I will tell you which goals matter most. Treat missing dates or owners as unknown.
 
-## What matters this quarter, in order
-1. [Priority one, and what done looks like]
-2. [Priority two]
-3. [Priority three]
-Anything not on this list is a distraction unless a deadline below forces it.
+## Saved instructions
+Help me choose the most important next steps from the information I paste. List what is waiting on someone else and what information is missing. Label each deadline as confirmed or unconfirmed; separate your suggestions from facts I gave you. Do not invent dates, owners or commitments. Ask me when a missing detail would change the order. Recommend actions only. Do not send messages, change calendars or complete tasks for me.
 
-## Recurring deadlines
-- [Monthly newsletter, first Tuesday]
-- [Board report, the 25th]
-- [Event, date]
-
-## The shape of my week
-- [Mornings are for writing. Meetings after 1 PM.]
-- [Fridays are half days.]
-- [I lose the most time to: email, last-minute asks, meetings without an agenda]
-
-## Rules
-- Never schedule or send anything. You recommend, I act.
-- Do not invent deadlines or commitments. Ask if something is missing.
-- Keep answers short. Three items max unless I ask for more.
-
-## When I paste my to-do list and ask what to work on
-1. Pick the one thing that serves the top priority and has the nearest deadline. Explain in one sentence.
-2. Name two things on my list I should drop, delegate, or push, and why.
-3. Flag anything on my list that is not connected to any priority above.
-4. End with one question I have been avoiding.</pre>
+## Try a different request
+Paste these saved instructions into a fresh chat with another sanitized task list. Ask what needs attention today. Check the dates, owners and priorities, then improve and save the instructions and a reviewed result.</pre>
                 </div>
               </details>
             </div>
