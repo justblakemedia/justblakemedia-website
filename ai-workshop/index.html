@@ -173,9 +173,6 @@
     .band.dark { background: var(--navy); color: var(--white); border-top: 0; }
     .band.dark .eyebrow, .band.dark .label { color: var(--mint); }
     .band.dark .section-intro p { color: color-mix(in srgb, var(--white) 76%, transparent); }
-    .band.mint { background: var(--mint); border-top: 0; }
-    .band.mint .eyebrow { color: var(--navy); }
-    .band.mint .section-intro p { color: var(--navy); }
 
     .text-link {
       display: inline-flex; align-items: center; min-height: 44px;
@@ -260,15 +257,6 @@
     .prompt .snippet pre { max-height: none; }
     .prompt-note { max-width: 62ch; margin: 2rem 0 0; color: var(--steel); font-size: 0.9rem; line-height: 1.6; }
 
-    /* Slop check */
-    .slop { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2rem 1.25rem; }
-    .slop-copy { grid-column: 1 / span 5; }
-    .slop-copy h2 { max-width: 10ch; margin: 0; font-size: clamp(2.6rem, 5vw, 4.6rem); font-variation-settings: "wdth" 77, "wght" 790; font-weight: 790; letter-spacing: -0.05em; line-height: 0.94; }
-    .slop-copy p { max-width: 40ch; margin: 1.5rem 0 0; font-size: 1.1rem; line-height: 1.55; }
-    .slop-list { grid-column: 7 / -1; margin: 0; padding: 0; list-style: none; counter-reset: check; border-top: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
-    .slop-list li { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0.6rem; padding: 1rem 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); font-size: 1.05rem; font-weight: 640; line-height: 1.4; }
-    .slop-list li::before { counter-increment: check; content: counter(check, decimal-leading-zero); font-size: 0.72rem; font-weight: 780; letter-spacing: 0.1em; padding-top: 0.3rem; }
-    .slop-list small { grid-column: 2; display: block; margin-top: 0.2rem; font-size: 0.86rem; font-weight: 480; color: color-mix(in srgb, var(--navy) 78%, transparent); }
 
     /* Stack */
     .stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid color-mix(in srgb, var(--white) 24%, transparent); }
@@ -345,8 +333,6 @@
       .guard:nth-child(5), .guard:nth-child(6) { grid-column: span 6; }
       .framework { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .prompts { grid-template-columns: 1fr; }
-      .slop-copy { grid-column: 1 / -1; }
-      .slop-list { grid-column: 1 / -1; }
       .download { grid-column: span 6; }
       .contact-copy { grid-column: 1 / -1; }
       .contact-actions { grid-column: 1 / span 8; }
@@ -432,7 +418,7 @@
           <!-- END SESSION BLOCK -->
 
           <h1 id="hero-title">Everything from the room, <span>in one place.</span></h1>
-          <p class="hero-intro">The tool map, the three recipe cards, the prompts we ran, the slop check, and the deck. Nothing to download and nothing to remember. Keep this link.</p>
+          <p class="hero-intro">The tool map, the three recipe cards, the prompts we ran, and the deck. Nothing to download and nothing to remember. Keep this link.</p>
           <div class="hero-actions">
             <a class="cta secondary" href="#recipes">Jump to the recipe cards</a>
           </div>
@@ -565,7 +551,7 @@
                   <li>Open a fresh chat. Ask it to write a thank-you email to a first-time donor. Save that answer somewhere. That is "raw."</li>
                   <li>Copy the template below. Fill in the brackets. Paste your three examples where it asks.</li>
                   <li>Start a new chat, paste the whole job description, then make the exact same request.</li>
-                  <li>Put raw and with-job-description side by side. Run the slop check on both.</li>
+                  <li>Put raw and with-job-description side by side. Check both for generic wording and invented details.</li>
                   <li>Save the job description as a Project, a Gem, or a doc you paste each time.</li>
                 </ol>
               </div>
@@ -882,23 +868,6 @@ Anything not on this list is a distraction unless a deadline below forces it.
       </div>
     </section>
 
-    <section class="band mint" id="slop" aria-labelledby="slop-title">
-      <div class="shell slop">
-        <div class="slop-copy">
-          <p class="eyebrow">The slop check</p>
-          <h2 id="slop-title">Would a donor know?</h2>
-          <p>Slop in an appeal is not embarrassing. It is expensive. Six questions, thirty seconds, before anything goes out. If you answer no to any of them, it is not done.</p>
-        </div>
-        <ol class="slop-list">
-          <li>Would a long-time donor believe a person wrote this?<small>Read it out loud. If you would not say it across a table, cut it.</small></li>
-          <li>Is every fact, number, name, and quote yours?<small>The model will invent a statistic to fill a gap. Check each one against the source.</small></li>
-          <li>Did it use a word your team never uses?<small>"Impactful", "leverage", "journey", "thrilled". Keep a banned list in your job description.</small></li>
-          <li>Does it open with the reader, not the organization?<small>"You made this happen" beats "We are excited to share".</small></li>
-          <li>Could you cut a third and lose nothing?<small>Then cut a third. Models pad by default.</small></li>
-          <li>Did a person read it before it went out?<small>Every job description on this page says the AI drafts and a person approves. That line is not decoration.</small></li>
-        </ol>
-      </div>
-    </section>
 
     <section class="band dark" id="stack" aria-labelledby="stack-title">
       <div class="shell">
