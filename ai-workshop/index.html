@@ -170,6 +170,16 @@
     .band.dark .eyebrow, .band.dark .label { color: var(--mint); }
     .band.dark .section-intro p { color: color-mix(in srgb, var(--white) 76%, transparent); }
 
+    /* Opening demo */
+    .notebook-launch { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; margin-bottom: 2.5rem; }
+    .notebook-launch p { margin: 0; color: color-mix(in srgb, var(--white) 76%, transparent); font-size: 0.9rem; }
+    .notebook-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 1px; background: var(--mist); list-style: none; }
+    .notebook-steps li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0.35rem 1rem; align-content: start; padding: 1.5rem; background: var(--white); color: var(--navy); }
+    .notebook-steps li:last-child { grid-column: 1 / -1; }
+    .notebook-steps .step-number { grid-row: span 2; color: var(--cobalt); font-size: 1.4rem; font-weight: 800; line-height: 1; }
+    .notebook-steps h3 { margin: 0; font-size: 1.18rem; font-weight: 760; letter-spacing: -0.02em; line-height: 1.2; }
+    .notebook-steps p { margin: 0; color: var(--steel); font-size: 0.95rem; line-height: 1.55; }
+
     .text-link {
       display: inline-flex; align-items: center; min-height: 44px;
       color: var(--navy); font-size: 0.88rem; font-weight: 760; text-underline-offset: 0.3rem;
@@ -366,6 +376,8 @@
       .session { grid-template-columns: 1fr; gap: 0.15rem 0; }
       .session dd { margin-bottom: 0.5rem; }
       .build-chooser a { grid-template-columns: 2.2rem minmax(0, 1fr) auto; }
+      .notebook-steps { grid-template-columns: 1fr; }
+      .notebook-steps li { grid-template-columns: 2.2rem minmax(0, 1fr); padding: 1.2rem; }
       .tool, .tool:nth-child(4), .tool:nth-child(5), .tool:nth-child(6), .download { grid-column: 1 / -1; }
       .framework { grid-template-columns: 1fr; }
       .guard, .guard:nth-child(5), .guard:nth-child(6) { grid-column: 1 / -1; }
@@ -437,6 +449,27 @@
           <img src="../assets/ajmn-build-options.webp" width="1536" height="1024" alt="Paper illustrations of an email, a social post, and a daily calendar" decoding="async">
           <figcaption>The same three paths shown in the workshop deck.</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="band dark" id="notebook-demo" aria-labelledby="notebook-demo-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">First, the live demo</p>
+          <h2 id="notebook-demo-title">Turn your website into a video overview.</h2>
+          <p>Follow along with a public page from your own organization's website. You'll give NotebookLM the URL, then watch what it makes from that page.</p>
+        </div>
+        <div class="notebook-launch">
+          <a class="cta" href="https://notebook.google.com/" target="_blank" rel="noopener noreferrer">Open NotebookLM</a>
+          <p>Google now calls it Gemini Notebook. The button opens the current app.</p>
+        </div>
+        <ol class="notebook-steps">
+          <li><span class="step-number" aria-hidden="true">01</span><h3>Create a notebook</h3><p>Sign in with your Google account and select <strong>Create new notebook</strong>.</p></li>
+          <li><span class="step-number" aria-hidden="true">02</span><h3>Add your website page</h3><p>Choose <strong>Upload a source</strong> when prompted, or <strong>Add sources</strong> on the left. Pick a web URL source and paste the full address of a public page on your organization's site. A homepage works. Gemini Notebook imports that page's text, not the whole website.</p></li>
+          <li><span class="step-number" aria-hidden="true">03</span><h3>Choose Video Overview</h3><p>Once the page appears in Sources, go to the <strong>Studio</strong> panel and select <strong>Video Overview</strong>.</p></li>
+          <li><span class="step-number" aria-hidden="true">04</span><h3>Generate it</h3><p>Use the default settings or adjust them if you like, then select <strong>Generate</strong>. The video builds in the background and may take a while.</p></li>
+          <li><span class="step-number" aria-hidden="true">05</span><h3>Watch and check it</h3><p>When it's ready, select the video title in Studio and press play. Compare its facts, names, and visuals with your website before you use or share it.</p></li>
+        </ol>
       </div>
     </section>
 
