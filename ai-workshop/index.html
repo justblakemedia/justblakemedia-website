@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Workshop Resources</title>
+<title>AJMN AI Workshop | Build Guides and Prompts</title>
+<meta name="description" content="Choose an email voice, social voice, or daily brief build for the AJMN AI workshop. Use safe examples, copy a prompt, and review your result.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,100..900&display=swap">
 <style>
     /*
@@ -13,6 +14,7 @@
     */
     :root {
       --cloud: #f5f7fb;
+      --paper: #f7f5ef;
       --white: #ffffff;
       --navy: #0b1528;
       --cobalt: #1554e8;
@@ -137,40 +139,29 @@
     }
 
     /* Hero */
-    .hero { position: relative; isolation: isolate; padding-block: clamp(3.5rem, 7vw, 6.5rem) clamp(3rem, 6vw, 5.5rem); }
+    .hero { position: relative; isolation: isolate; padding-block: clamp(2.5rem, 5vw, 4rem); background: var(--paper); }
     .hero-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; gap: clamp(1.25rem, 2.3vw, 2.25rem); }
     .hero-copy { grid-column: 1 / span 7; }
-    .hero-intro { max-width: 36rem; margin: clamp(1.4rem, 3vw, 2.2rem) 0 0; color: var(--steel); font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.55; }
-    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 2rem; }
+    .hero h1 { max-width: 13ch; font-size: clamp(3rem, 5.4vw, 5.1rem); }
+    .hero-intro { max-width: 36rem; margin: 1.25rem 0 0; color: var(--steel); font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.55; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.5rem; }
     .cta.secondary { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
     .cta.secondary::after { background: var(--cobalt); }
 
     /* Session block: the only part that changes per audience */
     .session {
       display: inline-grid; grid-template-columns: auto 1fr; gap: 0.35rem 1rem; align-items: baseline;
-      margin: 0 0 1.6rem; padding: 0.9rem 1.1rem;
-      border-left: 3px solid var(--cobalt); background: var(--white);
-      font-size: 0.9rem;
+      margin: 1.7rem 0 0; padding: 0.85rem 0 0;
+      border-top: 1px solid var(--mist); font-size: 0.84rem;
     }
-    .session dt { color: var(--steel); font-size: 0.68rem; font-weight: 780; letter-spacing: 0.12em; text-transform: uppercase; }
+    .session dt { color: var(--steel); font-size: 0.74rem; font-weight: 780; letter-spacing: 0.12em; text-transform: uppercase; }
     .session dd { margin: 0; font-weight: 640; }
     .session a { color: var(--cobalt); text-underline-offset: 0.2rem; }
 
-    /* QR card */
-    .qr-card {
-      grid-column: 8 / -1; position: relative;
-      padding: clamp(1.4rem, 2.5vw, 2rem);
-      background: var(--navy); color: var(--white);
-    }
-    .qr-card::before { position: absolute; inset: -0.75rem 0.75rem 0.75rem -0.75rem; z-index: -1; border: 1px solid var(--mint); content: ""; }
-    .qr-card .label { color: var(--mint); }
-    .qr-frame { width: min(100%, 15.5rem); margin: 0.5rem auto 1.2rem; padding: 0.7rem; background: var(--white); }
-    .qr-url {
-      margin: 0; text-align: center;
-      font-family: var(--mono); font-size: clamp(0.9rem, 1.4vw, 1.05rem); font-weight: 600; letter-spacing: 0.01em;
-      overflow-wrap: anywhere;
-    }
-    .qr-note { margin: 0.8rem 0 0; text-align: center; color: color-mix(in srgb, var(--white) 72%, transparent); font-size: 0.82rem; line-height: 1.5; }
+    /* The same papercraft artwork used on the workshop build slide. */
+    .hero-art { grid-column: 8 / -1; margin: 0; }
+    .hero-art img { width: 100%; height: auto; mix-blend-mode: multiply; }
+    .hero-art figcaption { margin-top: 0.5rem; color: var(--steel); font-size: 0.8rem; text-align: center; }
 
     /* Bands */
     .band { padding-block: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--mist); }
@@ -204,13 +195,27 @@
 
     /* Recipe cards */
     .recipes { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; }
-    .recipe { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(15rem, 1fr) minmax(0, 2fr); min-width: 0; background: var(--white); border: 1px solid var(--mist); }
-    .recipe-head { padding: 1.5rem 1.5rem 1.2rem; background: var(--navy); color: var(--white); }
+    .recipe { grid-column: 1 / -1; min-width: 0; background: var(--white); border: 1px solid var(--mist); }
+    .recipe-head { padding: 1.35rem 1.5rem; background: var(--navy); color: var(--white); }
     .recipe-head .label { color: var(--mint); }
     .recipe-head h3 { margin: 0; font-size: 1.9rem; font-variation-settings: "wdth" 78, "wght" 790; font-weight: 790; letter-spacing: -0.04em; line-height: 0.95; }
     .recipe-head p { margin: 0.8rem 0 0; color: color-mix(in srgb, var(--white) 76%, transparent); font-size: 0.95rem; line-height: 1.5; }
     .recipe-body { display: flex; flex-direction: column; gap: 1.2rem; min-width: 0; padding: 1.4rem 1.5rem 1.5rem; }
-    .recipe-body h4 { margin: 0 0 0.4rem; color: var(--steel); font-size: 0.66rem; font-weight: 780; letter-spacing: 0.14em; text-transform: uppercase; }
+    .recipe-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem 1rem; }
+    .recipe-actions p { color: var(--steel); }
+    .copy-btn.primary-copy { min-height: 48px; padding: 0.7rem 1rem; background: var(--cobalt); border-color: var(--cobalt); color: var(--white); font-size: 0.87rem; letter-spacing: 0; text-transform: none; }
+    .copy-btn.primary-copy:hover, .copy-btn.primary-copy:focus-visible { background: var(--navy); border-color: var(--navy); color: var(--white); }
+    .recipe-later { padding: 1rem; border-left: 3px solid var(--mint); background: var(--cloud); }
+    .recipe-later p { margin: 0.45rem 0 0; }
+    .build-chooser { display: grid; gap: 0.6rem; margin: 1.25rem 0 2rem; padding: 0; list-style: none; }
+    .build-chooser a { display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; align-items: center; gap: 0.9rem; min-height: 76px; padding: 0.85rem 1.1rem; border: 1px solid var(--mist); background: var(--white); color: var(--navy); text-decoration: none; }
+    .build-chooser a:hover, .build-chooser a:focus-visible { border-color: var(--cobalt); background: #eef3ff; }
+    .build-chooser .build-number { color: var(--cobalt); font-size: 1.45rem; font-weight: 800; }
+    .build-chooser strong { display: block; font-size: 1.08rem; font-weight: 760; line-height: 1.2; }
+    .build-chooser small { display: block; margin-top: 0.25rem; color: var(--steel); font-size: 0.87rem; }
+    .build-chooser a > span:last-child { color: var(--cobalt); font-size: 1.35rem; font-weight: 800; }
+    .safety-note { margin: 0; padding: 1rem 1.15rem; border-left: 4px solid var(--cobalt); background: var(--paper); font-size: 0.98rem; }
+    .recipe-body h4 { margin: 0 0 0.4rem; color: var(--steel); font-size: 0.74rem; font-weight: 780; letter-spacing: 0.14em; text-transform: uppercase; }
     .recipe-body p, .recipe-body li { margin: 0; font-size: 0.95rem; line-height: 1.55; }
     .recipe-body ol, .recipe-body ul { margin: 0; padding-left: 1.2rem; }
     .recipe-body li + li { margin-top: 0.35rem; }
@@ -267,6 +272,7 @@
     .prompt.wide { grid-column: 1 / -1; }
     .prompt h3 { margin: 0; font-size: 1.25rem; font-weight: 740; letter-spacing: -0.02em; line-height: 1.1; }
     .prompt .use { margin: 0.4rem 0 0; color: var(--steel); font-size: 0.88rem; }
+    .prompt-details { margin-top: 0.85rem; border-top: 1px solid var(--mist); }
     .prompt .snippet pre { max-height: none; }
     .prompt-note { max-width: 62ch; margin: 2rem 0 0; color: var(--steel); font-size: 0.9rem; line-height: 1.6; }
 
@@ -315,10 +321,6 @@
     .footer-privacy { grid-column: 9 / -1; max-width: 38ch; }
     .footer-copyright { grid-column: 1 / -1; padding-top: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent); font-size: 0.82rem; }
 
-    /* Reveal, matches homepage behaviour */
-    .reveal-ready [data-reveal] { transition: opacity 520ms ease, transform 520ms ease; }
-    .reveal-ready [data-reveal].reveal-pending { opacity: 0; transform: translateY(1.25rem); }
-
     @media (max-width: 1060px) {
       .nav-list { gap: 0.45rem; }
       .nav-link { font-size: 0.76rem; }
@@ -327,20 +329,21 @@
     }
 
     @media (max-width: 880px) {
+      html { scroll-padding-top: 8rem; }
       .shell { width: min(calc(100% - 2.5rem), var(--content)); }
       .site-header { position: relative; }
       .nav-grid { grid-template-columns: 1fr; gap: 0; padding-block: 0.75rem; }
       .wordmark, .primary-nav { grid-column: 1; }
-      .primary-nav { width: 100%; overflow-x: auto; scrollbar-width: thin; }
-      .nav-list { justify-content: flex-start; width: max-content; min-width: 100%; }
+      .primary-nav { width: 100%; }
+      .nav-list { justify-content: space-between; width: 100%; }
       .hero-grid { gap: 2.5rem 1rem; }
       .hero-copy { grid-column: 1 / -1; }
-      .qr-card { grid-column: 2 / span 10; }
+      .hero-art { grid-column: 2 / span 10; }
       h1 { max-width: 13ch; font-size: clamp(3rem, 9vw, 5rem); }
       .section-intro .eyebrow { grid-column: 1 / -1; margin-top: 0; }
       .section-intro h2, .section-intro p { grid-column: 1 / -1; }
       .tool, .tool:nth-child(4), .tool:nth-child(5), .tool:nth-child(6) { grid-column: span 6; }
-      .recipe { grid-column: 1 / -1; grid-template-columns: 1fr; }
+      .recipe { grid-column: 1 / -1; }
       .guard { grid-column: span 6; }
       .guard:nth-child(5), .guard:nth-child(6) { grid-column: span 6; }
       .framework { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -358,9 +361,11 @@
       .shell { width: min(calc(100% - 2rem), var(--content)); }
       .hero { padding-block: 3rem 3.5rem; }
       h1 { font-size: clamp(2.7rem, 13vw, 3.6rem); }
-      .qr-card { grid-column: 1 / -1; }
+      .hero-art { grid-column: 1 / -1; }
+      .hero-art figcaption { display: none; }
       .session { grid-template-columns: 1fr; gap: 0.15rem 0; }
       .session dd { margin-bottom: 0.5rem; }
+      .build-chooser a { grid-template-columns: 2.2rem minmax(0, 1fr) auto; }
       .tool, .tool:nth-child(4), .tool:nth-child(5), .tool:nth-child(6), .download { grid-column: 1 / -1; }
       .framework { grid-template-columns: 1fr; }
       .guard, .guard:nth-child(5), .guard:nth-child(6) { grid-column: 1 / -1; }
@@ -374,13 +379,12 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       a, .copy-btn { transition: none; }
-      .reveal-ready [data-reveal], .reveal-ready [data-reveal].reveal-pending { opacity: 1; transform: none; }
     }
 
     @media print {
       .site-header, .hero-actions, .copy-btn, .contact, .site-footer { display: none; }
       .band, .hero { padding-block: 1.5rem; }
-      .band.dark, .qr-card, .recipe-head, .snippet pre { background: #fff !important; color: #000 !important; border: 1px solid #000; }
+      .band.dark, .recipe-head, .snippet pre { background: #fff !important; color: #000 !important; border: 1px solid #000; }
       .band.dark .eyebrow, .band.dark .label, .stack h3, .stack .job, .stack .why, .recipe-head .label, .recipe-head p { color: #000 !important; }
       details { display: block; }
       details > summary { display: none; }
@@ -398,13 +402,9 @@
       <a class="wordmark" href="https://justblakemedia.com/" aria-label="Just Blake Media home">JUST BLAKE MEDIA</a>
       <nav class="primary-nav" id="primary-menu" aria-label="Page navigation">
         <ul class="nav-list">
-          <li><a class="nav-link" href="#tools">Tool map</a></li>
           <li><a class="nav-link" href="#recipes">Build guides</a></li>
+          <li><a class="nav-link" href="#tools">Tool map</a></li>
           <li><a class="nav-link" href="#prompts">Prompts</a></li>
-          <li><a class="nav-link" href="#guardrails">Guardrails</a></li>
-          <li><a class="nav-link" href="#stack">Justin's stack</a></li>
-          <li><a class="nav-link" href="#deck">Deck</a></li>
-          <li><a class="nav-cta" href="#contact">Work with Justin</a></li>
         </ul>
       </nav>
     </div>
@@ -415,10 +415,13 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">AI Workshop Resources</p>
+          <p class="eyebrow">AJMN AI workshop</p>
+          <h1 id="hero-title">Pick one AI helper. <span>Make it yours.</span></h1>
+          <p class="hero-intro">Start with a safe example, copy one build prompt, and leave with a draft you have reviewed. The guides and extra prompts stay here after the workshop.</p>
+          <div class="hero-actions">
+            <a class="cta" href="#recipes">Choose your build</a>
+          </div>
 
-          <!-- SESSION BLOCK. This is the only part of the page tied to one audience.
-               Swap the four values below when this page is reused for another group. -->
           <dl class="session">
             <dt>Session</dt>
             <dd><a href="https://jewishatlanta.org/atlanta-jewish-marketing-network/meetup/">Atlanta Jewish Marketing Network meetup</a></dd>
@@ -427,29 +430,117 @@
             <dt>Host</dt>
             <dd>Jewish Federation of Greater Atlanta</dd>
             <dt>Bring</dt>
-            <dd>A laptop, a free AI account, and three real examples of your work</dd>
+            <dd>A laptop and an AI account. Use examples cleared to share or the fictional samples below.</dd>
           </dl>
-          <!-- END SESSION BLOCK -->
-
-          <h1 id="hero-title">Everything from the room, <span>in one place.</span></h1>
-          <p class="hero-intro">The tool map, three build guides, the prompts we ran, and the deck. Nothing to download and nothing to remember. Keep this link.</p>
-          <div class="hero-actions">
-            <a class="cta secondary" href="#recipes">Jump to the build guides</a>
-          </div>
         </div>
-
-        <div class="qr-card">
-          <p class="label">Point your phone here</p>
-          <div class="qr-frame">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges" role="img" aria-label="QR code linking to justblakemedia.com/ai-workshop"><rect width="33" height="33" fill="#fff"/><path d="M2 2h7v1h-7zM10 2h2v1h-2zM13 2h2v1h-2zM16 2h5v1h-5zM22 2h1v1h-1zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h2v1h-2zM19 3h1v1h-1zM21 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM12 4h2v1h-2zM16 4h4v1h-4zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h2v1h-2zM14 5h3v1h-3zM18 5h1v1h-1zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h4v1h-4zM15 6h1v1h-1zM17 6h2v1h-2zM20 6h1v1h-1zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM13 7h1v1h-1zM15 7h2v1h-2zM18 7h4v1h-4zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM10 9h5v1h-5zM18 9h3v1h-3zM2 10h1v1h-1zM6 10h1v1h-1zM8 10h3v1h-3zM13 10h4v1h-4zM18 10h2v1h-2zM22 10h6v1h-6zM30 10h1v1h-1zM2 11h1v1h-1zM5 11h3v1h-3zM16 11h5v1h-5zM24 11h7v1h-7zM3 12h2v1h-2zM7 12h3v1h-3zM13 12h5v1h-5zM20 12h1v1h-1zM23 12h3v1h-3zM30 12h1v1h-1zM5 13h1v1h-1zM7 13h1v1h-1zM10 13h1v1h-1zM15 13h1v1h-1zM18 13h3v1h-3zM22 13h2v1h-2zM27 13h1v1h-1zM29 13h2v1h-2zM2 14h1v1h-1zM4 14h5v1h-5zM10 14h2v1h-2zM13 14h3v1h-3zM17 14h1v1h-1zM19 14h1v1h-1zM21 14h3v1h-3zM25 14h1v1h-1zM29 14h1v1h-1zM3 15h2v1h-2zM6 15h1v1h-1zM9 15h3v1h-3zM13 15h8v1h-8zM24 15h7v1h-7zM2 16h2v1h-2zM6 16h3v1h-3zM11 16h1v1h-1zM14 16h1v1h-1zM17 16h4v1h-4zM22 16h1v1h-1zM26 16h3v1h-3zM30 16h1v1h-1zM5 17h1v1h-1zM10 17h1v1h-1zM13 17h2v1h-2zM16 17h1v1h-1zM18 17h3v1h-3zM22 17h4v1h-4zM29 17h2v1h-2zM3 18h1v1h-1zM7 18h2v1h-2zM10 18h1v1h-1zM12 18h5v1h-5zM18 18h6v1h-6zM25 18h1v1h-1zM29 18h1v1h-1zM2 19h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM9 19h3v1h-3zM13 19h2v1h-2zM17 19h4v1h-4zM24 19h4v1h-4zM29 19h2v1h-2zM4 20h1v1h-1zM8 20h3v1h-3zM14 20h4v1h-4zM20 20h1v1h-1zM22 20h3v1h-3zM28 20h1v1h-1zM30 20h1v1h-1zM5 21h1v1h-1zM11 21h1v1h-1zM13 21h1v1h-1zM15 21h1v1h-1zM19 21h2v1h-2zM22 21h1v1h-1zM24 21h1v1h-1zM29 21h2v1h-2zM2 22h4v1h-4zM8 22h1v1h-1zM11 22h1v1h-1zM13 22h3v1h-3zM17 22h1v1h-1zM19 22h1v1h-1zM22 22h6v1h-6zM30 22h1v1h-1zM10 23h3v1h-3zM15 23h4v1h-4zM20 23h3v1h-3zM26 23h1v1h-1zM30 23h1v1h-1zM2 24h7v1h-7zM10 24h1v1h-1zM12 24h2v1h-2zM17 24h1v1h-1zM19 24h1v1h-1zM21 24h2v1h-2zM24 24h1v1h-1zM26 24h3v1h-3zM30 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM12 25h3v1h-3zM16 25h1v1h-1zM19 25h4v1h-4zM26 25h1v1h-1zM29 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM10 26h1v1h-1zM14 26h3v1h-3zM18 26h2v1h-2zM21 26h7v1h-7zM29 26h1v1h-1zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM11 27h1v1h-1zM13 27h1v1h-1zM15 27h1v1h-1zM17 27h4v1h-4zM22 27h2v1h-2zM25 27h1v1h-1zM30 27h1v1h-1zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM11 28h1v1h-1zM15 28h1v1h-1zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM23 28h1v1h-1zM27 28h4v1h-4zM2 29h1v1h-1zM8 29h1v1h-1zM13 29h1v1h-1zM15 29h3v1h-3zM19 29h2v1h-2zM22 29h2v1h-2zM25 29h3v1h-3zM29 29h2v1h-2zM2 30h7v1h-7zM10 30h1v1h-1zM12 30h3v1h-3zM17 30h1v1h-1zM19 30h2v1h-2zM22 30h3v1h-3zM27 30h1v1h-1zM29 30h1v1h-1z" fill="#0b1528"/></svg>
-          </div>
-          <p class="qr-url">justblakemedia.com/ai-workshop</p>
-          <p class="qr-note">Scan it, or type the address. Bookmark it before you leave the room.</p>
-        </div>
+        <figure class="hero-art">
+          <img src="/assets/ajmn-build-options.webp" width="1536" height="1024" alt="Paper illustrations of an email, a social post, and a daily calendar" decoding="async">
+          <figcaption>The same three paths shown in the workshop deck.</figcaption>
+        </figure>
       </div>
     </section>
 
+    <section class="band white" id="recipes" aria-labelledby="recipes-title">
+      <div class="shell">
+        <div class="section-intro">
+          <p class="eyebrow">Build guides</p>
+          <h2 id="recipes-title">Choose one build for today.</h2>
+          <p>Pick the outcome you want. Each path starts with a safe example, one prompt to copy, and a result you can review in the room.</p>
+        </div>
+        <div class="safety-note" role="note"><strong>Before you paste anything:</strong> Use fictional or approved public examples today. Do not connect a work account during the exercise. Follow your organization's policy before using real donor, client, staff, or internal information.</div>
+        <ol class="build-chooser" aria-label="Choose a workshop build">
+          <li><a href="#track-voice"><span class="build-number">01</span><span><strong>Email voice</strong><small>Bring 3–5 safe writing examples</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="#track-social"><span class="build-number">02</span><span><strong>Social voice</strong><small>Bring 3–5 public posts</small></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="#track-cos"><span class="build-number">03</span><span><strong>Daily brief</strong><small>Use the fictional workday below</small></span><span aria-hidden="true">↗</span></a></li>
+        </ol>
+        <div class="recipes">
+          <article class="recipe" id="track-voice" aria-labelledby="track-voice-title">
+            <div class="recipe-head"><p class="label">Build 1</p><h3 id="track-voice-title">Write emails that sound like you</h3><p>Turn a few examples into a voice guide, then draft one new email.</p></div>
+            <div class="recipe-body">
+              <div class="recipe-actions"><button class="copy-btn primary-copy" type="button" data-copy="build-1">Copy Build 1 prompt</button><p>Paste it into a new AI chat with your examples.</p></div>
+              <div><h4>Bring</h4><p>Three to five short emails or paragraphs you wrote and are cleared to share. Remove names, addresses, and private details. If you have no safe examples, write three fictional practice paragraphs in your own style.</p></div>
+              <div><h4>Do this in the room</h4><ol><li>Start a new chat. Paste the examples and the copied build prompt.</li><li>Read the voice guide. Correct two things that do not sound like you, then keep the revised guide.</li><li>In a new chat, paste the guide and use the test prompt below with a fictional message. Review the draft.</li></ol></div>
+              <details><summary>Read the build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 1</span><button class="copy-btn" type="button" data-copy="build-1">Copy</button></div><pre id="build-1">Create a short email voice guide called "My Email Voice" from the 3–5 examples I paste here. They are safe to share and may be fictional practice writing. Analyze only my writing, excluding quoted replies, signatures, and text written by others.
 
+Ask who I usually write to and what kind of email I want to draft if that is unclear. Do not infer private facts from these examples.
+
+Return five to eight specific voice rules about openings, sentence length, tone, requests, closings, and punctuation. Include two short excerpts that support the rules, phrases to avoid, and a short instruction I can paste into a future chat.
+
+Ask me what sounds wrong. Apply my corrections and show the revised guide. Do not claim it is saved in the app unless you can verify that.</pre></div></details>
+              <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 1</span><button class="copy-btn" type="button" data-copy="test-1">Copy</button></div><pre id="test-1">Use the "My Email Voice" guide I paste below to draft a fictional email. If the guide is missing, ask me to paste it.
+
+Recipient and relationship: [add]
+What I need to say or ask: [add]
+Facts to include: [add]
+Length: [add]
+
+Return a subject line and draft using only these facts. Name two guide rules you used. Do not send the email.</pre></div></details>
+              <div class="test"><h4>Check your result</h4><ul><li>The guide reflects your corrections.</li><li>The draft sounds like you and uses only the facts you provided.</li><li>You can find or copy the guide for your next chat.</li></ul></div>
+              <details class="recipe-later"><summary>After the workshop: save or connect</summary><p>Save the reviewed guide in your approved tool if it supports reusable instructions. With organizational approval, you can later explore email connections and their access settings. Neither step is required for today's build.</p></details>
+            </div>
+          </article>
+          <article class="recipe" id="track-social" aria-labelledby="track-social-title">
+            <div class="recipe-head"><p class="label">Build 2</p><h3 id="track-social-title">Capture your organization's social voice</h3><p>Use existing posts to make a voice guide and one new draft.</p></div>
+            <div class="recipe-body">
+              <div class="recipe-actions"><button class="copy-btn primary-copy" type="button" data-copy="build-2">Copy Build 2 prompt</button><p>Paste it into a new AI chat with your public posts.</p></div>
+              <div><h4>Bring</h4><p>Three to five posts your organization has already published, with their full captions. Note the platform and audience. If public posts are unavailable, use fictional practice captions.</p></div>
+              <div><h4>Do this in the room</h4><ol><li>Start a new chat. Paste the captions and the copied build prompt.</li><li>Check the voice guide against the posts. Correct two rules that miss your organization's style.</li><li>Paste the revised guide into a new chat and use the test prompt below to draft one fictional post. Review every fact and link.</li></ol></div>
+              <details><summary>Read the build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 2</span><button class="copy-btn" type="button" data-copy="build-2">Copy</button></div><pre id="build-2">Create a short writing guide called "Our Social Voice" from the 3–5 public or fictional posts I paste here.
+
+Confirm each platform and intended audience. Ask for clearer text if an example is incomplete. Use only original captions as voice examples, excluding comments and reposted text. Do not treat visible metrics as proof of why a post performed well.
+
+Return five to eight writing rules about openings, tone, length, formatting, and calls to action. Explain what the examples show about emoji, hashtags, and platform differences. Include two short excerpts that support the rules. Add a drafting pattern that requires current facts and never copies old dates, links, or claims.
+
+Ask what I would change, apply my corrections, and show the revised guide. Do not claim it is saved in the app unless you can verify that.</pre></div></details>
+              <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 2</span><button class="copy-btn" type="button" data-copy="test-2">Copy</button></div><pre id="test-2">Use the "Our Social Voice" guide I paste below to draft a fictional post. If the guide is missing, ask me to paste it.
+
+Platform: [add]
+Audience: [add]
+Program or campaign: [add]
+Current facts, dates, and links: [add]
+What readers should do next: [add]
+
+Return one draft using only these facts. Name two guide rules you used and flag missing details. Do not publish the post.</pre></div></details>
+              <div class="test"><h4>Check your result</h4><ul><li>The guide reflects the posts and your corrections.</li><li>The draft uses only the current facts you supplied.</li><li>You have a post draft to review before publishing.</li></ul></div>
+              <details class="recipe-later"><summary>After the workshop: save your guide</summary><p>Save the reviewed guide in your approved tool if it supports reusable instructions. Recheck dates, claims, links, and approval requirements every time you use it.</p></details>
+            </div>
+          </article>
+          <article class="recipe" id="track-cos" aria-labelledby="track-cos-title">
+            <div class="recipe-head"><p class="label">Build 3</p><h3 id="track-cos-title">Get a daily brief</h3><p>Practice turning a sample workday into a two-minute priorities brief.</p></div>
+            <div class="recipe-body">
+              <div class="recipe-actions"><button class="copy-btn primary-copy" type="button" data-copy="build-3">Copy Build 3 prompt</button><p>Paste it into a new AI chat. The sample workday is inside.</p></div>
+              <div><h4>Bring</h4><p>No account connections needed. The prompt includes a fictional calendar, task list, and email update.</p></div>
+              <div><h4>Do this in the room</h4><ol><li>Start a new chat and paste the copied build prompt. Ask for the two-minute brief.</li><li>Check whether it identifies the deadline, meeting preparation, and work waiting on someone else. Correct any invented fact.</li><li>Use the test prompt below with one changed fact. Confirm the brief changes with it.</li></ol></div>
+              <details><summary>Read the build prompt and sample</summary><div class="snippet"><div class="snippet-bar"><span>build 3</span><button class="copy-btn" type="button" data-copy="build-3">Copy</button></div><pre id="build-3">Create a two-minute daily work brief using only this fictional practice information. Do not connect accounts, create a schedule, send anything, or claim you checked live sources.
+
+Fictional practice day: Wednesday, October 14, 2026. Time zone: Eastern.
+
+Sample calendar:
+- 9:30 a.m. Team check-in about the fall gala.
+- 2:00 p.m. Call with a potential gala sponsor. Prepare the sponsorship options.
+
+Sample tasks:
+- Send the board update by 4:00 p.m. today.
+- Revise the gala invitation draft by Friday.
+- Waiting for a colleague to approve the sponsor one-pager.
+
+Sample email update:
+- The sponsor one-pager is still awaiting approval. The colleague expects to review it tomorrow.
+
+Return no more than 250 words. Label it "Fictional practice brief." Include up to three priorities with next steps and which sample item each came from, today's meetings and preparation, deadlines, work waiting on someone else, and anything uncertain or missing.
+
+Use only the supplied facts. Do not invent links, owners, completed work, or delivery status.</pre></div></details>
+              <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 3</span><button class="copy-btn" type="button" data-copy="test-3">Copy</button></div><pre id="test-3">Using the same fictional practice workday and brief format, change one fact: the potential gala sponsor call moved from 2:00 p.m. to 3:30 p.m.
+
+Regenerate the brief. Name exactly what changed and what stayed the same. If you cannot see the sample workday, ask me to paste it again. Do not claim you checked a real calendar or sent a brief.</pre></div></details>
+              <div class="test"><h4>Check your result</h4><ul><li>The brief is labeled as fictional practice.</li><li>It names supported priorities and does not invent a source or delivery.</li><li>The revised brief reflects the changed meeting time.</li></ul></div>
+              <details class="recipe-later"><summary>After the workshop: make it recurring</summary><p>With your organization's approval, choose permitted sources and review the access each connection requests. Check that your AI app can read fresh data and schedule private delivery. Verify the saved schedule and an actual delivery before relying on it.</p></details>
+            </div>
+          </article>
+        </div>
+        <p class="guide-note">Keep the reviewed guide or brief. Your judgment is the final step before anything is sent or published.</p>
+      </div>
+    </section>
 
     <section class="band" id="tools" aria-labelledby="tools-title">
       <div class="shell">
@@ -552,118 +643,12 @@
       </div>
     </section>
 
-    <section class="band white" id="recipes" aria-labelledby="recipes-title">
-  <div class="shell">
-    <div class="section-intro">
-      <p class="eyebrow">Build guides</p>
-      <h2 id="recipes-title">Three useful AI builds for nonprofit marketers.</h2>
-      <p>Choose one build. Gather the inputs below, then copy its build prompt into your AI chat.</p>
-    </div>
-    <p class="guide-note">Remove private details from examples before uploading them.</p>
-    <div class="recipes"><article class="recipe" aria-labelledby="track-voice">
-  <div class="recipe-head"><p class="label">Build 1</p><h3 id="track-voice">Write emails that sound like you</h3><p>Use emails you've written to teach AI how you sound. Then use your guide to draft the next one.</p></div>
-  <div class="recipe-body">
-    <div><h4>Start here in the workshop</h4><p>Choose one way to give the AI examples of your writing:</p><ul><li><strong>Route 1: Use sent emails.</strong> Find 3–5 emails you wrote that sound like you. Copy your own text, leaving out quoted replies and signatures. Remove private details before sharing.</li><li><strong>Route 2: Connect your email.</strong> Ask your AI app how to connect the email account you use for work. The build prompt will ask it to read up to 15 sent messages from the last 45 days.</li></ul></div>
-    <div><h4>Do this</h4><ol><li>Open your AI app and start a new chat. Tell it whether you're using pasted emails or a connected account.</li><li>Open “Build this with AI” below and click Copy. Paste the prompt into your chat, then add your email examples or follow the app's connection steps.</li><li>Tell the AI who you usually write to and what you want help drafting, such as donor thank-yous, partner follow-ups, or messages to colleagues.</li><li>Read the “My Email Voice” guide it creates. Check the openings, tone, requests, and closings against how you write. Give specific corrections, such as “I use shorter openings” or “This sounds too formal.”</li><li>Ask the AI to save the revised guide and show you where it lives. Follow its app-specific saving steps, then ask how to use the guide in a new chat.</li><li>Start a new chat with access to the guide. Copy “Test it in a new chat” below, fill in the details of an email you need to write, and read the draft. If something sounds off, have the AI update the guide and try again.</li></ol></div>
-    <details><summary>Build this with AI</summary><div class="snippet"><div class="snippet-bar"><span>build 1</span><button class="copy-btn" type="button" data-copy="build-1">Copy</button></div><pre id="build-1">Create a reusable email voice guide called "My Email Voice."
-
-I will provide examples in one of two ways:
-1. Pasted or uploaded emails: Analyze 3–5 emails I wrote.
-2. Connected email: Use my sent messages from the last 45 days, up to 15 emails. Ask which account to use if it is unclear. If the account is not connected, show me the app's connection steps.
-
-Use my own writing, excluding quoted replies, forwarded text, signatures, and templates written by others. Ask who I usually write to and what kinds of emails I want help with if the examples don't make that clear.
-
-Build a short guide with:
-- 5–8 writing rules drawn from my examples: openings, sentence length, requests, tone, closings, and punctuation.
-- Three short excerpts that show those rules, with private details removed.
-- Phrases or habits to avoid based on my examples and feedback.
-- An instruction to use the facts supplied for each new email and ask for missing details.
-
-Show me the guide and ask what I would change. Apply my feedback, then save it using this app's reusable instructions feature. Check what the app supports before saving; if a setup step needs me, give me that step. Confirm where the guide is saved and how to use it in a new chat.</pre></div></details>
-    <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 1</span><button class="copy-btn" type="button" data-copy="test-1">Copy</button></div><pre id="test-1">Use "My Email Voice" to draft this email. Check that you can access the guide first; ask me to attach it if needed.
-
-Recipient and relationship: [add]
-What I need to say or ask: [add]
-Facts and details to include: [add]
-Length: [add]
-
-Return a subject line and email draft. Use only the facts above. After the draft, name two rules from my guide that you used.</pre></div></details>
-    <div class="test"><h4>Check your result</h4><ul><li>You can find “My Email Voice” and use it in a new chat.</li><li>The draft sounds like you and includes the facts and request you supplied.</li><li>You have an email draft to review before sending.</li></ul></div>
-  </div>
-</article>
-<article class="recipe" aria-labelledby="track-social">
-  <div class="recipe-head"><p class="label">Build 2</p><h3 id="track-social">Capture your organization's social voice</h3><p>Use your organization's posts to teach AI how you sound. Then make a new draft in that voice.</p></div>
-  <div class="recipe-body">
-    <div><h4>Start here in the workshop</h4><p>Open your organization's social account and choose 3–5 posts that sound like your organization. Include the kinds of posts you want help writing, such as program invitations, community stories, or campaign updates.</p><p>Take screenshots with the full captions visible, or copy the captions. Note the platform and intended audience for each post, and remove private details before sharing.</p></div>
-    <div><h4>Do this</h4><ol><li>Open your AI app and start a new chat. Upload your screenshots or paste the captions, with the platform and audience for each.</li><li>Open “Build this with AI” below, click Copy, and paste the prompt into the same chat.</li><li>Check that the AI read the captions correctly. Add any text cut off in a screenshot and explain who a post was meant to reach if that isn't clear.</li><li>Review the “Our Social Voice” guide it creates. Look at its rules for tone, openings, length, emoji, and calls to action. Tell it which rules fit and which need changing.</li><li>Ask the AI to save the revised guide and show you where it lives. Follow its app-specific saving steps so you can use it again.</li><li>Start a new chat with access to the guide and copy “Test it in a new chat” below. Fill in the platform, audience, current program or campaign facts, and the action you want readers to take. Check the draft and save any changes you make to the guide.</li></ol></div>
-    <details><summary>Build this with AI</summary><div class="snippet"><div class="snippet-bar"><span>build 2</span><button class="copy-btn" type="button" data-copy="build-2">Copy</button></div><pre id="build-2">Create a reusable writing guide called "Our Social Voice" from the 3–5 posts I provide.
-
-Read the captions and confirm the platform and intended audience. Ask for clearer text if a screenshot is unreadable. Use our original captions as voice examples, excluding comments, reposted text, and platform labels. Treat visible metrics separately from writing style; they don't prove why a post performed well.
-
-Build a short guide with:
-- 5–8 writing rules drawn from the posts, including openings, tone, length, formatting, and calls to action.
-- What our examples show about emoji, hashtags, and differences between platforms.
-- Three short excerpts that show the rules, with private details removed.
-- A drafting pattern for the kinds of posts we publish.
-- An instruction to use current campaign facts for each new post, without copying old dates, links, or claims from the examples.
-
-Show me the guide and ask what I would change. Apply my feedback, then save it using this app's reusable instructions feature. Check what the app supports before saving; if a setup step needs me, give me that step. Confirm where the guide is saved and how to use it in a new chat.</pre></div></details>
-    <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 2</span><button class="copy-btn" type="button" data-copy="test-2">Copy</button></div><pre id="test-2">Use "Our Social Voice" to draft our next post. Check that you can access the guide first; ask me to attach it if needed.
-
-Platform: [add]
-Audience: [add]
-Program or campaign: [add]
-Current facts, dates, and links: [add]
-What readers should do next: [add]
-
-Return one post draft using only these facts. After the draft, name two rules from the guide that you used and flag any missing details.</pre></div></details>
-    <div class="test"><h4>Check your result</h4><ul><li>You can find “Our Social Voice” and use it in a new chat.</li><li>The draft sounds like your organization and uses the current dates, facts, and links you supplied.</li><li>You have a post draft to review before publishing.</li></ul></div>
-  </div>
-</article>
-<article class="recipe" aria-labelledby="track-cos">
-  <div class="recipe-head"><p class="label">Build 3</p><h3 id="track-cos">Get a daily brief</h3><p>A short look at today's priorities and to-dos, like a note from a chief of staff.</p></div>
-  <div class="recipe-body">
-    <div><h4>Start here in the workshop</h4><p>Choose the email account and calendar you use for work, plus your task list if you use one. Decide which days you want the brief, what time it should arrive, your time zone, and where you want to receive it privately.</p></div>
-    <div><h4>Do this</h4><ol><li>Open your AI app and start a new chat. Open “Build this with AI” below, click Copy, and paste the prompt into the chat.</li><li>Fill in the source and delivery fields. Name the accounts to use and give the days, local time, time zone, and destination for your brief.</li><li>Ask the AI to check that the app can read those sources and deliver a scheduled brief. Follow the app-specific connection steps it gives you, then have it confirm it can read your email and calendar.</li><li>Read the brief it creates for today. Check its priorities, meetings, deadlines, and next steps against your actual work. Point out anything already finished, missing, or assigned to the wrong person.</li><li>Tell the AI what to change in future briefs, then have it create the recurring schedule. Check the saved days, time, time zone, destination, and next run.</li><li>Have the AI run a delivery test through the same system. Ask when to expect it, then check the destination you chose for the brief.</li><li>Open “Test it in a new chat” below and use that prompt to check the saved setup. Confirm whether the test arrived; if it didn't, have the AI identify and fix the delivery problem.</li></ol></div>
-    <details><summary>Build this with AI</summary><div class="snippet"><div class="snippet-bar"><span>build 3</span><button class="copy-btn" type="button" data-copy="build-3">Copy</button></div><pre id="build-3">Set up a daily work brief I can read in two minutes.
-
-Sources: [email account, calendar, and task list if used]
-Delivery days: [add]
-Delivery time and time zone: [add]
-Private delivery destination: [add]
-
-Ask for any missing setup details. Check that this app can read the sources, run on a schedule, and deliver the brief to me. If a connection needs setup, show me the steps. Tell me if a required feature is unavailable.
-
-Create today's brief from my calendar, open tasks, and recent relevant email. Check for later replies, completed work, and changed plans before calling something open. Include:
-1. The date and when you checked the sources.
-2. Up to three priorities, each with a next step and source link.
-3. Today's meetings in my time zone, including conflicts and preparation mentioned in the sources.
-4. Upcoming deadlines and work waiting on someone else.
-5. Any source you couldn't check.
-
-Keep it around 250 words. Use the source facts and flag uncertain details. This task creates a brief for me; it doesn't send replies or change my calendar or task list.
-
-Show me today's brief and apply my corrections. Then create the recurring briefing with the delivery details above. Each run must check fresh information. Read back the saved schedule and next run.
-
-Run one delivery test through the same schedule system and destination. Check its result and ask me whether it arrived. If it fails, explain the problem and fix the setup without creating duplicate schedules.</pre></div></details>
-    <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 3</span><button class="copy-btn" type="button" data-copy="test-3">Copy</button></div><pre id="test-3">Check my saved daily briefing and its run history.
-
-Confirm the sources, delivery days, time, time zone, destination, enabled status, and next run. Check whether the delivery test ran with fresh information and reached the expected destination. Ask me whether I received it.
-
-List anything that still needs fixing. If you can't inspect part of the setup, tell me what to check in the app. Keep the existing recurring schedule rather than creating another one.</pre></div></details>
-    <div class="test"><h4>Check your result</h4><ul><li>The brief reflects today's meetings and open work.</li><li>You can find the saved schedule with the right delivery details and next run.</li><li>A test brief has arrived at the destination you chose.</li></ul></div>
-  </div>
-</article></div>
-    <p class="guide-note">Use what you built on your next task. Save any changes you make to its instructions.</p>
-  </div>
-</section>
-
     <section class="band" id="prompts" aria-labelledby="prompts-title">
       <div class="shell">
         <div class="section-intro">
-          <p class="eyebrow">Prompts</p>
-          <h2 id="prompts-title">The prompts we run in the room.</h2>
-          <p>A prompt is a request with structure. Use these five questions as a checklist when they fit the task. Clearer instructions can help, but you still need to check the result.</p>
+          <p class="eyebrow">Prompt library</p>
+          <h2 id="prompts-title">More prompts for the work ahead.</h2>
+          <p>Use the five-part checklist below to shape a request. Open a prompt when it fits your task, then check the result before using it.</p>
         </div>
         <ul class="framework">
           <li><strong>Context</strong><span>Who you are, what the organization does, why this piece exists.</span></li>
@@ -676,80 +661,80 @@ List anything that still needs fixing. If you can't inspect part of the setup, t
           <li class="prompt wide">
             <h3>The comparison test</h3>
             <p class="use">Try the same fictional annual-campaign request before and after adding a saved voice guide.</p>
-            <div class="snippet">
+            <details class="prompt-details"><summary>Read and copy prompt</summary><div class="snippet">
               <div class="snippet-bar"><span>prompt 01</span><button class="copy-btn" type="button" data-copy="p-01">Copy</button></div>
 <pre id="p-01">Fictional practice: A first-time donor gave to our annual campaign. Draft a thank-you email under 120 words with a subject line. I have not provided a name, gift amount, date, or specific impact. Do not invent them. Use a placeholder if needed. Keep this as a draft; do not send it.</pre>
-            </div>
+            </div></details>
           </li>
           <li class="prompt">
             <h3>Rewrite an email in our voice</h3>
             <p class="use">Shorten an email while keeping the facts and request.</p>
-            <div class="snippet">
+            <details class="prompt-details"><summary>Read and copy prompt</summary><div class="snippet">
               <div class="snippet-bar"><span>prompt 02</span><button class="copy-btn" type="button" data-copy="p-02">Copy</button></div>
 <pre id="p-02">First check that you can access our saved voice guide or the guide I attach. If you cannot, ask me for it before rewriting. Revise the email for [intended reader and goal]. Shorten it by about a third, but keep every confirmed name, date, amount, link, request, and necessary detail. Do not add claims, promises, or facts. Return a subject line, one-line preview text, and revised email. Keep it as a draft.
 
 [Identify or attach the voice guide]
 [Paste the draft]
 [Intended reader and goal]</pre>
-            </div>
+            </div></details>
           </li>
           <li class="prompt">
             <h3>One story, your channels</h3>
             <p class="use">Adapt a community story for the channels your organization uses.</p>
-            <div class="snippet">
+            <details class="prompt-details"><summary>Read and copy prompt</summary><div class="snippet">
               <div class="snippet-bar"><span>prompt 03</span><button class="copy-btn" type="button" data-copy="p-03">Copy</button></div>
 <pre id="p-03">Here is an approved story about [community program or campaign]. Adapt it for up to three channels our organization actually uses: [list channels and audiences]. If I have not named the channels, ask me first. Give me one draft for each channel, suited to that audience. Keep the facts the same. Use names, quotes, photos, and links only if I confirm we may share them. Remove private details. Mark anything uncertain with [CHECK] rather than guessing. Do not publish.
 
 [Paste the approved story and any sharing permissions]</pre>
-            </div>
+            </div></details>
           </li>
           <li class="prompt">
             <h3>Headline brainstorm</h3>
             <p class="use">Ideas for an annual campaign or community program.</p>
-            <div class="snippet">
+            <details class="prompt-details"><summary>Read and copy prompt</summary><div class="snippet">
               <div class="snippet-bar"><span>prompt 04</span><button class="copy-btn" type="button" data-copy="p-04">Copy</button></div>
 <pre id="p-04">Give me 12 headline ideas for [annual campaign or community program]. Here is its purpose, intended audience, requested action, and approved facts: [paste]. Some headlines can lead with the community purpose; others can lead with the action readers can take. Use a number only if I supplied and verified it. Do not invent a person helped, outcome, statistic, or promise. Pick three ideas worth testing and say why in one line each.</pre>
-            </div>
+            </div></details>
           </li>
           <li class="prompt">
             <h3>Donor stewardship story</h3>
             <p class="use">Thank supporters without overstating what one gift did.</p>
-            <div class="snippet">
+            <details class="prompt-details"><summary>Read and copy prompt</summary><div class="snippet">
               <div class="snippet-bar"><span>prompt 05</span><button class="copy-btn" type="button" data-copy="p-05">Copy</button></div>
 <pre id="p-05">Using only the approved facts below, draft a donor stewardship story of about 200 words about [community program or annual campaign] for [intended readers]. Describe what supporters contributed and what the organization and participants did, only where the facts support it. Give the people involved credit for their own actions. Do not suggest one gift caused or funded the whole outcome unless the evidence says so. If no person, scene, quote, or visible detail is supplied, do not invent one. Ask for missing evidence or write from the program facts. Keep private details out and flag claims that need checking. This is a draft for review.
 
 [Paste approved facts, sources, and sharing permissions]</pre>
-            </div>
+            </div></details>
           </li>
           <li class="prompt">
             <h3>Read the numbers</h3>
             <p class="use">Compare aggregate or redacted campaign results.</p>
-            <div class="snippet">
+            <details class="prompt-details"><summary>Read and copy prompt</summary><div class="snippet">
               <div class="snippet-bar"><span>prompt 06</span><button class="copy-btn" type="button" data-copy="p-06">Copy</button></div>
 <pre id="p-06">Use this aggregate or redacted email results table for [annual campaign or community program]. Compare [period A] with [period B] only when the measures and time windows are comparable. Separate counts from rates; show numerators, denominators, and math. State changes in rates in percentage points as well as relative percentages when useful. If a field or denominator is missing, say so rather than guessing. Give me up to three observed changes, a possible explanation for each labeled as a hypothesis, and one question to investigate before claiming a cause. Do not recommend changes yet.
 
 [Attach or paste aggregate results and define the periods]</pre>
-            </div>
+            </div></details>
           </li>
           <li class="prompt">
             <h3>Check for generic copy</h3>
             <p class="use">Check a draft against its real audience and your voice.</p>
-            <div class="snippet">
+            <details class="prompt-details"><summary>Read and copy prompt</summary><div class="snippet">
               <div class="snippet-bar"><span>prompt 07</span><button class="copy-btn" type="button" data-copy="p-07">Copy</button></div>
 <pre id="p-07">Read this draft for [actual intended reader and what they know about us]. If our voice guide is available, use it; otherwise say you do not have it. Quote exact phrases that sound generic, vague, or unlike our voice. Explain briefly, then rewrite only those phrases while keeping the facts and meaning. Do not invent what readers believe or how many messages they have seen. Keep this as a draft.
 
 [Paste the draft and any voice guide]</pre>
-            </div>
+            </div></details>
           </li>
           <li class="prompt">
             <h3>Make a sensitive draft clearer</h3>
             <p class="use">For Israel, antisemitism, or security, keep the approved position, facts, sources, and real uncertainty.</p>
-            <div class="snippet">
+            <details class="prompt-details"><summary>Read and copy prompt</summary><div class="snippet">
               <div class="snippet-bar"><span>prompt 08</span><button class="copy-btn" type="button" data-copy="p-08">Copy</button></div>
 <pre id="p-08">We are [organization] writing to [specific audience] about [Israel, antisemitism, security, or another sensitive topic]. Here are our approved position, verified facts, sources, and what we still do not know: [paste]. Review the draft below. If the approved position, audience, facts, or sources are missing, ask me before rewriting. Remove vague filler where it hides our message, but keep genuine uncertainty, necessary nuance, and source attribution. Do not assume every Jewish community member shares one view. Do not change the facts or imply an organizational position I have not supplied. Flag unsupported lines for my review. Return a revised draft with a brief list of lines to verify; do not publish or send it.
 
 [Paste the draft]</pre>
-            </div>
+            </div></details>
           </li>
         </ul>
         <p class="prompt-note">This is the version one list. The prompts the room writes together on the day get added here afterward, so the page you leave with is better than the page you arrived at.</p>
@@ -840,15 +825,15 @@ List anything that still needs fixing. If you can't inspect part of the setup, t
       <div class="shell">
         <div class="section-intro">
           <p class="eyebrow">Deck and downloads</p>
-          <h2 id="deck-title">The slides and the cards.</h2>
+          <h2 id="deck-title">Keep building after the session.</h2>
         </div>
         <ul class="downloads">
           <li class="download">
             <h3>The deck</h3>
-            <p>The slides from the session: where AI fits in the workday, the marketing use cases, the five-part instruction, the tool map, and what not to hand over.</p>
+            <p>The October 14 slides will be posted here after the session. The build guides and prompts are ready to use now.</p>
             <!-- DECK LINK. When the deck is published, replace the status line below with:
                  <p class="go"><a class="text-link" href="URL">Open the deck</a></p> -->
-            <span class="status">Posted after the session</span>
+            <span class="status">Coming after October 14</span>
           </li>
           <li class="download">
             <h3>The build guides</h3>
@@ -887,9 +872,6 @@ List anything that still needs fixing. If you can't inspect part of the setup, t
 
   <script defer>
     (() => {
-      const root = document.documentElement;
-      root.classList.add("js-enhanced");
-
       // Copy buttons. Without JS the text is still visible and selectable.
       const buttons = document.querySelectorAll(".copy-btn[data-copy]");
       buttons.forEach((button) => {
@@ -919,26 +901,6 @@ List anything that still needs fixing. If you can't inspect part of the setup, t
         });
       });
 
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduceMotion || !("IntersectionObserver" in window)) return;
-
-      const revealItems = document.querySelectorAll("main > section:not(.hero)");
-      if (!revealItems.length) return;
-
-      root.classList.add("reveal-ready");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.remove("reveal-pending");
-          observer.unobserve(entry.target);
-        });
-      }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
-
-      revealItems.forEach((item) => {
-        item.dataset.reveal = "";
-        item.classList.add("reveal-pending");
-        observer.observe(item);
-      });
     })();
   </script>
 
