@@ -535,8 +535,8 @@
           <div>
             <a class="cta" href="#build-options">Choose your build</a>
             <ol class="build-chooser" id="build-options" aria-label="Choose a workshop build">
-              <li><a href="#track-voice"><span class="build-number">01</span><span><strong>Email voice</strong><small>Choose sent emails or connected email</small></span><span aria-hidden="true">↗</span></a></li>
-              <li><a href="#track-social"><span class="build-number">02</span><span><strong>Social voice</strong><small>Choose 3 to 5 organization posts</small></span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="#track-voice"><span class="build-number">01</span><span><strong>Email voice</strong><small>Start with 3 sent emails or use connected email</small></span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="#track-social"><span class="build-number">02</span><span><strong>Social voice</strong><small>Start with 3 posts; one platform is enough</small></span><span aria-hidden="true">↗</span></a></li>
               <li><a href="#track-cos"><span class="build-number">03</span><span><strong>Daily brief</strong><small>Choose real sources or manual inputs</small></span><span aria-hidden="true">↗</span></a></li>
             </ol>
           </div>
@@ -545,7 +545,7 @@
             <figcaption>The same three paths shown in the workshop deck.</figcaption>
           </figure>
         </div>
-        <p class="guide-note">The prompt boxes on this page are not editable. Click Copy, paste the text into your AI chat, then replace the bracketed fields there. A ChatGPT Project is optional; you can also keep the guide in a document and paste or attach it in a new chat.</p>
+        <p class="guide-note">The prompt boxes on this page are not editable. Click Copy, paste the prompt into your AI chat, replace the bracketed fields there, then send it. A ChatGPT Project is optional; you can keep the final guide in a document and paste or attach it in a new chat.</p>
     <div class="recipes">
       <article class="recipe" id="track-voice" aria-labelledby="track-voice-title">
         <div class="recipe-head">
@@ -559,23 +559,23 @@
             <h4>Choose your examples</h4>
             <p>Use one route:</p>
             <ul>
-              <li><strong>Paste sent emails.</strong> Pick 3 to 5 emails you wrote. Choose a mix of the messages you want help with, such as donor stewardship or partner follow-ups. Copy only your words. Remove names, gift details, quoted replies, and signatures.</li>
+              <li><strong>Paste sent emails.</strong> Start with 3 emails you wrote. Choose a mix of the messages you want help with, such as donor stewardship or partner follow-ups. Copy only your words. Remove names, gift details, quoted replies, and signatures.</li>
               <li><strong>Use connected email.</strong> If your organization permits it and your AI app can read email, connect the work account you choose. The prompt asks for up to 15 of your sent messages from the last 45 days. Check what the app can access before it reads anything.</li>
             </ul>
           </div>
           <div>
             <h4>Build and save it</h4>
             <ol>
-              <li>Open an AI chat your organization allows. Open “Build this with AI” and click Copy. Replace the bracketed fields with your email route, readers, and email types. If you chose pasted emails, add the cleaned examples to the same message. Submit that message in the AI chat.</li>
+              <li>Open an AI chat your organization allows. Open “Build this with AI,” click Copy, and paste the prompt into the chat. Replace the bracketed fields there with your email route, readers, and email types. If you chose pasted emails, add your 3 cleaned examples, then send the message.</li>
               <li>If you chose connected email, choose the account and follow the app's connection steps only if that feature is available. Review the messages it selects. Replace any that are private or unlike the email types you want to draft.</li>
-              <li>Read the “My Email Voice” guide. Correct anything that misses your openings, sentence length, requests, or closings.</li>
-              <li>Keep a copy of the final “My Email Voice” guide in a document if you want it for later. To reuse it in a ChatGPT Project, create or open one, use its actions menu to open Project settings, paste the guide into Instructions, and click Save. Reopen Project settings to check it is there. In another app, use reusable instructions only if supported and verify the saved copy.</li>
-              <li>Start a new chat inside that ChatGPT Project if you used one; otherwise attach or paste the saved guide in a new chat. Open “Test it in a new chat,” fill in a real email task, then copy and paste that prompt. Revise the guide if the draft still sounds wrong.</li>
+              <li>Read the “My Email Voice” guide. Correct anything that misses your openings, sentence length, requests, or closings. When it looks right, reply, “Looks right. Give me the final guide.”</li>
+              <li>Save the final guide, not a draft, in a document named “My Email Voice.” A ChatGPT Project is optional: create or open one, use its actions menu to open Project settings, paste the guide into Instructions, click Save, then reopen settings to check it. In another app, use reusable instructions only if supported and verify the saved copy.</li>
+              <li>Start a fresh chat and paste or attach “My Email Voice.” If you used a ChatGPT Project, start the chat inside it instead. Open “Test it in a new chat,” click Copy, paste the test prompt into that chat, replace the bracketed fields there with a real email task, then send it. Revise the guide if the draft still sounds wrong.</li>
             </ol>
           </div>
           <details><summary>Build this with AI</summary><div class="snippet"><div class="snippet-bar"><span>build 1</span><button class="copy-btn" type="button" data-copy="build-1">Copy</button></div><pre id="build-1">Help me make a reusable guide called “My Email Voice” from emails I wrote. I want to use it for future drafts, including [types of email and readers].
 
-My route: [I am pasting 3 to 5 sent emails below / I want to use a connected work email account].
+My route: [I am pasting 3 sent emails below / I want to use a connected work email account].
 
 If I paste emails, use only my words. Ignore quoted replies, forwarded text, signatures, and text written by others. If I choose connected email, first tell me whether this app can read it, what account and permissions it would use, and how I can choose the right account. Wait for me to confirm that scope. Then select up to 15 of my sent messages from the last 45 days. Show me the selected subjects or a brief description. Wait for me to approve or replace the selection before using their contents or writing the guide. Use my words in replies, but ignore the quoted conversation and private details. If email access is unavailable, tell me and ask me to paste examples instead.
 
@@ -583,7 +583,7 @@ If I paste emails, use only my words. Ignore quoted replies, forwarded text, sig
 
 Write a short guide with 5 to 8 rules for my openings, sentence length, tone, requests, closings, and phrases to avoid. Include three short, redacted excerpts that show the rules. Use only what my examples support. Ask me about any pattern you cannot tell from them.
 
-Show me the guide for corrections. After I respond, return the complete revised guide so I can save it. Tell me how this app can reuse it, if it has that feature. Do not claim it is saved until I check. Do not send any email.</pre></div></details>
+Show me the guide for corrections. Wait for my reply. When I say “Looks right. Give me the final guide,” return the complete final guide so I can save it. If I request changes, revise the guide before giving me the final version. Tell me how this app can reuse it, if it has that feature. Do not claim it is saved until I check. Do not send any email.</pre></div></details>
           <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 1</span><button class="copy-btn" type="button" data-copy="test-1">Copy</button></div><pre id="test-1">Use “My Email Voice” to draft an email. First tell me whether you can read the saved guide in this chat. If you cannot, ask me to attach or paste it before drafting.
 
 Recipient and relationship: [add]
@@ -606,27 +606,27 @@ Give me a subject line and a draft. Use only the facts I supply. Name two guide 
           <div class="recipe-actions"><button class="copy-btn primary-copy" type="button" data-copy="build-2">Copy Build 2 prompt</button><p>Add your selected posts to the prompt before submitting it.</p></div>
           <div>
             <h4>Choose your posts</h4>
-            <p>Open a social account your organization uses. Pick 3 to 5 posts that sound like it, ideally across the kinds of work you write about. Copy the full captions or take readable screenshots. For each post, note the platform and intended audience. Remove private details before sharing.</p>
+            <p>Open a social account your organization uses. Start with 3 posts that sound like it; one platform is enough. Copy the full captions or take readable screenshots. For each post, note the platform and intended audience. Remove private details before sharing.</p>
           </div>
           <div>
             <h4>Build and save it</h4>
             <ol>
-              <li>Open a new AI chat. Open “Build this with AI” and click Copy. Paste the prompt, then add your captions or upload screenshots where it asks for posts. Label each post with its platform and audience before submitting the message.</li>
+              <li>Open a new AI chat. Open “Build this with AI,” click Copy, and paste the prompt into the chat. Replace the bracketed fields there, add your 3 captions or upload readable screenshots, and label each post with its platform and audience. Then send the message.</li>
               <li>Check that the AI read every caption, including text in screenshots. Supply missing or cut-off text before it writes the guide.</li>
-              <li>Read its “Our Social Voice” guide. Correct the rules for tone, openings, length, formatting, and calls to action. Tell it when a pattern is specific to one platform.</li>
-              <li>Keep a copy of the final “Our Social Voice” guide in a document if you want it for later. To reuse it in a ChatGPT Project, create or open one, use its actions menu to open Project settings, paste the guide into Instructions, and click Save. Reopen Project settings to check it is there. In another app, use reusable instructions only if supported and verify the saved copy.</li>
-              <li>Start a new chat inside that ChatGPT Project if you used one; otherwise attach or paste the saved guide in a new chat. Open “Test it in a new chat,” fill in a real post task with current approved facts, and paste it. If the draft misses your voice, update the guide and test again.</li>
+              <li>Read its “Our Social Voice” guide. Correct the rules for tone, openings, length, formatting, and calls to action. Tell it when a pattern is specific to one platform. When it looks right, reply, “Looks right. Give me the final guide.”</li>
+              <li>Save the final guide, not a draft, in a document named “Our Social Voice.” A ChatGPT Project is optional: create or open one, use its actions menu to open Project settings, paste the guide into Instructions, click Save, then reopen settings to check it. In another app, use reusable instructions only if supported and verify the saved copy.</li>
+              <li>Start a fresh chat and paste or attach “Our Social Voice.” If you used a ChatGPT Project, start the chat inside it instead. Open “Test it in a new chat,” click Copy, paste the test prompt into that chat, replace the bracketed fields there with a real post task and current approved facts, then send it. If the draft misses your voice, update the guide and test again.</li>
             </ol>
           </div>
-          <details><summary>Build this with AI</summary><div class="snippet"><div class="snippet-bar"><span>build 2</span><button class="copy-btn" type="button" data-copy="build-2">Copy</button></div><pre id="build-2">Make a reusable guide called “Our Social Voice” from the 3 to 5 posts I provide. We want to use it for [program promotion, annual campaigns, community events, partner updates, or our actual work].
+          <details><summary>Build this with AI</summary><div class="snippet"><div class="snippet-bar"><span>build 2</span><button class="copy-btn" type="button" data-copy="build-2">Copy</button></div><pre id="build-2">Make a reusable guide called “Our Social Voice” from the 3 posts I provide. They can all be from one platform. We want to use it for [program promotion, annual campaigns, community events, partner updates, or our actual work].
 
 Read each full caption and its platform and audience. If all are readable and complete, write the guide in this response without stopping to confirm. If a caption, platform, or audience is missing or cut off, ask only for that material and wait for me to supply it before writing the guide. Learn from our original captions, not comments, reposts, or platform labels. Do not treat likes or other metrics as proof that a writing style worked.
 
 [Paste captions or attach screenshots here. Label each post with its platform and intended audience.]
 
-Write a short guide with 5 to 8 rules about openings, tone, length, formatting, and calls to action. Explain any differences the examples show across platforms, including emoji or hashtags. Include three short excerpts that illustrate the rules, with private details removed. Tell me where the examples are too limited to support a rule.
+Write a short guide with 5 to 8 rules about openings, tone, length, formatting, and calls to action. If the examples span platforms, explain differences they support, including emoji or hashtags; do not invent differences from one platform. Include three short excerpts that illustrate the rules, with private details removed. Tell me where the examples are too limited to support a rule.
 
-Show me the guide for corrections. After I respond, return the complete revised guide so I can save it. For future posts, require current facts, dates, links, audience, and platform. Do not carry old claims into new posts. Tell me how this app can reuse the guide, if it has that feature. Do not claim it is saved until I check. Do not publish anything.</pre></div></details>
+Show me the guide for corrections. Wait for my reply. When I say “Looks right. Give me the final guide,” return the complete final guide so I can save it. If I request changes, revise the guide before giving me the final version. For future posts, require current facts, dates, links, audience, and platform. Do not carry old claims into new posts. Tell me how this app can reuse the guide, if it has that feature. Do not claim it is saved until I check. Do not publish anything.</pre></div></details>
           <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 2</span><button class="copy-btn" type="button" data-copy="test-2">Copy</button></div><pre id="test-2">Use “Our Social Voice” to draft one post. First tell me whether you can read the saved guide in this chat. If you cannot, ask me to attach or paste it before drafting.
 
 Platform: [add]
@@ -651,16 +651,17 @@ Use only these facts. Name two guide rules you applied and flag missing details.
           <div>
             <h4>Choose your sources</h4>
             <p>Choose the work email and calendar you may use, plus a task list if you have one. Set your time zone for either manual or scheduled use. Check your organization's rules before connecting accounts. If you cannot connect them, have a short, nonprivate list of today's meetings, deadlines, tasks, and messages ready to paste. Decide your days, local time, and private destination if you want a scheduled brief.</p>
+            <p>Example scheduled fields: work Gmail, Google Calendar, no task list, weekdays at 8 a.m., America/New_York, this private chat. Use your own allowed sources and destination.</p>
           </div>
           <div>
             <h4>Build and save it</h4>
             <ol>
-              <li>Open an AI chat. Open “Build this with AI,” click Copy, replace the bracketed source fields, add your time zone, and choose “Manual only” or “Schedule after approval.” For a schedule, also fill in the days, local time, and private destination. Paste the whole prompt.</li>
-              <li>Check whether your app can read each chosen source. Connect only the accounts you choose. If it cannot read one, paste the relevant, nonprivate items in the same chat and label that source as manual.</li>
-              <li>Once those sources are ready, request today's brief. Compare its meetings, tasks, deadlines, and source links with the actual records. Correct anything completed, missing, or assigned to the wrong person.</li>
-              <li>Keep a copy of the final “Daily Brief” instructions in a document if you want them for later. To reuse them in a ChatGPT Project, create or open one, use its actions menu to open Project settings, paste them into Instructions, and click Save. Reopen Project settings to check they are there. In another app, use reusable instructions only if supported and verify the saved copy.</li>
-              <li>If you chose scheduling and the app supports it, review the proposed days, time zone, destination, and sources. Confirm that exact setup before the app creates it. Then open the saved schedule and check its enabled status and next run. Otherwise, use your saved instructions to request the brief manually.</li>
-              <li>Start a new chat inside that ChatGPT Project if you used one; otherwise attach or paste the saved instructions in a new chat. Use “Test it in a new chat” to make a fresh brief. For a schedule, request one delivery test and check that it arrived at the destination. After the next scheduled time, check that a fresh brief arrived too.</li>
+              <li>Open an AI chat. Open “Build this with AI,” click Copy, and paste the prompt into the chat. Replace the bracketed fields there with your sources, time zone, and “Manual only” or “Schedule after approval.” For a schedule, also add days, local time, and private destination. Then send it.</li>
+              <li>Check whether your app can read each chosen source. Connect only the accounts you choose. Connected setup can take extra time. If a source is unavailable, paste the relevant, nonprivate items in the same chat and label that source as manual.</li>
+              <li>Once those sources are ready, request today's brief. Compare its meetings, tasks, deadlines, and source links with the actual records. Correct anything completed, missing, or assigned to the wrong person. When it looks right, reply, “Looks right. Give me the final briefing instructions.”</li>
+              <li>Save the final reusable instructions, not today's dated brief, in a document named “Daily Brief.” A ChatGPT Project is optional: create or open one, use its actions menu to open Project settings, paste the instructions into Instructions, click Save, then reopen settings to check them. In another app, use reusable instructions only if supported and verify the saved copy.</li>
+              <li>Start a fresh chat and paste or attach “Daily Brief.” If you used a ChatGPT Project, start the chat inside it instead. Open “Test it in a new chat,” click Copy, paste the test prompt into that chat, replace its bracketed time zone and any other fields there, then send it. Check that the new brief matches current sources.</li>
+              <li>Scheduling is optional. If you chose it and the app supports it, review the proposed days, time zone, destination, and sources. Confirm that exact setup before the app creates one schedule. Open it to check enabled status and next run. Check a delivery test if you request one, and check for a fresh brief after the next scheduled time.</li>
             </ol>
           </div>
           <details><summary>Build this with AI</summary><div class="snippet"><div class="snippet-bar"><span>build 3</span><button class="copy-btn" type="button" data-copy="build-3">Copy</button></div><pre id="build-3">Help me make a reusable “Daily Brief” that takes about two minutes to read.
@@ -678,14 +679,14 @@ First check which sources this app can actually read and whether it can schedule
 
 Make today's brief from sources you actually checked, plus any items I pasted and labeled manual. Include the date and time checked, up to three priorities with next steps and source links where available, today's meetings in my time zone, upcoming deadlines, work waiting on others, and sources you could not check. Keep emails, tasks, and meetings separate: do not assume items are related because names or timing match. Connect them only when the sources provide evidence. Label any proposed next step as a suggestion, separate from a recorded task or commitment. Check later replies and completed tasks before calling something open. Mark uncertainty instead of filling gaps. Keep it around 250 words. Do not send email replies or change my calendar or task list.
 
-Show me today's brief and ask for corrections. Then return the complete revised briefing instructions so I can save them. If I chose “Schedule after approval” and this app supports scheduling and private delivery, show me the exact proposed setup and wait for my confirmation before creating one schedule. Only send the brief to the private destination I confirm. After setup, tell me where to open it and what to verify: sources, enabled status, days, time, time zone, destination, and next run. Otherwise, tell me how to run the saved instructions manually. Do not describe a manual brief as scheduled or delivered.</pre></div></details>
+Show me today's brief and ask for corrections. Wait for my reply. When I say “Looks right. Give me the final briefing instructions,” return the complete reusable instructions separately from today's dated brief so I can save them. If I request changes, revise the brief and instructions before giving me the final version. If I chose “Schedule after approval” and this app supports scheduling and private delivery, show me the exact proposed setup and wait for my confirmation before creating one schedule. Only send the brief to the private destination I confirm. After setup, tell me where to open it and what to verify: sources, enabled status, days, time, time zone, destination, and next run. Otherwise, tell me how to run the saved instructions manually. Do not describe a manual brief as scheduled or delivered.</pre></div></details>
           <details><summary>Test it in a new chat</summary><div class="snippet"><div class="snippet-bar"><span>test 3</span><button class="copy-btn" type="button" data-copy="test-3">Copy</button></div><pre id="test-3">Help me test my saved “Daily Brief” by making a fresh brief in this new chat. First check whether you can read its instructions here. If you cannot, ask me to attach or paste them, then continue after I do.
 
 My time zone: [replace with your time zone, for example America/New_York]
 
-Tell me which sources you can currently read and show one recent item or its date from each. If all chosen sources are readable, generate today's brief immediately. For each manual or unreadable source in my saved setup, ask me to paste current relevant items and wait for them; then generate the brief from the current sources and pasted items. Do not stop at an access report. Include the date and time checked and name any unavailable sources. Keep unrelated emails, tasks, and meetings separate; link them only when the sources support it. Label proposed next steps as suggestions.
+For today's brief, tell me which sources you can currently read and show one recent item or its date from each. If all chosen sources are readable, generate today's brief immediately. For each manual or unreadable source in my saved setup, ask me to paste current relevant items and wait for them; then generate the brief from the current sources and pasted items. Do not stop at an access report. Include the date and time checked and name any unavailable sources. Keep unrelated emails, tasks, and meetings separate; link them only when the sources support it. Label proposed next steps as suggestions.
 
-If a schedule exists, give me its saved days, time, time zone, destination, enabled status, and next run. If you cannot inspect it, tell me where to check in the app. Do not create another schedule.
+Only if a schedule already exists, separately give me its saved days, time, time zone, destination, enabled status, and next run. If you cannot inspect it, tell me where to check in the app. Do not create another schedule.
 
 If a delivery test is supported, ask me before running one. After it runs, tell me its result and ask whether it reached my chosen destination. A test run does not prove the next timed run; remind me to check that separately. Do not send email replies or edit my calendar or tasks.</pre></div></details>
           <div class="test"><h4>Check your result</h4><ul><li>You can open the saved instructions and use them in a new chat.</li><li>Today's brief matches the current sources you checked, with unavailable sources named.</li><li>If scheduled, you can open the enabled schedule and verify its next run. A test reaches the chosen destination, and the next timed run is checked separately.</li></ul></div>
