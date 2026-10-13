@@ -1,4 +1,4 @@
-# AJMN workshop page copy audit, current live page
+# AJMN workshop page copy audit and follow-up
 
 Date: October 12, 2026
 
@@ -23,13 +23,13 @@ The old “after the workshop” disclosures and fictional fallback writing were
 
 ## Prompt inventory
 
-There are eight additional prompts, counted from the actual page: compare a draft before and after a voice guide, rewrite an email in your voice, one story across channels, headline brainstorm, donor stewardship story, read the numbers, check for generic copy, and make a sensitive draft clearer. The page also has three build prompts and three fresh-chat test prompts. Three primary Copy buttons repeat the build prompts, producing 17 buttons for 14 distinct prompt blocks.
+The deployed baseline had eight additional prompts: compare a draft before and after a voice guide, rewrite an email in your voice, one story across channels, headline brainstorm, donor stewardship story, read the numbers, check for generic copy, and make a sensitive draft clearer. The follow-up removed “Read the numbers” at Justin's request. The final page has seven additional prompts, three build prompts, and three fresh-chat test prompts. Three primary Copy buttons repeat the build prompts, producing 16 buttons for 13 distinct prompt blocks. The remaining prompt labels run from 01 through 07.
 
 ## Independent attendee review
 
 An independent reviewer read the revised page as a first-time attendee and compared the visible directions with the copyable text. The reviewer found four actionable gaps. The connected-email prompt needed to wait for approval of its message selection. The social prompt needed an explicit place for posts and a pause for unreadable text. The daily brief needed to wait for connected or pasted sources. Prompt 06's description needed to match its email-results scope. All four were corrected in this branch. The reviewer found that the builds otherwise cover purpose, inputs, creation, saving, and a fresh-chat test.
 
-## Verification
+## First review verification
 
 - Local Chrome test of the revised page: all 17 Copy buttons returned the full corresponding prompt text. Windows clipboard line endings differed from the DOM, but all characters matched after CRLF/LF normalization. Keyboard activation of a Copy button also passed.
 - All 14 disclosures opened by mouse and closed by Enter. All seven internal anchor targets existed; the hero action reached the build section. The first Tab reached “Skip to main content.”
@@ -38,6 +38,14 @@ An independent reviewer read the revised page as a first-time attendee and compa
 - The eight additional prompt cards, three build guides, and six build/test prompt disclosures were counted in the rendered DOM.
 - Twelve distinct external HTTPS links were checked. Nine returned a page through direct or browser checks. ChatGPT, Claude, and OpenAI's Codex page returned Cloudflare 403 to automated Chrome, so their destination content could not be verified through that test. Their URLs are preserved. The two `mailto:` links were inspected but no email was sent.
 - No real AI account, email connection, schedule, delivery destination, or downstream generated brief was exercised. The page instructs attendees to verify those steps in their own approved app.
+
+## Follow-up revision and verification
+
+Justin requested a clearer description of how he uses Claude Code and Codex to build applications, create and update websites, and make custom automations. The Wispr Flow note now explains that dictation helps him get ideas into editable text quickly, without claiming this page began as a voice note. The contact section now asks “Looking to take your AI skills to the next level?” and describes AI workflows without paid media. The deck section links to the [AJMN slides](https://docs.google.com/presentation/d/11fMr_f0IHhKy_-08oCmlL7oS7zMXruu1/edit?usp=sharing&ouid=112393808145593159880&rtpof=true&sd=true), which returned the title `AJMN AI Workshop.pptx - Google Slides` in an unauthenticated HTTP check. The “Read the numbers” card and its copied prompt were removed, and the final two cards were renumbered.
+
+- Final local Chrome check: 3 build guides, 7 additional prompt cards, 16 Copy buttons, and 13 disclosures. All Copy buttons matched the full intended text after normalizing Windows line endings. All disclosures, keyboard Copy, skip link, and internal anchors passed.
+- At widths 1440, 768, 390, and 320 pixels, no horizontal overflow or hidden main sections appeared. The updated stack, deck, and contact sections were inspected at desktop and mobile sizes. No page script errors were reported.
+- The deck anchor resolved to the exact Google Slides URL Justin supplied. The link was tested, but Google account access for every attendee cannot be established from this machine.
 
 ## Deck wording
 
@@ -53,4 +61,4 @@ The three build names remain exactly: “Write emails that sound like you,” �
 - `the-brain/work/active/ai-workshops/deck/redesign-2026-10-12/AJMN Deck Redesign Audit 2026-10-12.md` for the three deck build names and descriptions.
 - Current provider documentation checked for the tool map: [ChatGPT Projects](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt), [GPT creation availability](https://help.openai.com/en/articles/8554397-creating-a-gpt.), [Claude Projects](https://support.claude.com/en/articles/9517075-what-are-projects), [Gemini Gems](https://support.google.com/gemini/answer/15146780), [Copilot licenses](https://support.microsoft.com/en-us/microsoft-365-copilot/what-copilot-license-do-i-have), and [Grok plans](https://x.ai/pricing).
 
-No recommended plugin was assumed to be installed. This report and the revised page are local review artifacts; production has not been updated by this work.
+No recommended plugin was assumed to be installed. Production status requires a separate live-site check after deployment.
