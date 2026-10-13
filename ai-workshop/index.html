@@ -173,12 +173,22 @@
     /* Opening demo */
     .notebook-launch { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; margin-bottom: 2.5rem; }
     .notebook-launch p { margin: 0; color: color-mix(in srgb, var(--white) 76%, transparent); font-size: 0.9rem; }
-    .notebook-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 1px; background: var(--mist); list-style: none; }
-    .notebook-steps li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0.35rem 1rem; align-content: start; padding: 1.5rem; background: var(--white); color: var(--navy); }
-    .notebook-steps li:last-child { grid-column: 1 / -1; }
-    .notebook-steps .step-number { grid-row: span 2; color: var(--cobalt); font-size: 1.4rem; font-weight: 800; line-height: 1; }
+    .demo-image-hint { margin: 0 0 0.8rem; color: color-mix(in srgb, var(--white) 76%, transparent); font-size: 0.85rem; }
+    .notebook-steps { display: grid; gap: 1px; margin: 0; padding: 1px; background: var(--mist); list-style: none; }
+    .notebook-steps li { display: grid; grid-template-columns: 3rem minmax(0, 0.85fr) minmax(0, 1.25fr); gap: 1rem; align-items: start; padding: 1.5rem; background: var(--white); color: var(--navy); }
+    .notebook-steps .step-number { align-self: start; color: var(--cobalt); font-size: 1.4rem; font-weight: 800; line-height: 1; }
     .notebook-steps h3 { margin: 0; font-size: 1.18rem; font-weight: 760; letter-spacing: -0.02em; line-height: 1.2; }
-    .notebook-steps p { margin: 0; color: var(--steel); font-size: 0.95rem; line-height: 1.55; }
+    .notebook-steps p { margin: 0.45rem 0 0; color: var(--steel); font-size: 0.95rem; line-height: 1.55; }
+    .notebook-steps li:last-child .demo-step-copy { grid-column: 2 / -1; }
+    .demo-shots { display: grid; grid-column: 3; gap: 0.75rem; min-width: 0; }
+    .demo-shots.pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .notebook-steps li > .demo-shot { grid-column: 3; }
+    .demo-shot { min-width: 0; margin: 0; }
+    .demo-shot a { display: grid; place-items: center; min-height: 100%; padding: 0.85rem; border: 1px solid var(--mist); background: var(--cloud); }
+    .demo-shot a:hover, .demo-shot a:focus-visible { border-color: var(--cobalt); }
+    .demo-shot img { width: 100%; height: auto; }
+    .demo-shot.control img { width: auto; max-width: 100%; }
+    .demo-shot figcaption { margin-top: 0.35rem; color: var(--steel); font-size: 0.78rem; }
 
     .text-link {
       display: inline-flex; align-items: center; min-height: 44px;
@@ -352,6 +362,8 @@
       h1 { max-width: 13ch; font-size: clamp(3rem, 9vw, 5rem); }
       .section-intro .eyebrow { grid-column: 1 / -1; margin-top: 0; }
       .section-intro h2, .section-intro p { grid-column: 1 / -1; }
+      .notebook-steps li { grid-template-columns: 2.2rem minmax(0, 1fr); align-items: start; }
+      .demo-shots, .notebook-steps li > .demo-shot { grid-column: 1 / -1; }
       .tool, .tool:nth-child(4), .tool:nth-child(5), .tool:nth-child(6) { grid-column: span 6; }
       .recipe { grid-column: 1 / -1; }
       .guard { grid-column: span 6; }
@@ -376,8 +388,12 @@
       .session { grid-template-columns: 1fr; gap: 0.15rem 0; }
       .session dd { margin-bottom: 0.5rem; }
       .build-chooser a { grid-template-columns: 2.2rem minmax(0, 1fr) auto; }
-      .notebook-steps { grid-template-columns: 1fr; }
       .notebook-steps li { grid-template-columns: 2.2rem minmax(0, 1fr); padding: 1.2rem; }
+      .demo-shots.pair { grid-template-columns: 1fr; }
+      .demo-shot.focus-source a, .demo-shot.focus-studio a, .demo-shot.focus-generate a { grid-template-columns: minmax(0, 1fr); overflow: hidden; }
+      .demo-shot.focus-source img { width: 500px; max-width: none; justify-self: start; }
+      .demo-shot.focus-studio img { width: 900px; max-width: none; justify-self: end; }
+      .demo-shot.focus-generate img { width: 650px; max-width: none; justify-self: end; }
       .tool, .tool:nth-child(4), .tool:nth-child(5), .tool:nth-child(6), .download { grid-column: 1 / -1; }
       .framework { grid-template-columns: 1fr; }
       .guard, .guard:nth-child(5), .guard:nth-child(6) { grid-column: 1 / -1; }
@@ -463,12 +479,32 @@
           <a class="cta" href="https://notebook.google.com/" target="_blank" rel="noopener noreferrer">Open NotebookLM</a>
           <p>Google now calls it Gemini Notebook. The button opens the current app.</p>
         </div>
+        <p class="demo-image-hint">Select a screenshot to view it full size.</p>
         <ol class="notebook-steps">
-          <li><span class="step-number" aria-hidden="true">01</span><h3>Create a notebook</h3><p>Sign in with your Google account and select <strong>Create new notebook</strong>.</p></li>
-          <li><span class="step-number" aria-hidden="true">02</span><h3>Add your website page</h3><p>Choose <strong>Upload a source</strong> when prompted, or <strong>Add sources</strong> on the left. Pick a web URL source and paste the full address of a public page on your organization's site. A homepage works. Gemini Notebook imports that page's text, not the whole website.</p></li>
-          <li><span class="step-number" aria-hidden="true">03</span><h3>Choose Video Overview</h3><p>Once the page appears in Sources, go to the <strong>Studio</strong> panel and select <strong>Video Overview</strong>.</p></li>
-          <li><span class="step-number" aria-hidden="true">04</span><h3>Generate it</h3><p>Use the default settings or adjust them if you like, then select <strong>Generate</strong>. The video builds in the background and may take a while.</p></li>
-          <li><span class="step-number" aria-hidden="true">05</span><h3>Watch and check it</h3><p>When it's ready, select the video title in Studio and press play. Compare its facts, names, and visuals with your website before you use or share it.</p></li>
+          <li>
+            <span class="step-number" aria-hidden="true">01</span>
+            <div class="demo-step-copy"><h3>Create a notebook</h3><p>Open Gemini Notebook with the button above. If Google shows a landing page, select <strong>Try Gemini Notebook</strong>. Sign in, then select <strong>New notebook</strong> or <strong>Create new notebook</strong>.</p></div>
+            <div class="demo-shots pair">
+              <figure class="demo-shot control"><a href="../assets/notebook-demo-open.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size landing page screenshot"><img src="../assets/notebook-demo-open.png" width="352" height="132" alt="Try Gemini Notebook button on Google's landing page" loading="lazy" decoding="async"></a><figcaption>On the landing page</figcaption></figure>
+              <figure class="demo-shot control"><a href="../assets/notebook-demo-new-notebook.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size New notebook screenshot"><img src="../assets/notebook-demo-new-notebook.png" width="253" height="102" alt="New notebook button on the Gemini Notebook home page" loading="lazy" decoding="async"></a><figcaption>On the notebook home page</figcaption></figure>
+            </div>
+          </li>
+          <li>
+            <span class="step-number" aria-hidden="true">02</span>
+            <div class="demo-step-copy"><h3>Add your website page</h3><p>Choose <strong>Upload a source</strong> when prompted, or <strong>Add sources</strong> on the left, then select <strong>Websites</strong>. <strong>Paste the full website address, including https:// or http://.</strong> Use a public page on your organization's site; a homepage works. Gemini Notebook imports that page's text, not the whole website.</p></div>
+            <figure class="demo-shot focus-source"><a href="../assets/notebook-demo-website-source.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size website source screenshot"><img src="../assets/notebook-demo-website-source.png" width="1068" height="693" alt="Gemini Notebook source dialog with the Websites option and a full HTTPS address" loading="lazy" decoding="async"></a><figcaption>Choose Websites and add your page address</figcaption></figure>
+          </li>
+          <li>
+            <span class="step-number" aria-hidden="true">03</span>
+            <div class="demo-step-copy"><h3>Choose Video Overview</h3><p>Once the page appears in Sources, go to the <strong>Studio</strong> panel and select <strong>Video Overview</strong>.</p></div>
+            <figure class="demo-shot focus-studio"><a href="../assets/notebook-demo-video-overview.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size Video Overview screenshot"><img src="../assets/notebook-demo-video-overview.png" width="1900" height="846" alt="Notebook view with a website source on the left and Video Overview in Studio on the right" loading="lazy" decoding="async"></a><figcaption>Video Overview is in Studio</figcaption></figure>
+          </li>
+          <li>
+            <span class="step-number" aria-hidden="true">04</span>
+            <div class="demo-step-copy"><h3>Generate it</h3><p>Use the default settings or adjust them if you like, then select <strong>Generate now</strong>. The video builds in the background and may take a while.</p></div>
+            <figure class="demo-shot focus-generate"><a href="../assets/notebook-demo-generate.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size Generate now screenshot"><img src="../assets/notebook-demo-generate.png" width="1114" height="867" alt="Customize Video Overview dialog with Generate now at the lower right" loading="lazy" decoding="async"></a><figcaption>Generate now is at the bottom of the dialog</figcaption></figure>
+          </li>
+          <li><span class="step-number" aria-hidden="true">05</span><div class="demo-step-copy"><h3>Watch and check it</h3><p>When it's ready, select the video title in Studio and press play. Compare its facts, names, and visuals with your website before you use or share it.</p></div></li>
         </ol>
       </div>
     </section>
