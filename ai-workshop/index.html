@@ -171,12 +171,16 @@
     .band.dark .section-intro p { color: color-mix(in srgb, var(--white) 76%, transparent); }
 
     /* Opening demo */
+    #notebook-demo .section-intro { display: block; margin-bottom: 1.5rem; }
+    #notebook-demo .section-intro .eyebrow { margin: 0 0 1.2rem; }
+    #notebook-demo .section-intro h2 { max-width: 16ch; }
+    #notebook-demo .section-intro p:not(.eyebrow) { max-width: 60ch; margin-top: 1.2rem; }
     .notebook-launch { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; margin-bottom: 2.5rem; }
     .notebook-launch p { margin: 0; color: color-mix(in srgb, var(--white) 76%, transparent); font-size: 0.9rem; }
     .demo-image-hint { margin: 0 0 0.8rem; color: color-mix(in srgb, var(--white) 76%, transparent); font-size: 0.85rem; }
     .notebook-steps { display: grid; gap: 1px; margin: 0; padding: 1px; background: var(--mist); list-style: none; }
     .notebook-steps li { display: grid; grid-template-columns: 3rem minmax(0, 0.85fr) minmax(0, 1.25fr); gap: 1rem; align-items: start; padding: 1.5rem; background: var(--white); color: var(--navy); }
-    .notebook-steps .step-number { align-self: start; color: var(--cobalt); font-size: 1.4rem; font-weight: 800; line-height: 1; }
+    .notebook-steps .step-number { align-self: start; color: var(--cobalt); font-size: 1.65rem; font-weight: 800; line-height: 1; }
     .notebook-steps h3 { margin: 0; font-size: 1.18rem; font-weight: 760; letter-spacing: -0.02em; line-height: 1.2; }
     .notebook-steps p { margin: 0.45rem 0 0; color: var(--steel); font-size: 0.95rem; line-height: 1.55; }
     .notebook-steps li:last-child .demo-step-copy { grid-column: 2 / -1; }
