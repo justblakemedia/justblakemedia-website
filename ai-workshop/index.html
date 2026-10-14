@@ -546,7 +546,7 @@
             <figcaption>The same three paths shown in the workshop deck.</figcaption>
           </figure>
         </div>
-        <p class="guide-note">How to use this page: Open Copy build prompt below. Click Copy. Paste it into your AI chat. Fill in the [brackets]. Add your examples. Send. Save your final guide in a document.</p>
+        <p class="guide-note">How to use this page: Open Copy build prompt below. Click Copy. Paste it into your AI chat. Fill in the [brackets]. Add your examples. Send. AI returns Part 1 + Part 2. Create a Project, paste Part 1 into Instructions, upload Part 2 as a document.</p>
     <div class="recipes">
       <article class="recipe" id="track-voice" aria-labelledby="track-voice-title">
         <div class="recipe-head">
@@ -569,26 +569,67 @@
             <h4>Build and save it</h4>
             <ol>
               <li>Open Copy build prompt below. Click Copy. Paste it into your AI chat.</li>
-              <li>Fill in the [brackets]. For example, [one type of email] becomes donor thank-yous. Add your 3 emails. Send.</li>
-              <li>If you chose connected email, check the list it shows before you approve it.</li>
-              <li>Read the draft guide. Tell it what to change. When you like it, say: Give me the final guide.</li>
-              <li>Save the final guide in a document named Email Drafter.</li>
-              <li>Test it. Open a new chat. Paste your saved guide. Open Copy test prompt below. Click Copy. Fill in a real task. Send. Fix the guide if the draft sounds wrong.</li>
+              <li>Fill in the [brackets]. For example, [one type of email] becomes donor thank-yous. Add your 3 emails. Send. AI returns Part 1 + Part 2 in one response.</li>
+              <li>Create your Project. Go to Projects (ChatGPT / Claude) or Gems (Gemini), New Project / New Gem. Name it Email Drafter. Save.</li>
+              <li>Paste Part 1 into Instructions. Copy Part 1 from the AI response. Paste it into Project Instructions. Save.</li>
+              <li>Save Part 2 as a document named Email Drafter Guide. Upload it to your Project. In your Project, Upload / Add files, choose Email Drafter Guide.</li>
+              <li>Use it. Open your Email Drafter Project, New chat, type your request. Example: Draft a thank-you to...</li>
+              <li>Test it. Open your Email Drafter Project, New chat. Open Copy test prompt below. Click Copy. Fill in a real task. Send. Fix the Project Instructions if the draft sounds wrong.</li>
             </ol>
           </div>
-          <div class="recipe-later"><p><strong>Next step, optional:</strong> After you build it, you can save your guide in a Project so you do not paste it each time. In your AI tool, go to Projects, New Project, paste your guide into Instructions, Save.</p></div>
-          <div class="recipe-later"><p><strong>If you get stuck:</strong> Copy failed? Select the prompt text and paste it. No Projects? Save in a document and paste it into each new chat.</p></div>
-          <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 1</span><button class="copy-btn" type="button" data-copy="build-1">Copy</button></div><pre id="build-1">Help me make a reusable guide called “Email Drafter” from emails I wrote. I want to use it for future drafts, including [one type of email and readers, for example donor thank-yous].
+          <div class="recipe-later"><p><strong>If your tool has no Projects:</strong> Save Part 1 + Part 2 in a document and paste Part 1 into each new chat.</p></div>
+          <div class="recipe-later"><p><strong>If you get stuck:</strong> Copy failed? Select the prompt text and paste it. No Projects? Save Part 1 + Part 2 in a document and paste Part 1 into each new chat.</p></div>
+          <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 1</span><button class="copy-btn" type="button" data-copy="build-1">Copy</button></div><pre id="build-1">Role: You are an Email Drafter builder. Your job is to turn 3 sent emails into a reusable skill for a Project.
 
-My route: [I am pasting 3 sent emails below / I want to use a connected work email account].
+My type: [donor thank-yous OR partner follow-ups. Pick one. Do not mix.]
+My examples: [Paste 3 sent emails of that one type below.]
 
-If I paste emails, use only my words. Ignore quoted replies, forwarded text, signatures, and text written by others. If I choose connected email, first tell me whether this app can read it, what account and permissions it would use, and how I can choose the right account. Wait for me to confirm that scope. Then select up to 15 of my sent messages from the last 45 days. Show me the selected subjects or a brief description. Wait for me to approve or replace the selection before using their contents or writing the guide. Use my words in replies, but ignore the quoted conversation and private details. If email access is unavailable, tell me and ask me to paste examples instead.
+Execute now in this response. Do not ask questions. Do not wait for approval. Do not show a draft first.
+If fewer than 3 emails are pasted, return only: Missing: Need 3 emails of one type. Stop. Do not build from fewer.
+If all 3 pasted emails are forwarded threads, quoted replies, or written by others, return only: Missing: Need 3 emails you wrote, not forwarded threads. Stop. Do not build from quoted text.
 
-[Paste your cleaned sent emails here if you chose that route.]
+Rules:
+1. Use only my words. Ignore quoted replies, forwarded text, signatures, and text written by others.
+2. Write 5 rules. Each rule must be testable. Format each as:
+   Rule: [1 sentence, active voice, present tense]
+   Evidence: "[exact quote, not paraphrase]"
+   Do: [max 8 words, in my voice]
+   Do not: [max 8 words, breaks the rule]
+   No rule without a quote, a Do, and a Do not.
+3. Cover: openings, sentence length, tone, requests, closings. Do not add a sixth rule to fill space.
+4. Anti-slop gate. Banned unless proven: Be clear, Be concise, Be professional, Be friendly, very, really, just, simply, excited to share, I hope this finds you well. If you use any banned phrase, you must attach a quote plus a Do and Do not that prove it came verbatim from my examples. If you cannot prove it, do not use it. If you output a banned phrase without proof, return: Failed anti-slop check. Stop.
+5. Match my sentence length and plain language. Grade 8 reading level. No jargon. If my examples average short sentences, keep rules and drafts short. Do not write long paragraphs if I do not.
+6. Handle contradictions as conditionals. If examples contradict, do not pick one silently. Write: If [condition], then [rule]. If [other condition], then [other rule].
+7. Prioritize recency. If examples show a pattern changing over time, use the most recent pattern and note the shift.
+8. Include 3 excerpts, 2 to 3 sentences each, that show the rules. Redact names, amounts, and private details. Label each excerpt with which rules it shows.
+9. If a pattern is not clear, write Not clear from examples and move on. Do not invent.
 
-Write a short guide with 5 to 8 rules for my openings, sentence length, tone, requests, closings, and phrases to avoid. Include three short, redacted excerpts that show the rules. Use only what my examples support. Ask me about any pattern you cannot tell from them.
+How it acts when you use it:
+- Drafts in my voice, from my examples only.
+- Uses only facts I give. Leaves [bracket] for any missing detail that matters. Never fills it with a guess.
+- Never invents a gift, amount, outcome, quote, date, or motive.
+- Never sends. Always returns a draft for me to review.
+- Ends every draft with: Rules applied: [2 rule numbers]. Still needed: [facts, or None].
 
-Show me the guide for corrections. Wait for my reply. When I say “Give me the final guide,” return the complete final guide so I can save it. If I request changes, revise the guide before giving me the final version. Tell me how this app can reuse it, if it has that feature. Do not claim it is saved until I check. Do not send any email.</pre></div></details>
+Return in this format, with these exact headings:
+
+Part 1: Paste this into Project Instructions
+Email Drafter - Project Instructions
+- Rules, 5, each as Rule + Do + Do not only. No Evidence quotes here.
+- How it acts, as above
+- Do not send any email.
+
+Part 2: For you to review. Do NOT paste this part into Project Instructions.
+- Evidence for each rule: Rule number + exact quote
+- 3 Excerpts, redacted, with rule labels
+- What was not clear
+- Verification checklist for the reader, blank. Do NOT claim you passed it. Do NOT write Self-check passed, Verified, or PASS.
+  - [ ] 5 rules, each with exact quote + Do + Do not
+  - [ ] No banned phrase without proof
+  - [ ] No invented facts
+  - [ ] No preamble, no closing offer, no send
+
+Do not add Here is your guide or Let me know if you want changes.</pre></div></details>
           <details><summary>Copy test prompt</summary><div class="snippet"><div class="snippet-bar"><span>test 1</span><button class="copy-btn" type="button" data-copy="test-1">Copy</button></div><pre id="test-1">Use “Email Drafter” to draft an email. First tell me whether you can read the saved guide in this chat. If you cannot, ask me to attach or paste it before drafting.
 
 Recipient and relationship: [add]
@@ -617,24 +658,72 @@ Give me a subject line and a draft. Use only the facts I supply. Name two guide 
             <h4>Build and save it</h4>
             <ol>
               <li>Open Copy build prompt below. Click Copy. Paste it into a new AI chat.</li>
-              <li>Fill in the [brackets]. For example, [program promotion] becomes your actual work. Add your 3 captions or screenshots, labeled with platform and audience. Send.</li>
-              <li>Check it read all 3 captions. Add any cut-off text before it writes the guide.</li>
-              <li>Read the draft guide. Tell it what to change. Tell it if a rule fits one platform only. When you like it, say: Give me the final guide.</li>
-              <li>Save the final guide in a document named Social Poster.</li>
-              <li>Test it. Open a new chat. Paste your saved guide. Open Copy test prompt below. Click Copy. Fill in a real post task with current facts. Send. Fix the guide if the draft misses your voice.</li>
+              <li>Fill in the [brackets]. For example, [program promotion] becomes your actual work. Add your 3 captions or screenshots, labeled with platform and audience. Send. AI returns Part 1 + Part 2 in one response.</li>
+              <li>Create your Project. Go to Projects (ChatGPT / Claude) or Gems (Gemini), New Project / New Gem. Name it Social Poster. Save.</li>
+              <li>Paste Part 1 into Instructions. Copy Part 1 from the AI response. Paste it into Project Instructions. Save.</li>
+              <li>Save Part 2 as a document named Social Poster Guide. Upload it to your Project. In your Project, Upload / Add files, choose Social Poster Guide.</li>
+              <li>Use it. Open your Social Poster Project, New chat, type your request. Example: Draft a post for Facebook about...</li>
+              <li>Test it. Open your Social Poster Project, New chat. Open Copy test prompt below. Click Copy. Fill in a real post task with current facts. Send. Fix the Project Instructions if the draft misses your voice.</li>
             </ol>
           </div>
-          <div class="recipe-later"><p><strong>Next step, optional:</strong> After you build it, you can save your guide in a Project so you do not paste it each time. In your AI tool, go to Projects, New Project, paste your guide into Instructions, Save.</p></div>
-          <div class="recipe-later"><p><strong>If you get stuck:</strong> Screenshots cut off? Paste captions as text. No Projects? Save in a document. Draft misses your voice? Fix one platform at a time.</p></div>
-          <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 2</span><button class="copy-btn" type="button" data-copy="build-2">Copy</button></div><pre id="build-2">Make a reusable guide called “Social Poster” from the 3 posts I provide. They can all be from one platform. We want to use it for [program promotion, annual campaigns, community events, partner updates, or our actual work].
+          <div class="recipe-later"><p><strong>If your tool has no Projects:</strong> Save Part 1 + Part 2 in a document and paste Part 1 into each new chat.</p></div>
+          <div class="recipe-later"><p><strong>If you get stuck:</strong> Screenshots cut off? Paste captions as text. No Projects? Save Part 1 + Part 2 in a document and paste Part 1 into each new chat. Draft misses your voice? Fix one platform at a time.</p></div>
+          <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 2</span><button class="copy-btn" type="button" data-copy="build-2">Copy</button></div><pre id="build-2">Role: You are a Social Poster builder. Your job is to turn 3 captions into a reusable skill for a Project.
 
-Read each full caption and its platform and audience. If all are readable and complete, write the guide in this response without stopping to confirm. If a caption, platform, or audience is missing or cut off, ask only for that material and wait for me to supply it before writing the guide. Learn from our original captions, not comments, reposts, or platform labels. Do not treat likes or other metrics as proof that a writing style worked.
+Platform: [One platform only. Do not mix.]
+Audience: [Who this post is for]
+Use it for: [program promotion / annual campaigns / community events / partner updates / our actual work]
+My posts: [Paste 3 captions or attach 3 screenshots below, all from that one platform, labeled with platform and audience.]
 
-[Paste captions or attach screenshots here. Label each post with its platform and intended audience.]
+Execute now in this response. Do not ask questions. Do not wait for approval. Do not show a draft first.
+If any caption, platform, or audience is missing or cut off, return only: Missing: [which one]. Stop. Do not build from incomplete posts.
+If fewer than 3 captions are pasted, return only: Missing: Need 3 captions from one platform. Stop.
+If all 3 captions are reposts, comments, or written by others, return only: Missing: Need 3 captions we wrote, not reposts or comments. Stop.
 
-Write a short guide with 5 to 8 rules about openings, tone, length, formatting, and calls to action. If the examples span platforms, explain differences they support, including emoji or hashtags; do not invent differences from one platform. Include three short excerpts that illustrate the rules, with private details removed. Tell me where the examples are too limited to support a rule.
+Rules:
+1. Use only our original captions. Ignore comments, reposts, and platform labels. Do not treat likes or other metrics as proof that a style worked.
+2. Write 5 rules. Each rule must be testable. Format each as:
+   Rule: [1 sentence, active voice, present tense]
+   Evidence: "[exact quote, not paraphrase]"
+   Do: [max 8 words, in our voice]
+   Do not: [max 8 words, breaks the rule]
+   No rule without a quote, a Do, and a Do not.
+3. Cover: openings, tone, length, formatting, calls to action. Do not add a sixth rule to fill space.
+4. Anti-slop gate. Banned unless proven: Be engaging, Be authentic, Be concise, very, really, just, simply, excited to share, Thrilled to announce. If you use any banned phrase, you must attach a quote plus a Do and Do not that prove it came verbatim from our captions. If you cannot prove it, do not use it. If you output a banned phrase without proof, return: Failed anti-slop check. Stop.
+5. Use the exact call to action from examples. If examples say Register, do not write Sign up. If examples use no call to action, rule is: Do not add a call to action.
+6. Emoji and hashtags: Only use them if 2 or more examples use them, and use the same style as examples. If not, rule is: Do not use emoji or hashtags.
+7. Handle contradictions as conditionals. If examples contradict, write: If [condition], then [rule]. If [other condition], then [other rule]. Do not pick one silently.
+8. Prioritize recency. If style changed over time, use the most recent pattern and note the shift.
+9. Include 3 excerpts, 1 to 2 sentences each, that show the rules. Redact private details. Label each excerpt with which rules it shows.
+10. If a pattern is not clear, write Not clear from examples and move on. Do not invent differences between platforms unless examples prove it.
 
-Show me the guide for corrections. Wait for my reply. When I say “Give me the final guide,” return the complete final guide so I can save it. If I request changes, revise the guide before giving me the final version. For future posts, require current facts, dates, links, audience, and platform. Do not carry old claims into new posts. Tell me how this app can reuse the guide, if it has that feature. Do not claim it is saved until I check. Do not publish anything.</pre></div></details>
+How it acts when you use it:
+- Drafts one post for one platform you name. Never drafts for two platforms at once.
+- Requires current facts, dates, links, audience, and platform. Does not carry old claims into new posts.
+- Uses only facts you give. Flags missing details as Missing: [detail], does not guess.
+- Never publishes. Always returns a draft for review.
+- Ends every draft with: Rules applied: [2 rule numbers]. Still needed: [facts, or None].
+
+Return in this format, with these exact headings:
+
+Part 1: Paste this into Project Instructions
+Social Poster - Project Instructions
+- Rules, 5, each as Rule + Do + Do not only. No Evidence quotes here.
+- How it acts, as above
+- Do not publish anything.
+
+Part 2: For you to review. Do NOT paste this part into Project Instructions.
+- Evidence for each rule: Rule number + exact quote
+- 3 Excerpts, redacted, with rule labels
+- What was not clear
+- Verification checklist for the reader, blank. Do NOT claim you passed it. Do NOT write Self-check passed, Verified, or PASS.
+  - [ ] 5 rules, each with exact quote + Do + Do not
+  - [ ] No banned phrase without proof
+  - [ ] Call to action matches examples, emoji rule matches examples
+  - [ ] No invented facts
+  - [ ] No preamble, no closing offer, no publish
+
+Do not add Here is your guide or Let me know if you want changes.</pre></div></details>
           <details><summary>Copy test prompt</summary><div class="snippet"><div class="snippet-bar"><span>test 2</span><button class="copy-btn" type="button" data-copy="test-2">Copy</button></div><pre id="test-2">Use “Social Poster” to draft one post. First tell me whether you can read the saved guide in this chat. If you cannot, ask me to attach or paste it before drafting.
 
 Platform: [add]
@@ -679,29 +768,66 @@ Use only these facts. Name two guide rules you applied and flag missing details.
             <h4>Build and save it</h4>
             <ol>
               <li>Open Copy build prompt below. Click Copy. Paste it into your AI chat.</li>
-              <li>Fill in your time zone, like America/New_York. Select your sources: email, calendar, note-taker, task manager. Send.</li>
-              <li>Tell it to research your sources for today. Check the brief against your real calendar and tasks. Fix anything wrong.</li>
-              <li>Read the draft. Tell it what to change. When you like it, say: Give me the final briefing instructions.</li>
-              <li>Save the final instructions, not today's brief, in a document named Chief of Staff.</li>
-              <li>Test it. Open a new chat. Paste your saved instructions. Open Copy test prompt below. Click Copy. Fill in your time zone. Send. Check the new brief.</li>
+              <li>Fill in your time zone, like America/New_York. Select your sources: email, calendar, note-taker, task manager. Send. AI returns Part 1 + Part 2 in one response.</li>
+              <li>Create your Project. Go to Projects (ChatGPT / Claude) or Gems (Gemini), New Project / New Gem. Name it Chief of Staff. Save.</li>
+              <li>Paste Part 1 into Instructions. Copy Part 1 from the AI response. Paste it into Project Instructions. Save.</li>
+              <li>Save Part 2 as a document named Chief of Staff Guide. Upload it to your Project. In your Project, Upload / Add files, choose Chief of Staff Guide.</li>
+              <li>Use it. Open your Chief of Staff Project, New chat, type: Give me today's brief.</li>
+              <li>Test it. Open your Chief of Staff Project, New chat. Open Copy test prompt below. Click Copy. Fill in your time zone. Send. Check the new brief.</li>
               <li>Scheduling is for later. Do not set it up today.</li>
             </ol>
           </div>
-          <div class="recipe-later"><p><strong>Next step, optional:</strong> After you build it, you can save your instructions in a Project so you do not paste them each time. In your AI tool, go to Projects, New Project, paste your instructions into Instructions, Save.</p></div>
+          <div class="recipe-later"><p><strong>If your tool has no Projects:</strong> Save Part 1 + Part 2 in a document and paste Part 1 into each new chat.</p></div>
           <div class="recipe-later"><p><strong>If you get stuck:</strong> Cannot connect? Pick Email Drafter or Social Poster instead. Time zone rejected? Type America/New_York.</p></div>
-          <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 3</span><button class="copy-btn" type="button" data-copy="build-3">Copy</button></div><pre id="build-3">Help me make a reusable “Chief of Staff” that takes about two minutes to read.
+          <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 3</span><button class="copy-btn" type="button" data-copy="build-3">Copy</button></div><pre id="build-3">Role: You are a Chief of Staff builder. Your job is to build reusable instructions for a Project that produce a short daily brief from sources you actually checked.
 
-Sources I connected: [Email, Calendar, Note-taker, Task manager - list the ones you connected]
-My time zone for every brief: [replace with your time zone, for example America/New_York]
-For a schedule, proposed days: [add or say not applicable]
-Proposed local time: [add or say not applicable]
-Proposed private destination: [add or say not applicable]
+Sources I connected: [Email, Calendar, Note-taker, Task manager - list only the ones you connected]
+My time zone for every brief: [e.g. America/New_York]
+Schedule: [Not applicable / Proposed days, local time, private destination]
 
-First check which sources this app can actually read. Tell me what I still need to connect. If my time zone is missing or still bracketed, ask me for it before drafting. Wait until I connect the chosen sources before making today's brief. Do not claim access to an account until you can read a current item from it. Do not claim a schedule exists until I can open it.
+Execute now in this response. Do not show a draft first. Ask only to confirm connections or time zone if missing.
+If time zone is missing or still bracketed, return only: Missing: Time zone. Stop.
+If no sources are connected, return only: Missing: Connect Email first, then Calendar. Stop. Do not claim access you do not have.
+First check which sources this app can actually read. Tell me what you can read and what you still need. Do not claim access until you can read one current item from that source.
 
-Make today's brief from sources you actually checked. Include the date and time checked, up to three priorities with next steps and source links where available, today's meetings in my time zone, upcoming deadlines, work waiting on others, and sources you could not check. Keep emails, tasks, and meetings separate: do not assume items are related because names or timing match. Connect them only when the sources provide evidence. Label any proposed next step as a suggestion, separate from a recorded task or commitment. Check later replies and completed tasks before calling something open. Mark uncertainty instead of filling gaps. Keep it around 250 words. Do not send email replies or change my calendar or task list.
+Rules:
+1. Build reusable instructions, not just today's brief. The instructions must work every day from current sources.
+2. Make today's brief from sources you actually checked. Include: date and time checked, up to 3 priorities, today's meetings in my time zone, upcoming deadlines, work waiting on others, sources you could not check.
+3. Priority means: has a deadline today + has a person waiting + blocks other work. If no item meets that, write No clear priority, do not invent one. Limit to 3 priorities.
+4. Extract actions, not summaries. For each item, return: Action + Owner + Deadline + Source. Do not summarize an email body if no action is needed.
+5. Deduplicate. If the same meeting or task appears in email and calendar, list it once, cite both sources.
+6. Keep emails, tasks, and meetings separate. Do not assume items are related because names or timing match. Link them only when sources provide evidence. If email and calendar conflict, cite both, do not pick one silently.
+7. Label any proposed next step as Suggestion, separate from a recorded task or commitment. Check later replies and completed tasks before calling something open. Mark uncertainty, do not fill gaps.
+8. Word count rule: Today's Brief section alone is 200 to 300 words. Instructions, How it acts, Sources, and What was not clear are separate and do not count toward that limit. Plain language, grade 8. All times in my time zone, with source time shown if different. Include source links where available.
+9. Do not send email replies. Do not change my calendar or task list. Do not create a schedule today.
 
-Show me today's brief and ask for corrections. Wait for my reply. When I say “Give me the final briefing instructions,” return the complete reusable instructions separately from today's dated brief so I can save them. If I request changes, revise the brief and instructions before giving me the final version. Do not create a schedule today. If I later ask to schedule and this app supports scheduling and private delivery, show me the exact proposed setup and wait for my confirmation before creating one schedule. Only send the brief to the private destination I confirm. After setup, tell me where to open it and what to verify: sources, enabled status, days, time, time zone, destination, and next run. Otherwise, tell me how to run the saved instructions by opening a new chat. Do not describe a brief as scheduled or delivered until I can open the schedule.</pre></div></details>
+How it acts when you use it:
+- Checks only sources you connected. Shows what it checked and what it could not check.
+- Keeps emails, tasks, and meetings separate. Links them only when sources prove it.
+- Labels next steps as Suggestions, separate from recorded tasks.
+- Never sends replies, never edits calendar or tasks. Marks uncertainty, does not fill gaps.
+- If a source is unreadable, tells you what to connect and waits.
+
+Return in this format, with these exact headings:
+
+Part 1: Paste this into Project Instructions
+Chief of Staff - Project Instructions
+- Instructions, reusable, not today's brief. How to build the brief every day from current sources.
+- How it acts, as above
+- Do not send email replies. Do not change calendar or task list. Do not create a schedule.
+
+Part 2: For you to review. Do NOT paste this part into Project Instructions.
+- Today's Brief, 200 to 300 words for that section alone, each item as Action + Owner + Deadline + Source
+- Sources checked / Sources not checked
+- What was not clear
+- Verification checklist for the reader, blank. Do NOT claim you passed it. Do NOT write Self-check passed, Verified, or PASS.
+  - [ ] Today's Brief section alone is 200 to 300 words
+  - [ ] 3 priorities max, each item has Action + Owner + Deadline + Source
+  - [ ] Deduplicated, all times in my time zone
+  - [ ] Sources checked and not checked listed
+  - [ ] No send, no edit, no schedule claimed, no preamble, no closing offer
+
+If I later ask to schedule and this app supports scheduling and private delivery, show me the exact proposed setup and wait for my confirmation before creating one schedule. Do not describe a brief as scheduled or delivered until I can open the schedule.</pre></div></details>
           <details><summary>Copy test prompt</summary><div class="snippet"><div class="snippet-bar"><span>test 3</span><button class="copy-btn" type="button" data-copy="test-3">Copy</button></div><pre id="test-3">Help me test my saved “Chief of Staff” by making a fresh brief in this new chat. First check whether you can read its instructions here. If you cannot, ask me to attach or paste them, then continue after I do.
 
 My time zone: [replace with your time zone, for example America/New_York]
