@@ -536,7 +536,7 @@
           <div>
             <a class="cta" href="#build-options">Choose your build</a>
             <ol class="build-chooser" id="build-options" aria-label="Choose a workshop build">
-              <li><a href="#track-voice"><span class="build-number">01</span><span><strong>Email Drafter - Skill</strong><small>15-20 min. 3 emails, one type</small></span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="#track-voice"><span class="build-number">01</span><span><strong>Email Drafter - Skill</strong><small>15-20 min. 3 emails, any type</small></span><span aria-hidden="true">↗</span></a></li>
               <li><a href="#track-social"><span class="build-number">02</span><span><strong>Social Poster - Skill</strong><small>15-20 min. 3 posts, one platform</small></span><span aria-hidden="true">↗</span></a></li>
               <li><a href="#track-cos"><span class="build-number">03</span><span><strong>Chief of Staff - Agent</strong><small>15-20 min. Connects to your apps</small></span><span aria-hidden="true">↗</span></a></li>
             </ol>
@@ -560,7 +560,7 @@
             <h4>Choose your examples</h4>
             <p>Use one route:</p>
             <ul>
-              <li><strong>Paste sent emails.</strong> Paste 3 emails of one type. Pick one type: donor thank-yous OR partner follow-ups. Do not mix types. Use only your words. Remove names, gift amounts, quoted replies, and signatures.</li>
+              <li><strong>Paste sent emails.</strong> Paste 3 emails. Use different types if you can, so it learns your voice across all types. Use only your words. Remove names, gift amounts, quoted replies, and signatures.</li>
               <li><strong>Use connected email.</strong> Only if your org allows it. The prompt will ask which account to use. Check the list before you approve it.</li>
             </ul>
           </div>
@@ -569,7 +569,7 @@
             <h4>Build and save it</h4>
             <ol>
               <li>Open Copy build prompt below. Click Copy. Paste it into your AI chat.</li>
-              <li>Fill in the [brackets]. For example, [one type of email] becomes donor thank-yous. Add your 3 emails. Send. AI returns Part 1 + Part 2 in one response.</li>
+              <li>Add your 3 emails. Use different types if you can. Send. AI returns Part 1 + Part 2 in one response.</li>
               <li>Create your Project. Go to Projects (ChatGPT / Claude) or Gems (Gemini), New Project / New Gem. Name it Email Drafter. Save.</li>
               <li>Paste Part 1 into Instructions. Copy Part 1 from the AI response. Paste it into Project Instructions. Save.</li>
               <li>Save Part 2 as a document named Email Drafter Guide. Upload it to your Project. In your Project, Upload / Add files, choose Email Drafter Guide.</li>
@@ -581,11 +581,11 @@
           <div class="recipe-later"><p><strong>If you get stuck:</strong> Copy failed? Select the prompt text and paste it. No Projects? Save Part 1 + Part 2 in a document and paste Part 1 into each new chat.</p></div>
           <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 1</span><button class="copy-btn" type="button" data-copy="build-1">Copy</button></div><pre id="build-1">Role: You are an Email Drafter builder. Your job is to turn 3 sent emails into a reusable skill for a Project.
 
-Kind of email I want this skill to draft: [donor thank-yous OR partner follow-ups. Pick one. Do not mix.]
-My examples: [Paste 3 sent emails of that one type below.]
+It drafts all types of email in my voice. It does not matter what type. Use varied examples so it learns my voice across types.
+My examples: [Paste 3 sent emails below. Use different types if you can.]
 
 Execute now in this response. Do not ask questions. Do not wait for approval. Do not show a draft first.
-If fewer than 3 emails are pasted, return only: Missing: Need 3 emails of one type. Stop. Do not build from fewer.
+If fewer than 3 emails are pasted, return only: Missing: Need 3 emails. Stop. Do not build from fewer.
 If all 3 pasted emails are forwarded threads, quoted replies, or written by others, return only: Missing: Need 3 emails you wrote, not forwarded threads. Stop. Do not build from quoted text.
 
 Rules:
