@@ -537,7 +537,7 @@
             <a class="cta" href="#build-options">Choose your build</a>
             <ol class="build-chooser" id="build-options" aria-label="Choose a workshop build">
               <li><a href="#track-voice"><span class="build-number">01</span><span><strong>Email Drafter - Skill</strong><small>15-20 min. 3 emails, any type</small></span><span aria-hidden="true">↗</span></a></li>
-              <li><a href="#track-social"><span class="build-number">02</span><span><strong>Social Poster - Skill</strong><small>15-20 min. 3 posts, one platform</small></span><span aria-hidden="true">↗</span></a></li>
+              <li><a href="#track-social"><span class="build-number">02</span><span><strong>Social Poster - Skill</strong><small>15-20 min. 3 posts, any platform</small></span><span aria-hidden="true">↗</span></a></li>
               <li><a href="#track-cos"><span class="build-number">03</span><span><strong>Chief of Staff - Agent</strong><small>15-20 min. Connects to your apps</small></span><span aria-hidden="true">↗</span></a></li>
             </ol>
           </div>
@@ -652,13 +652,13 @@ Give me a subject line and a draft. Use only the facts I supply. Name two guide 
           
           <div>
             <h4>Choose your posts</h4>
-            <p>Pick 3 posts from one platform. Copy the full captions or take clear screenshots. Note the platform and audience for each.</p>
+            <p>Pick 3 posts. Use different platforms, content, and audiences if you can, so it learns your org voice across all of them. Copy the full captions or take clear screenshots.</p>
           </div>
           <div>
             <h4>Build and save it</h4>
             <ol>
               <li>Open Copy build prompt below. Click Copy. Paste it into a new AI chat.</li>
-              <li>Fill in the [brackets]. For example, [program promotion] becomes your actual work. Add your 3 captions or screenshots, labeled with platform and audience. Send. AI returns Part 1 + Part 2 in one response.</li>
+              <li>Add your 3 captions or screenshots. Use varied content if you can. Send. AI returns Part 1 + Part 2 in one response.</li>
               <li>Create your Project. Go to Projects (ChatGPT / Claude) or Gems (Gemini), New Project / New Gem. Name it Social Poster. Save.</li>
               <li>Paste Part 1 into Instructions. Copy Part 1 from the AI response. Paste it into Project Instructions. Save.</li>
               <li>Save Part 2 as a document named Social Poster Guide. Upload it to your Project. In your Project, Upload / Add files, choose Social Poster Guide.</li>
@@ -667,17 +667,15 @@ Give me a subject line and a draft. Use only the facts I supply. Name two guide 
             </ol>
           </div>
           <div class="recipe-later"><p><strong>If your tool has no Projects:</strong> Save Part 1 + Part 2 in a document and paste Part 1 into each new chat.</p></div>
-          <div class="recipe-later"><p><strong>If you get stuck:</strong> Screenshots cut off? Paste captions as text. No Projects? Save Part 1 + Part 2 in a document and paste Part 1 into each new chat. Draft misses your voice? Fix one platform at a time.</p></div>
+          <div class="recipe-later"><p><strong>If you get stuck:</strong> Screenshots cut off? Paste captions as text. No Projects? Save Part 1 + Part 2 in a document and paste Part 1 into each new chat. Draft misses your voice? Fix one rule at a time.</p></div>
           <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 2</span><button class="copy-btn" type="button" data-copy="build-2">Copy</button></div><pre id="build-2">Role: You are a Social Poster builder. Your job is to turn 3 captions into a reusable skill for a Project.
 
-Platform: [One platform only. Do not mix.]
-Audience: [Who this post is for]
-Use it for: [program promotion / annual campaigns / community events / partner updates / our actual work]
-My posts: [Paste 3 captions or attach 3 screenshots below, all from that one platform, labeled with platform and audience.]
+It drafts posts for any platform, any audience, any content in our org voice and tone. It does not matter what platform, content, or audience.
+My posts: [Paste 3 captions or attach 3 screenshots below. Use varied platforms, content, and audiences if you can.]
 
 Execute now in this response. Do not ask questions. Do not wait for approval. Do not show a draft first.
-If any caption, platform, or audience is missing or cut off, return only: Missing: [which one]. Stop. Do not build from incomplete posts.
-If fewer than 3 captions are pasted, return only: Missing: Need 3 captions from one platform. Stop.
+If any caption is missing or cut off, return only: Missing: [which one]. Stop. Do not build from incomplete posts.
+If fewer than 3 captions are pasted, return only: Missing: Need 3 captions. Stop.
 If all 3 captions are reposts, comments, or written by others, return only: Missing: Need 3 captions we wrote, not reposts or comments. Stop.
 
 Rules:
@@ -695,10 +693,10 @@ Rules:
 7. Handle contradictions as conditionals. If examples contradict, write: If [condition], then [rule]. If [other condition], then [other rule]. Do not pick one silently.
 8. Prioritize recency. If style changed over time, use the most recent pattern and note the shift.
 9. Include 3 excerpts, 1 to 2 sentences each, that show the rules. Redact private details. Label each excerpt with which rules it shows.
-10. If a pattern is not clear, write Not clear from examples and move on. Do not invent differences between platforms unless examples prove it.
+10. If a pattern is not clear, write Not clear from examples and move on. When you draft for a platform, adapt length and formatting to that platform, but keep voice and tone the same. Do not invent platform rules unless examples prove them.
 
 How it acts when you use it:
-- Drafts one post for one platform you name. Never drafts for two platforms at once.
+- Drafts one post for any platform, audience, and content you name. Drafts one post at a time.
 - Requires current facts, dates, links, audience, and platform. Does not carry old claims into new posts.
 - Uses only facts you give. Flags missing details as Missing: [detail], does not guess.
 - Never publishes. Always returns a draft for review.
