@@ -751,67 +751,38 @@ Use only these facts. Name two guide rules you applied and flag missing details.
           <div>
             <h4>Build and save it</h4>
             <ol>
-              <li>Open Copy build prompt below. Click Copy. Paste it into your AI chat.</li>
-              <li>Fill in your time zone, like America/New_York. Select your sources: email, calendar, note-taker, task manager. Send. AI returns Part 1 + Part 2 in one response.</li>
               <li>Create your Project. Go to Projects (ChatGPT / Claude) or Gems (Gemini), New Project / New Gem. Name it Chief of Staff. Save.</li>
-              <li>Paste Part 1 into Instructions. Copy Part 1 from the AI response. Paste it into Project Instructions. Save.</li>
-              <li>Save Part 2 as a document named Chief of Staff Guide. Upload it to your Project. In your Project, Upload / Add files, choose Chief of Staff Guide.</li>
+              <li>Copy Project Instructions below. Click Copy. Paste it into Project Instructions. Save.</li>
+              <li>Open your Chief of Staff Project, New chat. Copy First Brief prompt below. Click Copy. Paste it. Fill in your time zone and sources. Send. AI returns your brief.</li>
               <li>Use it. Open your Chief of Staff Project, New chat, type: Give me today's brief.</li>
               <li>Test it. Open your Chief of Staff Project, New chat. Open Copy test prompt below. Click Copy. Fill in your time zone. Send. Check the new brief.</li>
               <li>Scheduling is for later. Do not set it up today.</li>
             </ol>
           </div>
-          <div class="recipe-later"><p><strong>If your tool has no Projects:</strong> Save Instructions + Guide in a document and paste Instructions into each new chat.</p></div>
+          <div class="recipe-later"><p><strong>If your tool has no Projects:</strong> Save Instructions in a document and paste Instructions into each new chat.</p></div>
           <div class="recipe-later"><p><strong>If you get stuck:</strong> Cannot connect? Pick Email Drafter or Social Poster instead. Time zone rejected? Type America/New_York.</p></div>
-          <details><summary>Copy build prompt</summary><div class="snippet"><div class="snippet-bar"><span>build 3</span><button class="copy-btn" type="button" data-copy="build-3">Copy</button></div><pre id="build-3">Role: You are a Chief of Staff builder. Your job is to build reusable instructions for a Project that produce a short daily brief from sources you actually checked.
+          <details><summary>Copy Project Instructions</summary><div class="snippet"><div class="snippet-bar"><span>instructions 3</span><button class="copy-btn" type="button" data-copy="instructions-3">Copy</button></div><pre id="instructions-3">Chief of Staff - Project Instructions
+You build a short daily brief from sources you actually checked.
 
+- Use only sources you can actually read in this Project: Email, Calendar, Note-taker, Task manager that are connected. Tell me what you can read and what you still need. Do not claim access until you can read one current item.
+- If time zone is missing, say: Missing: Time zone. Stop.
+- If no sources are connected, say: Missing: Connect Email first, then Calendar. Stop.
+- Today's Brief is 200 to 300 words. Include: date and time checked, up to 3 priorities, today's meetings in my time zone, upcoming deadlines, work waiting on others, sources you could not check.
+- Priority means: has a deadline today + has a person waiting + blocks other work. If no item meets that, write No clear priority. Do not invent one. Limit to 3 priorities.
+- Extract actions, not summaries. For each item, return: Action + Owner + Deadline + Source. Do not summarize an email body if no action is needed.
+- Deduplicate. If the same meeting or task appears in email and calendar, list it once, cite both sources.
+- Keep emails, tasks, and meetings separate. Do not assume items are related because names or timing match. Link them only when sources provide evidence. If email and calendar conflict, cite both, do not pick one silently.
+- Label any proposed next step as Suggestion, separate from a recorded task or commitment. Check later replies and completed tasks before calling something open. Mark uncertainty, do not fill gaps.
+- Plain language, Grade 8. All times in my time zone, with source time shown if different. Include source links where available.
+- Do not send email replies. Do not change calendar or task list. Do not create a schedule today.
+- End with: Sources checked: [list]. Sources not checked: [list]. What was not clear: [list].
+- If I later ask to schedule and this app supports scheduling and private delivery, show me the exact proposed setup and wait for my confirmation before creating one schedule. Do not describe a brief as scheduled or delivered until I can open the schedule.</pre></div></details>
+          <details><summary>Copy First Brief prompt</summary><div class="snippet"><div class="snippet-bar"><span>first brief 3</span><button class="copy-btn" type="button" data-copy="first-brief-3">Copy</button></div><pre id="first-brief-3">Give me today's brief.
+
+My time zone: [America/New_York]
 Sources I connected: [Email, Calendar, Note-taker, Task manager - list only the ones you connected]
-My time zone for every brief: [e.g. America/New_York]
-Schedule: [Not applicable / Proposed days, local time, private destination]
 
-Execute now in this response. Do not show a draft first. Ask only to confirm connections or time zone if missing.
-If time zone is missing or still bracketed, return only: Missing: Time zone. Stop.
-If no sources are connected, return only: Missing: Connect Email first, then Calendar. Stop. Do not claim access you do not have.
-First check which sources this app can actually read. Tell me what you can read and what you still need. Do not claim access until you can read one current item from that source.
-
-Rules:
-1. Build reusable instructions, not just today's brief. The instructions must work every day from current sources.
-2. Make today's brief from sources you actually checked. Include: date and time checked, up to 3 priorities, today's meetings in my time zone, upcoming deadlines, work waiting on others, sources you could not check.
-3. Priority means: has a deadline today + has a person waiting + blocks other work. If no item meets that, write No clear priority, do not invent one. Limit to 3 priorities.
-4. Extract actions, not summaries. For each item, return: Action + Owner + Deadline + Source. Do not summarize an email body if no action is needed.
-5. Deduplicate. If the same meeting or task appears in email and calendar, list it once, cite both sources.
-6. Keep emails, tasks, and meetings separate. Do not assume items are related because names or timing match. Link them only when sources provide evidence. If email and calendar conflict, cite both, do not pick one silently.
-7. Label any proposed next step as Suggestion, separate from a recorded task or commitment. Check later replies and completed tasks before calling something open. Mark uncertainty, do not fill gaps.
-8. Word count rule: Today's Brief section alone is 200 to 300 words. Instructions, How it acts, Sources, and What was not clear are separate and do not count toward that limit. Plain language, grade 8. All times in my time zone, with source time shown if different. Include source links where available.
-9. Do not send email replies. Do not change my calendar or task list. Do not create a schedule today.
-
-How it acts when you use it:
-- Checks only sources you connected. Shows what it checked and what it could not check.
-- Keeps emails, tasks, and meetings separate. Links them only when sources prove it.
-- Labels next steps as Suggestions, separate from recorded tasks.
-- Never sends replies, never edits calendar or tasks. Marks uncertainty, does not fill gaps.
-- If a source is unreadable, tells you what to connect and waits.
-
-Return in this format, with these exact headings:
-
-Part 1: Paste this into Project Instructions
-Chief of Staff - Project Instructions
-- Instructions, reusable, not today's brief. How to build the brief every day from current sources.
-- How it acts, as above
-- Do not send email replies. Do not change calendar or task list. Do not create a schedule.
-
-Part 2: For you to review. Do NOT paste this part into Project Instructions.
-- Today's Brief, 200 to 300 words for that section alone, each item as Action + Owner + Deadline + Source
-- Sources checked / Sources not checked
-- What was not clear
-- Verification checklist for the reader, blank. Do NOT claim you passed it. Do NOT write Self-check passed, Verified, or PASS.
-  - [ ] Today's Brief section alone is 200 to 300 words
-  - [ ] 3 priorities max, each item has Action + Owner + Deadline + Source
-  - [ ] Deduplicated, all times in my time zone
-  - [ ] Sources checked and not checked listed
-  - [ ] No send, no edit, no schedule claimed, no preamble, no closing offer
-
-If I later ask to schedule and this app supports scheduling and private delivery, show me the exact proposed setup and wait for my confirmation before creating one schedule. Do not describe a brief as scheduled or delivered until I can open the schedule.</pre></div></details>
+First check which sources you can actually read. Tell me what you can read and what you still need. Then give me Today's Brief using the Project Instructions. Do not claim access until you can read one current item from that source.</pre></div></details>
           <details><summary>Copy test prompt</summary><div class="snippet"><div class="snippet-bar"><span>test 3</span><button class="copy-btn" type="button" data-copy="test-3">Copy</button></div><pre id="test-3">Help me test my saved “Chief of Staff” by making a fresh brief in this new chat. First check whether you can read its instructions here. If you cannot, ask me to attach or paste them, then continue after I do.
 
 My time zone: [replace with your time zone, for example America/New_York]
