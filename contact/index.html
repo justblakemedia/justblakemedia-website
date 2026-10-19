@@ -209,24 +209,26 @@
           </div>
         </div>
         <form class="audit-form" id="audit-form" data-endpoint="https://api.web3forms.com/submit" novalidate>
-          <!-- Deliberately no action or method. The form is submitted by fetch()
-               in site.js to data-endpoint above, so a browser with JavaScript
-               off cannot post these details anywhere. site.js enables the submit
-               button only once the access key below is real. Replace the
-               placeholder with the key from the form provider account and the
-               form goes live with no other change. -->
+          <!-- JavaScript submits this form only after a verified Web3Forms
+               access key is configured. Without JavaScript, it stays disabled
+               and the email option below remains visible. -->
           <input type="hidden" name="access_key" value="REPLACE_WITH_FORM_ACCESS_KEY">
           <input type="hidden" name="subject" value="Growth Systems Audit request from justblakemedia.com">
           <input type="hidden" name="from_name" value="justblakemedia.com">
           <div class="field">
             <label for="audit-name">Your name</label>
-            <input type="text" id="audit-name" name="name" autocomplete="name" required placeholder="Jane Okafor">
+            <input type="text" id="audit-name" name="name" autocomplete="name" required maxlength="120" placeholder="Jane Okafor">
             <p class="field-error" id="audit-name-error">Add your name so I know who I am writing back to.</p>
           </div>
           <div class="field">
             <label for="audit-email">Email</label>
-            <input type="email" id="audit-email" name="email" autocomplete="email" required placeholder="jane@company.com">
+            <input type="email" id="audit-email" name="email" autocomplete="email" required maxlength="254" placeholder="jane@company.com">
             <p class="field-error" id="audit-email-error">That email address does not look right. Check it and try again.</p>
+          </div>
+          <div class="field">
+            <label for="audit-business">Business name or website <span class="optional">Optional</span></label>
+            <input type="text" id="audit-business" name="business" autocomplete="organization" maxlength="160" placeholder="Your business">
+            <p class="field-error" id="audit-business-error">Keep this under 160 characters.</p>
           </div>
           <div class="field field-select">
             <label for="audit-spend">Monthly ad spend</label>
@@ -242,15 +244,16 @@
           </div>
           <div class="field">
             <label for="audit-detail">What is not working <span class="optional">Optional</span></label>
-            <textarea id="audit-detail" name="detail" rows="4" placeholder="Leads dried up in July and I cannot tell whether it is the creative or the tracking."></textarea>
+            <textarea id="audit-detail" name="detail" rows="4" maxlength="2000" placeholder="Leads dried up in July and I cannot tell whether it is the creative or the tracking."></textarea>
+            <p class="field-error" id="audit-detail-error">Keep this under 2,000 characters.</p>
           </div>
           <div class="field-trap" aria-hidden="true">
             <label for="audit-company-site">Do not fill this in</label>
             <input type="text" id="audit-company-site" name="botcheck" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="btn audit-submit" id="audit-submit" disabled>Send my audit request</button>
-          <noscript><p class="audit-status is-error"><strong>This form needs JavaScript.</strong>Email <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a> with what you are running and it will reach me just as fast.</p></noscript>
-          <p class="audit-note">I use your details to reply to you and for nothing else. No list, no sharing, no automated sequence. Ask me at <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a> and I will delete them.</p>
+          <p class="audit-status is-error" id="audit-fallback"><strong>Send me an email instead.</strong>The form is unavailable right now. Email <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a> and tell me what you are running.</p>
+          <p class="audit-note">If you use this form, Web3Forms receives and stores what you enter, then emails it to me. I use it to reply, not to add you to a list. See <a href="https://web3forms.com/privacy">Web3Forms' privacy policy</a>. You can ask me to delete your inquiry at <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a>.</p>
           <p class="audit-status" id="audit-status" role="status" aria-live="polite" hidden></p>
         </form>
       </div>
@@ -297,10 +300,11 @@
       </div>
     </div>
     <div class="shell footer-legal">
-      <p class="footer-privacy">This site counts visits and clicks with Google Analytics, which sets cookies in your browser. The contact form is not connected yet. If you email me, I use your message to reply. I do not add you to a list or share it, and I delete it on request. Booking is handled by Google.</p>
+      <p class="footer-privacy">This site counts visits and clicks with Google Analytics, which sets cookies in your browser. If you use the contact form, Web3Forms stores your details and emails them to me. I use inquiries to reply, not for a mailing list. You can ask me to delete yours. Booking is handled by Google.</p>
       <p class="footer-copyright">&copy; 2026 Just Blake Media</p>
     </div>
   </footer>
   <script src="/assets/site.js" defer></script>
 </body>
 </html>
+

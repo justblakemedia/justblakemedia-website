@@ -241,13 +241,19 @@
 (() => {
   const form = document.getElementById("audit-form");
   if (!form) return;
+
   const status = document.getElementById("audit-status");
   const submit = document.getElementById("audit-submit");
+  const fallback = document.getElementById("audit-fallback");
   const key = form.querySelector('input[name="access_key"]');
   const trap = form.querySelector('input[name="botcheck"]');
   const endpoint = form.dataset.endpoint;
-  const configured = Boolean(endpoint) && key && key.value && !key.value.startsWith("REPLACE_WITH");
-  const submitLabel = submit ? submit.textContent : "";
+  const configured = endpoint === "https://api.web3forms.com/submit" &&
+    key && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(key.value);
+  const submitLabel = submit.textContent;
+  let inFlight = false;
+  let finished = false;
+
   const fieldOf = (input) => input.closest(".field");
   const setError = (input, on) => {
     const field = fieldOf(input);
@@ -255,50 +261,125 @@
     field.classList.toggle("has-error", on);
     input.setAttribute("aria-invalid", String(on));
     const err = field.querySelector(".field-error");
-    if (err) { if (on) input.setAttribute("aria-describedby", err.id); else input.removeAttribute("aria-describedby"); }
+    if (err) {
+      if (on) input.setAttribute("aria-describedby", err.id);
+      else input.removeAttribute("aria-describedby");
+    }
   };
-  const validate = (input) => { const ok = input.checkValidity(); setError(input, !ok); return ok; };
-  const required = () => Array.from(form.querySelectorAll("[required]"));
-  required().forEach((input) => {
+  const validate = (input) => {
+    const ok = input.checkValidity() && (!input.required || input.value.trim().length > 0);
+    setError(input, !ok);
+    return ok;
+  };
+  const inputs = Array.from(form.querySelectorAll(".field input, .field select, .field textarea"));
+  inputs.forEach((input) => {
     input.addEventListener("blur", () => validate(input));
-    input.addEventListener("input", () => { if (fieldOf(input) && fieldOf(input).classList.contains("has-error")) validate(input); });
+    input.addEventListener("input", () => {
+      if (fieldOf(input).classList.contains("has-error")) validate(input);
+    });
+    input.addEventListener("change", () => {
+      if (fieldOf(input).classList.contains("has-error")) validate(input);
+    });
   });
   const show = (message, heading, isError) => {
-    status.innerHTML = "";
-    if (heading) { const strong = document.createElement("strong"); strong.textContent = heading; status.appendChild(strong); }
+    status.replaceChildren();
+    if (heading) {
+      const strong = document.createElement("strong");
+      strong.textContent = heading;
+      status.appendChild(strong);
+    }
     status.appendChild(document.createTextNode(message));
     status.classList.toggle("is-error", Boolean(isError));
     status.hidden = false;
   };
-  // The submit button ships disabled so a browser with JavaScript off cannot
-  // post these details anywhere. Enable it only once there is a real endpoint
-  // to send to; until then say so before anyone types their details in.
   if (configured) {
-    if (submit) submit.disabled = false;
-  } else {
-    show("This form is not connected yet. Email justin@justblakemedia.com directly and it will reach me just as fast.", "Not set up yet.", true);
+    submit.disabled = false;
+    if (fallback) fallback.remove();
   }
+
+  // The Web3Forms access key is a public form identifier. No private API
+  // credential is sent from this page.
   form.addEventListener("submit", async (event) => {
-    if (trap && trap.value) { event.preventDefault(); return; }
-    const invalid = required().filter((input) => !validate(input));
-    if (invalid.length) { event.preventDefault(); invalid[0].focus(); return; }
     event.preventDefault();
-    if (!configured) return;
-    submit.setAttribute("aria-disabled", "true");
+    if (!configured || inFlight || finished) return;
+    if (trap && trap.value) {
+      show("That did not send. Email justin@justblakemedia.com instead.", "Something went wrong.", true);
+      return;
+    }
+    const invalid = inputs.filter((input) => !validate(input));
+    if (invalid.length) {
+      invalid[0].focus();
+      return;
+    }
+
+    inFlight = true;
+    submit.disabled = true;
     submit.textContent = "Sending";
+    status.hidden = true;
+
+    const controller = new AbortController();
+    // Covers both the request and reading the response body.
+    const timer = setTimeout(() => controller.abort(), 12000);
+    let accepted = false;
+    let uncertain = false;
     try {
-      const response = await fetch(endpoint, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
-      if (!response.ok) throw new Error("Request failed with " + response.status);
-      form.querySelectorAll(".field").forEach((f) => f.remove());
-      submit.remove();
-      show("I have it. I will read the account over and write back within two business days, from my own address.", "Request received.", false);
+      const data = new FormData(form);
+      // Do not let visitor text become email markup if a downstream email
+      // template renders field values as HTML.
+      for (const name of ["name", "business", "detail"]) {
+        const value = data.get(name);
+        if (typeof value === "string") {
+          data.set(name, value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+        }
+      }
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+        signal: controller.signal
+      });
+      if (!response.ok) {
+        // A server error may follow an accepted email. Do not invite another
+        // submission when the outcome could be ambiguous.
+        throw new Error(response.status >= 500 || response.status === 408 ? "provider-uncertain" : "provider-refused");
+      }
+      let receipt;
+      try {
+        receipt = await response.json();
+      } catch (_error) {
+        uncertain = true;
+        throw new Error("receipt-unreadable");
+      }
+      accepted = receipt && receipt.success === true;
+      if (!accepted) throw new Error("provider-refused");
+    } catch (error) {
+      if (error.message !== "provider-refused") uncertain = true;
+      if (uncertain) {
+        show("Your request may have arrived, but I could not confirm it. Please email justin@justblakemedia.com if you need to check. Your answers are still here.", "Delivery unconfirmed.", true);
+      } else {
+        show("That did not send. Your answers are still here. Please try again or email justin@justblakemedia.com.", "Something went wrong.", true);
+        submit.disabled = false;
+      }
+      submit.textContent = submitLabel;
+      inFlight = false;
+    } finally {
+      clearTimeout(timer);
+    }
+    if (!accepted) return;
+
+    finished = true;
+    form.querySelectorAll(".field").forEach((field) => field.remove());
+    submit.remove();
+    show("I have it. I will read the account over and write back within two business days, from my own address.", "Request received.", false);
+
+    // Tracking must never make an accepted request look like a failed send.
+    try {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: "audit_request_submit" });
-      if (window.va) window.va("event", { name: "audit_request_submit" });
-    } catch (error) {
-      submit.removeAttribute("aria-disabled");
-      submit.textContent = submitLabel;
-      show("That did not send. Email justin@justblakemedia.com and I will pick it up there.", "Something went wrong.", true);
+      if (typeof window.va === "function") window.va("event", { name: "audit_request_submit" });
+    } catch (_error) {
+      // Delivery has already been confirmed; analytics is best effort.
     }
   });
 })();
+
