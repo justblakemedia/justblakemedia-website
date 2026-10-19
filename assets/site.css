@@ -784,7 +784,10 @@ a.card:hover, a.card:focus-visible { transform: translateY(-4px); border-color: 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .site-header, .carousel-item, .tile img, .btn, .card, .nav-link, .text-link { transition: none; }
-  .marquee-track { animation: none; }
+  .marquee-track { width: auto; animation: none; }
+  .marquee-track ul { flex-wrap: wrap; justify-content: center; }
+  .marquee-track ul[aria-hidden="true"] { display: none; }
+  .marquee-track li { white-space: normal; }
   .menu-panel.is-open { animation: none; }
   .nav-grid.is-open .primary-nav { animation: none; }
   a.card:hover, .tile:hover img, .btn:hover svg { transform: none; }
