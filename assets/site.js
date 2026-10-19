@@ -253,6 +253,7 @@
   const submitLabel = submit.textContent;
   let inFlight = false;
   let finished = false;
+  let locked = false;
 
   const fieldOf = (input) => input.closest(".field");
   const setError = (input, on) => {
@@ -282,6 +283,7 @@
     });
   });
   const show = (message, heading, isError) => {
+    status.hidden = false;
     status.replaceChildren();
     if (heading) {
       const strong = document.createElement("strong");
@@ -290,7 +292,6 @@
     }
     status.appendChild(document.createTextNode(message));
     status.classList.toggle("is-error", Boolean(isError));
-    status.hidden = false;
   };
   if (configured) {
     submit.disabled = false;
@@ -301,7 +302,7 @@
   // credential is sent from this page.
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!configured || inFlight || finished) return;
+    if (!configured || inFlight || finished || locked) return;
     if (trap && trap.value) {
       show("That did not send. Email justin@justblakemedia.com instead.", "Something went wrong.", true);
       return;
@@ -323,19 +324,10 @@
     let accepted = false;
     let uncertain = false;
     try {
-      const data = new FormData(form);
-      // Do not let visitor text become email markup if a downstream email
-      // template renders field values as HTML.
-      for (const name of ["name", "business", "detail"]) {
-        const value = data.get(name);
-        if (typeof value === "string") {
-          data.set(name, value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
-        }
-      }
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { Accept: "application/json" },
-        body: data,
+        body: new FormData(form),
         signal: controller.signal
       });
       if (!response.ok) {
@@ -350,11 +342,18 @@
         uncertain = true;
         throw new Error("receipt-unreadable");
       }
-      accepted = receipt && receipt.success === true;
-      if (!accepted) throw new Error("provider-refused");
+      if (receipt && typeof receipt === "object" && !Array.isArray(receipt) && receipt.success === true) {
+        accepted = true;
+      } else if (receipt && typeof receipt === "object" && !Array.isArray(receipt) && receipt.success === false) {
+        throw new Error("provider-refused");
+      } else {
+        // An unreadable contract is not proof the provider rejected the lead.
+        throw new Error("provider-uncertain");
+      }
     } catch (error) {
       if (error.message !== "provider-refused") uncertain = true;
       if (uncertain) {
+        locked = true;
         show("Your request may have arrived, but I could not confirm it. Please email justin@justblakemedia.com if you need to check. Your answers are still here.", "Delivery unconfirmed.", true);
       } else {
         show("That did not send. Your answers are still here. Please try again or email justin@justblakemedia.com.", "Something went wrong.", true);

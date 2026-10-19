@@ -40,7 +40,7 @@ function harness({ receipt = { success: true }, status = 200, fetchImpl, analyti
     ["email", "qa@example.com", true, 254],
     ["business", "Example Co", false, 160],
     ["monthly_spend", "Under $5,000", true, 100],
-    ["detail", "<b>QA request</b>", false, 2000]
+    ["detail", "A&B <C> QA request", false, 2000]
   ].map(([name, value, required, max]) => {
     const input = element(value);
     const field = element();
@@ -61,6 +61,10 @@ function harness({ receipt = { success: true }, status = 200, fetchImpl, analyti
   const fallback = element();
   const statusNode = element();
   statusNode.hidden = true;
+  statusNode.replaceChildren = function () {
+    this.wasVisibleWhenCleared = !this.hidden;
+    this.textContent = "";
+  };
   const trap = element();
   const accessKey = element(configured ? key : "REPLACE_WITH_FORM_ACCESS_KEY");
   const form = element();
@@ -130,8 +134,9 @@ test("confirmed success removes fields and emits only a non-PII event", async ()
   await h.send();
   assert.equal(h.calls(), 1);
   assert.match(h.status.textContent, /Request received/);
+  assert.equal(h.status.wasVisibleWhenCleared, true);
   assert.equal(h.fields.name.closest().removed, true);
-  assert.equal(h.submitted().get("detail"), "&lt;b&gt;QA request&lt;/b&gt;");
+  assert.equal(h.submitted().get("detail"), "A&B <C> QA request");
   assert.equal(h.submitted().get("email"), "qa@example.com");
   assert.deepEqual(JSON.parse(JSON.stringify(h.dataLayer)), [{ event: "audit_request_submit" }]);
 });
@@ -197,6 +202,22 @@ test("provider server error keeps an uncertain request from being repeated", asy
   assert.equal(h.dataLayer.length, 0);
 });
 
+for (const receipt of [{}, null, [], { success: "true" }]) {
+  test("ambiguous JSON receipt stays locked with answers intact: " + JSON.stringify(receipt), async () => {
+    const h = harness({ receipt });
+    await h.send();
+    assert.equal(h.calls(), 1);
+    assert.equal(h.submit.disabled, true);
+    assert.equal(h.fields.name.value, "QA Tester");
+    assert.equal(h.fields.name.closest().removed, false);
+    assert.equal(h.dataLayer.length, 0);
+    assert.match(h.status.textContent, /may have arrived/);
+    assert.equal(h.status.wasVisibleWhenCleared, true);
+    await h.send();
+    assert.equal(h.calls(), 1);
+  });
+}
+
 for (const scenario of [
   { name: "invalid JSON", fetchImpl: () => ({ ok: true, json: async () => { throw Error("bad JSON"); } }) },
   { name: "offline", fetchImpl: () => { throw Error("offline"); } },
@@ -216,7 +237,7 @@ for (const scenario of [
     await pending;
     assert.equal(h.calls(), 1);
     assert.equal(h.submit.disabled, true);
-    assert.equal(h.fields.detail.value, "<b>QA request</b>");
+    assert.equal(h.fields.detail.value, "A&B <C> QA request");
     assert.equal(h.dataLayer.length, 0);
     assert.match(h.status.textContent, /may have arrived/);
   });
