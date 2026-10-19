@@ -239,146 +239,152 @@
 
 /* ---------- audit form ---------- */
 (() => {
-  const form = document.getElementById("audit-form");
-  if (!form) return;
+  const routes = [
+    { id: "audit-form", prefix: "audit", event: "audit_request_submit", received: "I have it. I will read the account over and write back within two business days, from my own address." },
+    { id: "ai-form", prefix: "ai", event: "ai_inquiry_submit", received: "I have it. I will read about the task and write back within two business days, from my own address." }
+  ];
+  routes.forEach(({ id, prefix, event: eventName, received }) => {
+    const form = document.getElementById(id);
+    if (!form) return;
 
-  const status = document.getElementById("audit-status");
-  const submit = document.getElementById("audit-submit");
-  const fallback = document.getElementById("audit-fallback");
-  const key = form.querySelector('input[name="access_key"]');
-  const trap = form.querySelector('input[name="botcheck"]');
-  const endpoint = form.dataset.endpoint;
-  const configured = endpoint === "https://api.web3forms.com/submit" &&
-    key && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(key.value);
-  const submitLabel = submit.textContent;
-  let inFlight = false;
-  let finished = false;
-  let locked = false;
+    const status = document.getElementById(prefix + "-status");
+    const submit = document.getElementById(prefix + "-submit");
+    const fallback = document.getElementById(prefix + "-fallback");
+    const key = form.querySelector('input[name="access_key"]');
+    const trap = form.querySelector('input[name="botcheck"]');
+    const endpoint = form.dataset.endpoint;
+    const configured = endpoint === "https://api.web3forms.com/submit" &&
+      key && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(key.value);
+    const submitLabel = submit.textContent;
+    let inFlight = false;
+    let finished = false;
+    let locked = false;
 
-  const fieldOf = (input) => input.closest(".field");
-  const setError = (input, on) => {
-    const field = fieldOf(input);
-    if (!field) return;
-    field.classList.toggle("has-error", on);
-    input.setAttribute("aria-invalid", String(on));
-    const err = field.querySelector(".field-error");
-    if (err) {
-      if (on) input.setAttribute("aria-describedby", err.id);
-      else input.removeAttribute("aria-describedby");
-    }
-  };
-  const validate = (input) => {
-    const ok = input.checkValidity() && (!input.required || input.value.trim().length > 0);
-    setError(input, !ok);
-    return ok;
-  };
-  const inputs = Array.from(form.querySelectorAll(".field input, .field select, .field textarea"));
-  inputs.forEach((input) => {
-    input.addEventListener("blur", () => validate(input));
-    input.addEventListener("input", () => {
-      if (fieldOf(input).classList.contains("has-error")) validate(input);
-    });
-    input.addEventListener("change", () => {
-      if (fieldOf(input).classList.contains("has-error")) validate(input);
-    });
-  });
-  const show = (message, heading, isError) => {
-    status.hidden = false;
-    status.replaceChildren();
-    if (heading) {
-      const strong = document.createElement("strong");
-      strong.textContent = heading;
-      status.appendChild(strong);
-    }
-    status.appendChild(document.createTextNode(message));
-    status.classList.toggle("is-error", Boolean(isError));
-  };
-  if (configured) {
-    submit.disabled = false;
-    if (fallback) fallback.remove();
-  }
-
-  // The Web3Forms access key is a public form identifier. No private API
-  // credential is sent from this page.
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (!configured || inFlight || finished || locked) return;
-    if (trap && trap.value) {
-      show("That did not send. Email justin@justblakemedia.com instead.", "Something went wrong.", true);
-      return;
-    }
-    const invalid = inputs.filter((input) => !validate(input));
-    if (invalid.length) {
-      invalid[0].focus();
-      return;
-    }
-
-    inFlight = true;
-    submit.disabled = true;
-    submit.textContent = "Sending";
-    status.hidden = true;
-
-    const controller = new AbortController();
-    // Covers both the request and reading the response body.
-    const timer = setTimeout(() => controller.abort(), 12000);
-    let accepted = false;
-    let uncertain = false;
-    try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form),
-        signal: controller.signal
+    const fieldOf = (input) => input.closest(".field");
+    const setError = (input, on) => {
+      const field = fieldOf(input);
+      if (!field) return;
+      field.classList.toggle("has-error", on);
+      input.setAttribute("aria-invalid", String(on));
+      const err = field.querySelector(".field-error");
+      if (err) {
+        if (on) input.setAttribute("aria-describedby", err.id);
+        else input.removeAttribute("aria-describedby");
+      }
+    };
+    const validate = (input) => {
+      const ok = input.checkValidity() && (!input.required || input.value.trim().length > 0);
+      setError(input, !ok);
+      return ok;
+    };
+    const inputs = Array.from(form.querySelectorAll(".field input, .field select, .field textarea"));
+    inputs.forEach((input) => {
+      input.addEventListener("blur", () => validate(input));
+      input.addEventListener("input", () => {
+        if (fieldOf(input).classList.contains("has-error")) validate(input);
       });
-      if (!response.ok) {
-        // A server error may follow an accepted email. Do not invite another
-        // submission when the outcome could be ambiguous.
-        throw new Error(response.status >= 500 || response.status === 408 ? "provider-uncertain" : "provider-refused");
+      input.addEventListener("change", () => {
+        if (fieldOf(input).classList.contains("has-error")) validate(input);
+      });
+    });
+    const show = (message, heading, isError) => {
+      status.hidden = false;
+      status.replaceChildren();
+      if (heading) {
+        const strong = document.createElement("strong");
+        strong.textContent = heading;
+        status.appendChild(strong);
       }
-      let receipt;
+      status.appendChild(document.createTextNode(message));
+      status.classList.toggle("is-error", Boolean(isError));
+    };
+    if (configured) {
+      submit.disabled = false;
+      if (fallback) fallback.remove();
+    }
+
+    // The Web3Forms access key is a public form identifier. No private API
+    // credential is sent from this page.
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!configured || inFlight || finished || locked) return;
+      if (trap && trap.value) {
+        show("That did not send. Email justin@justblakemedia.com instead.", "Something went wrong.", true);
+        return;
+      }
+      const invalid = inputs.filter((input) => !validate(input));
+      if (invalid.length) {
+        invalid[0].focus();
+        return;
+      }
+
+      inFlight = true;
+      submit.disabled = true;
+      submit.textContent = "Sending";
+      status.hidden = true;
+
+      const controller = new AbortController();
+      // Covers both the request and reading the response body.
+      const timer = setTimeout(() => controller.abort(), 12000);
+      let accepted = false;
+      let uncertain = false;
       try {
-        receipt = await response.json();
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+          signal: controller.signal
+        });
+        if (!response.ok) {
+          // A server error may follow an accepted email. Do not invite another
+          // submission when the outcome could be ambiguous.
+          throw new Error(response.status >= 500 || response.status === 408 ? "provider-uncertain" : "provider-refused");
+        }
+        let receipt;
+        try {
+          receipt = await response.json();
+        } catch (_error) {
+          uncertain = true;
+          throw new Error("receipt-unreadable");
+        }
+        if (receipt && typeof receipt === "object" && !Array.isArray(receipt) && receipt.success === true) {
+          accepted = true;
+        } else if (receipt && typeof receipt === "object" && !Array.isArray(receipt) && receipt.success === false) {
+          throw new Error("provider-refused");
+        } else {
+          // An unreadable contract is not proof the provider rejected the lead.
+          throw new Error("provider-uncertain");
+        }
+      } catch (error) {
+        if (error.message !== "provider-refused") uncertain = true;
+        if (uncertain) {
+          locked = true;
+          show("Your request may have arrived, but I could not confirm it. Please email justin@justblakemedia.com if you need to check. Your answers are still here.", "Delivery unconfirmed.", true);
+        } else {
+          show("That did not send. Your answers are still here. Please try again or email justin@justblakemedia.com.", "Something went wrong.", true);
+          submit.disabled = false;
+        }
+        submit.textContent = submitLabel;
+        inFlight = false;
+      } finally {
+        clearTimeout(timer);
+      }
+      if (!accepted) return;
+
+      finished = true;
+      form.querySelectorAll(".field").forEach((field) => field.remove());
+      submit.remove();
+      show(received, "Request received.", false);
+
+      // Tracking must never make an accepted request look like a failed send.
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: eventName });
+        if (typeof window.va === "function") window.va("event", { name: eventName });
       } catch (_error) {
-        uncertain = true;
-        throw new Error("receipt-unreadable");
+        // Delivery has already been confirmed; analytics is best effort.
       }
-      if (receipt && typeof receipt === "object" && !Array.isArray(receipt) && receipt.success === true) {
-        accepted = true;
-      } else if (receipt && typeof receipt === "object" && !Array.isArray(receipt) && receipt.success === false) {
-        throw new Error("provider-refused");
-      } else {
-        // An unreadable contract is not proof the provider rejected the lead.
-        throw new Error("provider-uncertain");
-      }
-    } catch (error) {
-      if (error.message !== "provider-refused") uncertain = true;
-      if (uncertain) {
-        locked = true;
-        show("Your request may have arrived, but I could not confirm it. Please email justin@justblakemedia.com if you need to check. Your answers are still here.", "Delivery unconfirmed.", true);
-      } else {
-        show("That did not send. Your answers are still here. Please try again or email justin@justblakemedia.com.", "Something went wrong.", true);
-        submit.disabled = false;
-      }
-      submit.textContent = submitLabel;
-      inFlight = false;
-    } finally {
-      clearTimeout(timer);
-    }
-    if (!accepted) return;
-
-    finished = true;
-    form.querySelectorAll(".field").forEach((field) => field.remove());
-    submit.remove();
-    show("I have it. I will read the account over and write back within two business days, from my own address.", "Request received.", false);
-
-    // Tracking must never make an accepted request look like a failed send.
-    try {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "audit_request_submit" });
-      if (typeof window.va === "function") window.va("event", { name: "audit_request_submit" });
-    } catch (_error) {
-      // Delivery has already been confirmed; analytics is best effort.
-    }
+    });
   });
 })();
 
