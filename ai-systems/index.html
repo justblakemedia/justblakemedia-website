@@ -204,7 +204,7 @@
           <p class="lede" data-reveal data-reveal-delay="2">I'll tell you whether AI belongs in it. For one property manager, I built tooling that prepares each new listing as a paused ad draft. A person checks it before it can run.</p>
           <div class="btn-row" data-reveal data-reveal-delay="3">
             <a class="btn btn-lg" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a call</a>
-            <a class="btn btn-lg btn-ghost" href="#clarity">Start with the Clarity Session</a>
+            <a class="btn btn-lg btn-ghost" href="#ai-inquiry">Tell me about the task</a>
           </div>
         </div>
         <aside class="page-hero-aside" data-reveal data-reveal-delay="4">
@@ -313,14 +313,58 @@
       </div>
     </section>
 
-    <section class="cta-band" aria-labelledby="cta-band-title">
-      <div class="shell">
-        <h2 class="display" id="cta-band-title">Tell me which task keeps coming back.</h2>
-        <p>In the AI Clarity Session, we test that task together and build a written plan for what should happen next.</p>
-        <div class="btn-row">
-          <a class="btn" href="#clarity">See the Clarity Session</a>
-          <a class="btn btn-ghost" href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a call</a>
+    <section class="section on-dark" id="ai-inquiry" aria-labelledby="ai-inquiry-title">
+      <div class="shell form-grid">
+        <div class="form-copy">
+          <p class="eyebrow">AI systems and automation</p>
+          <h2 class="display display-lg" id="ai-inquiry-title">Tell me which task keeps coming back.</h2>
+          <div class="prose">
+            <p>Describe the repeat work and the tools involved. I'll tell you what I would check first and whether an automation makes sense.</p>
+            <p>Prefer to talk it through? <a href="https://calendar.google.com/calendar/u/0/appointments/AcZssZ2D7uMpt7JHjVTUxTeBbHBp8PmNRrPC43SjRNc=">Book a call</a>. The <a href="#clarity">AI Clarity Session</a> is there if you want to work through one task together.</p>
+          </div>
         </div>
+        <form class="audit-form" id="ai-form" data-endpoint="https://api.web3forms.com/submit" novalidate>
+          <!-- JavaScript enables this form after checking the public Web3Forms key.
+               The email option remains available when JavaScript is absent. -->
+          <input type="hidden" name="access_key" value="85e4644f-df65-41bf-92ce-63fbd3926fcb">
+          <input type="hidden" name="subject" value="AI systems and automation inquiry from justblakemedia.com">
+          <input type="hidden" name="from_name" value="justblakemedia.com">
+          <input type="hidden" name="source" value="AI systems and automation page">
+          <div class="field">
+            <label for="ai-name">Your name</label>
+            <input type="text" id="ai-name" name="name" autocomplete="name" required maxlength="120" placeholder="Jane Okafor">
+            <p class="field-error" id="ai-name-error">Add your name so I know who I am writing back to.</p>
+          </div>
+          <div class="field">
+            <label for="ai-email">Email</label>
+            <input type="email" id="ai-email" name="email" autocomplete="email" required maxlength="254" placeholder="jane@company.com">
+            <p class="field-error" id="ai-email-error">That email address does not look right. Check it and try again.</p>
+          </div>
+          <div class="field">
+            <label for="ai-task">What task or process do you want help automating?</label>
+            <textarea id="ai-task" name="task" rows="4" required maxlength="2000" placeholder="Every new project needs the same handoff checklist and first draft."></textarea>
+            <p class="field-error" id="ai-task-error">Describe the task in a few words, up to 2,000 characters.</p>
+          </div>
+          <div class="field">
+            <label for="ai-organization">Organization <span class="optional">Optional</span></label>
+            <input type="text" id="ai-organization" name="organization" autocomplete="organization" maxlength="160" placeholder="Your organization">
+            <p class="field-error" id="ai-organization-error">Keep this under 160 characters.</p>
+          </div>
+          <div class="field">
+            <label for="ai-tools">Current tools <span class="optional">Optional</span></label>
+            <input type="text" id="ai-tools" name="current_tools" maxlength="300" placeholder="For example, Google Sheets and HubSpot">
+            <p class="field-error" id="ai-tools-error">Keep this under 300 characters.</p>
+          </div>
+          <div class="field-trap" aria-hidden="true">
+            <label for="ai-company-site">Do not fill this in</label>
+            <input type="text" id="ai-company-site" name="botcheck" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit" class="btn audit-submit" id="ai-submit" disabled>Send my AI inquiry</button>
+          <p class="audit-status is-error" id="ai-fallback"><strong>Send me an email instead.</strong>The form is unavailable right now. Email <a href="mailto:justin@justblakemedia.com?subject=AI%20systems%20and%20automation%20inquiry">justin@justblakemedia.com</a> and tell me about the task.</p>
+          <p class="audit-note">Please do not include passwords or confidential client information.</p>
+          <p class="audit-note">Web3Forms receives and stores what you enter, then emails it to me. I use it to reply, not to add you to a list. See <a href="https://web3forms.com/privacy">Web3Forms' privacy policy</a>. You can ask me to delete your inquiry at <a href="mailto:justin@justblakemedia.com">justin@justblakemedia.com</a>.</p>
+          <p class="audit-status" id="ai-status" role="status" aria-live="polite" hidden></p>
+        </form>
       </div>
     </section>
 
@@ -365,7 +409,7 @@
       </div>
     </div>
     <div class="shell footer-legal">
-      <p class="footer-privacy">This site counts visits and clicks with Google Analytics, which sets cookies in your browser. If you use the contact form, Web3Forms stores your details and emails them to me. I use inquiries to reply, not for a mailing list. You can ask me to delete yours. Booking is handled by Google.</p>
+      <p class="footer-privacy">This site counts visits and clicks with Google Analytics, which sets cookies in your browser. If you use a form, Web3Forms stores your details and emails them to me. I use inquiries to reply, not for a mailing list. You can ask me to delete yours. Booking is handled by Google.</p>
       <p class="footer-copyright">&copy; 2026 Just Blake Media</p>
     </div>
   </footer>
