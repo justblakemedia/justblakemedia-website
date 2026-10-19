@@ -268,21 +268,28 @@ h1, .display {
 @keyframes title-blur-in { from { opacity: 0.6; filter: blur(6px); transform: translateY(10px); } to { opacity: 1; filter: blur(0); transform: none; } }
 @keyframes rise-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-/* ---------- stat card floating over the hero edge ---------- */
+/* ---------- problem routes floating over the hero edge ---------- */
 
-.stat-band { position: relative; z-index: 2; padding: 0 0 48px; background: var(--white); }
-.stat-card {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+.route-band { position: relative; z-index: 2; padding: 0 0 48px; background: var(--white); }
+.route-panel {
   width: min(100% - 40px, 1150px); margin: -64px auto 0;
-  padding: 24px 16px; border-radius: var(--r);
+  padding: 28px; border-radius: var(--r);
   background: var(--white); box-shadow: var(--ring), 0 24px 48px -32px rgba(11, 21, 40, 0.35);
 }
-.stat-card > div { display: grid; gap: 8px; padding: 8px 16px; text-align: center; }
-.stat-card > div + div { border-left: 1px solid var(--border); }
-.stat-card dt { order: 2; color: var(--ink-2); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; line-height: 1.5; text-transform: uppercase; }
-.stat-card dd { order: 1; margin: 0; color: var(--navy); font-size: 40px; font-variation-settings: "wdth" 80, "wght" 650; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; line-height: 1; }
-.stat-card .num { font: inherit; }
-.stat-note { max-width: 70ch; margin: 20px auto 0; padding-inline: 20px; text-align: center; color: var(--ink-2); font-size: 14px; line-height: 20px; }
+.route-head { text-align: center; }
+.route-head .display { font-size: clamp(28px, 3vw, 40px); }
+.route-head > p:last-child { margin: 12px auto 0; color: var(--ink-2); font-size: 15px; line-height: 23px; }
+.route-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 24px 0 0; padding: 0; list-style: none; }
+.route-link {
+  display: flex; flex-direction: column; gap: 12px; min-height: 180px;
+  padding: 22px; border: 1px solid var(--border); border-radius: var(--r);
+  color: var(--ink); text-decoration: none;
+}
+.route-link:hover, .route-link:focus-visible { border-color: var(--cobalt); background: var(--cobalt-tint); }
+.route-link h3 { font-size: 19px; font-variation-settings: "wdth" 80, "wght" 650; font-weight: 650; line-height: 1.15; text-transform: uppercase; }
+.route-link p { color: var(--ink-2); font-size: 14px; line-height: 21px; }
+.route-destination { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--cobalt); font-size: 12px; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; }
+.route-destination span { font-size: 18px; line-height: 1; }
 
 /* ---------- marquee strip ---------- */
 
@@ -712,9 +719,8 @@ a.card:hover, a.card:focus-visible { transform: translateY(-4px); border-color: 
   .display-lg, .cta-band h2 { font-size: 32px; }
   .section { padding-block: 48px; }
   .section-lg { padding-block: 56px; }
-  .stat-card { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 0; }
-  .stat-card > div + div { border-left: 0; }
-  .stat-card > div:nth-child(even) { border-left: 1px solid var(--border); }
+  .route-grid { grid-template-columns: 1fr; }
+  .route-link { min-height: 0; }
   .trust-grid, .process-card, .split, .split.is-flipped, .learn-grid, .form-grid, .about-grid, .tabpanel, .ladder-head { grid-template-columns: 1fr; }
   .split.is-flipped .split-copy { order: 0; }
   .aside-card { position: static; }
@@ -766,9 +772,10 @@ a.card:hover, a.card:focus-visible { transform: translateY(-4px); border-color: 
   .nav-cta-mobile { display: block; margin-top: auto; padding-top: 20px; border-bottom: 0 !important; }
   .nav-cta-mobile .btn { width: 100%; background: var(--white); color: var(--navy); }
   .drawer-close { position: absolute; top: 8px; right: 8px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; border-radius: 8px; background: transparent; color: var(--white); font-size: 28px; line-height: 1; cursor: pointer; }
-  .stat-card { margin-top: -48px; padding: 16px 8px; }
-  .stat-card dd { font-size: 30px; }
-  .stat-card dt { font-size: 10px; letter-spacing: 0.15em; }
+  .route-band { padding-bottom: 32px; }
+  .route-panel { margin-top: -48px; padding: 24px 16px; }
+  .route-head .display { font-size: 30px; }
+  .route-link { padding: 18px; }
   .rungs { grid-template-columns: 1fr; }
   .rung.is-today::after { right: 12px; }
   .cards-3 > li, .cards-2 > li { grid-column: 1 / -1; }
