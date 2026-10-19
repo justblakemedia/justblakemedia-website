@@ -6,6 +6,7 @@ import vm from "node:vm";
 const script = readFileSync(new URL("../../assets/site.js", import.meta.url), "utf8");
 const formScript = script.slice(script.indexOf("/* ---------- audit form ---------- */"));
 const html = readFileSync(new URL("../../contact/index.html", import.meta.url), "utf8");
+const aiHtml = readFileSync(new URL("../../ai-systems/index.html", import.meta.url), "utf8");
 const key = "3f2b1c9e-8a4d-4e6f-9b1a-2c3d4e5f6a7b";
 
 function element(value = "") {
@@ -34,14 +35,21 @@ function element(value = "") {
   };
 }
 
-function harness({ receipt = { success: true }, status = 200, fetchImpl, analyticsThrows = false, configured = true } = {}) {
-  const fields = [
+function harness({ receipt = { success: true }, status = 200, fetchImpl, analyticsThrows = false, configured = true, kind = "audit" } = {}) {
+  const prefix = kind === "ai" ? "ai" : "audit";
+  const fields = (kind === "ai" ? [
+    ["name", "QA Tester", true, 120],
+    ["email", "qa@example.com", true, 254],
+    ["task", "A&B <C> QA request", true, 2000],
+    ["organization", "Example Co", false, 160],
+    ["current_tools", "Google Sheets", false, 300]
+  ] : [
     ["name", "QA Tester", true, 120],
     ["email", "qa@example.com", true, 254],
     ["business", "Example Co", false, 160],
     ["monthly_spend", "Under $5,000", true, 100],
     ["detail", "A&B <C> QA request", false, 2000]
-  ].map(([name, value, required, max]) => {
+  ]).map(([name, value, required, max]) => {
     const input = element(value);
     const field = element();
     field.querySelector = () => ({ id: name + "-error" });
@@ -57,7 +65,7 @@ function harness({ receipt = { success: true }, status = 200, fetchImpl, analyti
   const byName = Object.fromEntries(fields.map(({ input }) => [input.name, input]));
   const submit = element();
   submit.disabled = true;
-  submit.textContent = "Send my audit request";
+  submit.textContent = kind === "ai" ? "Send my AI inquiry" : "Send my audit request";
   const fallback = element();
   const statusNode = element();
   statusNode.hidden = true;
@@ -73,7 +81,7 @@ function harness({ receipt = { success: true }, status = 200, fetchImpl, analyti
   form.querySelectorAll = (selector) => selector === ".field" ? fields.map(x => x.field) : fields.map(x => x.input);
   const doc = {
     getElementById(id) {
-      return { "audit-form": form, "audit-status": statusNode, "audit-submit": submit, "audit-fallback": fallback }[id];
+      return { [prefix + "-form"]: form, [prefix + "-status"]: statusNode, [prefix + "-submit"]: submit, [prefix + "-fallback"]: fallback }[id];
     },
     createElement() { return element(); },
     createTextNode(text) { const node = element(); node.textContent = text; return node; }
@@ -248,4 +256,41 @@ test("analytics failure does not undo confirmed delivery", async () => {
   await h.send();
   assert.match(h.status.textContent, /Request received/);
   assert.equal(h.fields.name.closest().removed, true);
+});
+
+test("AI form is short, accessible, and offers a no-JS email route", () => {
+  const form = aiHtml.match(/<form class="audit-form" id="ai-form"[\s\S]*?<\/form>/)?.[0];
+  assert.ok(form);
+  assert.match(form, /id="ai-submit" disabled/);
+  assert.match(form, /id="ai-fallback"/);
+  assert.match(form, /<textarea[^>]+name="task"[^>]+required/);
+  assert.match(form, /name="subject" value="AI systems and automation inquiry/);
+  assert.match(form, /name="source" value="AI systems and automation page"/);
+  assert.match(form, /Please do not include passwords or confidential client information/);
+  assert.doesNotMatch(form, /monthly_spend|<form[^>]+action=/);
+});
+
+test("AI inquiry sends the task and emits only its own receipt event", async () => {
+  const h = harness({ kind: "ai" });
+  await h.send();
+  assert.equal(h.calls(), 1);
+  assert.equal(h.submitted().get("task"), "A&B <C> QA request");
+  assert.equal(h.submitted().get("current_tools"), "Google Sheets");
+  assert.match(h.status.textContent, /read about the task/);
+  assert.deepEqual(JSON.parse(JSON.stringify(h.dataLayer)), [{ event: "ai_inquiry_submit" }]);
+});
+
+test("AI inquiry blocks blank task and duplicate uncertain sends", async () => {
+  const h = harness({ kind: "ai", receipt: {} });
+  h.fields.task.value = " ";
+  await h.send();
+  assert.equal(h.calls(), 0);
+  assert.equal(h.fields.task.focused, true);
+  h.fields.task.value = "A repeated task";
+  await h.send();
+  await h.send();
+  assert.equal(h.calls(), 1);
+  assert.equal(h.submit.disabled, true);
+  assert.equal(h.fields.task.value, "A repeated task");
+  assert.match(h.status.textContent, /may have arrived/);
 });
